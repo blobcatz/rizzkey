@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -11,11 +11,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XNotification from '@/components/MkNotification.vue';
 
 defineProps<{
-	notification: Misskey.entities.Notification;
+	notification: rizzkey.entities.Notification;
 }>();
 </script>
 

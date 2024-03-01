@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -10,9 +10,9 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { defaultStore } from '@/store.js';
 import { mainRouter } from '@/router/main.js';
@@ -43,7 +43,7 @@ if (acct == null) {
 let promise;
 
 if (acct.startsWith('https://')) {
-	promise = misskeyApi('ap/show', {
+	promise = rizzkeyApi('ap/show', {
 		uri: acct,
 	});
 	promise.then(res => {
@@ -61,7 +61,7 @@ if (acct.startsWith('https://')) {
 		}
 	});
 } else {
-	promise = misskeyApi('users/show', Misskey.acct.parse(acct));
+	promise = rizzkeyApi('users/show', rizzkey.acct.parse(acct));
 	promise.then(user => {
 		follow(user);
 	});

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -27,19 +27,19 @@ SPDX-License-Identifier: AGPL-3.0-only
 </template>
 
 <script lang="ts" setup>
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { onUpdated, ref, shallowRef } from 'vue';
 import MkReactionsViewer from '@/components/MkReactionsViewer.vue';
 import MkMediaList from '@/components/MkMediaList.vue';
 import MkPoll from '@/components/MkPoll.vue';
-import { misskeyApiGet } from '@/scripts/misskey-api.js';
+import { rizzkeyApiGet } from '@/scripts/rizzkey-api.js';
 import { getScrollContainer } from '@/scripts/scroll.js';
 
-const notes = ref<Misskey.entities.Note[]>([]);
+const notes = ref<rizzkey.entities.Note[]>([]);
 const isScrolling = ref(false);
 const scrollEl = shallowRef<HTMLElement>();
 
-misskeyApiGet('notes/featured').then(_notes => {
+rizzkeyApiGet('notes/featured').then(_notes => {
 	notes.value = _notes;
 });
 

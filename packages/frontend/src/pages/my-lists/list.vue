@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -54,10 +54,10 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkButton from '@/components/MkButton.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { i18n } from '@/i18n.js';
 import { userPage } from '@/filters/user.js';
@@ -82,7 +82,7 @@ const props = defineProps<{
 }>();
 
 const paginationEl = ref<InstanceType<typeof MkPagination>>();
-const list = ref<Misskey.entities.UserList | null>(null);
+const list = ref<rizzkey.entities.UserList | null>(null);
 const isPublic = ref(false);
 const name = ref('');
 const membershipsPagination = {
@@ -94,7 +94,7 @@ const membershipsPagination = {
 };
 
 function fetchList() {
-	misskeyApi('users/lists/show', {
+	rizzkeyApi('users/lists/show', {
 		listId: props.listId,
 	}).then(_list => {
 		list.value = _list;
@@ -122,7 +122,7 @@ async function removeUser(item, ev) {
 		danger: true,
 		action: async () => {
 			if (!list.value) return;
-			misskeyApi('users/lists/pull', {
+			rizzkeyApi('users/lists/pull', {
 				listId: list.value.id,
 				userId: item.userId,
 			}).then(() => {
@@ -137,7 +137,7 @@ async function showMembershipMenu(item, ev) {
 		text: item.withReplies ? i18n.ts.hideRepliesToOthersInTimeline : i18n.ts.showRepliesToOthersInTimeline,
 		icon: item.withReplies ? 'ti ti-messages-off' : 'ti ti-messages',
 		action: async () => {
-			misskeyApi('users/lists/update-membership', {
+			rizzkeyApi('users/lists/update-membership', {
 				listId: list.value.id,
 				userId: item.userId,
 				withReplies: !item.withReplies,

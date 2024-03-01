@@ -23,12 +23,12 @@
   - changed-files:
     - any-glob-to-any-file: ['packages/sw/**/*']
 
-'packages/misskey-js':
+'packages/rizzkey-js':
 - any:
   - changed-files:
-    - any-glob-to-any-file: ['packages/misskey-js/**/*']
+    - any-glob-to-any-file: ['packages/rizzkey-js/**/*']
 
-'packages/misskey-js:test':
+'packages/rizzkey-js:test':
 - any:
   - changed-files:
-    - any-glob-to-any-file: ['packages/misskey-js/test/**/*', 'packages/misskey-js/test-d/**/*']
+    - any-glob-to-any-file: ['packages/rizzkey-js/test/**/*', 'packages/rizzkey-js/test-d/**/*']

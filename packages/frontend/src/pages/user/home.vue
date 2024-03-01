@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -152,7 +152,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { defineAsyncComponent, computed, onMounted, onUnmounted, nextTick, watch, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkNote from '@/components/MkNote.vue';
 import MkFollowButton from '@/components/MkFollowButton.vue';
 import MkAccountMoved from '@/components/MkAccountMoved.vue';
@@ -170,7 +170,7 @@ import { i18n } from '@/i18n.js';
 import { $i, iAmModerator } from '@/account.js';
 import { dateString } from '@/filters/date.js';
 import { confetti } from '@/scripts/confetti.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { isFollowingVisibleForMe, isFollowersVisibleForMe } from '@/scripts/isFfVisibleForMe.js';
 import { useRouter } from '@/router/supplier.js';
 
@@ -194,7 +194,7 @@ const XActivity = defineAsyncComponent(() => import('./index.activity.vue'));
 const XTimeline = defineAsyncComponent(() => import('./index.timeline.vue'));
 
 const props = withDefaults(defineProps<{
-	user: Misskey.entities.UserDetailed;
+	user: rizzkey.entities.UserDetailed;
 	/** Test only; MkNotes currently causes problems in vitest */
 	disableNotes: boolean;
 }>(), {
@@ -215,7 +215,7 @@ const moderationNote = ref(props.user.moderationNote);
 const editModerationNote = ref(false);
 
 watch(moderationNote, async () => {
-	await misskeyApi('admin/update-user-note', { userId: props.user.id, text: moderationNote.value });
+	await rizzkeyApi('admin/update-user-note', { userId: props.user.id, text: moderationNote.value });
 });
 
 const style = computed(() => {
@@ -266,7 +266,7 @@ function adjustMemoTextarea() {
 }
 
 async function updateMemo() {
-	await misskeyApi('users/update-memo', {
+	await rizzkeyApi('users/update-memo', {
 		memo: memoDraft.value,
 		userId: props.user.id,
 	});

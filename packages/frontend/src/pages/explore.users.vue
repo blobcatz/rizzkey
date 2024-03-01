@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -64,11 +64,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { watch, ref, shallowRef, computed } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkUserList from '@/components/MkUserList.vue';
 import MkFoldableSection from '@/components/MkFoldableSection.vue';
 import MkTab from '@/components/MkTab.vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 
 const props = defineProps<{
@@ -77,8 +77,8 @@ const props = defineProps<{
 
 const origin = ref('local');
 const tagsEl = shallowRef<InstanceType<typeof MkFoldableSection>>();
-const tagsLocal = ref<Misskey.entities.Hashtag[]>([]);
-const tagsRemote = ref<Misskey.entities.Hashtag[]>([]);
+const tagsLocal = ref<rizzkey.entities.Hashtag[]>([]);
+const tagsRemote = ref<rizzkey.entities.Hashtag[]>([]);
 
 watch(() => props.tag, () => {
 	if (tagsEl.value) tagsEl.value.toggleContent(props.tag == null);
@@ -123,14 +123,14 @@ const recentlyRegisteredUsersF = { endpoint: 'users', limit: 10, noPaging: true,
 	sort: '+createdAt',
 } };
 
-misskeyApi('hashtags/list', {
+rizzkeyApi('hashtags/list', {
 	sort: '+attachedLocalUsers',
 	attachedToLocalUserOnly: true,
 	limit: 30,
 }).then(tags => {
 	tagsLocal.value = tags;
 });
-misskeyApi('hashtags/list', {
+rizzkeyApi('hashtags/list', {
 	sort: '+attachedRemoteUsers',
 	attachedToRemoteUserOnly: true,
 	limit: 30,

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -137,11 +137,11 @@ export const paramDef = {
 		location: { ...locationSchema, nullable: true },
 		birthday: { ...birthdaySchema, nullable: true },
 		lang: { type: 'string', enum: [null, ...Object.keys(langmap)] as string[], nullable: true },
-		avatarId: { type: 'string', format: 'misskey:id', nullable: true },
+		avatarId: { type: 'string', format: 'rizzkey:id', nullable: true },
 		avatarDecorations: { type: 'array', maxItems: 16, items: {
 			type: 'object',
 			properties: {
-				id: { type: 'string', format: 'misskey:id' },
+				id: { type: 'string', format: 'rizzkey:id' },
 				angle: { type: 'number', nullable: true, maximum: 0.5, minimum: -0.5 },
 				flipH: { type: 'boolean', nullable: true },
 				offsetX: { type: 'number', nullable: true, maximum: 0.25, minimum: -0.25 },
@@ -149,7 +149,7 @@ export const paramDef = {
 			},
 			required: ['id'],
 		} },
-		bannerId: { type: 'string', format: 'misskey:id', nullable: true },
+		bannerId: { type: 'string', format: 'rizzkey:id', nullable: true },
 		fields: {
 			type: 'array',
 			minItems: 0,
@@ -179,7 +179,7 @@ export const paramDef = {
 		autoSensitive: { type: 'boolean' },
 		followingVisibility: { type: 'string', enum: ['public', 'followers', 'private'] },
 		followersVisibility: { type: 'string', enum: ['public', 'followers', 'private'] },
-		pinnedPageId: { type: 'string', format: 'misskey:id', nullable: true },
+		pinnedPageId: { type: 'string', format: 'rizzkey:id', nullable: true },
 		mutedWords: muteWords,
 		hardMutedWords: muteWords,
 		mutedInstances: { type: 'array', items: {

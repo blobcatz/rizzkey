@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -34,34 +34,34 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { getStaticImageUrl } from '@/scripts/media-proxy.js';
 import { notePage } from '@/filters/note.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import MkContainer from '@/components/MkContainer.vue';
 import ImgWithBlurhash from '@/components/MkImgWithBlurhash.vue';
 import { defaultStore } from '@/store.js';
 import { i18n } from '@/i18n.js';
 
 const props = defineProps<{
-	user: Misskey.entities.UserDetailed;
+	user: rizzkey.entities.UserDetailed;
 }>();
 
 const fetching = ref(true);
 const files = ref<{
-	note: Misskey.entities.Note;
-	file: Misskey.entities.DriveFile;
+	note: rizzkey.entities.Note;
+	file: rizzkey.entities.DriveFile;
 }[]>([]);
 const showingFiles = ref<string[]>([]);
 
-function thumbnail(image: Misskey.entities.DriveFile): string {
+function thumbnail(image: rizzkey.entities.DriveFile): string {
 	return defaultStore.state.disableShowingAnimatedImages
 		? getStaticImageUrl(image.url)
 		: image.thumbnailUrl;
 }
 
 onMounted(() => {
-	misskeyApi('users/notes', {
+	rizzkeyApi('users/notes', {
 		userId: props.user.id,
 		withFiles: true,
 		limit: 15,

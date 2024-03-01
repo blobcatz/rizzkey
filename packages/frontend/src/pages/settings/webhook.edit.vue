@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -48,7 +48,7 @@ import FormSection from '@/components/form/section.vue';
 import MkSwitch from '@/components/MkSwitch.vue';
 import MkButton from '@/components/MkButton.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { useRouter } from '@/router/supplier.js';
@@ -59,7 +59,7 @@ const props = defineProps<{
 	webhookId: string;
 }>();
 
-const webhook = await misskeyApi('i/webhooks/show', {
+const webhook = await rizzkeyApi('i/webhooks/show', {
 	webhookId: props.webhookId,
 });
 

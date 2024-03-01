@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -9,7 +9,7 @@ import * as assert from 'assert';
 import { inspect } from 'node:util';
 import { DEFAULT_POLICIES } from '@/core/RoleService.js';
 import { api, page, post, role, signup, successfulApiCall, uploadFile } from '../utils.js';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 describe('ユーザー', () => {
 	// エンティティとしてのユーザーを主眼においたテストを記述する
@@ -24,18 +24,18 @@ describe('ユーザー', () => {
 			}, {});
 	};
 
-	// BUG misskey-jsとjson-schemaと実際に返ってくるデータが全部違う
-	type UserLite = misskey.entities.UserLite & {
+	// BUG rizzkey-jsとjson-schemaと実際に返ってくるデータが全部違う
+	type UserLite = rizzkey.entities.UserLite & {
 		badgeRoles: any[],
 	};
 
 	type UserDetailedNotMe = UserLite &
-	misskey.entities.UserDetailed & {
+	rizzkey.entities.UserDetailed & {
 		roles: any[],
 	};
 
 	type MeDetailed = UserDetailedNotMe &
-		misskey.entities.MeDetailed & {
+		rizzkey.entities.MeDetailed & {
 		achievements: object[],
 		loggedInDays: number,
 		policies: object,
@@ -175,12 +175,12 @@ describe('ユーザー', () => {
 
 	let root: User;
 	let alice: User;
-	let aliceNote: misskey.entities.Note;
-	let alicePage: misskey.entities.Page;
-	let aliceList: misskey.entities.UserList;
+	let aliceNote: rizzkey.entities.Note;
+	let alicePage: rizzkey.entities.Page;
+	let aliceList: rizzkey.entities.UserList;
 
 	let bob: User;
-	let bobNote: misskey.entities.Note;
+	let bobNote: rizzkey.entities.Note;
 
 	let carol: User;
 	let dave: User;

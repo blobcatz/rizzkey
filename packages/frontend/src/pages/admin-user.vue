@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -204,7 +204,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, defineAsyncComponent, watch, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkChart from '@/components/MkChart.vue';
 import MkObjectView from '@/components/MkObjectView.vue';
 import MkTextarea from '@/components/MkTextarea.vue';
@@ -219,7 +219,7 @@ import FormSuspense from '@/components/form/suspense.vue';
 import MkFileListForAdmin from '@/components/MkFileListForAdmin.vue';
 import MkInfo from '@/components/MkInfo.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { url } from '@/config.js';
 import { acct } from '@/filters/user.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
@@ -237,10 +237,10 @@ const props = withDefaults(defineProps<{
 
 const tab = ref(props.initialTab);
 const chartSrc = ref('per-user-notes');
-const user = ref<null | Misskey.entities.UserDetailed>();
+const user = ref<null | rizzkey.entities.UserDetailed>();
 const init = ref<ReturnType<typeof createFetcher>>();
 const info = ref<any>();
-const ips = ref<Misskey.entities.AdminGetUserIpsResponse | null>(null);
+const ips = ref<rizzkey.entities.AdminGetUserIpsResponse | null>(null);
 const ap = ref<any>(null);
 const moderator = ref(false);
 const silenced = ref(false);
@@ -263,11 +263,11 @@ const announcementsPagination = {
 const expandedRoles = ref([]);
 
 function createFetcher() {
-	return () => Promise.all([misskeyApi('users/show', {
+	return () => Promise.all([rizzkeyApi('users/show', {
 		userId: props.userId,
-	}), misskeyApi('admin/show-user', {
+	}), rizzkeyApi('admin/show-user', {
 		userId: props.userId,
-	}), iAmAdmin ? misskeyApi('admin/get-user-ips', {
+	}), iAmAdmin ? rizzkeyApi('admin/get-user-ips', {
 		userId: props.userId,
 	}) : Promise.resolve(null)]).then(([_user, _info, _ips]) => {
 		user.value = _user;
@@ -279,7 +279,7 @@ function createFetcher() {
 		moderationNote.value = info.value.moderationNote;
 
 		watch(moderationNote, async () => {
-			await misskeyApi('admin/update-user-note', { userId: user.value.id, text: moderationNote.value });
+			await rizzkeyApi('admin/update-user-note', { userId: user.value.id, text: moderationNote.value });
 			await refreshUser();
 		});
 	});
@@ -302,7 +302,7 @@ async function resetPassword() {
 	if (confirm.canceled) {
 		return;
 	} else {
-		const { password } = await misskeyApi('admin/reset-password', {
+		const { password } = await rizzkeyApi('admin/reset-password', {
 			userId: user.value.id,
 		});
 		os.alert({
@@ -320,7 +320,7 @@ async function toggleSuspend(v) {
 	if (confirm.canceled) {
 		suspended.value = !v;
 	} else {
-		await misskeyApi(v ? 'admin/suspend-user' : 'admin/unsuspend-user', { userId: user.value.id });
+		await rizzkeyApi(v ? 'admin/suspend-user' : 'admin/unsuspend-user', { userId: user.value.id });
 		await refreshUser();
 	}
 }
@@ -332,7 +332,7 @@ async function unsetUserAvatar() {
 	});
 	if (confirm.canceled) return;
 	const process = async () => {
-		await misskeyApi('admin/unset-user-avatar', { userId: user.value.id });
+		await rizzkeyApi('admin/unset-user-avatar', { userId: user.value.id });
 		os.success();
 	};
 	await process().catch(err => {
@@ -351,7 +351,7 @@ async function unsetUserBanner() {
 	});
 	if (confirm.canceled) return;
 	const process = async () => {
-		await misskeyApi('admin/unset-user-banner', { userId: user.value.id });
+		await rizzkeyApi('admin/unset-user-banner', { userId: user.value.id });
 		os.success();
 	};
 	await process().catch(err => {
@@ -370,7 +370,7 @@ async function deleteAllFiles() {
 	});
 	if (confirm.canceled) return;
 	const process = async () => {
-		await misskeyApi('admin/delete-all-files-of-a-user', { userId: user.value.id });
+		await rizzkeyApi('admin/delete-all-files-of-a-user', { userId: user.value.id });
 		os.success();
 	};
 	await process().catch(err => {
@@ -407,7 +407,7 @@ async function deleteAccount() {
 }
 
 async function assignRole() {
-	const roles = await misskeyApi('admin/roles/list');
+	const roles = await rizzkeyApi('admin/roles/list');
 
 	const { canceled, result: roleId } = await os.select({
 		title: i18n.ts._role.chooseRoleToAssign,
@@ -483,7 +483,7 @@ watch(() => props.userId, () => {
 });
 
 watch(user, () => {
-	misskeyApi('ap/get', {
+	rizzkeyApi('ap/get', {
 		uri: user.value.uri ?? `${url}/users/${user.value.id}`,
 	}).then(res => {
 		ap.value = res;

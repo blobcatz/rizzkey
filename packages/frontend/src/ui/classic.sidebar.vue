@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -44,7 +44,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 			<img :src="instance.iconUrl ?? instance.faviconUrl ?? '/favicon.ico'" class="_ghost"/>
 		</button>
 	</div>
-	<!--<MisskeyLogo class="misskey"/>-->
+	<!--<rizzkeyLogo class="rizzkey"/>-->
 </div>
 </template>
 
@@ -58,7 +58,7 @@ import { openAccountMenu as openAccountMenu_, $i } from '@/account.js';
 import MkButton from '@/components/MkButton.vue';
 // import { StickySidebar } from '@/scripts/sticky-sidebar.js';
 // import { mainRouter } from '@/router.js';
-//import MisskeyLogo from '@assets/client/misskey.svg';
+//import rizzkeyLogo from '@assets/client/rizzkey.svg';
 import { defaultStore } from '@/store.js';
 import { instance } from '@/instance.js';
 import { i18n } from '@/i18n.js';

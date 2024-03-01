@@ -1,12 +1,12 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { $i } from '@/account.js';
 
-export function isFollowingVisibleForMe(user: Misskey.entities.UserDetailed): boolean {
+export function isFollowingVisibleForMe(user: rizzkey.entities.UserDetailed): boolean {
 	if ($i && $i.id === user.id) return true;
 
 	if (user.followingVisibility === 'private') return false;
@@ -14,7 +14,7 @@ export function isFollowingVisibleForMe(user: Misskey.entities.UserDetailed): bo
 
 	return true;
 }
-export function isFollowersVisibleForMe(user: Misskey.entities.UserDetailed): boolean {
+export function isFollowersVisibleForMe(user: rizzkey.entities.UserDetailed): boolean {
 	if ($i && $i.id === user.id) return true;
 
 	if (user.followersVisibility === 'private') return false;

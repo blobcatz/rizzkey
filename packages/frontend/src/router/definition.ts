@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -198,8 +198,8 @@ const routes: RouteDef[] = [{
 	component: page(() => import('@/pages/about.vue')),
 	hash: 'initialTab',
 }, {
-	path: '/about-misskey',
-	component: page(() => import('@/pages/about-misskey.vue')),
+	path: '/about-rizzkey',
+	component: page(() => import('@/pages/about-rizzkey.vue')),
 }, {
 	path: '/invite',
 	name: 'invite',

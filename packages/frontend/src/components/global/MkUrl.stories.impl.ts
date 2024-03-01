@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -41,8 +41,8 @@ export const Default = {
 		const popup = anchors.find(anchor => anchor !== a)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
 		await expect(popup).toBeInTheDocument();
 		await expect(popup).toHaveAttribute('href', 'https://misskey-hub.net/');
-		await expect(popup).toHaveTextContent('Misskey Hub');
-		await expect(popup).toHaveTextContent('Misskeyはオープンソースの分散型ソーシャルネットワーキングプラットフォームです。');
+		await expect(popup).toHaveTextContent('rizzkey Hub');
+		await expect(popup).toHaveTextContent('rizzkeyはオープンソースの分散型ソーシャルネットワーキングプラットフォームです。');
 		await expect(popup).toHaveTextContent('misskey-hub.net');
 		const icon = within(popup).getByRole('img');
 		await expect(icon).toBeInTheDocument();
@@ -60,9 +60,9 @@ export const Default = {
 				...commonHandlers,
 				http.get('/url', () => {
 					return HttpResponse.json({
-						title: 'Misskey Hub',
+						title: 'rizzkey Hub',
 						icon: 'https://misskey-hub.net/favicon.ico',
-						description: 'Misskeyはオープンソースの分散型ソーシャルネットワーキングプラットフォームです。',
+						description: 'rizzkeyはオープンソースの分散型ソーシャルネットワーキングプラットフォームです。',
 						thumbnail: null,
 						player: {
 							url: null,

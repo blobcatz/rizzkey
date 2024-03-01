@@ -1,7 +1,7 @@
 {
-	"name": "misskey-js-type-generator",
+	"name": "rizzkey-js-type-generator",
 	"version": "0.0.0",
-	"description": "Misskey TypeGenerator",
+	"description": "rizzkey TypeGenerator",
 	"type": "module",
 	"scripts": {
 		"generate": "tsx src/generator.ts && eslint ./built/**/* --ext .ts --fix"

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -25,7 +25,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import type { PollEditorModelValue } from '@/components/MkPollEditor.vue';
 import MkCwButton from '@/components/MkCwButton.vue';
 
@@ -33,11 +33,11 @@ const showContent = ref(false);
 
 const props = defineProps<{
 	text: string;
-	files: Misskey.entities.DriveFile[];
+	files: rizzkey.entities.DriveFile[];
 	poll?: PollEditorModelValue;
 	useCw: boolean;
 	cw: string | null;
-	user: Misskey.entities.User;
+	user: rizzkey.entities.User;
 }>();
 </script>
 

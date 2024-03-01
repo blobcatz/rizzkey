@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -140,7 +140,7 @@ export const paramDef = {
 	properties: {
 		visibility: { type: 'string', enum: ['public', 'home', 'followers', 'specified'], default: 'public' },
 		visibleUserIds: { type: 'array', uniqueItems: true, items: {
-			type: 'string', format: 'misskey:id',
+			type: 'string', format: 'rizzkey:id',
 		} },
 		cw: { type: 'string', nullable: true, minLength: 1, maxLength: 100 },
 		localOnly: { type: 'boolean', default: false },
@@ -148,9 +148,9 @@ export const paramDef = {
 		noExtractMentions: { type: 'boolean', default: false },
 		noExtractHashtags: { type: 'boolean', default: false },
 		noExtractEmojis: { type: 'boolean', default: false },
-		replyId: { type: 'string', format: 'misskey:id', nullable: true },
-		renoteId: { type: 'string', format: 'misskey:id', nullable: true },
-		channelId: { type: 'string', format: 'misskey:id', nullable: true },
+		replyId: { type: 'string', format: 'rizzkey:id', nullable: true },
+		renoteId: { type: 'string', format: 'rizzkey:id', nullable: true },
+		channelId: { type: 'string', format: 'rizzkey:id', nullable: true },
 
 		// anyOf内にバリデーションを書いても最初の一つしかチェックされない
 		// See https://github.com/misskey-dev/misskey/pull/10082
@@ -165,14 +165,14 @@ export const paramDef = {
 			uniqueItems: true,
 			minItems: 1,
 			maxItems: 16,
-			items: { type: 'string', format: 'misskey:id' },
+			items: { type: 'string', format: 'rizzkey:id' },
 		},
 		mediaIds: {
 			type: 'array',
 			uniqueItems: true,
 			minItems: 1,
 			maxItems: 16,
-			items: { type: 'string', format: 'misskey:id' },
+			items: { type: 'string', format: 'rizzkey:id' },
 		},
 		poll: {
 			type: 'object',

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -25,12 +25,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { useWidgetPropsManager, WidgetComponentEmits, WidgetComponentExpose, WidgetComponentProps } from './widget.js';
 import { GetFormResultType } from '@/scripts/form.js';
 import MkContainer from '@/components/MkContainer.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { useInterval } from '@/scripts/use-interval.js';
 import { i18n } from '@/i18n.js';
 import MkButton from '@/components/MkButton.vue';
@@ -60,12 +60,12 @@ const { widgetProps, configure, save } = useWidgetPropsManager(name,
 	emit,
 );
 
-const list = ref<Misskey.entities.UserList>();
-const users = ref<Misskey.entities.UserDetailed[]>([]);
+const list = ref<rizzkey.entities.UserList>();
+const users = ref<rizzkey.entities.UserDetailed[]>([]);
 const fetching = ref(true);
 
 async function chooseList() {
-	const lists = await misskeyApi('users/lists/list');
+	const lists = await rizzkeyApi('users/lists/list');
 	const { canceled, result: list } = await os.select({
 		title: i18n.ts.selectList,
 		items: lists.map(x => ({
@@ -86,11 +86,11 @@ const fetch = () => {
 		return;
 	}
 
-	misskeyApi('users/lists/show', {
+	rizzkeyApi('users/lists/show', {
 		listId: widgetProps.listId,
 	}).then(_list => {
 		list.value = _list;
-		misskeyApi('users/show', {
+		rizzkeyApi('users/show', {
 			userIds: list.value.userIds,
 		}).then(_users => {
 			users.value = _users;

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -15,7 +15,7 @@ describe('nodeinfo', () => {
 		assert.strictEqual(res.headers.get('Access-Control-Allow-Origin'), '*');
 
 		const nodeInfo = await res.json() as any;
-		assert.strictEqual(nodeInfo.software.name, 'misskey');
+		assert.strictEqual(nodeInfo.software.name, 'rizzkey');
 	});
 
 	test('nodeinfo 2.0', async () => {
@@ -24,6 +24,6 @@ describe('nodeinfo', () => {
 		assert.strictEqual(res.headers.get('Access-Control-Allow-Origin'), '*');
 
 		const nodeInfo = await res.json() as any;
-		assert.strictEqual(nodeInfo.software.name, 'misskey');
+		assert.strictEqual(nodeInfo.software.name, 'rizzkey');
 	});
 });

@@ -1,10 +1,10 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 /**
- * Misskey Entry Point!
+ * rizzkey Entry Point!
  */
 
 import cluster from 'node:cluster';
@@ -18,7 +18,7 @@ import { workerMain } from './worker.js';
 
 import 'reflect-metadata';
 
-process.title = `Misskey (${cluster.isPrimary ? 'master' : 'worker'})`;
+process.title = `rizzkey (${cluster.isPrimary ? 'master' : 'worker'})`;
 
 Error.stackTraceLimit = Infinity;
 EventEmitter.defaultMaxListeners = 128;
@@ -79,7 +79,7 @@ if (cluster.isWorker || envOption.disableClustering) {
 	await workerMain();
 }
 
-// ユニットテスト時にMisskeyが子プロセスで起動された時のため
+// ユニットテスト時にrizzkeyが子プロセスで起動された時のため
 // それ以外のときは process.send は使えないので弾く
 if (process.send) {
 	process.send('ok');

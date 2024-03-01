@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -106,8 +106,8 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onDeactivated, onMounted, onUnmounted, ref } from 'vue';
-import * as Misskey from 'misskey-js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import * as rizzkey from 'rizzkey-js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { useStream } from '@/stream.js';
 import MkButton from '@/components/MkButton.vue';
@@ -155,12 +155,12 @@ if ($i) {
 	});
 }
 
-const invitations = ref<Misskey.entities.UserLite[]>([]);
-const matchingUser = ref<Misskey.entities.UserLite | null>(null);
+const invitations = ref<rizzkey.entities.UserLite[]>([]);
+const matchingUser = ref<rizzkey.entities.UserLite | null>(null);
 const matchingAny = ref<boolean>(false);
 const noIrregularRules = ref<boolean>(false);
 
-function startGame(game: Misskey.entities.ReversiGameDetailed) {
+function startGame(game: rizzkey.entities.ReversiGameDetailed) {
 	matchingUser.value = null;
 	matchingAny.value = false;
 
@@ -174,7 +174,7 @@ function startGame(game: Misskey.entities.ReversiGameDetailed) {
 
 async function matchHeatbeat() {
 	if (matchingUser.value) {
-		const res = await misskeyApi('reversi/match', {
+		const res = await rizzkeyApi('reversi/match', {
 			userId: matchingUser.value.id,
 		});
 
@@ -182,7 +182,7 @@ async function matchHeatbeat() {
 			startGame(res);
 		}
 	} else if (matchingAny.value) {
-		const res = await misskeyApi('reversi/match', {
+		const res = await rizzkeyApi('reversi/match', {
 			userId: null,
 			noIrregularRules: noIrregularRules.value,
 		});
@@ -226,16 +226,16 @@ function matchAny(ev: MouseEvent) {
 
 function cancelMatching() {
 	if (matchingUser.value) {
-		misskeyApi('reversi/cancel-match', { userId: matchingUser.value.id });
+		rizzkeyApi('reversi/cancel-match', { userId: matchingUser.value.id });
 		matchingUser.value = null;
 	} else if (matchingAny.value) {
-		misskeyApi('reversi/cancel-match', { userId: null });
+		rizzkeyApi('reversi/cancel-match', { userId: null });
 		matchingAny.value = false;
 	}
 }
 
 async function accept(user) {
-	const game = await misskeyApi('reversi/match', {
+	const game = await rizzkeyApi('reversi/match', {
 		userId: user.id,
 	});
 	if (game) {
@@ -246,7 +246,7 @@ async function accept(user) {
 useInterval(matchHeatbeat, 1000 * 5, { immediate: false, afterMounted: true });
 
 onMounted(() => {
-	misskeyApi('reversi/invitations').then(_invitations => {
+	rizzkeyApi('reversi/invitations').then(_invitations => {
 		invitations.value = _invitations;
 	});
 

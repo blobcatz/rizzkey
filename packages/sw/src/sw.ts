@@ -1,10 +1,10 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { get } from 'idb-keyval';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import type { PushNotificationDataMap } from '@/types.js';
 import type { I18n, Locale } from '@/scripts/i18n.js';
 import { createEmptyNotification, createNotification } from '@/scripts/create-notification.js';
@@ -108,7 +108,7 @@ globalThis.addEventListener('notificationclick', (ev: ServiceWorkerGlobalScopeEv
 						if ('userId' in data.body) await swos.api('following/create', loginId, { userId: data.body.userId });
 						break;
 					case 'showUser':
-						if ('user' in data.body) client = await swos.openUser(Misskey.acct.toString(data.body.user), loginId);
+						if ('user' in data.body) client = await swos.openUser(rizzkey.acct.toString(data.body.user), loginId);
 						break;
 					case 'reply':
 						if ('note' in data.body) client = await swos.openPost({ reply: data.body.note }, loginId);
@@ -145,7 +145,7 @@ globalThis.addEventListener('notificationclick', (ev: ServiceWorkerGlobalScopeEv
 								if ('note' in data.body) {
 									client = await swos.openNote(data.body.note.id, loginId);
 								} else if ('user' in data.body) {
-									client = await swos.openUser(Misskey.acct.toString(data.body.user), loginId);
+									client = await swos.openUser(rizzkey.acct.toString(data.body.user), loginId);
 								}
 								break;
 						}

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -11,7 +11,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 		<template #caption>
 			<I18n :src="i18n.ts.i18nInfo" tag="span">
 				<template #link>
-					<MkLink url="https://crowdin.com/project/misskey">Crowdin</MkLink>
+					<MkLink url="https://crowdin.com/project/rizzkey">Crowdin</MkLink>
 				</template>
 			</I18n>
 		</template>
@@ -230,7 +230,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkSwitch from '@/components/MkSwitch.vue';
 import MkSelect from '@/components/MkSelect.vue';
 import MkRadios from '@/components/MkRadios.vue';
@@ -244,7 +244,7 @@ import MkInfo from '@/components/MkInfo.vue';
 import { langs } from '@/config.js';
 import { defaultStore } from '@/store.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { unisonReload } from '@/scripts/unison-reload.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
@@ -396,7 +396,7 @@ function removeEmojiIndex(lang: string) {
 }
 
 async function setPinnedList() {
-	const lists = await misskeyApi('users/lists/list');
+	const lists = await rizzkeyApi('users/lists/list');
 	const { canceled, result: list } = await os.select({
 		title: i18n.ts.selectList,
 		items: lists.map(x => ({
@@ -416,7 +416,7 @@ let smashCount = 0;
 let smashTimer: number | null = null;
 
 function testNotification(): void {
-	const notification: Misskey.entities.Notification = {
+	const notification: rizzkey.entities.Notification = {
 		id: Math.random().toString(),
 		createdAt: new Date().toUTCString(),
 		isRead: false,

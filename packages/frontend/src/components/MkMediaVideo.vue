@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -84,7 +84,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref, shallowRef, computed, watch, onDeactivated, onActivated, onMounted } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import type { MenuItem } from '@/types/menu.js';
 import bytes from '@/filters/bytes.js';
 import { hms } from '@/filters/hms.js';
@@ -97,7 +97,7 @@ import MkMediaRange from '@/components/MkMediaRange.vue';
 import { iAmModerator } from '@/account.js';
 
 const props = defineProps<{
-	video: Misskey.entities.DriveFile;
+	video: rizzkey.entities.DriveFile;
 }>();
 
 // eslint-disable-next-line vue/no-setup-props-destructure
@@ -140,7 +140,7 @@ function showMenu(ev: MouseEvent) {
 	});
 }
 
-function toggleSensitive(file: Misskey.entities.DriveFile) {
+function toggleSensitive(file: rizzkey.entities.DriveFile) {
 	os.apiWithDialog('drive/files/update', {
 		fileId: file.id,
 		isSensitive: !file.isSensitive,

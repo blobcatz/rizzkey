@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -23,7 +23,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 </template>
 
 <script setup lang="ts">
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { ref, reactive } from 'vue';
 import { i18n } from '@/i18n.js';
 import { globalEvents } from '@/events.js';
@@ -38,7 +38,7 @@ const emit = defineEmits<{
 	(ev: 'reacted'): void;
 }>();
 
-const exampleNote = reactive<Misskey.entities.Note>({
+const exampleNote = reactive<rizzkey.entities.Note>({
 	id: '0000000000',
 	createdAt: '2019-04-14T17:30:49.181Z',
 	userId: '0000000001',
@@ -83,7 +83,7 @@ function addReaction(emoji) {
 function doNotification(emoji: string): void {
 	if (!$i || !emoji) return;
 
-	const notification: Misskey.entities.Notification = {
+	const notification: rizzkey.entities.Notification = {
 		id: Math.random().toString(),
 		createdAt: new Date().toUTCString(),
 		type: 'reaction',

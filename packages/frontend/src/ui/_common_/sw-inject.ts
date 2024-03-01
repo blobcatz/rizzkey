@@ -1,10 +1,10 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { post } from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { $i, login } from '@/account.js';
 import { getAccountFromId } from '@/scripts/get-account-from-id.js';
 import { deepClone } from '@/scripts/clone.js';
@@ -31,10 +31,10 @@ export function swInject() {
 				// プッシュ通知から来たreply,renoteはtruncateBodyが通されているため、
 				// 完全なノートを取得しなおす
 				if (props.reply) {
-					props.reply = await misskeyApi('notes/show', { noteId: props.reply.id });
+					props.reply = await rizzkeyApi('notes/show', { noteId: props.reply.id });
 				}
 				if (props.renote) {
-					props.renote = await misskeyApi('notes/show', { noteId: props.renote.id });
+					props.renote = await rizzkeyApi('notes/show', { noteId: props.renote.id });
 				}
 				return post(props);
 			}

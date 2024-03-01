@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -53,7 +53,7 @@ export const Long = {
 		user: {
 			...userDetailed(),
 			username: 'the_quick_brown_fox_jumped_over_the_lazy_dog',
-			host: 'misskey.example',
+			host: 'rizzkey.example',
 		},
 	},
 	decorators: [

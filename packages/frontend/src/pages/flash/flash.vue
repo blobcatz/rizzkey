@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -58,11 +58,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, onDeactivated, onUnmounted, Ref, ref, watch, shallowRef } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { Interpreter, Parser, values } from '@syuilo/aiscript';
 import MkButton from '@/components/MkButton.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { url } from '@/config.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
@@ -80,12 +80,12 @@ const props = defineProps<{
 	id: string;
 }>();
 
-const flash = ref<Misskey.entities.Flash | null>(null);
+const flash = ref<rizzkey.entities.Flash | null>(null);
 const error = ref<any>(null);
 
 function fetchFlash() {
 	flash.value = null;
-	misskeyApi('flash/show', {
+	rizzkeyApi('flash/show', {
 		flashId: props.id,
 	}).then(_flash => {
 		flash.value = _flash;

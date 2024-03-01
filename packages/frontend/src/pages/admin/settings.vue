@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -97,7 +97,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 					</FormSection>
 
 					<FormSection>
-						<template #label>Misskey® Fan-out Timeline Technology™ (FTT)</template>
+						<template #label>rizzkey® Fan-out Timeline Technology™ (FTT)</template>
 
 						<div class="_gaps_m">
 							<MkSwitch v-model="enableFanoutTimeline">
@@ -168,7 +168,7 @@ import FormSection from '@/components/form/section.vue';
 import FormSplit from '@/components/form/split.vue';
 import FormSuspense from '@/components/form/suspense.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { fetchInstance, instance } from '@/instance.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
@@ -196,7 +196,7 @@ const perUserListTimelineCacheMax = ref<number>(0);
 const notesPerOneAd = ref<number>(0);
 
 async function init(): Promise<void> {
-	const meta = await misskeyApi('admin/meta');
+	const meta = await rizzkeyApi('admin/meta');
 	name.value = meta.name;
 	shortName.value = meta.shortName;
 	description.value = meta.description;

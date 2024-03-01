@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -20,24 +20,24 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { defineAsyncComponent, ref, computed } from 'vue';
-import type * as Misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 import FormSuspense from '@/components/form/suspense.vue';
 import MkButton from '@/components/MkButton.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { getAccounts, addAccount as addAccounts, removeAccount as _removeAccount, login, $i } from '@/account.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import MkUserCardMini from '@/components/MkUserCardMini.vue';
 
 const storedAccounts = ref<{ id: string, token: string }[] | null>(null);
-const accounts = ref<Misskey.entities.UserDetailed[]>([]);
+const accounts = ref<rizzkey.entities.UserDetailed[]>([]);
 
 const init = async () => {
 	getAccounts().then(accounts => {
 		storedAccounts.value = accounts.filter(x => x.id !== $i!.id);
 
-		return misskeyApi('users/show', {
+		return rizzkeyApi('users/show', {
 			userIds: storedAccounts.value.map(x => x.id),
 		});
 	}).then(response => {

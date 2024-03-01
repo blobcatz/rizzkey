@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -36,12 +36,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
 import JSON5 from 'json5';
-import { Endpoints } from 'misskey-js';
+import { Endpoints } from 'rizzkey-js';
 import MkButton from '@/components/MkButton.vue';
 import MkInput from '@/components/MkInput.vue';
 import MkTextarea from '@/components/MkTextarea.vue';
 import MkSwitch from '@/components/MkSwitch.vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 
 const body = ref('{}');
@@ -51,14 +51,14 @@ const sending = ref(false);
 const res = ref('');
 const withCredential = ref(true);
 
-misskeyApi('endpoints').then(endpointResponse => {
+rizzkeyApi('endpoints').then(endpointResponse => {
 	endpoints.value = endpointResponse;
 });
 
 function send() {
 	sending.value = true;
 	const requestBody = JSON5.parse(body.value);
-	misskeyApi(endpoint.value as keyof Endpoints, requestBody, requestBody.i || (withCredential.value ? undefined : null)).then(resp => {
+	rizzkeyApi(endpoint.value as keyof Endpoints, requestBody, requestBody.i || (withCredential.value ? undefined : null)).then(resp => {
 		sending.value = false;
 		res.value = JSON5.stringify(resp, null, 2);
 	}, err => {
@@ -68,7 +68,7 @@ function send() {
 }
 
 function onEndpointChange() {
-	misskeyApi('endpoint', { endpoint: endpoint.value }, withCredential.value ? undefined : null).then(resp => {
+	rizzkeyApi('endpoint', { endpoint: endpoint.value }, withCredential.value ? undefined : null).then(resp => {
 		const endpointBody = {};
 		for (const p of resp.params) {
 			endpointBody[p.name] =

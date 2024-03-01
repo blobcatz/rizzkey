@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -123,7 +123,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref, computed, watch } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkChart from '@/components/MkChart.vue';
 import MkObjectView from '@/components/MkObjectView.vue';
 import FormLink from '@/components/form/link.vue';
@@ -134,7 +134,7 @@ import MkKeyValue from '@/components/MkKeyValue.vue';
 import MkSelect from '@/components/MkSelect.vue';
 import MkSwitch from '@/components/MkSwitch.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import number from '@/filters/number.js';
 import { iAmModerator, iAmAdmin } from '@/account.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
@@ -153,8 +153,8 @@ const props = defineProps<{
 const tab = ref('overview');
 
 const chartSrc = ref('instance-requests');
-const meta = ref<Misskey.entities.AdminMetaResponse | null>(null);
-const instance = ref<Misskey.entities.FederationInstance | null>(null);
+const meta = ref<rizzkey.entities.AdminMetaResponse | null>(null);
+const instance = ref<rizzkey.entities.FederationInstance | null>(null);
 const suspended = ref(false);
 const isBlocked = ref(false);
 const isSilenced = ref(false);
@@ -173,14 +173,14 @@ const usersPagination = {
 };
 
 watch(moderationNote, async () => {
-	await misskeyApi('admin/federation/update-instance', { host: instance.value.host, moderationNote: moderationNote.value });
+	await rizzkeyApi('admin/federation/update-instance', { host: instance.value.host, moderationNote: moderationNote.value });
 });
 
 async function fetch(): Promise<void> {
 	if (iAmAdmin) {
-		meta.value = await misskeyApi('admin/meta');
+		meta.value = await rizzkeyApi('admin/meta');
 	}
-	instance.value = await misskeyApi('federation/show-instance', {
+	instance.value = await rizzkeyApi('federation/show-instance', {
 		host: props.host,
 	});
 	suspended.value = instance.value?.isSuspended ?? false;
@@ -194,7 +194,7 @@ async function toggleBlock(): Promise<void> {
 	if (!meta.value) throw new Error('No meta?');
 	if (!instance.value) throw new Error('No instance?');
 	const { host } = instance.value;
-	await misskeyApi('admin/update-meta', {
+	await rizzkeyApi('admin/update-meta', {
 		blockedHosts: isBlocked.value ? meta.value.blockedHosts.concat([host]) : meta.value.blockedHosts.filter(x => x !== host),
 	});
 }
@@ -204,14 +204,14 @@ async function toggleSilenced(): Promise<void> {
 	if (!instance.value) throw new Error('No instance?');
 	const { host } = instance.value;
 	const silencedHosts = meta.value.silencedHosts ?? [];
-	await misskeyApi('admin/update-meta', {
+	await rizzkeyApi('admin/update-meta', {
 		silencedHosts: isSilenced.value ? silencedHosts.concat([host]) : silencedHosts.filter(x => x !== host),
 	});
 }
 
 async function toggleSuspend(): Promise<void> {
 	if (!instance.value) throw new Error('No instance?');
-	await misskeyApi('admin/federation/update-instance', {
+	await rizzkeyApi('admin/federation/update-instance', {
 		host: instance.value.host,
 		isSuspended: suspended.value,
 	});
@@ -219,7 +219,7 @@ async function toggleSuspend(): Promise<void> {
 
 function refreshMetadata(): void {
 	if (!instance.value) throw new Error('No instance?');
-	misskeyApi('admin/federation/refresh-remote-instance-metadata', {
+	rizzkeyApi('admin/federation/refresh-remote-instance-metadata', {
 		host: instance.value.host,
 	});
 	os.alert({

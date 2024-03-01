@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -66,7 +66,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { markRaw, onMounted, onBeforeUnmount, nextTick, shallowRef, ref, computed } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XFederation from './overview.federation.vue';
 import XInstances from './overview.instances.vue';
 import XQueue from './overview.queue.vue';
@@ -79,22 +79,22 @@ import XModerators from './overview.moderators.vue';
 import XHeatmap from './overview.heatmap.vue';
 import type { InstanceForPie } from './overview.pie.vue';
 import * as os from '@/os.js';
-import { misskeyApi, misskeyApiGet } from '@/scripts/misskey-api.js';
+import { rizzkeyApi, rizzkeyApiGet } from '@/scripts/rizzkey-api.js';
 import { useStream } from '@/stream.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import MkFoldableSection from '@/components/MkFoldableSection.vue';
 
 const rootEl = shallowRef<HTMLElement>();
-const serverInfo = ref<Misskey.entities.ServerInfoResponse | null>(null);
+const serverInfo = ref<rizzkey.entities.ServerInfoResponse | null>(null);
 const topSubInstancesForPie = ref<InstanceForPie[] | null>(null);
 const topPubInstancesForPie = ref<InstanceForPie[] | null>(null);
 const federationPubActive = ref<number | null>(null);
 const federationPubActiveDiff = ref<number | null>(null);
 const federationSubActive = ref<number | null>(null);
 const federationSubActiveDiff = ref<number | null>(null);
-const newUsers = ref<Misskey.entities.UserDetailed[] | null>(null);
-const activeInstances = shallowRef<Misskey.entities.FederationInstance | null>(null);
+const newUsers = ref<rizzkey.entities.UserDetailed[] | null>(null);
+const activeInstances = shallowRef<rizzkey.entities.FederationInstance | null>(null);
 const queueStatsConnection = markRaw(useStream().useChannel('queueStats'));
 const now = new Date();
 const filesPagination = {
@@ -118,14 +118,14 @@ onMounted(async () => {
 	magicGrid.listen();
 	*/
 
-	misskeyApiGet('charts/federation', { limit: 2, span: 'day' }).then(chart => {
+	rizzkeyApiGet('charts/federation', { limit: 2, span: 'day' }).then(chart => {
 		federationPubActive.value = chart.pubActive[0];
 		federationPubActiveDiff.value = chart.pubActive[0] - chart.pubActive[1];
 		federationSubActive.value = chart.subActive[0];
 		federationSubActiveDiff.value = chart.subActive[0] - chart.subActive[1];
 	});
 
-	misskeyApiGet('federation/stats', { limit: 10 }).then(res => {
+	rizzkeyApiGet('federation/stats', { limit: 10 }).then(res => {
 		topSubInstancesForPie.value = [
 			...res.topSubInstances.map(x => ({
 				name: x.host,
@@ -150,18 +150,18 @@ onMounted(async () => {
 		];
 	});
 
-	misskeyApi('admin/server-info').then(serverInfoResponse => {
+	rizzkeyApi('admin/server-info').then(serverInfoResponse => {
 		serverInfo.value = serverInfoResponse;
 	});
 
-	misskeyApi('admin/show-users', {
+	rizzkeyApi('admin/show-users', {
 		limit: 5,
 		sort: '+createdAt',
 	}).then(res => {
 		newUsers.value = res;
 	});
 
-	misskeyApi('federation/instances', {
+	rizzkeyApi('federation/instances', {
 		sort: '+latestRequestReceivedAt',
 		limit: 25,
 	}).then(res => {

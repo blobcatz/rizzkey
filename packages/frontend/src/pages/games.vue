@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -28,7 +28,7 @@ import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 
 definePageMetadata(() => ({
-	title: 'Misskey Games',
+	title: 'rizzkey Games',
 	icon: 'ti ti-device-gamepad',
 }));
 </script>

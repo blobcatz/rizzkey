@@ -1,11 +1,11 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { VNode, h, SetupContext } from 'vue';
 import * as mfm from 'mfm-js';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkUrl from '@/components/global/MkUrl.vue';
 import MkTime from '@/components/global/MkTime.vue';
 import MkLink from '@/components/MkLink.vue';
@@ -35,7 +35,7 @@ type MfmProps = {
 	text: string;
 	plain?: boolean;
 	nowrap?: boolean;
-	author?: Misskey.entities.UserLite;
+	author?: rizzkey.entities.UserLite;
 	isNote?: boolean;
 	emojiUrls?: Record<string, string>;
 	rootScale?: number;

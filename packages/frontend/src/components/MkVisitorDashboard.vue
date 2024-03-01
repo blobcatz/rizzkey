@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -16,7 +16,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 			</h1>
 			<div :class="$style.mainAbout">
 				<!-- eslint-disable-next-line vue/no-v-html -->
-				<div v-html="meta.description || i18n.ts.headlineMisskey"></div>
+				<div v-html="meta.description || i18n.ts.headlinerizzkey"></div>
 			</div>
 			<div v-if="instance.disableRegistration" :class="$style.mainWarn">
 				<MkInfo warn>{{ i18n.ts.invitationRequiredToRegister }}</MkInfo>
@@ -52,7 +52,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XSigninDialog from '@/components/MkSigninDialog.vue';
 import XSignupDialog from '@/components/MkSignupDialog.vue';
 import MkButton from '@/components/MkButton.vue';
@@ -60,20 +60,20 @@ import MkTimeline from '@/components/MkTimeline.vue';
 import MkInfo from '@/components/MkInfo.vue';
 import { instanceName } from '@/config.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { instance } from '@/instance.js';
 import MkNumber from '@/components/MkNumber.vue';
 import XActiveUsersChart from '@/components/MkVisitorDashboard.ActiveUsersChart.vue';
 
-const meta = ref<Misskey.entities.MetaResponse | null>(null);
-const stats = ref<Misskey.entities.StatsResponse | null>(null);
+const meta = ref<rizzkey.entities.MetaResponse | null>(null);
+const stats = ref<rizzkey.entities.StatsResponse | null>(null);
 
-misskeyApi('meta', { detail: true }).then(_meta => {
+rizzkeyApi('meta', { detail: true }).then(_meta => {
 	meta.value = _meta;
 });
 
-misskeyApi('stats', {}).then((res) => {
+rizzkeyApi('stats', {}).then((res) => {
 	stats.value = res;
 });
 
@@ -97,10 +97,10 @@ function showMenu(ev) {
 			os.pageWindow('/about');
 		},
 	}, {
-		text: i18n.ts.aboutMisskey,
+		text: i18n.ts.aboutrizzkey,
 		icon: 'ti ti-info-circle',
 		action: () => {
-			os.pageWindow('/about-misskey');
+			os.pageWindow('/about-rizzkey');
 		},
 	}, { type: 'divider' }, (instance.impressumUrl) ? {
 		text: i18n.ts.impressum,

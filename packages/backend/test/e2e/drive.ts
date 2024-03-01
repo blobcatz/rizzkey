@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -8,7 +8,7 @@ process.env.NODE_ENV = 'test';
 import * as assert from 'assert';
 import { MiNote } from '@/models/Note.js';
 import { api, initTestDb, makeStreamCatcher, post, signup, uploadFile } from '../utils.js';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 import type{ Repository } from 'typeorm'
 import type { Packed } from '@/misc/json-schema.js';
 
@@ -16,8 +16,8 @@ import type { Packed } from '@/misc/json-schema.js';
 describe('Drive', () => {
 	let Notes: Repository<MiNote>;
 
-	let alice: misskey.entities.SignupResponse;
-	let bob: misskey.entities.SignupResponse;
+	let alice: rizzkey.entities.SignupResponse;
+	let bob: rizzkey.entities.SignupResponse;
 
 	beforeAll(async () => {
 		const connection = await initTestDb(true);

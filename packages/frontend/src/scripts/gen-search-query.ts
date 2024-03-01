@@ -1,9 +1,9 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { host as localHost } from '@/config.js';
 
 export async function genSearchQuery(v: any, q: string) {
@@ -18,7 +18,7 @@ export async function genSearchQuery(v: any, q: string) {
 					host = at;
 				}
 			} else {
-				const user = await v.api('users/show', Misskey.acct.parse(at)).catch(x => null);
+				const user = await v.api('users/show', rizzkey.acct.parse(at)).catch(x => null);
 				if (user) {
 					userId = user.id;
 				} else {

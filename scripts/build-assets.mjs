@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -17,8 +17,8 @@ import meta from '../package.json' assert { type: "json" };
 import buildTarball from './tarball.mjs';
 
 const configDir = fileURLToPath(new URL('../.config', import.meta.url));
-const configPath = process.env.MISSKEY_CONFIG_YML
-	? path.resolve(configDir, process.env.MISSKEY_CONFIG_YML)
+const configPath = process.env.rizzkey_CONFIG_YML
+	? path.resolve(configDir, process.env.rizzkey_CONFIG_YML)
 	: process.env.NODE_ENV === 'test'
 		? path.resolve(configDir, 'test.yml')
 		: path.resolve(configDir, 'default.yml');

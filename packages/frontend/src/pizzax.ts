@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -8,7 +8,7 @@
 import { onUnmounted, Ref, ref, watch } from 'vue';
 import { BroadcastChannel } from 'broadcast-channel';
 import { $i } from '@/account.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { get, set } from '@/scripts/idb-proxy.js';
 import { defaultStore } from '@/store.js';
 import { useStream } from '@/stream.js';
@@ -150,7 +150,7 @@ export class Storage<T extends StateDef> {
 				window.setTimeout(async () => {
 					await defaultStore.ready;
 
-					misskeyApi('i/registry/get-all', { scope: ['client', this.key] })
+					rizzkeyApi('i/registry/get-all', { scope: ['client', this.key] })
 						.then(kvs => {
 							const cache: Partial<T> = {};
 							for (const [k, v] of Object.entries(this.def) as [keyof T, T[keyof T]['default']][]) {
@@ -215,7 +215,7 @@ export class Storage<T extends StateDef> {
 					const cache = await get(this.registryCacheKeyName) || {};
 					cache[key] = rawValue;
 					await set(this.registryCacheKeyName, cache);
-					await misskeyApi('i/registry/set', {
+					await rizzkeyApi('i/registry/set', {
 						scope: ['client', this.key],
 						key: key.toString(),
 						value: rawValue,

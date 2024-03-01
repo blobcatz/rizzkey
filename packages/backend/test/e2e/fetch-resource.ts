@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -8,7 +8,7 @@ process.env.NODE_ENV = 'test';
 import * as assert from 'assert';
 import { channel, clip, cookie, galleryPost, page, play, post, signup, simpleGet, uploadFile } from '../utils.js';
 import type { SimpleGetResponse } from '../utils.js';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 // Request Accept
 const ONLY_AP = 'application/activity+json';
@@ -22,7 +22,7 @@ const HTML = 'text/html; charset=utf-8';
 const JSON_UTF8 = 'application/json; charset=utf-8';
 
 describe('Webリソース', () => {
-	let alice: misskey.entities.SignupResponse;
+	let alice: rizzkey.entities.SignupResponse;
 	let aliceUploadedFile: any;
 	let alicesPost: any;
 	let alicePage: any;
@@ -31,7 +31,7 @@ describe('Webリソース', () => {
 	let aliceGalleryPost: any;
 	let aliceChannel: any;
 
-	let bob: misskey.entities.SignupResponse;
+	let bob: rizzkey.entities.SignupResponse;
 
 	type Request = {
 		path: string,
@@ -201,8 +201,8 @@ describe('Webリソース', () => {
 					accept,
 					type: HTML,
 				});
-				assert.strictEqual(metaTag(res, 'misskey:user-username'), alice.username);
-				assert.strictEqual(metaTag(res, 'misskey:user-id'), alice.id);
+				assert.strictEqual(metaTag(res, 'rizzkey:user-username'), alice.username);
+				assert.strictEqual(metaTag(res, 'rizzkey:user-id'), alice.id);
 
 				// TODO ogタグの検証
 				// TODO profile.noCrawleの検証
@@ -252,8 +252,8 @@ describe('Webリソース', () => {
 			const res = await ok({
 				path: path(alice.username),
 			});
-			assert.strictEqual(metaTag(res, 'misskey:user-username'), alice.username);
-			assert.strictEqual(metaTag(res, 'misskey:user-id'), alice.id);
+			assert.strictEqual(metaTag(res, 'rizzkey:user-username'), alice.username);
+			assert.strictEqual(metaTag(res, 'rizzkey:user-id'), alice.id);
 		});
 	});
 
@@ -264,9 +264,9 @@ describe('Webリソース', () => {
 			const res = await ok({
 				path: path(alice.username, alicePage.name),
 			});
-			assert.strictEqual(metaTag(res, 'misskey:user-username'), alice.username);
-			assert.strictEqual(metaTag(res, 'misskey:user-id'), alice.id);
-			assert.strictEqual(metaTag(res, 'misskey:page-id'), alicePage.id);
+			assert.strictEqual(metaTag(res, 'rizzkey:user-username'), alice.username);
+			assert.strictEqual(metaTag(res, 'rizzkey:user-id'), alice.id);
+			assert.strictEqual(metaTag(res, 'rizzkey:page-id'), alicePage.id);
 
 			// TODO ogタグの検証
 			// TODO profile.noCrawleの検証
@@ -360,9 +360,9 @@ describe('Webリソース', () => {
 					accept,
 					type: HTML,
 				});
-				assert.strictEqual(metaTag(res, 'misskey:user-username'), alice.username);
-				assert.strictEqual(metaTag(res, 'misskey:user-id'), alice.id);
-				assert.strictEqual(metaTag(res, 'misskey:note-id'), alicesPost.id);
+				assert.strictEqual(metaTag(res, 'rizzkey:user-username'), alice.username);
+				assert.strictEqual(metaTag(res, 'rizzkey:user-id'), alice.id);
+				assert.strictEqual(metaTag(res, 'rizzkey:note-id'), alicesPost.id);
 
 				// TODO ogタグの検証
 				// TODO profile.noCrawleの検証
@@ -401,9 +401,9 @@ describe('Webリソース', () => {
 			const res = await ok({
 				path: path(alicePlay.id),
 			});
-			assert.strictEqual(metaTag(res, 'misskey:user-username'), alice.username);
-			assert.strictEqual(metaTag(res, 'misskey:user-id'), alice.id);
-			assert.strictEqual(metaTag(res, 'misskey:flash-id'), alicePlay.id);
+			assert.strictEqual(metaTag(res, 'rizzkey:user-username'), alice.username);
+			assert.strictEqual(metaTag(res, 'rizzkey:user-id'), alice.id);
+			assert.strictEqual(metaTag(res, 'rizzkey:flash-id'), alicePlay.id);
 
 			// TODO ogタグの検証
 			// TODO profile.noCrawleの検証
@@ -422,9 +422,9 @@ describe('Webリソース', () => {
 			const res = await ok({
 				path: path(aliceClip.id),
 			});
-			assert.strictEqual(metaTag(res, 'misskey:user-username'), alice.username);
-			assert.strictEqual(metaTag(res, 'misskey:user-id'), alice.id);
-			assert.strictEqual(metaTag(res, 'misskey:clip-id'), aliceClip.id);
+			assert.strictEqual(metaTag(res, 'rizzkey:user-username'), alice.username);
+			assert.strictEqual(metaTag(res, 'rizzkey:user-id'), alice.id);
+			assert.strictEqual(metaTag(res, 'rizzkey:clip-id'), aliceClip.id);
 
 			// TODO ogタグの検証
 			// TODO profile.noCrawleの検証
@@ -442,10 +442,10 @@ describe('Webリソース', () => {
 			const res = await ok({
 				path: path(aliceGalleryPost.id),
 			});
-			assert.strictEqual(metaTag(res, 'misskey:user-username'), alice.username);
-			assert.strictEqual(metaTag(res, 'misskey:user-id'), alice.id);
+			assert.strictEqual(metaTag(res, 'rizzkey:user-username'), alice.username);
+			assert.strictEqual(metaTag(res, 'rizzkey:user-id'), alice.id);
 
-			// FIXME: misskey:gallery-post-idみたいなmetaタグの設定がない
+			// FIXME: rizzkey:gallery-post-idみたいなmetaタグの設定がない
 			// TODO profile.noCrawleの検証
 			// TODO twitter:creatorの検証
 		});
@@ -463,7 +463,7 @@ describe('Webリソース', () => {
 				path: path(aliceChannel.id),
 			});
 
-			// FIXME: misskey関連のmetaタグの設定がない
+			// FIXME: rizzkey関連のmetaタグの設定がない
 			// TODO ogタグの検証
 		});
 

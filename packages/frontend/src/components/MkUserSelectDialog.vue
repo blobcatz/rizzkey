@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -62,18 +62,18 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkInput from '@/components/MkInput.vue';
 import FormSplit from '@/components/form/split.vue';
 import MkModalWindow from '@/components/MkModalWindow.vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { defaultStore } from '@/store.js';
 import { i18n } from '@/i18n.js';
 import { $i } from '@/account.js';
 import { host as currentHost, hostname } from '@/config.js';
 
 const emit = defineEmits<{
-	(ev: 'ok', selected: Misskey.entities.UserDetailed): void;
+	(ev: 'ok', selected: rizzkey.entities.UserDetailed): void;
 	(ev: 'cancel'): void;
 	(ev: 'closed'): void;
 }>();
@@ -88,9 +88,9 @@ const props = withDefaults(defineProps<{
 
 const username = ref('');
 const host = ref('');
-const users = ref<Misskey.entities.UserLite[]>([]);
-const recentUsers = ref<Misskey.entities.UserDetailed[]>([]);
-const selected = ref<Misskey.entities.UserLite | null>(null);
+const users = ref<rizzkey.entities.UserLite[]>([]);
+const recentUsers = ref<rizzkey.entities.UserDetailed[]>([]);
+const selected = ref<rizzkey.entities.UserLite | null>(null);
 const dialogEl = ref();
 
 function search() {
@@ -98,7 +98,7 @@ function search() {
 		users.value = [];
 		return;
 	}
-	misskeyApi('users/search-by-username-and-host', {
+	rizzkeyApi('users/search-by-username-and-host', {
 		username: username.value,
 		host: props.localOnly ? '.' : host.value,
 		limit: 10,
@@ -117,7 +117,7 @@ function search() {
 async function ok() {
 	if (selected.value == null) return;
 
-	const user = await misskeyApi('users/show', {
+	const user = await rizzkeyApi('users/show', {
 		userId: selected.value.id,
 	});
 	emit('ok', user);
@@ -137,7 +137,7 @@ function cancel() {
 }
 
 onMounted(() => {
-	misskeyApi('users/show', {
+	rizzkeyApi('users/show', {
 		userIds: defaultStore.state.recentlyUsedUsers,
 	}).then(foundUsers => {
 		let _users = foundUsers;

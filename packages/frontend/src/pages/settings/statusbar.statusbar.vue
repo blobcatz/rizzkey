@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -87,7 +87,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { reactive, watch } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkSelect from '@/components/MkSelect.vue';
 import MkInput from '@/components/MkInput.vue';
 import MkSwitch from '@/components/MkSwitch.vue';
@@ -100,7 +100,7 @@ import { deepClone } from '@/scripts/clone.js';
 
 const props = defineProps<{
 	_id: string;
-	userLists: Misskey.entities.UserList[] | null;
+	userLists: rizzkey.entities.UserList[] | null;
 }>();
 
 const statusbar = reactive(deepClone(defaultStore.state.statusbars.find(x => x.id === props._id)));

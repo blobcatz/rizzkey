@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -291,7 +291,7 @@ export async function mainBoot() {
 
 		main.on('unreadAntenna', () => {
 			updateAccount({ hasUnreadAntenna: true });
-			sound.playMisskeySfx('antenna');
+			sound.playrizzkeySfx('antenna');
 		});
 
 		main.on('readAllAnnouncements', () => {
@@ -299,7 +299,7 @@ export async function mainBoot() {
 		});
 
 		// トークンが再生成されたとき
-		// このままではMisskeyが利用できないので強制的にサインアウトさせる
+		// このままではrizzkeyが利用できないので強制的にサインアウトさせる
 		main.on('myTokenRegenerated', () => {
 			signout();
 		});

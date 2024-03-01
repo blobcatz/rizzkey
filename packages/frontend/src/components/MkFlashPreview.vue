@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -25,7 +25,7 @@ import { } from 'vue';
 import { userName } from '@/filters/user.js';
 
 const props = defineProps<{
-	//flash: Misskey.entities.Flash;
+	//flash: rizzkey.entities.Flash;
 	flash: any;
 }>();
 </script>

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -19,23 +19,23 @@ const appInitialized = Symbol();
 let lastStory = null;
 let moduleInitialized = false;
 let unobserve = () => {};
-let misskeyOS = null;
+let rizzkeyOS = null;
 
 function loadTheme(applyTheme: typeof import('../src/scripts/theme')['applyTheme']) {
 	unobserve();
-	const theme = themes[document.documentElement.dataset.misskeyTheme];
+	const theme = themes[document.documentElement.dataset.rizzkeyTheme];
 	if (theme) {
-		applyTheme(themes[document.documentElement.dataset.misskeyTheme]);
+		applyTheme(themes[document.documentElement.dataset.rizzkeyTheme]);
 	} else {
 		applyTheme(themes['l-light']);
 	}
 	const observer = new MutationObserver((entries) => {
 		for (const entry of entries) {
-			if (entry.attributeName === 'data-misskey-theme') {
+			if (entry.attributeName === 'data-rizzkey-theme') {
 				const target = entry.target as HTMLElement;
-				const theme = themes[target.dataset.misskeyTheme];
+				const theme = themes[target.dataset.rizzkeyTheme];
 				if (theme) {
-					applyTheme(themes[target.dataset.misskeyTheme]);
+					applyTheme(themes[target.dataset.rizzkeyTheme]);
 				} else {
 					target.removeAttribute('style');
 				}
@@ -44,7 +44,7 @@ function loadTheme(applyTheme: typeof import('../src/scripts/theme')['applyTheme
 	});
 	observer.observe(document.documentElement, {
 		attributes: true,
-		attributeFilter: ['data-misskey-theme'],
+		attributeFilter: ['data-rizzkey-theme'],
 	});
 	unobserve = () => observer.disconnect();
 }
@@ -81,7 +81,7 @@ queueMicrotask(() => {
 			components(app);
 			directives(app);
 			widgets(app);
-			misskeyOS = os;
+			rizzkeyOS = os;
 			if (isChromatic()) {
 				defaultStore.set('animation', false);
 			}
@@ -128,7 +128,7 @@ const preview = {
 				setup() {
 					return {
 						context,
-						popups: misskeyOS.popups,
+						popups: rizzkeyOS.popups,
 					};
 				},
 				template:

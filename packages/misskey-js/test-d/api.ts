@@ -1,45 +1,45 @@
 import { expectType } from 'tsd';
-import * as Misskey from '../src/index.js';
+import * as rizzkey from '../src/index.js';
 
 describe('API', () => {
 	test('success', async () => {
-		const cli = new Misskey.api.APIClient({
-			origin: 'https://misskey.test',
+		const cli = new rizzkey.api.APIClient({
+			origin: 'https://rizzkey.test',
 			credential: 'TOKEN'
 		});
 		const res = await cli.request('meta', { detail: true });
-		expectType<Misskey.entities.MetaResponse>(res);
+		expectType<rizzkey.entities.MetaResponse>(res);
 	});
 
 	test('conditional respose type (meta)', async () => {
-		const cli = new Misskey.api.APIClient({
-			origin: 'https://misskey.test',
+		const cli = new rizzkey.api.APIClient({
+			origin: 'https://rizzkey.test',
 			credential: 'TOKEN'
 		});
 
 		const res = await cli.request('meta', { detail: true });
-		expectType<Misskey.entities.MetaResponse>(res);
+		expectType<rizzkey.entities.MetaResponse>(res);
 
 		const res2 = await cli.request('meta', { detail: false });
-		expectType<Misskey.entities.MetaResponse>(res2);
+		expectType<rizzkey.entities.MetaResponse>(res2);
 
 		const res3 = await cli.request('meta', { });
-		expectType<Misskey.entities.MetaResponse>(res3);
+		expectType<rizzkey.entities.MetaResponse>(res3);
 
 		const res4 = await cli.request('meta', { detail: true as boolean });
-		expectType<Misskey.entities.MetaResponse>(res4);
+		expectType<rizzkey.entities.MetaResponse>(res4);
 	});
 
 	test('conditional respose type (users/show)', async () => {
-		const cli = new Misskey.api.APIClient({
-			origin: 'https://misskey.test',
+		const cli = new rizzkey.api.APIClient({
+			origin: 'https://rizzkey.test',
 			credential: 'TOKEN'
 		});
 
 		const res = await cli.request('users/show', { userId: 'xxxxxxxx' });
-		expectType<Misskey.entities.UserDetailed>(res);
+		expectType<rizzkey.entities.UserDetailed>(res);
 
 		const res2 = await cli.request('users/show', { userIds: ['xxxxxxxx'] });
-		expectType<Misskey.entities.UserDetailed[]>(res2);
+		expectType<rizzkey.entities.UserDetailed[]>(res2);
 	});
 });

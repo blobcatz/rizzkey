@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -23,16 +23,16 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onMounted, shallowRef } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import MkModal from '@/components/MkModal.vue';
 import MkButton from '@/components/MkButton.vue';
 import { i18n } from '@/i18n.js';
 import { $i, updateAccount } from '@/account.js';
 
 const props = withDefaults(defineProps<{
-	announcement: Misskey.entities.Announcement;
+	announcement: rizzkey.entities.Announcement;
 }>(), {
 });
 
@@ -50,7 +50,7 @@ async function ok() {
 	}
 
 	modal.value?.close();
-	misskeyApi('i/read-announcement', { announcementId: props.announcement.id });
+	rizzkeyApi('i/read-announcement', { announcementId: props.announcement.id });
 	updateAccount({
 		unreadAnnouncements: $i!.unreadAnnouncements.filter(a => a.id !== props.announcement.id),
 	});

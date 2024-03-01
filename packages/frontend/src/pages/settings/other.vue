@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -93,7 +93,7 @@ import FormInfo from '@/components/MkInfo.vue';
 import MkKeyValue from '@/components/MkKeyValue.vue';
 import MkButton from '@/components/MkButton.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { defaultStore } from '@/store.js';
 import { signout, signinRequired } from '@/account.js';
 import { i18n } from '@/i18n.js';
@@ -149,7 +149,7 @@ async function updateRepliesAll(withReplies: boolean) {
 	});
 	if (canceled) return;
 
-	misskeyApi('following/update-all', { withReplies });
+	rizzkeyApi('following/update-all', { withReplies });
 }
 
 watch([

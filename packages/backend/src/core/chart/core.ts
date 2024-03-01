@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -358,7 +358,7 @@ export default abstract class Chart<T extends Schema> {
 			data = this.getNewLog(this.convertRawRecord(latest));
 		} else {
 			// ログが存在しなかったら
-			// (Misskeyインスタンスを建てて初めてのチャート更新時など)
+			// (rizzkeyインスタンスを建てて初めてのチャート更新時など)
 
 			// 初期ログデータを作成
 			data = this.getNewLog(null);

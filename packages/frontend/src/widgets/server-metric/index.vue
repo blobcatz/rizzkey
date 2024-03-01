@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -21,7 +21,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onUnmounted, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { useWidgetPropsManager, WidgetComponentEmits, WidgetComponentExpose, WidgetComponentProps } from '../widget.js';
 import XCpuMemory from './cpu-mem.vue';
 import XNet from './net.vue';
@@ -30,7 +30,7 @@ import XMemory from './mem.vue';
 import XDisk from './disk.vue';
 import MkContainer from '@/components/MkContainer.vue';
 import { GetFormResultType } from '@/scripts/form.js';
-import { misskeyApiGet } from '@/scripts/misskey-api.js';
+import { rizzkeyApiGet } from '@/scripts/rizzkey-api.js';
 import { useStream } from '@/stream.js';
 import { i18n } from '@/i18n.js';
 
@@ -63,9 +63,9 @@ const { widgetProps, configure, save } = useWidgetPropsManager(name,
 	emit,
 );
 
-const meta = ref<Misskey.entities.ServerInfoResponse | null>(null);
+const meta = ref<rizzkey.entities.ServerInfoResponse | null>(null);
 
-misskeyApiGet('server-info', {}).then(res => {
+rizzkeyApiGet('server-info', {}).then(res => {
 	meta.value = res;
 });
 

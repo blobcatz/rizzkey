@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -29,7 +29,7 @@ const themeColor = chalk.hex('#86b300');
 
 function greet() {
 	if (!envOption.quiet) {
-		//#region Misskey logo
+		//#region rizzkey logo
 		const v = `v${meta.version}`;
 		console.log(themeColor('  _____ _         _           '));
 		console.log(themeColor(' |     |_|___ ___| |_ ___ _ _ '));
@@ -38,15 +38,15 @@ function greet() {
 		console.log(' ' + chalk.gray(v) + themeColor('                        |___|\n'.substring(v.length)));
 		//#endregion
 
-		console.log(' Misskey is an open-source decentralized microblogging platform.');
-		console.log(chalk.rgb(255, 136, 0)(' If you like Misskey, please donate to support development. https://www.patreon.com/syuilo'));
+		console.log(' rizzkey is an open-source decentralized microblogging platform.');
+		console.log(chalk.rgb(255, 136, 0)(' If you like rizzkey, please donate to support development. https://www.patreon.com/syuilo'));
 
 		console.log('');
 		console.log(chalkTemplate`--- ${os.hostname()} {gray (PID: ${process.pid.toString()})} ---`);
 	}
 
-	bootLogger.info('Welcome to Misskey!');
-	bootLogger.info(`Misskey v${meta.version}`, null, true);
+	bootLogger.info('Welcome to rizzkey!');
+	bootLogger.info(`rizzkey v${meta.version}`, null, true);
 }
 
 /**
@@ -69,7 +69,7 @@ export async function masterMain() {
 		process.exit(1);
 	}
 
-	bootLogger.succ('Misskey initialized');
+	bootLogger.succ('rizzkey initialized');
 
 	if (envOption.disableClustering) {
 		if (envOption.onlyServer) {

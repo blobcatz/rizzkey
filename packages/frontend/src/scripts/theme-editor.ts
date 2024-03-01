@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -57,7 +57,7 @@ export const toThemeString = (value: Color | Func | RefProp | RefConst | Css) =>
 	}
 };
 
-export const convertToMisskeyTheme = (vm: ThemeViewModel, name: string, desc: string, author: string, base: 'dark' | 'light'): Theme => {
+export const convertTorizzkeyTheme = (vm: ThemeViewModel, name: string, desc: string, author: string, base: 'dark' | 'light'): Theme => {
 	const props = { } as { [key: string]: string };
 	for (const [key, value] of vm) {
 		if (value === null) continue;

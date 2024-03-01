@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -25,12 +25,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { shallowRef, watch, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { i18n } from '@/i18n.js';
 import MkMediaAudio from '@/components/MkMediaAudio.vue';
 
 const props = withDefaults(defineProps<{
-	media: Misskey.entities.DriveFile;
+	media: rizzkey.entities.DriveFile;
 }>(), {
 });
 

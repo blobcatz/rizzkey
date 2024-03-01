@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -33,7 +33,7 @@ export const meta = {
 			properties: {
 				id: {
 					type: 'string',
-					format: 'misskey:id',
+					format: 'rizzkey:id',
 				},
 				user: {
 					type: 'object',
@@ -48,9 +48,9 @@ export const meta = {
 export const paramDef = {
 	type: 'object',
 	properties: {
-		roleId: { type: 'string', format: 'misskey:id' },
-		sinceId: { type: 'string', format: 'misskey:id' },
-		untilId: { type: 'string', format: 'misskey:id' },
+		roleId: { type: 'string', format: 'rizzkey:id' },
+		sinceId: { type: 'string', format: 'rizzkey:id' },
+		untilId: { type: 'string', format: 'rizzkey:id' },
 		limit: { type: 'integer', minimum: 1, maximum: 100, default: 10 },
 	},
 	required: ['roleId'],

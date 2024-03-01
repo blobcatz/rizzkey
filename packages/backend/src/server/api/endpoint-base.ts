@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -17,7 +17,7 @@ const ajv = new Ajv({
 	useDefaults: true,
 });
 
-ajv.addFormat('misskey:id', /^[a-zA-Z0-9]+$/);
+ajv.addFormat('rizzkey:id', /^[a-zA-Z0-9]+$/);
 
 export type Response = Record<string, any> | void;
 

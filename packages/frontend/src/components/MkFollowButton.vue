@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -36,9 +36,9 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { useStream } from '@/stream.js';
 import { i18n } from '@/i18n.js';
 import { claimAchievement } from '@/scripts/achievements.js';
@@ -46,7 +46,7 @@ import { $i } from '@/account.js';
 import { defaultStore } from '@/store.js';
 
 const props = withDefaults(defineProps<{
-	user: Misskey.entities.UserDetailed,
+	user: rizzkey.entities.UserDetailed,
 	full?: boolean,
 	large?: boolean,
 }>(), {
@@ -55,7 +55,7 @@ const props = withDefaults(defineProps<{
 });
 
 const emit = defineEmits<{
-	(_: 'update:user', value: Misskey.entities.UserDetailed): void
+	(_: 'update:user', value: rizzkey.entities.UserDetailed): void
 }>();
 
 const isFollowing = ref(props.user.isFollowing);
@@ -64,13 +64,13 @@ const wait = ref(false);
 const connection = useStream().useChannel('main');
 
 if (props.user.isFollowing == null) {
-	misskeyApi('users/show', {
+	rizzkeyApi('users/show', {
 		userId: props.user.id,
 	})
 		.then(onFollowChange);
 }
 
-function onFollowChange(user: Misskey.entities.UserDetailed) {
+function onFollowChange(user: rizzkey.entities.UserDetailed) {
 	if (user.id === props.user.id) {
 		isFollowing.value = user.isFollowing;
 		hasPendingFollowRequestFromYou.value = user.hasPendingFollowRequestFromYou;
@@ -89,17 +89,17 @@ async function onClick() {
 
 			if (canceled) return;
 
-			await misskeyApi('following/delete', {
+			await rizzkeyApi('following/delete', {
 				userId: props.user.id,
 			});
 		} else {
 			if (hasPendingFollowRequestFromYou.value) {
-				await misskeyApi('following/requests/cancel', {
+				await rizzkeyApi('following/requests/cancel', {
 					userId: props.user.id,
 				});
 				hasPendingFollowRequestFromYou.value = false;
 			} else {
-				await misskeyApi('following/create', {
+				await rizzkeyApi('following/create', {
 					userId: props.user.id,
 					withReplies: defaultStore.state.defaultWithReplies,
 				});

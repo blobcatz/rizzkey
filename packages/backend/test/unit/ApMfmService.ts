@@ -17,27 +17,27 @@ describe('ApMfmService', () => {
 	});
 
 	describe('getNoteHtml', () => {
-		test('Do not provide _misskey_content for simple text', () => {
+		test('Do not provide _rizzkey_content for simple text', () => {
 			const note: MiNote = {
 				text: 'テキスト #タグ @mention 🍊 :emoji: https://example.com',
 				mentionedRemoteUsers: '[]',
 			} as any;
 
-			const { content, noMisskeyContent } = apMfmService.getNoteHtml(note);
+			const { content, norizzkeyContent } = apMfmService.getNoteHtml(note);
 
-			assert.equal(noMisskeyContent, true, 'noMisskeyContent');
-			assert.equal(content, '<p>テキスト <a href="http://misskey.local/tags/タグ" rel="tag">#タグ</a> <a href="http://misskey.local/@mention" class="u-url mention">@mention</a> 🍊 ​:emoji:​ <a href="https://example.com">https://example.com</a></p>', 'content');
+			assert.equal(norizzkeyContent, true, 'norizzkeyContent');
+			assert.equal(content, '<p>テキスト <a href="http://rizzkey.local/tags/タグ" rel="tag">#タグ</a> <a href="http://rizzkey.local/@mention" class="u-url mention">@mention</a> 🍊 ​:emoji:​ <a href="https://example.com">https://example.com</a></p>', 'content');
 		});
 
-		test('Provide _misskey_content for MFM', () => {
+		test('Provide _rizzkey_content for MFM', () => {
 			const note: MiNote = {
 				text: '$[tada foo]',
 				mentionedRemoteUsers: '[]',
 			} as any;
 
-			const { content, noMisskeyContent } = apMfmService.getNoteHtml(note);
+			const { content, norizzkeyContent } = apMfmService.getNoteHtml(note);
 
-			assert.equal(noMisskeyContent, false, 'noMisskeyContent');
+			assert.equal(norizzkeyContent, false, 'norizzkeyContent');
 			assert.equal(content, '<p><i>foo</i></p>', 'content');
 		});
 	});

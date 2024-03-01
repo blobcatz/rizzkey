@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -19,7 +19,7 @@ import {
 	uploadFile,
 	userList,
 } from '../utils.js';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 const compareBy = <T extends { id: string }>(selector: (s: T) => string = (s: T): string => s.id) => (a: T, b: T): number => {
 	return selector(a).localeCompare(selector(b));
@@ -29,12 +29,12 @@ describe('アンテナ', () => {
 	// エンティティとしてのアンテナを主眼においたテストを記述する
 	// (Antennaを返すエンドポイント、Antennaエンティティを書き換えるエンドポイント、Antennaからノートを取得するエンドポイントをテストする)
 
-	// BUG misskey-jsとjson-schemaが一致していない。
+	// BUG rizzkey-jsとjson-schemaが一致していない。
 	// - srcのenumにgroupが残っている
 	// - userGroupIdが残っている, isActiveがない
-	type Antenna = misskey.entities.Antenna | Packed<'Antenna'>;
-	type User = misskey.entities.SignupResponse;
-	type Note = misskey.entities.Note;
+	type Antenna = rizzkey.entities.Antenna | Packed<'Antenna'>;
+	type User = rizzkey.entities.SignupResponse;
+	type Note = rizzkey.entities.Note;
 
 	// アンテナを作成できる最小のパラメタ
 	const defaultParam = {
@@ -56,9 +56,9 @@ describe('アンテナ', () => {
 	let carol: User;
 
 	let alicePost: Note;
-	let aliceList: misskey.entities.UserList;
-	let bobFile: misskey.entities.DriveFile;
-	let bobList: misskey.entities.UserList;
+	let aliceList: rizzkey.entities.UserList;
+	let bobFile: rizzkey.entities.DriveFile;
+	let bobList: rizzkey.entities.UserList;
 
 	let userNotExplorable: User;
 	let userLocking: User;

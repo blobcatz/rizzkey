@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -62,7 +62,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, provide, watch, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { v4 as uuid } from 'uuid';
 import XBlocks from './page-editor.blocks.vue';
 import MkButton from '@/components/MkButton.vue';
@@ -71,7 +71,7 @@ import MkSwitch from '@/components/MkSwitch.vue';
 import MkInput from '@/components/MkInput.vue';
 import { url } from '@/config.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { selectFile } from '@/scripts/select-file.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
@@ -87,16 +87,16 @@ const props = defineProps<{
 const tab = ref('settings');
 const author = ref($i);
 const readonly = ref(false);
-const page = ref<Misskey.entities.Page | null>(null);
+const page = ref<rizzkey.entities.Page | null>(null);
 const pageId = ref<string | null>(null);
 const currentName = ref<string | null>(null);
 const title = ref('');
 const summary = ref<string | null>(null);
 const name = ref(Date.now().toString());
-const eyeCatchingImage = ref<Misskey.entities.DriveFile | null>(null);
+const eyeCatchingImage = ref<rizzkey.entities.DriveFile | null>(null);
 const eyeCatchingImageId = ref<string | null>(null);
 const font = ref('sans-serif');
-const content = ref<Misskey.entities.Page['content']>([]);
+const content = ref<rizzkey.entities.Page['content']>([]);
 const alignCenter = ref(false);
 const hideTitleWhenPinned = ref(false);
 
@@ -107,7 +107,7 @@ watch(eyeCatchingImageId, async () => {
 	if (eyeCatchingImageId.value == null) {
 		eyeCatchingImage.value = null;
 	} else {
-		eyeCatchingImage.value = await misskeyApi('drive/files/show', {
+		eyeCatchingImage.value = await rizzkeyApi('drive/files/show', {
 			fileId: eyeCatchingImageId.value,
 		});
 	}
@@ -150,7 +150,7 @@ function save() {
 
 	if (pageId.value) {
 		options.pageId = pageId.value;
-		misskeyApi('pages/update', options)
+		rizzkeyApi('pages/update', options)
 			.then(page => {
 				currentName.value = name.value.trim();
 				os.alert({
@@ -159,7 +159,7 @@ function save() {
 				});
 			}).catch(onError);
 	} else {
-		misskeyApi('pages/create', options)
+		rizzkeyApi('pages/create', options)
 			.then(created => {
 				pageId.value = created.id;
 				currentName.value = name.value.trim();
@@ -178,7 +178,7 @@ function del() {
 		text: i18n.tsx.removeAreYouSure({ x: title.value.trim() }),
 	}).then(({ canceled }) => {
 		if (canceled) return;
-		misskeyApi('pages/delete', {
+		rizzkeyApi('pages/delete', {
 			pageId: pageId.value,
 		}).then(() => {
 			os.alert({
@@ -193,7 +193,7 @@ function del() {
 function duplicate() {
 	title.value = title.value + ' - copy';
 	name.value = name.value + '-copy';
-	misskeyApi('pages/create', getSaveOptions()).then(created => {
+	rizzkeyApi('pages/create', getSaveOptions()).then(created => {
 		pageId.value = created.id;
 		currentName.value = name.value.trim();
 		os.alert({
@@ -237,11 +237,11 @@ function removeEyeCatchingImage() {
 
 async function init() {
 	if (props.initPageId) {
-		page.value = await misskeyApi('pages/show', {
+		page.value = await rizzkeyApi('pages/show', {
 			pageId: props.initPageId,
 		});
 	} else if (props.initPageName && props.initUser) {
-		page.value = await misskeyApi('pages/show', {
+		page.value = await rizzkeyApi('pages/show', {
 			name: props.initPageName,
 			username: props.initUser,
 		});

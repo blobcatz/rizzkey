@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -23,20 +23,20 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import JSON5 from 'json5';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import FormLink from '@/components/form/link.vue';
 import FormSection from '@/components/form/section.vue';
 import MkButton from '@/components/MkButton.vue';
 
-const scopesWithDomain = ref<Misskey.entities.IRegistryScopesWithDomainResponse | null>(null);
+const scopesWithDomain = ref<rizzkey.entities.IRegistryScopesWithDomainResponse | null>(null);
 
 function fetchScopes() {
-	misskeyApi('i/registry/scopes-with-domain').then(res => {
+	rizzkeyApi('i/registry/scopes-with-domain').then(res => {
 		scopesWithDomain.value = res;
 	});
 }

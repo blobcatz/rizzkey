@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -9,7 +9,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 	<div :class="$style.formContainer">
 		<form :class="$style.form" class="_panel" @submit.prevent="submit()">
 			<div :class="$style.title">
-				<div>Welcome to Misskey!</div>
+				<div>Welcome to rizzkey!</div>
 				<div :class="$style.version">v{{ version }}</div>
 			</div>
 			<div class="_gaps_m" style="padding: 32px;">
@@ -40,7 +40,7 @@ import MkButton from '@/components/MkButton.vue';
 import MkInput from '@/components/MkInput.vue';
 import { host, version } from '@/config.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { login } from '@/account.js';
 import { i18n } from '@/i18n.js';
 import MkAnimBg from '@/components/MkAnimBg.vue';
@@ -53,7 +53,7 @@ function submit() {
 	if (submitting.value) return;
 	submitting.value = true;
 
-	misskeyApi('admin/accounts/create', {
+	rizzkeyApi('admin/accounts/create', {
 		username: username.value,
 		password: password.value,
 	}).then(res => {

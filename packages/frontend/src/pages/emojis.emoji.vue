@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -15,14 +15,14 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import * as os from '@/os.js';
-import * as Misskey from 'misskey-js';
-import { misskeyApiGet } from '@/scripts/misskey-api.js';
+import * as rizzkey from 'rizzkey-js';
+import { rizzkeyApiGet } from '@/scripts/rizzkey-api.js';
 import copyToClipboard from '@/scripts/copy-to-clipboard.js';
 import { i18n } from '@/i18n.js';
 import MkCustomEmojiDetailedDialog from '@/components/MkCustomEmojiDetailedDialog.vue';
 
 const props = defineProps<{
-  emoji: Misskey.entities.EmojiSimple;
+  emoji: rizzkey.entities.EmojiSimple;
 }>();
 
 function menu(ev) {
@@ -41,7 +41,7 @@ function menu(ev) {
 		icon: 'ti ti-info-circle',
 		action: async () => {
 			os.popup(MkCustomEmojiDetailedDialog, {
-				emoji: await misskeyApiGet('emoji', {
+				emoji: await rizzkeyApiGet('emoji', {
 					name: props.emoji.name,
 				})
 			}, {

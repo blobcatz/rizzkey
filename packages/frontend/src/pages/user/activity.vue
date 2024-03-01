@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -27,7 +27,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 </template>
 
 <script lang="ts" setup>
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XPv from './activity.pv.vue';
 import XNotes from './activity.notes.vue';
 import XFollowing from './activity.following.vue';
@@ -35,7 +35,7 @@ import MkFoldableSection from '@/components/MkFoldableSection.vue';
 import MkHeatmap from '@/components/MkHeatmap.vue';
 
 const props = defineProps<{
-	user: Misskey.entities.User;
+	user: rizzkey.entities.User;
 }>();
 
 </script>

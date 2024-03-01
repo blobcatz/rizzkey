@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -32,9 +32,9 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MarqueeText from '@/components/MkMarquee.vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { useInterval } from '@/scripts/use-interval.js';
 import { getProxiedImageUrlNullable } from '@/scripts/media-proxy.js';
 
@@ -47,12 +47,12 @@ const props = defineProps<{
 	refreshIntervalSec?: number;
 }>();
 
-const instances = ref<Misskey.entities.FederationInstance[]>([]);
+const instances = ref<rizzkey.entities.FederationInstance[]>([]);
 const fetching = ref(true);
 const key = ref(0);
 
 const tick = () => {
-	misskeyApi('federation/instances', {
+	rizzkeyApi('federation/instances', {
 		sort: '+latestRequestReceivedAt',
 		limit: 30,
 	}).then(res => {

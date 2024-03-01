@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -79,7 +79,7 @@ export class StreamingApiServerService {
 				if (e instanceof AuthenticationError) {
 					socket.write([
 						'HTTP/1.1 401 Unauthorized',
-						'WWW-Authenticate: Bearer realm="Misskey", error="invalid_token", error_description="Failed to authenticate"',
+						'WWW-Authenticate: Bearer realm="rizzkey", error="invalid_token", error_description="Failed to authenticate"',
 					].join('\r\n') + '\r\n\r\n');
 				} else {
 					socket.write('HTTP/1.1 500 Internal Server Error\r\n\r\n');

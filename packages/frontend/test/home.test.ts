@@ -1,19 +1,19 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { afterEach, assert, describe, test } from 'vitest';
 import { cleanup, render, type RenderResult } from '@testing-library/vue';
 import './init';
-import type * as Misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 import { directives } from '@/directives/index.js';
 import { components } from '@/components/index.js';
 import XHome from '@/pages/user/home.vue';
 import 'intersection-observer';
 
 describe('XHome', () => {
-	const renderHome = (user: Partial<Misskey.entities.UserDetailed>): RenderResult => {
+	const renderHome = (user: Partial<rizzkey.entities.UserDetailed>): RenderResult => {
 		return render(XHome, {
 			props: { user, disableNotes: true },
 			global: { directives, components },

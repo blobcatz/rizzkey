@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -8,12 +8,12 @@ process.env.NODE_ENV = 'test';
 import * as assert from 'assert';
 import { api, port, post, signup, startJobQueue } from '../utils.js';
 import type { INestApplicationContext } from '@nestjs/common';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 describe('export-clips', () => {
 	let queue: INestApplicationContext;
-	let alice: misskey.entities.SignupResponse;
-	let bob: misskey.entities.SignupResponse;
+	let alice: rizzkey.entities.SignupResponse;
+	let bob: rizzkey.entities.SignupResponse;
 
 	// XXX: Any better way to get the result?
 	async function pollFirstDriveFile() {

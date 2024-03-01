@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -16,7 +16,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { defineAsyncComponent } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XSection from './els/page-editor.el.section.vue';
 import XText from './els/page-editor.el.text.vue';
 import XImage from './els/page-editor.el.image.vue';
@@ -35,11 +35,11 @@ function getComponent(type: string) {
 const Sortable = defineAsyncComponent(() => import('vuedraggable').then(x => x.default));
 
 const props = defineProps<{
-	modelValue: Misskey.entities.Page['content'];
+	modelValue: rizzkey.entities.Page['content'];
 }>();
 
 const emit = defineEmits<{
-	(ev: 'update:modelValue', value: Misskey.entities.Page['content']): void;
+	(ev: 'update:modelValue', value: rizzkey.entities.Page['content']): void;
 }>();
 
 function updateItem(v) {

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -34,7 +34,7 @@ import MkSuperMenu from '@/components/MkSuperMenu.vue';
 import MkInfo from '@/components/MkInfo.vue';
 import { instance } from '@/instance.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { lookupUser, lookupUserByEmail } from '@/scripts/lookup-user.js';
 import { PageMetadata, definePageMetadata, provideMetadataReceiver, provideReactiveMetadata } from '@/scripts/page-metadata.js';
 import { useRouter } from '@/router/supplier.js';
@@ -63,7 +63,7 @@ let noEmailServer = !instance.enableEmail;
 const thereIsUnresolvedAbuseReport = ref(false);
 const currentPage = computed(() => router.currentRef.value.child);
 
-misskeyApi('admin/abuse-user-reports', {
+rizzkeyApi('admin/abuse-user-reports', {
 	state: 'unresolved',
 	limit: 1,
 }).then(reports => {
@@ -269,7 +269,7 @@ provideMetadataReceiver((metadataGetter) => {
 provideReactiveMetadata(INFO);
 
 function invite() {
-	misskeyApi('admin/invite/create').then(x => {
+	rizzkeyApi('admin/invite/create').then(x => {
 		os.alert({
 			type: 'info',
 			text: x[0].code,

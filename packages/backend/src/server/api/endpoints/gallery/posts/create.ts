@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -45,7 +45,7 @@ export const paramDef = {
 		title: { type: 'string', minLength: 1 },
 		description: { type: 'string', nullable: true },
 		fileIds: { type: 'array', uniqueItems: true, minItems: 1, maxItems: 32, items: {
-			type: 'string', format: 'misskey:id',
+			type: 'string', format: 'rizzkey:id',
 		} },
 		isSensitive: { type: 'boolean', default: false },
 	},

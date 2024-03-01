@@ -1,19 +1,19 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { markRaw } from 'vue';
 import { $i } from '@/account.js';
 import { wsOrigin } from '@/config.js';
 
-let stream: Misskey.Stream | null = null;
+let stream: rizzkey.Stream | null = null;
 
-export function useStream(): Misskey.Stream {
+export function useStream(): rizzkey.Stream {
 	if (stream) return stream;
 
-	stream = markRaw(new Misskey.Stream(wsOrigin, $i ? {
+	stream = markRaw(new rizzkey.Stream(wsOrigin, $i ? {
 		token: $i.token,
 	} : null));
 

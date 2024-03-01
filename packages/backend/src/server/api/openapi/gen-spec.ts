@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -14,7 +14,7 @@ export function genOpenapiSpec(config: Config, includeSelfRef = false) {
 
 		info: {
 			version: config.version,
-			title: 'Misskey API',
+			title: 'rizzkey API',
 			'x-logo': { url: '/static-assets/api-doc.png' },
 		},
 
@@ -61,7 +61,7 @@ export function genOpenapiSpec(config: Config, includeSelfRef = false) {
 		let desc = (endpoint.meta.description ? endpoint.meta.description : 'No description provided.') + '\n\n';
 
 		if (endpoint.meta.secure) {
-			desc += '**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.\n';
+			desc += '**Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.\n';
 		}
 
 		desc += `**Credential required**: *${endpoint.meta.requireCredential ? 'Yes' : 'No'}*`;

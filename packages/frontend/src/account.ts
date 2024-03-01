@@ -1,10 +1,10 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { defineAsyncComponent, reactive, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { showSuspendedDialog } from '@/scripts/show-suspended-dialog.js';
 import { i18n } from '@/i18n.js';
 import { miLocalStorage } from '@/local-storage.js';
@@ -12,12 +12,12 @@ import { MenuButton } from '@/types/menu.js';
 import { del, get, set } from '@/scripts/idb-proxy.js';
 import { apiUrl } from '@/config.js';
 import { waiting, popup, popupMenu, success, alert } from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { unisonReload, reloadChannel } from '@/scripts/unison-reload.js';
 
 // TODO: 他のタブと永続化されたstateを同期
 
-type Account = Misskey.entities.MeDetailed & { token: string };
+type Account = rizzkey.entities.MeDetailed & { token: string };
 
 const accountData = miLocalStorage.getItem('account');
 
@@ -217,8 +217,8 @@ export async function login(token: Account['token'], redirect?: string) {
 export async function openAccountMenu(opts: {
 	includeCurrentAccount?: boolean;
 	withExtraOperation: boolean;
-	active?: Misskey.entities.UserDetailed['id'];
-	onChoose?: (account: Misskey.entities.UserDetailed) => void;
+	active?: rizzkey.entities.UserDetailed['id'];
+	onChoose?: (account: rizzkey.entities.UserDetailed) => void;
 }, ev: MouseEvent) {
 	if (!$i) return;
 
@@ -240,7 +240,7 @@ export async function openAccountMenu(opts: {
 		}, 'closed');
 	}
 
-	async function switchAccount(account: Misskey.entities.UserDetailed) {
+	async function switchAccount(account: rizzkey.entities.UserDetailed) {
 		const storedAccounts = await getAccounts();
 		const found = storedAccounts.find(x => x.id === account.id);
 		if (found == null) return;
@@ -252,9 +252,9 @@ export async function openAccountMenu(opts: {
 	}
 
 	const storedAccounts = await getAccounts().then(accounts => accounts.filter(x => x.id !== $i.id));
-	const accountsPromise = misskeyApi('users/show', { userIds: storedAccounts.map(x => x.id) });
+	const accountsPromise = rizzkeyApi('users/show', { userIds: storedAccounts.map(x => x.id) });
 
-	function createItem(account: Misskey.entities.UserDetailed) {
+	function createItem(account: rizzkey.entities.UserDetailed) {
 		return {
 			type: 'user' as const,
 			user: account,

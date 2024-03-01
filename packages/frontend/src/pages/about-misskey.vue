@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -12,7 +12,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 				<div v-panel class="about">
 					<div ref="containerEl" class="container" :class="{ playing: easterEggEngine != null }">
 						<img src="/client-assets/about-icon.png" alt="" class="icon" draggable="false" @load="iconLoaded" @click="gravity"/>
-						<div class="misskey">Misskey</div>
+						<div class="rizzkey">rizzkey</div>
 						<div class="version">v{{ version }}</div>
 						<span v-for="emoji in easterEggEmojis" :key="emoji.id" class="emoji" :data-physics-x="emoji.left" :data-physics-y="emoji.top" :class="{ _physics_circle_: !emoji.emoji.startsWith(':') }">
 							<MkCustomEmoji v-if="emoji.emoji[0] === ':'" class="emoji" :name="emoji.emoji" :normal="true" :noStyle="true"/>
@@ -22,26 +22,26 @@ SPDX-License-Identifier: AGPL-3.0-only
 					<button v-if="thereIsTreasure" class="_button treasure" @click="getTreasure"><img src="/fluent-emoji/1f3c6.png" class="treasureImg"></button>
 				</div>
 				<div style="text-align: center;">
-					{{ i18n.ts._aboutMisskey.about }}<br><a href="https://misskey-hub.net/docs/about-misskey/" target="_blank" class="_link">{{ i18n.ts.learnMore }}</a>
+					{{ i18n.ts._aboutrizzkey.about }}<br><a href="https://misskey-hub.net/docs/about-rizzkey/" target="_blank" class="_link">{{ i18n.ts.learnMore }}</a>
 				</div>
 				<div v-if="$i != null" style="text-align: center;">
-					<MkButton primary rounded inline @click="iLoveMisskey">I <Mfm text="$[jelly ❤]"/> #Misskey</MkButton>
+					<MkButton primary rounded inline @click="iLoverizzkey">I <Mfm text="$[jelly ❤]"/> #rizzkey</MkButton>
 				</div>
 				<FormSection>
 					<div class="_gaps_s">
 						<FormLink to="https://github.com/misskey-dev/misskey" external>
 							<template #icon><i class="ti ti-code"></i></template>
-							{{ i18n.ts._aboutMisskey.source }} ({{ i18n.ts._aboutMisskey.original }})
+							{{ i18n.ts._aboutrizzkey.source }} ({{ i18n.ts._aboutrizzkey.original }})
 							<template #suffix>GitHub</template>
 						</FormLink>
-						<FormLink to="https://crowdin.com/project/misskey" external>
+						<FormLink to="https://crowdin.com/project/rizzkey" external>
 							<template #icon><i class="ti ti-language-hiragana"></i></template>
-							{{ i18n.ts._aboutMisskey.translation }}
+							{{ i18n.ts._aboutrizzkey.translation }}
 							<template #suffix>Crowdin</template>
 						</FormLink>
 						<FormLink to="https://www.patreon.com/syuilo" external>
 							<template #icon><i class="ti ti-pig-money"></i></template>
-							{{ i18n.ts._aboutMisskey.donate }}
+							{{ i18n.ts._aboutrizzkey.donate }}
 							<template #suffix>Patreon</template>
 						</FormLink>
 					</div>
@@ -49,15 +49,15 @@ SPDX-License-Identifier: AGPL-3.0-only
 				<FormSection v-if="instance.repositoryUrl !== 'https://github.com/misskey-dev/misskey'">
 					<div class="_gaps_s">
 						<MkInfo>
-							{{ i18n.tsx._aboutMisskey.thisIsModifiedVersion({ name: instance.name }) }}
+							{{ i18n.tsx._aboutrizzkey.thisIsModifiedVersion({ name: instance.name }) }}
 						</MkInfo>
 						<FormLink v-if="instance.repositoryUrl" :to="instance.repositoryUrl" external>
 							<template #icon><i class="ti ti-code"></i></template>
-							{{ i18n.ts._aboutMisskey.source }}
+							{{ i18n.ts._aboutrizzkey.source }}
 						</FormLink>
-						<FormLink v-if="instance.providesTarball" :to="`/tarball/misskey-${version}.tar.gz`" external>
+						<FormLink v-if="instance.providesTarball" :to="`/tarball/rizzkey-${version}.tar.gz`" external>
 							<template #icon><i class="ti ti-download"></i></template>
-							{{ i18n.ts._aboutMisskey.source }}
+							{{ i18n.ts._aboutrizzkey.source }}
 							<template #suffix>Tarball</template>
 						</FormLink>
 						<MkInfo v-if="!instance.repositoryUrl && !instance.providesTarball" warn>
@@ -66,7 +66,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 					</div>
 				</FormSection>
 				<FormSection>
-					<template #label>{{ i18n.ts._aboutMisskey.projectMembers }}</template>
+					<template #label>{{ i18n.ts._aboutrizzkey.projectMembers }}</template>
 					<div :class="$style.contributors">
 						<a href="https://github.com/syuilo" target="_blank" :class="$style.contributor">
 							<img src="https://avatars.githubusercontent.com/u/4439005?v=4" :class="$style.contributorAvatar">
@@ -113,7 +113,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 					</div>
 				</FormSection>
 				<FormSection>
-					<template #label><Mfm text="$[jelly ❤]"/> {{ i18n.ts._aboutMisskey.patrons }}</template>
+					<template #label><Mfm text="$[jelly ❤]"/> {{ i18n.ts._aboutrizzkey.patrons }}</template>
 					<div :class="$style.patronsWithIcon">
 						<div v-for="patron in patronsWithIcon" :class="$style.patronWithIcon">
 							<img :src="patron.icon" :class="$style.patronIcon">
@@ -123,7 +123,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 					<div style="margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); grid-gap: 12px;">
 						<div v-for="patron in patrons" :key="patron">{{ patron }}</div>
 					</div>
-					<p>{{ i18n.ts._aboutMisskey.morePatrons }}</p>
+					<p>{{ i18n.ts._aboutrizzkey.morePatrons }}</p>
 				</FormSection>
 			</div>
 		</MkSpacer>
@@ -361,9 +361,9 @@ function gravity() {
 	easterEggEngine.value = physics(containerEl.value);
 }
 
-function iLoveMisskey() {
+function iLoverizzkey() {
 	os.post({
-		initialText: 'I $[jelly ❤] #Misskey',
+		initialText: 'I $[jelly ❤] #rizzkey',
 		instant: true,
 	});
 }
@@ -384,7 +384,7 @@ const headerActions = computed(() => []);
 const headerTabs = computed(() => []);
 
 definePageMetadata(() => ({
-	title: i18n.ts.aboutMisskey,
+	title: i18n.ts.aboutrizzkey,
 	icon: null,
 }));
 </script>
@@ -437,7 +437,7 @@ definePageMetadata(() => ({
 				z-index: 1;
 			}
 
-			> .misskey {
+			> .rizzkey {
 				margin: 0.75em auto 0 auto;
 				width: max-content;
 				position: relative;

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -7,14 +7,14 @@
  * Operations
  * 各種操作
  */
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import type { SwMessage, SwMessageOrderType } from '@/types.js';
 import { getAccountFromId } from '@/scripts/get-account-from-id.js';
 import { getUrlWithLoginId } from '@/scripts/login-id.js';
 
-export const cli = new Misskey.api.APIClient({ origin, fetch: (...args): Promise<Response> => fetch(...args) });
+export const cli = new rizzkey.api.APIClient({ origin, fetch: (...args): Promise<Response> => fetch(...args) });
 
-export async function api<E extends keyof Misskey.Endpoints, O extends Misskey.Endpoints[E]['req']>(endpoint: E, userId?: string, options?: O): Promise<void | ReturnType<typeof cli.request<E, O>>> {
+export async function api<E extends keyof rizzkey.Endpoints, O extends rizzkey.Endpoints[E]['req']>(endpoint: E, userId?: string, options?: O): Promise<void | ReturnType<typeof cli.request<E, O>>> {
 	let account: { token: string; id: string } | void = undefined;
 
 	if (userId) {
@@ -54,7 +54,7 @@ export function openAntenna(antennaId: string, loginId: string): ReturnType<type
 }
 
 // post-formのオプションから投稿フォームを開く
-export async function openPost(options: { initialText?: string; reply?: Misskey.entities.Note; renote?: Misskey.entities.Note }, loginId?: string): ReturnType<typeof openClient> {
+export async function openPost(options: { initialText?: string; reply?: rizzkey.entities.Note; renote?: rizzkey.entities.Note }, loginId?: string): ReturnType<typeof openClient> {
 	// クエリを作成しておく
 	const url = '/share';
 	const query = new URLSearchParams();

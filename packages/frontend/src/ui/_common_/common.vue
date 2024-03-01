@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -46,11 +46,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { defineAsyncComponent, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { swInject } from './sw-inject.js';
 import XNotification from './notification.vue';
 import { popups } from '@/os.js';
-import { pendingApiRequestsCount } from '@/scripts/misskey-api.js';
+import { pendingApiRequestsCount } from '@/scripts/rizzkey-api.js';
 import { uploads } from '@/scripts/upload.js';
 import * as sound from '@/scripts/sound.js';
 import { $i } from '@/account.js';
@@ -64,9 +64,9 @@ const XUpload = defineAsyncComponent(() => import('./upload.vue'));
 
 const dev = _DEV_;
 
-const notifications = ref<Misskey.entities.Notification[]>([]);
+const notifications = ref<rizzkey.entities.Notification[]>([]);
 
-function onNotification(notification: Misskey.entities.Notification, isClient = false) {
+function onNotification(notification: rizzkey.entities.Notification, isClient = false) {
 	if (document.visibilityState === 'visible') {
 		if (!isClient && notification.type !== 'test') {
 			// サーバーサイドのテスト通知の際は自動で既読をつけない（テストできないので）
@@ -83,7 +83,7 @@ function onNotification(notification: Misskey.entities.Notification, isClient = 
 		}, 6000);
 	}
 
-	sound.playMisskeySfx('notification');
+	sound.playrizzkeySfx('notification');
 }
 
 if ($i) {

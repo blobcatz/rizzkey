@@ -1,10 +1,10 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { Router } from '@/nirax.js';
 import { mainRouter } from '@/router/main.js';
@@ -29,7 +29,7 @@ export async function lookup(router?: Router) {
 	}
 
 	if (query.startsWith('https://')) {
-		const promise = misskeyApi('ap/show', {
+		const promise = rizzkeyApi('ap/show', {
 			uri: query,
 		});
 

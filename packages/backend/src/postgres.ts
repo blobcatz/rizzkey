@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -80,10 +80,10 @@ import { MiBubbleGameRecord } from '@/models/BubbleGameRecord.js';
 import { MiReversiGame } from '@/models/ReversiGame.js';
 
 import { Config } from '@/config.js';
-import MisskeyLogger from '@/logger.js';
+import rizzkeyLogger from '@/logger.js';
 import { bindThis } from '@/decorators.js';
 
-export const dbLogger = new MisskeyLogger('db');
+export const dbLogger = new rizzkeyLogger('db');
 
 const sqlLogger = dbLogger.createSubLogger('sql', 'gray', false);
 

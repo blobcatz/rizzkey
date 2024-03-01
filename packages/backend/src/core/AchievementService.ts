@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -66,7 +66,7 @@ export const ACHIEVEMENT_TYPES = [
 	'followers1000',
 	'collectAchievements30',
 	'viewAchievements3min',
-	'iLoveMisskey',
+	'iLoverizzkey',
 	'foundTreasure',
 	'client30min',
 	'client60min',

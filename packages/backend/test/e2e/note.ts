@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -9,14 +9,14 @@ import * as assert from 'assert';
 import { MiNote } from '@/models/Note.js';
 import { MAX_NOTE_TEXT_LENGTH } from '@/const.js';
 import { api, initTestDb, post, signup, uploadFile, uploadUrl } from '../utils.js';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 describe('Note', () => {
 	let Notes: any;
 
-	let alice: misskey.entities.SignupResponse;
-	let bob: misskey.entities.SignupResponse;
-	let tom: misskey.entities.SignupResponse;
+	let alice: rizzkey.entities.SignupResponse;
+	let bob: rizzkey.entities.SignupResponse;
+	let tom: rizzkey.entities.SignupResponse;
 
 	beforeAll(async () => {
 		const connection = await initTestDb(true);

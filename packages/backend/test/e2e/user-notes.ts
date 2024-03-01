@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -7,10 +7,10 @@ process.env.NODE_ENV = 'test';
 
 import * as assert from 'assert';
 import { api, post, signup, uploadUrl } from '../utils.js';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 describe('users/notes', () => {
-	let alice: misskey.entities.SignupResponse;
+	let alice: rizzkey.entities.SignupResponse;
 	let jpgNote: any;
 	let pngNote: any;
 	let jpgPngNote: any;

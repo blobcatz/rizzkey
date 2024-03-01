@@ -1,12 +1,12 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 // AIDX
 // 長さ8の[2000年1月1日からの経過ミリ秒をbase36でエンコードしたもの] + 長さ4の[個体ID] + 長さ4の[カウンタ]
 // (c) mei23
-// https://misskey.m544.net/notes/71899acdcc9859ec5708ac24
+// https://rizzkey.m544.net/notes/71899acdcc9859ec5708ac24
 
 import { customAlphabet } from 'nanoid';
 

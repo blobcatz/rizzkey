@@ -1,9 +1,9 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { $i } from '@/account.js';
 
 export const ACHIEVEMENT_TYPES = [
@@ -62,7 +62,7 @@ export const ACHIEVEMENT_TYPES = [
 	'followers1000',
 	'collectAchievements30',
 	'viewAchievements3min',
-	'iLoveMisskey',
+	'iLoverizzkey',
 	'foundTreasure',
 	'client30min',
 	'client60min',
@@ -338,7 +338,7 @@ export const ACHIEVEMENT_BADGES = {
 		bg: 'linear-gradient(0deg, rgb(144 224 255), rgb(255 168 252))',
 		frame: 'bronze',
 	},
-	'iLoveMisskey': {
+	'iLoverizzkey': {
 		img: '/fluent-emoji/2764.png',
 		bg: 'linear-gradient(0deg, rgb(255 77 77), rgb(247 155 214))',
 		frame: 'silver',
@@ -501,7 +501,7 @@ export async function claimAchievement(type: typeof ACHIEVEMENT_TYPES[number]) {
 	window.setTimeout(() => {
 		claimingQueue.delete(type);
 	}, 500);
-	misskeyApi('i/claim-achievement', { name: type });
+	rizzkeyApi('i/claim-achievement', { name: type });
 }
 
 if (_DEV_) {

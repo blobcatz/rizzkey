@@ -38,7 +38,7 @@ coverage
 docker-compose.yml
 !/.devcontainer/docker-compose.yml
 
-# misskey
+# rizzkey
 /build
 built
 built-test

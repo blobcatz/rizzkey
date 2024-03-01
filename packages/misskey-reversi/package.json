@@ -1,6 +1,6 @@
 {
 	"type": "module",
-	"name": "misskey-reversi",
+	"name": "rizzkey-reversi",
 	"version": "0.0.1",
 	"types": "./built/dts/index.d.ts",
 	"exports": {

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -35,7 +35,7 @@ import { notificationTypes } from '@/const.js';
 import { infoImageUrl } from '@/instance.js';
 import { defaultStore } from '@/store.js';
 import MkPullToRefresh from '@/components/MkPullToRefresh.vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 
 const props = defineProps<{
 	excludeTypes?: typeof notificationTypes[number][];
@@ -76,7 +76,7 @@ function reload() {
 	});
 }
 
-let connection: Misskey.ChannelConnection<Misskey.Channels['main']>;
+let connection: rizzkey.ChannelConnection<rizzkey.Channels['main']>;
 
 onMounted(() => {
 	connection = useStream().useChannel('main');

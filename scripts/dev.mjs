@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -28,19 +28,19 @@ await execa('pnpm', ['build-assets'], {
 	stderr: process.stderr,
 });
 
-await execa('pnpm', ['--filter', 'misskey-js', 'ts'], {
+await execa('pnpm', ['--filter', 'rizzkey-js', 'ts'], {
 	cwd: _dirname + '/../',
 	stdout: process.stdout,
 	stderr: process.stderr,
 });
 
-await execa('pnpm', ['--filter', 'misskey-reversi', 'build:tsc'], {
+await execa('pnpm', ['--filter', 'rizzkey-reversi', 'build:tsc'], {
 	cwd: _dirname + '/../',
 	stdout: process.stdout,
 	stderr: process.stderr,
 });
 
-await execa('pnpm', ['--filter', 'misskey-bubble-game', 'build:tsc'], {
+await execa('pnpm', ['--filter', 'rizzkey-bubble-game', 'build:tsc'], {
 	cwd: _dirname + '/../',
 	stdout: process.stdout,
 	stderr: process.stderr,
@@ -76,19 +76,19 @@ execa('pnpm', ['--filter', 'sw', 'watch'], {
 	stderr: process.stderr,
 });
 
-execa('pnpm', ['--filter', 'misskey-js', 'watch'], {
+execa('pnpm', ['--filter', 'rizzkey-js', 'watch'], {
 	cwd: _dirname + '/../',
 	stdout: process.stdout,
 	stderr: process.stderr,
 });
 
-execa('pnpm', ['--filter', 'misskey-reversi', 'watch'], {
+execa('pnpm', ['--filter', 'rizzkey-reversi', 'watch'], {
 	cwd: _dirname + '/../',
 	stdout: process.stdout,
 	stderr: process.stderr,
 });
 
-execa('pnpm', ['--filter', 'misskey-bubble-game', 'watch'], {
+execa('pnpm', ['--filter', 'rizzkey-bubble-game', 'watch'], {
 	cwd: _dirname + '/../',
 	stdout: process.stdout,
 	stderr: process.stderr,

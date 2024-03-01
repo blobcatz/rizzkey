@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -59,7 +59,7 @@ import { computed, ref, shallowRef } from 'vue';
 import XHeader from './_header_.vue';
 import { i18n } from '@/i18n.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import MkButton from '@/components/MkButton.vue';
 import MkFolder from '@/components/MkFolder.vue';
 import MkSelect from '@/components/MkSelect.vue';
@@ -94,7 +94,7 @@ async function createWithOptions() {
 		count: createCount.value,
 	};
 
-	const tickets = await misskeyApi('admin/invite/create', options);
+	const tickets = await rizzkeyApi('admin/invite/create', options);
 	os.alert({
 		type: 'success',
 		title: i18n.ts.inviteCodeCreated,

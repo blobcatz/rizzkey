@@ -1,19 +1,19 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { url } from '@/config.js';
 
-export const acct = (user: misskey.Acct) => {
-	return Misskey.acct.toString(user);
+export const acct = (user: rizzkey.Acct) => {
+	return rizzkey.acct.toString(user);
 };
 
-export const userName = (user: Misskey.entities.User) => {
+export const userName = (user: rizzkey.entities.User) => {
 	return user.name || user.username;
 };
 
-export const userPage = (user: misskey.Acct, path?, absolute = false) => {
+export const userPage = (user: rizzkey.Acct, path?, absolute = false) => {
 	return `${absolute ? url : ''}/@${acct(user)}${(path ? `/${path}` : '')}`;
 };

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -41,7 +41,7 @@ export const errors = {
 		'I_AM_AI': {
 			value: {
 				error: {
-					message: 'You sent a request to Ai-chan, Misskey\'s showgirl, instead of the server.',
+					message: 'You sent a request to Ai-chan, rizzkey\'s showgirl, instead of the server.',
 					code: 'I_AM_AI',
 					id: '60c46cd1-f23a-46b1-bebe-5d2b73951a84',
 				},

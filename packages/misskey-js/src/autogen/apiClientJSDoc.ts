@@ -325,7 +325,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'admin/emoji/import-zip', P extends Endpoints[E]['req']>(
@@ -964,7 +964,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'auth/accept', P extends Endpoints[E]['req']>(
@@ -1669,7 +1669,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'export-custom-emojis', P extends Endpoints[E]['req']>(
@@ -2044,7 +2044,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/2fa/done', P extends Endpoints[E]['req']>(
@@ -2056,7 +2056,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/2fa/key-done', P extends Endpoints[E]['req']>(
@@ -2068,7 +2068,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/2fa/password-less', P extends Endpoints[E]['req']>(
@@ -2080,7 +2080,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/2fa/register-key', P extends Endpoints[E]['req']>(
@@ -2092,7 +2092,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/2fa/register', P extends Endpoints[E]['req']>(
@@ -2104,7 +2104,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/2fa/update-key', P extends Endpoints[E]['req']>(
@@ -2116,7 +2116,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/2fa/remove-key', P extends Endpoints[E]['req']>(
@@ -2128,7 +2128,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/2fa/unregister', P extends Endpoints[E]['req']>(
@@ -2140,7 +2140,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/apps', P extends Endpoints[E]['req']>(
@@ -2152,7 +2152,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/authorized-apps', P extends Endpoints[E]['req']>(
@@ -2175,7 +2175,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/change-password', P extends Endpoints[E]['req']>(
@@ -2187,7 +2187,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/delete-account', P extends Endpoints[E]['req']>(
@@ -2199,7 +2199,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/export-blocking', P extends Endpoints[E]['req']>(
@@ -2211,7 +2211,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/export-following', P extends Endpoints[E]['req']>(
@@ -2223,7 +2223,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/export-mute', P extends Endpoints[E]['req']>(
@@ -2235,7 +2235,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/export-notes', P extends Endpoints[E]['req']>(
@@ -2247,7 +2247,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/export-clips', P extends Endpoints[E]['req']>(
@@ -2259,7 +2259,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/export-favorites', P extends Endpoints[E]['req']>(
@@ -2271,7 +2271,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/export-user-lists', P extends Endpoints[E]['req']>(
@@ -2283,7 +2283,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/export-antennas', P extends Endpoints[E]['req']>(
@@ -2328,7 +2328,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/import-blocking', P extends Endpoints[E]['req']>(
@@ -2340,7 +2340,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/import-following', P extends Endpoints[E]['req']>(
@@ -2352,7 +2352,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/import-muting', P extends Endpoints[E]['req']>(
@@ -2364,7 +2364,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/import-user-lists', P extends Endpoints[E]['req']>(
@@ -2376,7 +2376,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/import-antennas', P extends Endpoints[E]['req']>(
@@ -2465,7 +2465,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/regenerate-token', P extends Endpoints[E]['req']>(
@@ -2543,7 +2543,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/registry/scopes-with-domain', P extends Endpoints[E]['req']>(
@@ -2566,7 +2566,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/revoke-token', P extends Endpoints[E]['req']>(
@@ -2578,7 +2578,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/signin-history', P extends Endpoints[E]['req']>(
@@ -2601,7 +2601,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/update-email', P extends Endpoints[E]['req']>(
@@ -2624,7 +2624,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'i/move', P extends Endpoints[E]['req']>(
@@ -2768,7 +2768,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'miauth/gen-token', P extends Endpoints[E]['req']>(
@@ -3231,7 +3231,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'page-push', P extends Endpoints[E]['req']>(
@@ -3551,7 +3551,7 @@ declare module '../api.js' {
     /**
      * Check push notification registration exists.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'sw/show-registration', P extends Endpoints[E]['req']>(
@@ -3563,7 +3563,7 @@ declare module '../api.js' {
     /**
      * Update push notification registration.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'sw/update-registration', P extends Endpoints[E]['req']>(
@@ -3575,7 +3575,7 @@ declare module '../api.js' {
     /**
      * Register to receive push notifications.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'sw/register', P extends Endpoints[E]['req']>(
@@ -3972,7 +3972,7 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     request<E extends 'fetch-external-resources', P extends Endpoints[E]['req']>(

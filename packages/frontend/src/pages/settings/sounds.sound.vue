@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -32,8 +32,8 @@ import MkButton from '@/components/MkButton.vue';
 import MkRange from '@/components/MkRange.vue';
 import { i18n } from '@/i18n.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
-import { playMisskeySfxFile, soundsTypes, getSoundDuration } from '@/scripts/sound.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
+import { playrizzkeySfxFile, soundsTypes, getSoundDuration } from '@/scripts/sound.js';
 import { selectFile } from '@/scripts/select-file.js';
 
 const props = defineProps<{
@@ -54,7 +54,7 @@ const fileName = ref<string>('');
 const volume = ref(props.volume);
 
 if (type.value === '_driveFile_' && fileId.value) {
-	const apiRes = await misskeyApi('drive/files/show', {
+	const apiRes = await rizzkeyApi('drive/files/show', {
 		fileId: fileId.value,
 	});
 	fileName.value = apiRes.name;
@@ -119,7 +119,7 @@ function listen() {
 		return;
 	}
 
-	playMisskeySfxFile(type.value === '_driveFile_' ? {
+	playrizzkeySfxFile(type.value === '_driveFile_' ? {
 		type: '_driveFile_',
 		fileId: fileId.value as string,
 		fileUrl: fileUrl.value as string,

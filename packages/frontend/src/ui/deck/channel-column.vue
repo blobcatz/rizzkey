@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -20,13 +20,13 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { shallowRef } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XColumn from './column.vue';
 import { updateColumn, Column } from './deck-store.js';
 import MkTimeline from '@/components/MkTimeline.vue';
 import MkButton from '@/components/MkButton.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 
 const props = defineProps<{
@@ -35,14 +35,14 @@ const props = defineProps<{
 }>();
 
 const timeline = shallowRef<InstanceType<typeof MkTimeline>>();
-const channel = shallowRef<Misskey.entities.Channel>();
+const channel = shallowRef<rizzkey.entities.Channel>();
 
 if (props.column.channelId == null) {
 	setChannel();
 }
 
 async function setChannel() {
-	const channels = await misskeyApi('channels/my-favorites', {
+	const channels = await rizzkeyApi('channels/my-favorites', {
 		limit: 100,
 	});
 	const { canceled, result: channel } = await os.select({
@@ -61,7 +61,7 @@ async function setChannel() {
 
 async function post() {
 	if (!channel.value || channel.value.id !== props.column.channelId) {
-		channel.value = await misskeyApi('channels/show', {
+		channel.value = await rizzkeyApi('channels/show', {
 			channelId: props.column.channelId,
 		});
 	}

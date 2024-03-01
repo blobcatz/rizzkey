@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -20,7 +20,7 @@ import MkTextarea from '@/components/MkTextarea.vue';
 import MkInfo from '@/components/MkInfo.vue';
 import MkButton from '@/components/MkButton.vue';
 import { signinRequired } from '@/account.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 
 const $i = signinRequired();
@@ -34,7 +34,7 @@ async function save() {
 		.map(el => el.trim())
 		.filter(el => el);
 
-	await misskeyApi('i/update', {
+	await rizzkeyApi('i/update', {
 		mutedInstances: mutes,
 	});
 

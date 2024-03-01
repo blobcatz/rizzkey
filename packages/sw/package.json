@@ -11,7 +11,7 @@
 	"dependencies": {
 		"esbuild": "0.19.11",
 		"idb-keyval": "6.2.1",
-		"misskey-js": "workspace:*"
+		"rizzkey-js": "workspace:*"
 	},
 	"devDependencies": {
 		"@misskey-dev/eslint-plugin": "1.0.0",

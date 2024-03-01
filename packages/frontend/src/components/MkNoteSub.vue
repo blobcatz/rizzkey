@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -41,19 +41,19 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkNoteHeader from '@/components/MkNoteHeader.vue';
 import MkSubNoteContent from '@/components/MkSubNoteContent.vue';
 import MkCwButton from '@/components/MkCwButton.vue';
 import { notePage } from '@/filters/note.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { $i } from '@/account.js';
 import { userPage } from '@/filters/user.js';
 import { checkWordMute } from '@/scripts/check-word-mute.js';
 
 const props = withDefaults(defineProps<{
-	note: Misskey.entities.Note;
+	note: rizzkey.entities.Note;
 	detail?: boolean;
 
 	// how many notes are in between this one and the note being viewed in detail
@@ -65,10 +65,10 @@ const props = withDefaults(defineProps<{
 const muted = ref($i ? checkWordMute(props.note, $i, $i.mutedWords) : false);
 
 const showContent = ref(false);
-const replies = ref<Misskey.entities.Note[]>([]);
+const replies = ref<rizzkey.entities.Note[]>([]);
 
 if (props.detail) {
-	misskeyApi('notes/children', {
+	rizzkeyApi('notes/children', {
 		noteId: props.note.id,
 		limit: 5,
 	}).then(res => {

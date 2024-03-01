@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -15,13 +15,13 @@ SPDX-License-Identifier: AGPL-3.0-only
 </template>
 
 <script lang="ts" setup>
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { toUnicode } from 'punycode/';
 import { host as hostRaw } from '@/config.js';
 import { defaultStore } from '@/store.js';
 
 defineProps<{
-	user: Misskey.entities.User;
+	user: rizzkey.entities.User;
 	detail?: boolean;
 }>();
 

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -13,6 +13,6 @@ export class removeUnused1678427401214 {
 
     async down(queryRunner) {
         await queryRunner.query(`ALTER TABLE "meta" ADD "pinnedClipId" character varying(32)`);
-        await queryRunner.query(`ALTER TABLE "meta" ADD "pinnedPages" character varying(512) array NOT NULL DEFAULT '{/featured,/channels,/explore,/pages,/about-misskey}'`);
+        await queryRunner.query(`ALTER TABLE "meta" ADD "pinnedPages" character varying(512) array NOT NULL DEFAULT '{/featured,/channels,/explore,/pages,/about-rizzkey}'`);
     }
 }

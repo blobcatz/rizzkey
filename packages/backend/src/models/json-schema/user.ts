@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -29,7 +29,7 @@ export const notificationRecieveConfig = {
 				},
 				userListId: {
 					type: 'string',
-					format: 'misskey:id',
+					format: 'rizzkey:id',
 				},
 			},
 			required: ['type', 'userListId'],
@@ -59,7 +59,7 @@ export const packedUserLiteSchema = {
 		host: {
 			type: 'string',
 			nullable: true, optional: false,
-			example: 'misskey.example.com',
+			example: 'rizzkey.example.com',
 			description: 'The local host is represented with `null`.',
 		},
 		avatarUrl: {

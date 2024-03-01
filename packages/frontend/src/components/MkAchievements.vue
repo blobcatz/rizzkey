@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -52,15 +52,15 @@ SPDX-License-Identifier: AGPL-3.0-only
 </template>
 
 <script lang="ts" setup>
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { onMounted, ref, computed } from 'vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { ACHIEVEMENT_TYPES, ACHIEVEMENT_BADGES, claimAchievement } from '@/scripts/achievements.js';
 
 const props = withDefaults(defineProps<{
-	user: Misskey.entities.User;
+	user: rizzkey.entities.User;
 	withLocked: boolean;
 	withDescription: boolean;
 }>(), {
@@ -68,11 +68,11 @@ const props = withDefaults(defineProps<{
 	withDescription: true,
 });
 
-const achievements = ref<Misskey.entities.UsersAchievementsResponse | null>(null);
+const achievements = ref<rizzkey.entities.UsersAchievementsResponse | null>(null);
 const lockedAchievements = computed(() => ACHIEVEMENT_TYPES.filter(x => !(achievements.value ?? []).some(a => a.name === x)));
 
 function fetch() {
-	misskeyApi('users/achievements', { userId: props.user.id }).then(res => {
+	rizzkeyApi('users/achievements', { userId: props.user.id }).then(res => {
 		achievements.value = [];
 		for (const t of ACHIEVEMENT_TYPES) {
 			const a = res.find(x => x.name === t);

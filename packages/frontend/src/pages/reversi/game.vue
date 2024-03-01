@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -11,10 +11,10 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, watch, ref, onMounted, shallowRef, onUnmounted } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import GameSetting from './game.setting.vue';
 import GameBoard from './game.board.vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { useStream } from '@/stream.js';
 import { signinRequired } from '@/account.js';
@@ -31,19 +31,19 @@ const props = defineProps<{
 	gameId: string;
 }>();
 
-const game = shallowRef<Misskey.entities.ReversiGameDetailed | null>(null);
-const connection = shallowRef<Misskey.ChannelConnection | null>(null);
+const game = shallowRef<rizzkey.entities.ReversiGameDetailed | null>(null);
+const connection = shallowRef<rizzkey.ChannelConnection | null>(null);
 const shareWhenStart = ref(false);
 
 watch(() => props.gameId, () => {
 	fetchGame();
 });
 
-function start(_game: Misskey.entities.ReversiGameDetailed) {
+function start(_game: rizzkey.entities.ReversiGameDetailed) {
 	if (game.value?.isStarted) return;
 
 	if (shareWhenStart.value) {
-		misskeyApi('notes/create', {
+		rizzkeyApi('notes/create', {
 			text: i18n.ts._reversi.iStartedAGame + '\n' + location.href,
 			visibility: 'home',
 		});
@@ -53,7 +53,7 @@ function start(_game: Misskey.entities.ReversiGameDetailed) {
 }
 
 async function fetchGame() {
-	const _game = await misskeyApi('reversi/show-game', {
+	const _game = await rizzkeyApi('reversi/show-game', {
 		gameId: props.gameId,
 	});
 
@@ -89,7 +89,7 @@ useInterval(async () => {
 	if (game.value == null) return;
 	if (game.value.isStarted) return;
 
-	const _game = await misskeyApi('reversi/show-game', {
+	const _game = await rizzkeyApi('reversi/show-game', {
 		gameId: props.gameId,
 	});
 

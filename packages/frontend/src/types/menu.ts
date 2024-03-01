@@ -1,9 +1,9 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { ComputedRef, Ref } from 'vue';
 
 export type MenuAction = (ev: MouseEvent) => void;
@@ -11,11 +11,11 @@ export type MenuAction = (ev: MouseEvent) => void;
 export type MenuDivider = { type: 'divider' };
 export type MenuNull = undefined;
 export type MenuLabel = { type: 'label', text: string };
-export type MenuLink = { type: 'link', to: string, text: string, icon?: string, indicate?: boolean, avatar?: Misskey.entities.User };
+export type MenuLink = { type: 'link', to: string, text: string, icon?: string, indicate?: boolean, avatar?: rizzkey.entities.User };
 export type MenuA = { type: 'a', href: string, target?: string, download?: string, text: string, icon?: string, indicate?: boolean };
-export type MenuUser = { type: 'user', user: Misskey.entities.User, active?: boolean, indicate?: boolean, action: MenuAction };
+export type MenuUser = { type: 'user', user: rizzkey.entities.User, active?: boolean, indicate?: boolean, action: MenuAction };
 export type MenuSwitch = { type: 'switch', ref: Ref<boolean>, text: string, disabled?: boolean | Ref<boolean> };
-export type MenuButton = { type?: 'button', text: string, icon?: string, indicate?: boolean, danger?: boolean, active?: boolean | ComputedRef<boolean>, avatar?: Misskey.entities.User; action: MenuAction };
+export type MenuButton = { type?: 'button', text: string, icon?: string, indicate?: boolean, danger?: boolean, active?: boolean | ComputedRef<boolean>, avatar?: rizzkey.entities.User; action: MenuAction };
 export type MenuParent = { type: 'parent', text: string, icon?: string, children: MenuItem[] | (() => Promise<MenuItem[]> | MenuItem[]) };
 
 export type MenuPending = { type: 'pending' };

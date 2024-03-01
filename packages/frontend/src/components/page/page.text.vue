@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -13,14 +13,14 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts" setup>
 import { defineAsyncComponent } from 'vue';
 import * as mfm from 'mfm-js';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { extractUrlFromMfm } from '@/scripts/extract-url-from-mfm.js';
 
 const MkUrlPreview = defineAsyncComponent(() => import('@/components/MkUrlPreview.vue'));
 
 const props = defineProps<{
-	block: Misskey.entities.PageBlock,
-	page: Misskey.entities.Page,
+	block: rizzkey.entities.PageBlock,
+	page: rizzkey.entities.Page,
 }>();
 
 const urls = props.block.text ? extractUrlFromMfm(mfm.parse(props.block.text)) : [];

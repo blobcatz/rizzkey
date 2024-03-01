@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -12,21 +12,21 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkNote from '@/components/MkNote.vue';
 import MkNoteDetailed from '@/components/MkNoteDetailed.vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 
 const props = defineProps<{
-	block: Misskey.entities.PageBlock,
-	page: Misskey.entities.Page,
+	block: rizzkey.entities.PageBlock,
+	page: rizzkey.entities.Page,
 }>();
 
-const note = ref<Misskey.entities.Note | null>(null);
+const note = ref<rizzkey.entities.Note | null>(null);
 
 onMounted(() => {
 	if (props.block.note == null) return;
-	misskeyApi('notes/show', { noteId: props.block.note })
+	rizzkeyApi('notes/show', { noteId: props.block.note })
 		.then(result => {
 			note.value = result;
 		});

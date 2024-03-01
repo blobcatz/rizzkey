@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -160,7 +160,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts" setup>
 import { computed, inject, onMounted, ref, shallowRef, Ref, watch, provide } from 'vue';
 import * as mfm from 'mfm-js';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkNoteSub from '@/components/MkNoteSub.vue';
 import MkNoteHeader from '@/components/MkNoteHeader.vue';
 import MkNoteSimple from '@/components/MkNoteSimple.vue';
@@ -177,7 +177,7 @@ import { checkWordMute } from '@/scripts/check-word-mute.js';
 import { userPage } from '@/filters/user.js';
 import * as os from '@/os.js';
 import * as sound from '@/scripts/sound.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { defaultStore, noteViewInterruptors } from '@/store.js';
 import { reactionPicker } from '@/scripts/reaction-picker.js';
 import { extractUrlFromMfm } from '@/scripts/extract-url-from-mfm.js';
@@ -195,7 +195,7 @@ import { showMovedDialog } from '@/scripts/show-moved-dialog.js';
 import { shouldCollapsed } from '@/scripts/collapsed.js';
 
 const props = withDefaults(defineProps<{
-	note: Misskey.entities.Note;
+	note: rizzkey.entities.Note;
 	pinned?: boolean;
 	mock?: boolean;
 	withHardMute?: boolean;
@@ -212,17 +212,17 @@ const emit = defineEmits<{
 
 const inTimeline = inject<boolean>('inTimeline', false);
 const inChannel = inject('inChannel', null);
-const currentClip = inject<Ref<Misskey.entities.Clip> | null>('currentClip', null);
+const currentClip = inject<Ref<rizzkey.entities.Clip> | null>('currentClip', null);
 
 const note = ref(deepClone(props.note));
 
 // plugin
 if (noteViewInterruptors.length > 0) {
 	onMounted(async () => {
-		let result: Misskey.entities.Note | null = deepClone(note.value);
+		let result: rizzkey.entities.Note | null = deepClone(note.value);
 		for (const interruptor of noteViewInterruptors) {
 			try {
-				result = await interruptor.handler(result!) as Misskey.entities.Note | null;
+				result = await interruptor.handler(result!) as rizzkey.entities.Note | null;
 				if (result === null) {
 					isDeleted.value = true;
 					return;
@@ -231,7 +231,7 @@ if (noteViewInterruptors.length > 0) {
 				console.error(err);
 			}
 		}
-		note.value = result as Misskey.entities.Note;
+		note.value = result as rizzkey.entities.Note;
 	});
 }
 
@@ -249,7 +249,7 @@ const renoteButton = shallowRef<HTMLElement>();
 const renoteTime = shallowRef<HTMLElement>();
 const reactButton = shallowRef<HTMLElement>();
 const clipButton = shallowRef<HTMLElement>();
-const appearNote = computed(() => isRenote ? note.value.renote as Misskey.entities.Note : note.value);
+const appearNote = computed(() => isRenote ? note.value.renote as rizzkey.entities.Note : note.value);
 const isMyRenote = $i && ($i.id === note.value.userId);
 const showContent = ref(false);
 const parsed = computed(() => appearNote.value.text ? mfm.parse(appearNote.value.text) : null);
@@ -259,7 +259,7 @@ const collapsed = ref(appearNote.value.cw == null && isLong);
 const isDeleted = ref(false);
 const muted = ref(checkMute(appearNote.value, $i?.mutedWords));
 const hardMuted = ref(props.withHardMute && checkMute(appearNote.value, $i?.hardMutedWords, true));
-const translation = ref<Misskey.entities.NotesTranslateResponse | null>(null);
+const translation = ref<rizzkey.entities.NotesTranslateResponse | null>(null);
 const translating = ref(false);
 const showTicker = (defaultStore.state.instanceTicker === 'always') || (defaultStore.state.instanceTicker === 'remote' && appearNote.value.user.instance);
 const canRenote = computed(() => ['public', 'home'].includes(appearNote.value.visibility) || (appearNote.value.visibility === 'followers' && appearNote.value.userId === $i?.id));
@@ -271,10 +271,10 @@ const renoteCollapsed = ref(
 );
 
 /* Overload FunctionにLintが対応していないのでコメントアウト
-function checkMute(noteToCheck: Misskey.entities.Note, mutedWords: Array<string | string[]> | undefined | null, checkOnly: true): boolean;
-function checkMute(noteToCheck: Misskey.entities.Note, mutedWords: Array<string | string[]> | undefined | null, checkOnly: false): boolean | 'sensitiveMute';
+function checkMute(noteToCheck: rizzkey.entities.Note, mutedWords: Array<string | string[]> | undefined | null, checkOnly: true): boolean;
+function checkMute(noteToCheck: rizzkey.entities.Note, mutedWords: Array<string | string[]> | undefined | null, checkOnly: false): boolean | 'sensitiveMute';
 */
-function checkMute(noteToCheck: Misskey.entities.Note, mutedWords: Array<string | string[]> | undefined | null, checkOnly = false): boolean | 'sensitiveMute' {
+function checkMute(noteToCheck: rizzkey.entities.Note, mutedWords: Array<string | string[]> | undefined | null, checkOnly = false): boolean | 'sensitiveMute' {
 	if (mutedWords == null) return false;
 
 	if (checkWordMute(noteToCheck, $i, mutedWords)) return true;
@@ -299,7 +299,7 @@ const keymap = {
 };
 
 provide('react', (reaction: string) => {
-	misskeyApi('notes/reactions/create', {
+	rizzkeyApi('notes/reactions/create', {
 		noteId: appearNote.value.id,
 		reaction: reaction,
 	});
@@ -320,7 +320,7 @@ if (props.mock) {
 
 if (!props.mock) {
 	useTooltip(renoteButton, async (showing) => {
-		const renotes = await misskeyApi('notes/renotes', {
+		const renotes = await rizzkeyApi('notes/renotes', {
 			noteId: appearNote.value.id,
 			limit: 11,
 		});
@@ -366,13 +366,13 @@ function react(viaKeyboard = false): void {
 	pleaseLogin();
 	showMovedDialog();
 	if (appearNote.value.reactionAcceptance === 'likeOnly') {
-		sound.playMisskeySfx('reaction');
+		sound.playrizzkeySfx('reaction');
 
 		if (props.mock) {
 			return;
 		}
 
-		misskeyApi('notes/reactions/create', {
+		rizzkeyApi('notes/reactions/create', {
 			noteId: appearNote.value.id,
 			reaction: '❤️',
 		});
@@ -386,14 +386,14 @@ function react(viaKeyboard = false): void {
 	} else {
 		blur();
 		reactionPicker.show(reactButton.value ?? null, note.value, reaction => {
-			sound.playMisskeySfx('reaction');
+			sound.playrizzkeySfx('reaction');
 
 			if (props.mock) {
 				emit('reaction', reaction);
 				return;
 			}
 
-			misskeyApi('notes/reactions/create', {
+			rizzkeyApi('notes/reactions/create', {
 				noteId: appearNote.value.id,
 				reaction: reaction,
 			});
@@ -406,7 +406,7 @@ function react(viaKeyboard = false): void {
 	}
 }
 
-function undoReact(targetNote: Misskey.entities.Note): void {
+function undoReact(targetNote: rizzkey.entities.Note): void {
 	const oldReaction = targetNote.myReaction;
 	if (!oldReaction) return;
 
@@ -415,7 +415,7 @@ function undoReact(targetNote: Misskey.entities.Note): void {
 		return;
 	}
 
-	misskeyApi('notes/reactions/delete', {
+	rizzkeyApi('notes/reactions/delete', {
 		noteId: targetNote.id,
 	});
 }
@@ -477,7 +477,7 @@ function showRenoteMenu(viaKeyboard = false): void {
 			icon: 'ti ti-trash',
 			danger: true,
 			action: () => {
-				misskeyApi('notes/delete', {
+				rizzkeyApi('notes/delete', {
 					noteId: note.value.id,
 				});
 				isDeleted.value = true;
@@ -523,7 +523,7 @@ function focusAfter() {
 }
 
 function readPromo() {
-	misskeyApi('promo/read', {
+	rizzkeyApi('promo/read', {
 		noteId: appearNote.value.id,
 	});
 	isDeleted.value = true;

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -63,10 +63,10 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, watch, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkButton from '@/components/MkButton.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import MkContainer from '@/components/MkContainer.vue';
 import MkPagination from '@/components/MkPagination.vue';
 import MkGalleryPostPreview from '@/components/MkGalleryPostPreview.vue';
@@ -86,7 +86,7 @@ const props = defineProps<{
 	postId: string;
 }>();
 
-const post = ref<Misskey.entities.GalleryPost | null>(null);
+const post = ref<rizzkey.entities.GalleryPost | null>(null);
 const error = ref<any>(null);
 const otherPostsPagination = {
 	endpoint: 'users/gallery/posts' as const,
@@ -98,7 +98,7 @@ const otherPostsPagination = {
 
 function fetchPost() {
 	post.value = null;
-	misskeyApi('gallery/posts/show', {
+	rizzkeyApi('gallery/posts/show', {
 		postId: props.postId,
 	}).then(_post => {
 		post.value = _post;

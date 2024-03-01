@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -26,7 +26,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 
 const props = withDefaults(defineProps<{
@@ -44,12 +44,12 @@ async function onClick() {
 
 	try {
 		if (isFollowing.value) {
-			await misskeyApi('channels/unfollow', {
+			await rizzkeyApi('channels/unfollow', {
 				channelId: props.channel.id,
 			});
 			isFollowing.value = false;
 		} else {
-			await misskeyApi('channels/follow', {
+			await rizzkeyApi('channels/follow', {
 				channelId: props.channel.id,
 			});
 			isFollowing.value = true;

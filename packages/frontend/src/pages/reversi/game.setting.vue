@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -111,8 +111,8 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, watch, ref, onMounted, shallowRef, onUnmounted } from 'vue';
-import * as Misskey from 'misskey-js';
-import * as Reversi from 'misskey-reversi';
+import * as rizzkey from 'rizzkey-js';
+import * as Reversi from 'rizzkey-reversi';
 import { i18n } from '@/i18n.js';
 import { signinRequired } from '@/account.js';
 import { deepClone } from '@/scripts/clone.js';
@@ -131,13 +131,13 @@ const router = useRouter();
 const mapCategories = Array.from(new Set(Object.values(Reversi.maps).map(x => x.category)));
 
 const props = defineProps<{
-	game: Misskey.entities.ReversiGameDetailed;
-	connection: Misskey.ChannelConnection;
+	game: rizzkey.entities.ReversiGameDetailed;
+	connection: rizzkey.ChannelConnection;
 }>();
 
 const shareWhenStart = defineModel<boolean>('shareWhenStart', { default: false });
 
-const game = ref<Misskey.entities.ReversiGameDetailed>(deepClone(props.game));
+const game = ref<rizzkey.entities.ReversiGameDetailed>(deepClone(props.game));
 
 const mapName = computed(() => {
 	if (game.value.map == null) return 'Random';
@@ -217,14 +217,14 @@ function onChangeReadyStates(states) {
 	game.value.user2Ready = states.user2;
 }
 
-function updateSettings(key: keyof Misskey.entities.ReversiGameDetailed) {
+function updateSettings(key: keyof rizzkey.entities.ReversiGameDetailed) {
 	props.connection.send('updateSettings', {
 		key: key,
 		value: game.value[key],
 	});
 }
 
-function onUpdateSettings({ userId, key, value }: { userId: string; key: keyof Misskey.entities.ReversiGameDetailed; value: any; }) {
+function onUpdateSettings({ userId, key, value }: { userId: string; key: keyof rizzkey.entities.ReversiGameDetailed; value: any; }) {
 	if (userId === $i.id) return;
 	if (game.value[key] === value) return;
 	game.value[key] = value;

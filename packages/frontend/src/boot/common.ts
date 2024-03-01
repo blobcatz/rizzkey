@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -25,7 +25,7 @@ import { fetchCustomEmojis } from '@/custom-emojis.js';
 import { setupRouter } from '@/router/definition.js';
 
 export async function common(createVue: () => App<Element>) {
-	console.info(`Misskey v${version}`);
+	console.info(`rizzkey v${version}`);
 
 	if (_DEV_) {
 		console.warn('Development mode!!!');
@@ -138,7 +138,7 @@ export async function common(createVue: () => App<Element>) {
 			}
 		}
 
-		history.replaceState({ misskey: 'loginId' }, '', target);
+		history.replaceState({ rizzkey: 'loginId' }, '', target);
 	}
 	//#endregion
 
@@ -249,9 +249,9 @@ export async function common(createVue: () => App<Element>) {
 	// https://github.com/misskey-dev/misskey/pull/8575#issuecomment-1114239210
 	// なぜか2回実行されることがあるため、mountするdivを1つに制限する
 	const rootEl = ((): HTMLElement => {
-		const MISSKEY_MOUNT_DIV_ID = 'misskey_app';
+		const rizzkey_MOUNT_DIV_ID = 'rizzkey_app';
 
-		const currentRoot = document.getElementById(MISSKEY_MOUNT_DIV_ID);
+		const currentRoot = document.getElementById(rizzkey_MOUNT_DIV_ID);
 
 		if (currentRoot) {
 			console.warn('multiple import detected');
@@ -259,7 +259,7 @@ export async function common(createVue: () => App<Element>) {
 		}
 
 		const root = document.createElement('div');
-		root.id = MISSKEY_MOUNT_DIV_ID;
+		root.id = rizzkey_MOUNT_DIV_ID;
 		document.body.appendChild(root);
 		return root;
 	})();

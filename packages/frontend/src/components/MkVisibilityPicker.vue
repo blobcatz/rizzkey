@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -43,14 +43,14 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { nextTick, shallowRef, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkModal from '@/components/MkModal.vue';
 import { i18n } from '@/i18n.js';
 
 const modal = shallowRef<InstanceType<typeof MkModal>>();
 
 const props = withDefaults(defineProps<{
-	currentVisibility: typeof Misskey.noteVisibilities[number];
+	currentVisibility: typeof rizzkey.noteVisibilities[number];
 	isSilenced: boolean;
 	localOnly: boolean;
 	src?: HTMLElement;
@@ -59,13 +59,13 @@ const props = withDefaults(defineProps<{
 });
 
 const emit = defineEmits<{
-	(ev: 'changeVisibility', v: typeof Misskey.noteVisibilities[number]): void;
+	(ev: 'changeVisibility', v: typeof rizzkey.noteVisibilities[number]): void;
 	(ev: 'closed'): void;
 }>();
 
 const v = ref(props.currentVisibility);
 
-function choose(visibility: typeof Misskey.noteVisibilities[number]): void {
+function choose(visibility: typeof rizzkey.noteVisibilities[number]): void {
 	v.value = visibility;
 	emit('changeVisibility', visibility);
 	nextTick(() => {

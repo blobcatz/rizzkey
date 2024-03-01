@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -102,7 +102,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts" setup>
 import { inject, watch, nextTick, onMounted, defineAsyncComponent, provide, shallowRef, ref, computed } from 'vue';
 import * as mfm from 'mfm-js';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import insertTextAtCursor from 'insert-text-at-cursor';
 import { toASCII } from 'punycode/';
 import MkNoteSimple from '@/components/MkNoteSimple.vue';
@@ -115,7 +115,7 @@ import { extractMentions } from '@/scripts/extract-mentions.js';
 import { formatTimeString } from '@/scripts/format-time-string.js';
 import { Autocomplete } from '@/scripts/autocomplete.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { selectFiles } from '@/scripts/select-file.js';
 import { defaultStore, notePostInterruptors, postFormActions } from '@/store.js';
 import MkInfo from '@/components/MkInfo.vue';
@@ -135,18 +135,18 @@ const $i = signinRequired();
 const modal = inject('modal');
 
 const props = withDefaults(defineProps<{
-	reply?: Misskey.entities.Note;
-	renote?: Misskey.entities.Note;
-	channel?: Misskey.entities.Channel; // TODO
-	mention?: Misskey.entities.User;
-	specified?: Misskey.entities.UserDetailed;
+	reply?: rizzkey.entities.Note;
+	renote?: rizzkey.entities.Note;
+	channel?: rizzkey.entities.Channel; // TODO
+	mention?: rizzkey.entities.User;
+	specified?: rizzkey.entities.UserDetailed;
 	initialText?: string;
 	initialCw?: string;
-	initialVisibility?: (typeof Misskey.noteVisibilities)[number];
-	initialFiles?: Misskey.entities.DriveFile[];
+	initialVisibility?: (typeof rizzkey.noteVisibilities)[number];
+	initialFiles?: rizzkey.entities.DriveFile[];
 	initialLocalOnly?: boolean;
-	initialVisibleUsers?: Misskey.entities.UserDetailed[];
-	initialNote?: Misskey.entities.Note;
+	initialVisibleUsers?: rizzkey.entities.UserDetailed[];
+	initialNote?: rizzkey.entities.Note;
 	instant?: boolean;
 	fixed?: boolean;
 	autofocus?: boolean;
@@ -186,8 +186,8 @@ const showAddMfmFunction = ref(defaultStore.state.enableQuickAddMfmFunction);
 watch(showAddMfmFunction, () => defaultStore.set('enableQuickAddMfmFunction', showAddMfmFunction.value));
 const cw = ref<string | null>(props.initialCw ?? null);
 const localOnly = ref<boolean>(props.initialLocalOnly ?? defaultStore.state.rememberNoteVisibility ? defaultStore.state.localOnly : defaultStore.state.defaultNoteLocalOnly);
-const visibility = ref(props.initialVisibility ?? (defaultStore.state.rememberNoteVisibility ? defaultStore.state.visibility : defaultStore.state.defaultNoteVisibility) as typeof Misskey.noteVisibilities[number]);
-const visibleUsers = ref<Misskey.entities.UserDetailed[]>([]);
+const visibility = ref(props.initialVisibility ?? (defaultStore.state.rememberNoteVisibility ? defaultStore.state.visibility : defaultStore.state.defaultNoteVisibility) as typeof rizzkey.noteVisibilities[number]);
+const visibleUsers = ref<rizzkey.entities.UserDetailed[]>([]);
 if (props.initialVisibleUsers) {
 	props.initialVisibleUsers.forEach(pushVisibleUser);
 }
@@ -326,7 +326,7 @@ if (props.reply && ['home', 'followers', 'specified'].includes(props.reply.visib
 
 	if (visibility.value === 'specified') {
 		if (props.reply.visibleUserIds) {
-			misskeyApi('users/show', {
+			rizzkeyApi('users/show', {
 				userIds: props.reply.visibleUserIds.filter(uid => uid !== $i.id && uid !== props.reply?.userId),
 			}).then(users => {
 				users.forEach(pushVisibleUser);
@@ -334,7 +334,7 @@ if (props.reply && ['home', 'followers', 'specified'].includes(props.reply.visib
 		}
 
 		if (props.reply.userId !== $i.id) {
-			misskeyApi('users/show', { userId: props.reply.userId }).then(user => {
+			rizzkeyApi('users/show', { userId: props.reply.userId }).then(user => {
 				pushVisibleUser(user);
 			});
 		}
@@ -381,7 +381,7 @@ function addMissingMention() {
 
 	for (const x of extractMentions(ast)) {
 		if (!visibleUsers.value.some(u => (u.username === x.username) && (u.host === x.host))) {
-			misskeyApi('users/show', { username: x.username, host: x.host }).then(user => {
+			rizzkeyApi('users/show', { username: x.username, host: x.host }).then(user => {
 				visibleUsers.value.push(user);
 			});
 		}
@@ -437,7 +437,7 @@ function updateFileName(file, name) {
 	files.value[files.value.findIndex(x => x.id === file.id)].name = name;
 }
 
-function replaceFile(file: Misskey.entities.DriveFile, newFile: Misskey.entities.DriveFile): void {
+function replaceFile(file: rizzkey.entities.DriveFile, newFile: rizzkey.entities.DriveFile): void {
 	files.value[files.value.findIndex(x => x.id === file.id)] = newFile;
 }
 
@@ -530,7 +530,7 @@ async function toggleReactionAcceptance() {
 	reactionAcceptance.value = select.result;
 }
 
-function pushVisibleUser(user: Misskey.entities.UserDetailed) {
+function pushVisibleUser(user: rizzkey.entities.UserDetailed) {
 	if (!visibleUsers.value.some(u => u.username === user.username && u.host === user.host)) {
 		visibleUsers.value.push(user);
 	}
@@ -541,7 +541,7 @@ function addVisibleUser() {
 		pushVisibleUser(user);
 
 		if (!text.value.toLowerCase().includes(`@${user.username.toLowerCase()}`)) {
-			text.value = `@${Misskey.acct.toString(user)} ${text.value}`;
+			text.value = `@${rizzkey.acct.toString(user)} ${text.value}`;
 		}
 	});
 }
@@ -788,7 +788,7 @@ async function post(ev?: MouseEvent) {
 	}
 
 	posting.value = true;
-	misskeyApi('notes/create', postData, token).then(() => {
+	rizzkeyApi('notes/create', postData, token).then(() => {
 		if (props.freezeAfterPosted) {
 			posted.value = true;
 		} else {
@@ -812,8 +812,8 @@ async function post(ev?: MouseEvent) {
 
 			const text = postData.text ?? '';
 			const lowerCase = text.toLowerCase();
-			if ((lowerCase.includes('love') || lowerCase.includes('❤')) && lowerCase.includes('misskey')) {
-				claimAchievement('iLoveMisskey');
+			if ((lowerCase.includes('love') || lowerCase.includes('❤')) && lowerCase.includes('rizzkey')) {
+				claimAchievement('iLoverizzkey');
 			}
 			if ([
 				'https://youtu.be/Efrlqw8ytg4',
@@ -862,7 +862,7 @@ function cancel() {
 
 function insertMention() {
 	os.selectUser({ localOnly: localOnly.value, includeSelf: true }).then(user => {
-		insertTextAtCursor(textareaEl.value, '@' + Misskey.acct.toString(user) + ' ');
+		insertTextAtCursor(textareaEl.value, '@' + rizzkey.acct.toString(user) + ' ');
 	});
 }
 
@@ -907,7 +907,7 @@ function showActions(ev: MouseEvent) {
 	})), ev.currentTarget ?? ev.target);
 }
 
-const postAccount = ref<Misskey.entities.UserDetailed | null>(null);
+const postAccount = ref<rizzkey.entities.UserDetailed | null>(null);
 
 function openAccountMenu(ev: MouseEvent) {
 	if (props.mock) return;

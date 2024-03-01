@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -33,9 +33,9 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, defineAsyncComponent, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { defaultStore } from '@/store.js';
 import { claimAchievement } from '@/scripts/achievements.js';
@@ -43,7 +43,7 @@ import copyToClipboard from '@/scripts/copy-to-clipboard.js';
 import { MenuItem } from '@/types/menu.js';
 
 const props = withDefaults(defineProps<{
-	folder: Misskey.entities.DriveFolder;
+	folder: rizzkey.entities.DriveFolder;
 	isSelected?: boolean;
 	selectMode?: boolean;
 }>(), {
@@ -52,11 +52,11 @@ const props = withDefaults(defineProps<{
 });
 
 const emit = defineEmits<{
-	(ev: 'chosen', v: Misskey.entities.DriveFolder): void;
-	(ev: 'move', v: Misskey.entities.DriveFolder): void;
-	(ev: 'upload', file: File, folder: Misskey.entities.DriveFolder);
-	(ev: 'removeFile', v: Misskey.entities.DriveFile['id']): void;
-	(ev: 'removeFolder', v: Misskey.entities.DriveFolder['id']): void;
+	(ev: 'chosen', v: rizzkey.entities.DriveFolder): void;
+	(ev: 'move', v: rizzkey.entities.DriveFolder): void;
+	(ev: 'upload', file: File, folder: rizzkey.entities.DriveFolder);
+	(ev: 'removeFile', v: rizzkey.entities.DriveFile['id']): void;
+	(ev: 'removeFolder', v: rizzkey.entities.DriveFolder['id']): void;
 	(ev: 'dragstart'): void;
 	(ev: 'dragend'): void;
 }>();
@@ -145,7 +145,7 @@ function onDrop(ev: DragEvent) {
 	if (driveFile != null && driveFile !== '') {
 		const file = JSON.parse(driveFile);
 		emit('removeFile', file.id);
-		misskeyApi('drive/files/update', {
+		rizzkeyApi('drive/files/update', {
 			fileId: file.id,
 			folderId: props.folder.id,
 		});
@@ -161,7 +161,7 @@ function onDrop(ev: DragEvent) {
 		if (folder.id === props.folder.id) return;
 
 		emit('removeFolder', folder.id);
-		misskeyApi('drive/folders/update', {
+		rizzkeyApi('drive/folders/update', {
 			folderId: folder.id,
 			parentId: props.folder.id,
 		}).then(() => {
@@ -215,7 +215,7 @@ function rename() {
 		default: props.folder.name,
 	}).then(({ canceled, result: name }) => {
 		if (canceled) return;
-		misskeyApi('drive/folders/update', {
+		rizzkeyApi('drive/folders/update', {
 			folderId: props.folder.id,
 			name: name,
 		});
@@ -223,7 +223,7 @@ function rename() {
 }
 
 function deleteFolder() {
-	misskeyApi('drive/folders/delete', {
+	rizzkeyApi('drive/folders/delete', {
 		folderId: props.folder.id,
 	}).then(() => {
 		if (defaultStore.state.uploadFolder === props.folder.id) {

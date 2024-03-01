@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -16,9 +16,9 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts" setup>
 import { onMounted, shallowRef, ref } from 'vue';
 import { Chart, ChartDataset } from 'chart.js';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import gradient from 'chartjs-plugin-gradient';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { defaultStore } from '@/store.js';
 import { useChartTooltip } from '@/scripts/use-chart-tooltip.js';
 import { chartVLine } from '@/scripts/chart-vline.js';
@@ -29,7 +29,7 @@ import MkChartLegend from '@/components/MkChartLegend.vue';
 initChart();
 
 const props = defineProps<{
-	user: Misskey.entities.User;
+	user: rizzkey.entities.User;
 }>();
 
 const chartEl = shallowRef<HTMLCanvasElement>(null);
@@ -61,7 +61,7 @@ async function renderChart() {
 		}));
 	};
 
-	const raw = await misskeyApi('charts/user/pv', { userId: props.user.id, limit: chartLimit, span: 'day' });
+	const raw = await rizzkeyApi('charts/user/pv', { userId: props.user.id, limit: chartLimit, span: 'day' });
 
 	const vLineColor = defaultStore.state.darkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)';
 

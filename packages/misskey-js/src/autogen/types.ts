@@ -278,7 +278,7 @@ export type paths = {
      * admin/emoji/import-zip
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['admin/emoji/import-zip'];
@@ -801,7 +801,7 @@ export type paths = {
      * auth/accept
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['auth/accept'];
@@ -1462,7 +1462,7 @@ export type paths = {
      * export-custom-emojis
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['export-custom-emojis'];
@@ -1797,7 +1797,7 @@ export type paths = {
      * i/2fa/done
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/2fa/done'];
@@ -1807,7 +1807,7 @@ export type paths = {
      * i/2fa/key-done
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/2fa/key-done'];
@@ -1817,7 +1817,7 @@ export type paths = {
      * i/2fa/password-less
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/2fa/password-less'];
@@ -1827,7 +1827,7 @@ export type paths = {
      * i/2fa/register-key
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/2fa/register-key'];
@@ -1837,7 +1837,7 @@ export type paths = {
      * i/2fa/register
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/2fa/register'];
@@ -1847,7 +1847,7 @@ export type paths = {
      * i/2fa/update-key
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/2fa/update-key'];
@@ -1857,7 +1857,7 @@ export type paths = {
      * i/2fa/remove-key
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/2fa/remove-key'];
@@ -1867,7 +1867,7 @@ export type paths = {
      * i/2fa/unregister
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/2fa/unregister'];
@@ -1877,7 +1877,7 @@ export type paths = {
      * i/apps
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/apps'];
@@ -1887,7 +1887,7 @@ export type paths = {
      * i/authorized-apps
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/authorized-apps'];
@@ -1906,7 +1906,7 @@ export type paths = {
      * i/change-password
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/change-password'];
@@ -1916,7 +1916,7 @@ export type paths = {
      * i/delete-account
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/delete-account'];
@@ -1926,7 +1926,7 @@ export type paths = {
      * i/export-blocking
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/export-blocking'];
@@ -1936,7 +1936,7 @@ export type paths = {
      * i/export-following
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/export-following'];
@@ -1946,7 +1946,7 @@ export type paths = {
      * i/export-mute
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/export-mute'];
@@ -1956,7 +1956,7 @@ export type paths = {
      * i/export-notes
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/export-notes'];
@@ -1966,7 +1966,7 @@ export type paths = {
      * i/export-clips
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/export-clips'];
@@ -1976,7 +1976,7 @@ export type paths = {
      * i/export-favorites
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/export-favorites'];
@@ -1986,7 +1986,7 @@ export type paths = {
      * i/export-user-lists
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/export-user-lists'];
@@ -1996,7 +1996,7 @@ export type paths = {
      * i/export-antennas
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/export-antennas'];
@@ -2033,7 +2033,7 @@ export type paths = {
      * i/import-blocking
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/import-blocking'];
@@ -2043,7 +2043,7 @@ export type paths = {
      * i/import-following
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/import-following'];
@@ -2053,7 +2053,7 @@ export type paths = {
      * i/import-muting
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/import-muting'];
@@ -2063,7 +2063,7 @@ export type paths = {
      * i/import-user-lists
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/import-user-lists'];
@@ -2073,7 +2073,7 @@ export type paths = {
      * i/import-antennas
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/import-antennas'];
@@ -2146,7 +2146,7 @@ export type paths = {
      * i/regenerate-token
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/regenerate-token'];
@@ -2210,7 +2210,7 @@ export type paths = {
      * i/registry/scopes-with-domain
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/registry/scopes-with-domain'];
@@ -2229,7 +2229,7 @@ export type paths = {
      * i/revoke-token
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/revoke-token'];
@@ -2239,7 +2239,7 @@ export type paths = {
      * i/signin-history
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/signin-history'];
@@ -2258,7 +2258,7 @@ export type paths = {
      * i/update-email
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/update-email'];
@@ -2277,7 +2277,7 @@ export type paths = {
      * i/move
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['i/move'];
@@ -2409,7 +2409,7 @@ export type paths = {
      * miauth/gen-token
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['miauth/gen-token'];
@@ -2802,7 +2802,7 @@ export type paths = {
      * page-push
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['page-push'];
@@ -3071,7 +3071,7 @@ export type paths = {
      * sw/show-registration
      * @description Check push notification registration exists.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['sw/show-registration'];
@@ -3081,7 +3081,7 @@ export type paths = {
      * sw/update-registration
      * @description Update push notification registration.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['sw/update-registration'];
@@ -3091,7 +3091,7 @@ export type paths = {
      * sw/register
      * @description Register to receive push notifications.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['sw/register'];
@@ -3430,7 +3430,7 @@ export type paths = {
      * fetch-external-resources
      * @description No description provided.
      *
-     * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+     * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes*
      */
     post: operations['fetch-external-resources'];
@@ -3571,7 +3571,7 @@ export type components = {
       username: string;
       /**
        * @description The local host is represented with `null`.
-       * @example misskey.example.com
+       * @example rizzkey.example.com
        */
       host: string | null;
       /** Format: url */
@@ -3713,7 +3713,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         follow?: OneOf<[{
@@ -3722,7 +3722,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         mention?: OneOf<[{
@@ -3731,7 +3731,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         reply?: OneOf<[{
@@ -3740,7 +3740,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         renote?: OneOf<[{
@@ -3749,7 +3749,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         quote?: OneOf<[{
@@ -3758,7 +3758,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         reaction?: OneOf<[{
@@ -3767,7 +3767,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         pollEnded?: OneOf<[{
@@ -3776,7 +3776,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         receiveFollowRequest?: OneOf<[{
@@ -3785,7 +3785,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         followRequestAccepted?: OneOf<[{
@@ -3794,7 +3794,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         roleAssigned?: OneOf<[{
@@ -3803,7 +3803,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         achievementEarned?: OneOf<[{
@@ -3812,7 +3812,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         app?: OneOf<[{
@@ -3821,7 +3821,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
         test?: OneOf<[{
@@ -3830,7 +3830,7 @@ export type components = {
         }, {
           /** @enum {string} */
           type: 'list';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId: string;
         }]>;
       };
@@ -4302,7 +4302,7 @@ export type components = {
       blockee: components['schemas']['UserDetailedNotMe'];
     };
     Hashtag: {
-      /** @example misskey */
+      /** @example rizzkey */
       tag: string;
       mentionedUsersCount: number;
       mentionedLocalUsersCount: number;
@@ -4463,7 +4463,7 @@ export type components = {
       id: string;
       /** Format: date-time */
       firstRetrievedAt: string;
-      /** @example misskey.example.com */
+      /** @example rizzkey.example.com */
       host: string;
       usersCount: number;
       notesCount: number;
@@ -4472,7 +4472,7 @@ export type components = {
       isNotResponding: boolean;
       isSuspended: boolean;
       isBlocked: boolean;
-      /** @example misskey */
+      /** @example rizzkey */
       softwareName: string | null;
       softwareVersion: string | null;
       /** @example true */
@@ -4755,7 +4755,7 @@ export type components = {
       shortName: string | null;
       /**
        * Format: url
-       * @example https://misskey.example.com
+       * @example https://rizzkey.example.com
        */
       uri: string;
       description: string | null;
@@ -5011,9 +5011,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default null */
           state?: string | null;
@@ -5155,7 +5155,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -5321,7 +5321,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           id: string;
         };
       };
@@ -5375,9 +5375,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default null */
           publishing?: boolean | null;
@@ -5433,7 +5433,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           id: string;
           memo: string;
           url: string;
@@ -5514,7 +5514,7 @@ export type operations = {
           /** @default false */
           needConfirmationToRead?: boolean;
           /**
-           * Format: misskey:id
+           * Format: rizzkey:id
            * @default null
            */
           userId?: string | null;
@@ -5583,7 +5583,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           id: string;
         };
       };
@@ -5637,11 +5637,11 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId?: string | null;
         };
       };
@@ -5709,7 +5709,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           id: string;
           title?: string;
           text?: string;
@@ -5826,7 +5826,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           id: string;
         };
       };
@@ -5880,11 +5880,11 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId?: string | null;
         };
       };
@@ -5952,7 +5952,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           id: string;
           name?: string;
           description?: string;
@@ -6008,7 +6008,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -6060,7 +6060,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -6112,7 +6112,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -6254,11 +6254,11 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId?: string | null;
           type?: string | null;
           /**
@@ -6323,7 +6323,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId?: string;
           url?: string;
         };
@@ -6485,7 +6485,7 @@ export type operations = {
       content: {
         'application/json': {
           name: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId: string;
           /** @description Use `null` to reset the category. */
           category?: string | null;
@@ -6546,7 +6546,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           emojiId: string;
         };
       };
@@ -6654,7 +6654,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           id: string;
         };
       };
@@ -6700,14 +6700,14 @@ export type operations = {
    * admin/emoji/import-zip
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'admin/emoji/import-zip': {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId: string;
         };
       };
@@ -6768,9 +6768,9 @@ export type operations = {
           host?: string | null;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -6837,9 +6837,9 @@ export type operations = {
           query?: string | null;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -7112,10 +7112,10 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           id?: string;
           name?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId?: string;
           /** @description Use `null` to reset the category. */
           category?: string | null;
@@ -7480,7 +7480,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -7656,7 +7656,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
           expiresAt: number;
         };
@@ -8118,7 +8118,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -8174,7 +8174,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           reportId: string;
           /** @default false */
           forward?: boolean;
@@ -8353,12 +8353,12 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           type?: string | null;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId?: string | null;
         };
       };
@@ -8422,7 +8422,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -8451,7 +8451,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               follow?: OneOf<[{
@@ -8460,7 +8460,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               mention?: OneOf<[{
@@ -8469,7 +8469,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               reply?: OneOf<[{
@@ -8478,7 +8478,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               renote?: OneOf<[{
@@ -8487,7 +8487,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               quote?: OneOf<[{
@@ -8496,7 +8496,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               reaction?: OneOf<[{
@@ -8505,7 +8505,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               pollEnded?: OneOf<[{
@@ -8514,7 +8514,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               receiveFollowRequest?: OneOf<[{
@@ -8523,7 +8523,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               followRequestAccepted?: OneOf<[{
@@ -8532,7 +8532,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               roleAssigned?: OneOf<[{
@@ -8541,7 +8541,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               achievementEarned?: OneOf<[{
@@ -8550,7 +8550,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               app?: OneOf<[{
@@ -8559,7 +8559,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
               test?: OneOf<[{
@@ -8568,7 +8568,7 @@ export type operations = {
               }, {
                 /** @enum {string} */
                 type: 'list';
-                /** Format: misskey:id */
+                /** Format: rizzkey:id */
                 userListId: string;
               }]>;
             };
@@ -8706,7 +8706,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -8758,7 +8758,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -8854,7 +8854,7 @@ export type operations = {
           sensitiveMediaDetectionSensitivity?: 'medium' | 'low' | 'high' | 'veryLow' | 'veryHigh';
           setSensitiveFlagAutomatically?: boolean;
           enableSensitiveMediaDetectionForVideos?: boolean;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           proxyAccountId?: string | null;
           maintainerName?: string | null;
           maintainerEmail?: string | null;
@@ -8963,7 +8963,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -9015,7 +9015,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           text: string;
         };
@@ -9136,7 +9136,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           roleId: string;
         };
       };
@@ -9234,7 +9234,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           roleId: string;
         };
       };
@@ -9288,7 +9288,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           roleId: string;
           name: string;
           description: string;
@@ -9355,9 +9355,9 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           roleId: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           expiresAt?: number | null;
         };
@@ -9410,9 +9410,9 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           roleId: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -9515,11 +9515,11 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           roleId: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 10 */
           limit?: number;
@@ -9531,7 +9531,7 @@ export type operations = {
       200: {
         content: {
           'application/json': ({
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               id: string;
               /** Format: date-time */
               createdAt: string;
@@ -9585,9 +9585,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default true */
           isActive?: boolean;
@@ -9646,7 +9646,7 @@ export type operations = {
           name: string;
           /** @enum {string} */
           src: 'home' | 'all' | 'users' | 'list' | 'users_blacklist';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId?: string | null;
           keywords: string[][];
           excludeKeywords: string[][];
@@ -9708,7 +9708,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           antennaId: string;
         };
       };
@@ -9806,13 +9806,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           antennaId: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           sinceDate?: number;
           untilDate?: number;
@@ -9868,7 +9868,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           antennaId: string;
         };
       };
@@ -9922,12 +9922,12 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           antennaId: string;
           name: string;
           /** @enum {string} */
           src: 'home' | 'all' | 'users' | 'list' | 'users_blacklist';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userListId?: string | null;
           keywords: string[][];
           excludeKeywords: string[][];
@@ -10171,7 +10171,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           appId: string;
         };
       };
@@ -10219,7 +10219,7 @@ export type operations = {
    * auth/accept
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'auth/accept': {
@@ -10449,7 +10449,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -10509,7 +10509,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -10571,9 +10571,9 @@ export type operations = {
         'application/json': {
           /** @default 30 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -10629,7 +10629,7 @@ export type operations = {
         'application/json': {
           name: string;
           description?: string | null;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           bannerId?: string | null;
           color?: string;
           isSensitive?: boolean | null;
@@ -10738,7 +10738,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           channelId: string;
         };
       };
@@ -10790,9 +10790,9 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 5 */
           limit?: number;
@@ -10848,9 +10848,9 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 5 */
           limit?: number;
@@ -10906,7 +10906,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           channelId: string;
         };
       };
@@ -10960,13 +10960,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           channelId: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           sinceDate?: number;
           untilDate?: number;
@@ -11024,7 +11024,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           channelId: string;
         };
       };
@@ -11076,11 +11076,11 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           channelId: string;
           name?: string;
           description?: string | null;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           bannerId?: string | null;
           isArchived?: boolean | null;
           pinnedNoteIds?: string[];
@@ -11139,7 +11139,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           channelId: string;
         };
       };
@@ -11191,7 +11191,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           channelId: string;
         };
       };
@@ -11295,9 +11295,9 @@ export type operations = {
            * @enum {string}
            */
           type?: 'nameAndDescription' | 'nameOnly';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 5 */
           limit?: number;
@@ -11806,7 +11806,7 @@ export type operations = {
           limit?: number;
           /** @default null */
           offset?: number | null;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -11873,7 +11873,7 @@ export type operations = {
           limit?: number;
           /** @default null */
           offset?: number | null;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -11958,7 +11958,7 @@ export type operations = {
           limit?: number;
           /** @default null */
           offset?: number | null;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -12028,7 +12028,7 @@ export type operations = {
           limit?: number;
           /** @default null */
           offset?: number | null;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -12097,7 +12097,7 @@ export type operations = {
           limit?: number;
           /** @default null */
           offset?: number | null;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -12227,9 +12227,9 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           clipId: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -12287,9 +12287,9 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           clipId: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -12397,7 +12397,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           clipId: string;
         };
       };
@@ -12495,13 +12495,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           clipId: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -12555,7 +12555,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           clipId: string;
         };
       };
@@ -12609,7 +12609,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           clipId: string;
           name: string;
           isPublic?: boolean;
@@ -12666,7 +12666,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           clipId: string;
         };
       };
@@ -12718,7 +12718,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           clipId: string;
         };
       };
@@ -12867,12 +12867,12 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /**
-           * Format: misskey:id
+           * Format: rizzkey:id
            * @default null
            */
           folderId?: string | null;
@@ -12931,13 +12931,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId: string;
         };
       };
@@ -13045,7 +13045,7 @@ export type operations = {
       content: {
         'multipart/form-data': {
           /**
-           * Format: misskey:id
+           * Format: rizzkey:id
            * @default null
            */
           folderId?: string | null;
@@ -13120,7 +13120,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId: string;
         };
       };
@@ -13227,7 +13227,7 @@ export type operations = {
         'application/json': {
           name: string;
           /**
-           * Format: misskey:id
+           * Format: rizzkey:id
            * @default null
            */
           folderId?: string | null;
@@ -13283,7 +13283,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId?: string;
           url?: string;
         };
@@ -13338,9 +13338,9 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           folderId?: string | null;
           name?: string;
           isSensitive?: boolean;
@@ -13399,7 +13399,7 @@ export type operations = {
         'application/json': {
           url: string;
           /**
-           * Format: misskey:id
+           * Format: rizzkey:id
            * @default null
            */
           folderId?: string | null;
@@ -13469,12 +13469,12 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /**
-           * Format: misskey:id
+           * Format: rizzkey:id
            * @default null
            */
           folderId?: string | null;
@@ -13532,7 +13532,7 @@ export type operations = {
         'application/json': {
           /** @default Untitled */
           name?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           parentId?: string | null;
         };
       };
@@ -13592,7 +13592,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           folderId: string;
         };
       };
@@ -13646,7 +13646,7 @@ export type operations = {
         'application/json': {
           name: string;
           /**
-           * Format: misskey:id
+           * Format: rizzkey:id
            * @default null
            */
           parentId?: string | null;
@@ -13702,7 +13702,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           folderId: string;
         };
       };
@@ -13756,10 +13756,10 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           folderId: string;
           name?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           parentId?: string | null;
         };
       };
@@ -13815,9 +13815,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           type?: string;
         };
@@ -14030,7 +14030,7 @@ export type operations = {
    * export-custom-emojis
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'export-custom-emojis': {
@@ -14088,9 +14088,9 @@ export type operations = {
       content: {
         'application/json': {
           host: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 10 */
           limit?: number;
@@ -14147,9 +14147,9 @@ export type operations = {
       content: {
         'application/json': {
           host: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 10 */
           limit?: number;
@@ -14329,7 +14329,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -14382,9 +14382,9 @@ export type operations = {
       content: {
         'application/json': {
           host: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 10 */
           limit?: number;
@@ -14499,7 +14499,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           withReplies?: boolean;
         };
@@ -14560,7 +14560,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -14620,7 +14620,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           /** @enum {string} */
           notify?: 'normal' | 'none';
@@ -14742,7 +14742,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -14802,7 +14802,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -14854,7 +14854,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -14908,9 +14908,9 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 10 */
           limit?: number;
@@ -14971,7 +14971,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -15025,7 +15025,7 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -15127,9 +15127,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -15246,7 +15246,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           postId: string;
         };
       };
@@ -15298,7 +15298,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           postId: string;
         };
       };
@@ -15350,7 +15350,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           postId: string;
         };
       };
@@ -15404,7 +15404,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           postId: string;
         };
       };
@@ -15456,7 +15456,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           postId: string;
           title: string;
           description?: string | null;
@@ -15954,7 +15954,7 @@ export type operations = {
    * i/2fa/done
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/2fa/done': {
@@ -16010,7 +16010,7 @@ export type operations = {
    * i/2fa/key-done
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/2fa/key-done': {
@@ -16070,7 +16070,7 @@ export type operations = {
    * i/2fa/password-less
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/2fa/password-less': {
@@ -16122,7 +16122,7 @@ export type operations = {
    * i/2fa/register-key
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/2fa/register-key': {
@@ -16211,7 +16211,7 @@ export type operations = {
    * i/2fa/register
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/2fa/register': {
@@ -16272,7 +16272,7 @@ export type operations = {
    * i/2fa/update-key
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/2fa/update-key': {
@@ -16325,7 +16325,7 @@ export type operations = {
    * i/2fa/remove-key
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/2fa/remove-key': {
@@ -16379,7 +16379,7 @@ export type operations = {
    * i/2fa/unregister
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/2fa/unregister': {
@@ -16432,7 +16432,7 @@ export type operations = {
    * i/apps
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/apps': {
@@ -16449,7 +16449,7 @@ export type operations = {
       200: {
         content: {
           'application/json': {
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               id: string;
               name?: string;
               /** Format: date-time */
@@ -16496,7 +16496,7 @@ export type operations = {
    * i/authorized-apps
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/authorized-apps': {
@@ -16520,7 +16520,7 @@ export type operations = {
       200: {
         content: {
           'application/json': ({
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               id: string;
               name: string;
               callbackUrl: string | null;
@@ -16572,7 +16572,7 @@ export type operations = {
       content: {
         'application/json': {
           /** @enum {string} */
-          name: 'notes1' | 'notes10' | 'notes100' | 'notes500' | 'notes1000' | 'notes5000' | 'notes10000' | 'notes20000' | 'notes30000' | 'notes40000' | 'notes50000' | 'notes60000' | 'notes70000' | 'notes80000' | 'notes90000' | 'notes100000' | 'login3' | 'login7' | 'login15' | 'login30' | 'login60' | 'login100' | 'login200' | 'login300' | 'login400' | 'login500' | 'login600' | 'login700' | 'login800' | 'login900' | 'login1000' | 'passedSinceAccountCreated1' | 'passedSinceAccountCreated2' | 'passedSinceAccountCreated3' | 'loggedInOnBirthday' | 'loggedInOnNewYearsDay' | 'noteClipped1' | 'noteFavorited1' | 'myNoteFavorited1' | 'profileFilled' | 'markedAsCat' | 'following1' | 'following10' | 'following50' | 'following100' | 'following300' | 'followers1' | 'followers10' | 'followers50' | 'followers100' | 'followers300' | 'followers500' | 'followers1000' | 'collectAchievements30' | 'viewAchievements3min' | 'iLoveMisskey' | 'foundTreasure' | 'client30min' | 'client60min' | 'noteDeletedWithin1min' | 'postedAtLateNight' | 'postedAt0min0sec' | 'selfQuote' | 'htl20npm' | 'viewInstanceChart' | 'outputHelloWorldOnScratchpad' | 'open3windows' | 'driveFolderCircularReference' | 'reactWithoutRead' | 'clickedClickHere' | 'justPlainLucky' | 'setNameToSyuilo' | 'cookieClicked' | 'brainDiver' | 'smashTestNotificationButton' | 'tutorialCompleted' | 'bubbleGameExplodingHead' | 'bubbleGameDoubleExplodingHead';
+          name: 'notes1' | 'notes10' | 'notes100' | 'notes500' | 'notes1000' | 'notes5000' | 'notes10000' | 'notes20000' | 'notes30000' | 'notes40000' | 'notes50000' | 'notes60000' | 'notes70000' | 'notes80000' | 'notes90000' | 'notes100000' | 'login3' | 'login7' | 'login15' | 'login30' | 'login60' | 'login100' | 'login200' | 'login300' | 'login400' | 'login500' | 'login600' | 'login700' | 'login800' | 'login900' | 'login1000' | 'passedSinceAccountCreated1' | 'passedSinceAccountCreated2' | 'passedSinceAccountCreated3' | 'loggedInOnBirthday' | 'loggedInOnNewYearsDay' | 'noteClipped1' | 'noteFavorited1' | 'myNoteFavorited1' | 'profileFilled' | 'markedAsCat' | 'following1' | 'following10' | 'following50' | 'following100' | 'following300' | 'followers1' | 'followers10' | 'followers50' | 'followers100' | 'followers300' | 'followers500' | 'followers1000' | 'collectAchievements30' | 'viewAchievements3min' | 'iLoverizzkey' | 'foundTreasure' | 'client30min' | 'client60min' | 'noteDeletedWithin1min' | 'postedAtLateNight' | 'postedAt0min0sec' | 'selfQuote' | 'htl20npm' | 'viewInstanceChart' | 'outputHelloWorldOnScratchpad' | 'open3windows' | 'driveFolderCircularReference' | 'reactWithoutRead' | 'clickedClickHere' | 'justPlainLucky' | 'setNameToSyuilo' | 'cookieClicked' | 'brainDiver' | 'smashTestNotificationButton' | 'tutorialCompleted' | 'bubbleGameExplodingHead' | 'bubbleGameDoubleExplodingHead';
         };
       };
     };
@@ -16617,7 +16617,7 @@ export type operations = {
    * i/change-password
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/change-password': {
@@ -16671,7 +16671,7 @@ export type operations = {
    * i/delete-account
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/delete-account': {
@@ -16724,7 +16724,7 @@ export type operations = {
    * i/export-blocking
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/export-blocking': {
@@ -16775,7 +16775,7 @@ export type operations = {
    * i/export-following
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/export-following': {
@@ -16836,7 +16836,7 @@ export type operations = {
    * i/export-mute
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/export-mute': {
@@ -16887,7 +16887,7 @@ export type operations = {
    * i/export-notes
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/export-notes': {
@@ -16938,7 +16938,7 @@ export type operations = {
    * i/export-clips
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/export-clips': {
@@ -16989,7 +16989,7 @@ export type operations = {
    * i/export-favorites
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/export-favorites': {
@@ -17040,7 +17040,7 @@ export type operations = {
    * i/export-user-lists
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/export-user-lists': {
@@ -17091,7 +17091,7 @@ export type operations = {
    * i/export-antennas
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/export-antennas': {
@@ -17150,9 +17150,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -17208,9 +17208,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -17270,9 +17270,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -17320,14 +17320,14 @@ export type operations = {
    * i/import-blocking
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/import-blocking': {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId: string;
         };
       };
@@ -17379,14 +17379,14 @@ export type operations = {
    * i/import-following
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/import-following': {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId: string;
           withReplies?: boolean;
         };
@@ -17439,14 +17439,14 @@ export type operations = {
    * i/import-muting
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/import-muting': {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId: string;
         };
       };
@@ -17498,14 +17498,14 @@ export type operations = {
    * i/import-user-lists
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/import-user-lists': {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId: string;
         };
       };
@@ -17557,14 +17557,14 @@ export type operations = {
    * i/import-antennas
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/import-antennas': {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           fileId: string;
         };
       };
@@ -17624,9 +17624,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default true */
           markAsRead?: boolean;
@@ -17692,9 +17692,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default true */
           markAsRead?: boolean;
@@ -17760,9 +17760,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -17822,9 +17822,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -17878,7 +17878,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -17976,7 +17976,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           announcementId: string;
         };
       };
@@ -18022,7 +18022,7 @@ export type operations = {
    * i/regenerate-token
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/regenerate-token': {
@@ -18410,7 +18410,7 @@ export type operations = {
    * i/registry/scopes-with-domain
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/registry/scopes-with-domain': {
@@ -18515,14 +18515,14 @@ export type operations = {
    * i/revoke-token
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/revoke-token': {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           tokenId?: string;
           token?: string | null;
         };
@@ -18569,7 +18569,7 @@ export type operations = {
    * i/signin-history
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/signin-history': {
@@ -18578,9 +18578,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -18634,7 +18634,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -18682,7 +18682,7 @@ export type operations = {
    * i/update-email
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/update-email': {
@@ -18756,17 +18756,17 @@ export type operations = {
           birthday?: string | null;
           /** @enum {string|null} */
           lang?: null | 'ach' | 'ady' | 'af' | 'af-NA' | 'af-ZA' | 'ak' | 'ar' | 'ar-AR' | 'ar-MA' | 'ar-SA' | 'ay-BO' | 'az' | 'az-AZ' | 'be-BY' | 'bg' | 'bg-BG' | 'bn' | 'bn-IN' | 'bn-BD' | 'br' | 'bs-BA' | 'ca' | 'ca-ES' | 'cak' | 'ck-US' | 'cs' | 'cs-CZ' | 'cy' | 'cy-GB' | 'da' | 'da-DK' | 'de' | 'de-AT' | 'de-DE' | 'de-CH' | 'dsb' | 'el' | 'el-GR' | 'en' | 'en-GB' | 'en-AU' | 'en-CA' | 'en-IE' | 'en-IN' | 'en-PI' | 'en-SG' | 'en-UD' | 'en-US' | 'en-ZA' | 'en@pirate' | 'eo' | 'eo-EO' | 'es' | 'es-AR' | 'es-419' | 'es-CL' | 'es-CO' | 'es-EC' | 'es-ES' | 'es-LA' | 'es-NI' | 'es-MX' | 'es-US' | 'es-VE' | 'et' | 'et-EE' | 'eu' | 'eu-ES' | 'fa' | 'fa-IR' | 'fb-LT' | 'ff' | 'fi' | 'fi-FI' | 'fo' | 'fo-FO' | 'fr' | 'fr-CA' | 'fr-FR' | 'fr-BE' | 'fr-CH' | 'fy-NL' | 'ga' | 'ga-IE' | 'gd' | 'gl' | 'gl-ES' | 'gn-PY' | 'gu-IN' | 'gv' | 'gx-GR' | 'he' | 'he-IL' | 'hi' | 'hi-IN' | 'hr' | 'hr-HR' | 'hsb' | 'ht' | 'hu' | 'hu-HU' | 'hy' | 'hy-AM' | 'id' | 'id-ID' | 'is' | 'is-IS' | 'it' | 'it-IT' | 'ja' | 'ja-JP' | 'jv-ID' | 'ka-GE' | 'kk-KZ' | 'km' | 'kl' | 'km-KH' | 'kab' | 'kn' | 'kn-IN' | 'ko' | 'ko-KR' | 'ku-TR' | 'kw' | 'la' | 'la-VA' | 'lb' | 'li-NL' | 'lt' | 'lt-LT' | 'lv' | 'lv-LV' | 'mai' | 'mg-MG' | 'mk' | 'mk-MK' | 'ml' | 'ml-IN' | 'mn-MN' | 'mr' | 'mr-IN' | 'ms' | 'ms-MY' | 'mt' | 'mt-MT' | 'my' | 'no' | 'nb' | 'nb-NO' | 'ne' | 'ne-NP' | 'nl' | 'nl-BE' | 'nl-NL' | 'nn-NO' | 'oc' | 'or-IN' | 'pa' | 'pa-IN' | 'pl' | 'pl-PL' | 'ps-AF' | 'pt' | 'pt-BR' | 'pt-PT' | 'qu-PE' | 'rm-CH' | 'ro' | 'ro-RO' | 'ru' | 'ru-RU' | 'sa-IN' | 'se-NO' | 'sh' | 'si-LK' | 'sk' | 'sk-SK' | 'sl' | 'sl-SI' | 'so-SO' | 'sq' | 'sq-AL' | 'sr' | 'sr-RS' | 'su' | 'sv' | 'sv-SE' | 'sw' | 'sw-KE' | 'ta' | 'ta-IN' | 'te' | 'te-IN' | 'tg' | 'tg-TJ' | 'th' | 'th-TH' | 'fil' | 'tlh' | 'tr' | 'tr-TR' | 'tt-RU' | 'uk' | 'uk-UA' | 'ur' | 'ur-PK' | 'uz' | 'uz-UZ' | 'vi' | 'vi-VN' | 'xh-ZA' | 'yi' | 'yi-DE' | 'zh' | 'zh-Hans' | 'zh-Hant' | 'zh-CN' | 'zh-HK' | 'zh-SG' | 'zh-TW' | 'zu-ZA';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           avatarId?: string | null;
           avatarDecorations?: ({
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               id: string;
               angle?: number | null;
               flipH?: boolean | null;
               offsetX?: number | null;
               offsetY?: number | null;
             })[];
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           bannerId?: string | null;
           fields?: {
               name: string;
@@ -18790,7 +18790,7 @@ export type operations = {
           followingVisibility?: 'public' | 'followers' | 'private';
           /** @enum {string} */
           followersVisibility?: 'public' | 'followers' | 'private';
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           pinnedPageId?: string | null;
           mutedWords?: (string[] | string)[];
           hardMutedWords?: (string[] | string)[];
@@ -18802,7 +18802,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             follow?: OneOf<[{
@@ -18811,7 +18811,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             mention?: OneOf<[{
@@ -18820,7 +18820,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             reply?: OneOf<[{
@@ -18829,7 +18829,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             renote?: OneOf<[{
@@ -18838,7 +18838,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             quote?: OneOf<[{
@@ -18847,7 +18847,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             reaction?: OneOf<[{
@@ -18856,7 +18856,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             pollEnded?: OneOf<[{
@@ -18865,7 +18865,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             receiveFollowRequest?: OneOf<[{
@@ -18874,7 +18874,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             followRequestAccepted?: OneOf<[{
@@ -18883,7 +18883,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             roleAssigned?: OneOf<[{
@@ -18892,7 +18892,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             achievementEarned?: OneOf<[{
@@ -18901,7 +18901,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             app?: OneOf<[{
@@ -18910,7 +18910,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
             test?: OneOf<[{
@@ -18919,7 +18919,7 @@ export type operations = {
             }, {
               /** @enum {string} */
               type: 'list';
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userListId: string;
             }]>;
           };
@@ -18977,7 +18977,7 @@ export type operations = {
    * i/move
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'i/move': {
@@ -19056,9 +19056,9 @@ export type operations = {
       200: {
         content: {
           'application/json': {
-            /** Format: misskey:id */
+            /** Format: rizzkey:id */
             id: string;
-            /** Format: misskey:id */
+            /** Format: rizzkey:id */
             userId: string;
             name: string;
             on: ('mention' | 'unfollow' | 'follow' | 'followed' | 'note' | 'reply' | 'renote' | 'reaction')[];
@@ -19115,9 +19115,9 @@ export type operations = {
       200: {
         content: {
           'application/json': ({
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               id: string;
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userId: string;
               name: string;
               on: ('mention' | 'unfollow' | 'follow' | 'followed' | 'note' | 'reply' | 'renote' | 'reaction')[];
@@ -19172,7 +19172,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           webhookId: string;
         };
       };
@@ -19182,9 +19182,9 @@ export type operations = {
       200: {
         content: {
           'application/json': {
-            /** Format: misskey:id */
+            /** Format: rizzkey:id */
             id: string;
-            /** Format: misskey:id */
+            /** Format: rizzkey:id */
             userId: string;
             name: string;
             on: ('mention' | 'unfollow' | 'follow' | 'followed' | 'note' | 'reply' | 'renote' | 'reaction')[];
@@ -19239,7 +19239,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           webhookId: string;
           name: string;
           url: string;
@@ -19297,7 +19297,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           webhookId: string;
         };
       };
@@ -19395,7 +19395,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           inviteId: string;
         };
       };
@@ -19449,9 +19449,9 @@ export type operations = {
         'application/json': {
           /** @default 30 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -19702,7 +19702,7 @@ export type operations = {
    * miauth/gen-token
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'miauth/gen-token': {
@@ -19768,7 +19768,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           /** @description A Unix Epoch timestamp that must lie in the future. `null` means an indefinite mute. */
           expiresAt?: number | null;
@@ -19828,7 +19828,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -19882,9 +19882,9 @@ export type operations = {
         'application/json': {
           /** @default 30 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -19938,7 +19938,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -19996,7 +19996,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -20050,9 +20050,9 @@ export type operations = {
         'application/json': {
           /** @default 30 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -20170,9 +20170,9 @@ export type operations = {
           poll?: boolean;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -20226,13 +20226,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -20286,7 +20286,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -20340,7 +20340,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
           /** @default 10 */
           limit?: number;
@@ -20418,11 +20418,11 @@ export type operations = {
           noExtractHashtags?: boolean;
           /** @default false */
           noExtractEmojis?: boolean;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           replyId?: string | null;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           renoteId?: string | null;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           channelId?: string | null;
           text?: string | null;
           fileIds?: string[];
@@ -20493,7 +20493,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -20551,7 +20551,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -20609,7 +20609,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -20663,9 +20663,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           channelId?: string | null;
         };
       };
@@ -20725,9 +20725,9 @@ export type operations = {
           withRenotes?: boolean;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           sinceDate?: number;
           untilDate?: number;
@@ -20785,9 +20785,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           sinceDate?: number;
           untilDate?: number;
@@ -20865,9 +20865,9 @@ export type operations = {
           withReplies?: boolean;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default false */
           allowPartial?: boolean;
@@ -20929,9 +20929,9 @@ export type operations = {
           following?: boolean;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           visibility?: string;
         };
@@ -21042,7 +21042,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
           choice: number;
         };
@@ -21095,14 +21095,14 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
           type?: string | null;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -21156,7 +21156,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
           reaction: string;
         };
@@ -21209,7 +21209,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -21267,13 +21267,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -21327,11 +21327,11 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 10 */
           limit?: number;
@@ -21398,9 +21398,9 @@ export type operations = {
           withFiles?: boolean;
           /** @default null */
           poll?: boolean | null;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 10 */
           limit?: number;
@@ -21460,9 +21460,9 @@ export type operations = {
       content: {
         'application/json': {
           query: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 10 */
           limit?: number;
@@ -21471,12 +21471,12 @@ export type operations = {
           /** @description The local host is represented with `.`. */
           host?: string;
           /**
-           * Format: misskey:id
+           * Format: rizzkey:id
            * @default null
            */
           userId?: string | null;
           /**
-           * Format: misskey:id
+           * Format: rizzkey:id
            * @default null
            */
           channelId?: string | null;
@@ -21532,7 +21532,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -21586,7 +21586,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -21643,7 +21643,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -21701,7 +21701,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -21755,9 +21755,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           sinceDate?: number;
           untilDate?: number;
@@ -21825,7 +21825,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
           targetLang: string;
         };
@@ -21883,7 +21883,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -21941,13 +21941,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           listId: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           sinceDate?: number;
           untilDate?: number;
@@ -22209,14 +22209,14 @@ export type operations = {
    * page-push
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'page-push': {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           pageId: string;
           event: string;
           var?: unknown;
@@ -22280,7 +22280,7 @@ export type operations = {
               [key: string]: unknown;
             }[];
           script: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           eyeCatchingImageId?: string | null;
           /**
            * @default sans-serif
@@ -22349,7 +22349,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           pageId: string;
         };
       };
@@ -22447,7 +22447,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           pageId: string;
         };
       };
@@ -22499,7 +22499,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           pageId?: string;
           name?: string;
           username?: string;
@@ -22555,7 +22555,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           pageId: string;
         };
       };
@@ -22607,7 +22607,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           pageId: string;
           title: string;
           name: string;
@@ -22619,7 +22619,7 @@ export type operations = {
               [key: string]: unknown;
             }[];
           script: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           eyeCatchingImageId?: string | null;
           /** @enum {string} */
           font?: 'serif' | 'sans-serif';
@@ -22743,7 +22743,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           flashId: string;
         };
       };
@@ -22841,7 +22841,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           flashId: string;
         };
       };
@@ -22893,7 +22893,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           flashId: string;
         };
       };
@@ -22947,7 +22947,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           flashId: string;
         };
       };
@@ -22999,7 +22999,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           flashId: string;
           title?: string;
           summary?: string;
@@ -23065,9 +23065,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -23123,9 +23123,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -23277,7 +23277,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           noteId: string;
         };
       };
@@ -23375,7 +23375,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           roleId: string;
         };
       };
@@ -23429,11 +23429,11 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           roleId: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 10 */
           limit?: number;
@@ -23445,7 +23445,7 @@ export type operations = {
       200: {
         content: {
           'application/json': {
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               id: string;
               user: components['schemas']['UserDetailed'];
             }[];
@@ -23493,13 +23493,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           roleId: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           sinceDate?: number;
           untilDate?: number;
@@ -23816,7 +23816,7 @@ export type operations = {
    * sw/show-registration
    * @description Check push notification registration exists.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'sw/show-registration': {
@@ -23878,7 +23878,7 @@ export type operations = {
    * sw/update-registration
    * @description Update push notification registration.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'sw/update-registration': {
@@ -23937,7 +23937,7 @@ export type operations = {
    * sw/register
    * @description Register to receive push notifications.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'sw/register': {
@@ -24065,7 +24065,7 @@ export type operations = {
           default?: string;
           /** @default hello */
           nullableDefault?: string | null;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           id?: string;
         };
       };
@@ -24075,7 +24075,7 @@ export type operations = {
       200: {
         content: {
           'application/json': {
-            /** Format: misskey:id */
+            /** Format: rizzkey:id */
             id?: string;
             required: boolean;
             string?: string;
@@ -24255,13 +24255,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -24315,13 +24315,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId?: string;
           username?: string;
           /** @description The local host is represented with `null`. */
@@ -24378,13 +24378,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId?: string;
           username?: string;
           /** @description The local host is represented with `null`. */
@@ -24442,13 +24442,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -24502,7 +24502,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           /** @default 10 */
           limit?: number;
@@ -24563,9 +24563,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -24672,7 +24672,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           listId: string;
         };
       };
@@ -24724,7 +24724,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId?: string;
         };
       };
@@ -24778,9 +24778,9 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           listId: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -24832,9 +24832,9 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           listId: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -24892,7 +24892,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           listId: string;
           /** @default false */
           forPublic?: boolean;
@@ -24948,7 +24948,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           listId: string;
         };
       };
@@ -25000,7 +25000,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           listId: string;
         };
       };
@@ -25052,7 +25052,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           listId: string;
           name?: string;
           isPublic?: boolean;
@@ -25109,7 +25109,7 @@ export type operations = {
       content: {
         'application/json': {
           name: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           listId: string;
         };
       };
@@ -25163,9 +25163,9 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           listId: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           withReplies?: boolean;
         };
@@ -25218,15 +25218,15 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           listId: string;
           /** @default false */
           forPublic?: boolean;
           /** @default 30 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -25236,11 +25236,11 @@ export type operations = {
       200: {
         content: {
           'application/json': {
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               id: string;
               /** Format: date-time */
               createdAt: string;
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               userId: string;
               user: components['schemas']['UserLite'];
               withReplies: boolean;
@@ -25289,7 +25289,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           /** @default false */
           withReplies?: boolean;
@@ -25299,9 +25299,9 @@ export type operations = {
           withChannelNotes?: boolean;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           sinceDate?: number;
           untilDate?: number;
@@ -25361,13 +25361,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -25421,13 +25421,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
         };
       };
@@ -25481,13 +25481,13 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           sinceDate?: number;
           untilDate?: number;
@@ -25674,7 +25674,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           comment: string;
         };
@@ -25849,7 +25849,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId?: string;
           userIds?: string[];
           username?: string;
@@ -25907,7 +25907,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
         };
       };
@@ -25964,7 +25964,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId: string;
           /** @description A personal memo for the target user. If null or empty, delete the memo. */
           memo: string | null;
@@ -26067,7 +26067,7 @@ export type operations = {
    * fetch-external-resources
    * @description No description provided.
    *
-   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Internal Endpoint**: This endpoint is an API for the rizzkey mainframe and is not intended for use by third parties.
    * **Credential required**: *Yes*
    */
   'fetch-external-resources': {
@@ -26260,7 +26260,7 @@ export type operations = {
       200: {
         content: {
           'application/json': {
-              /** Format: misskey:id */
+              /** Format: rizzkey:id */
               id: string;
               score: number;
               user?: components['schemas']['UserLite'];
@@ -26309,7 +26309,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId?: string | null;
         };
       };
@@ -26363,9 +26363,9 @@ export type operations = {
         'application/json': {
           /** @default 10 */
           limit?: number;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           sinceId?: string;
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           untilId?: string;
           /** @default false */
           my?: boolean;
@@ -26421,7 +26421,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           userId?: string | null;
           /** @default false */
           noIrregularRules?: boolean;
@@ -26529,7 +26529,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           gameId: string;
         };
       };
@@ -26583,7 +26583,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           gameId: string;
         };
       };
@@ -26635,7 +26635,7 @@ export type operations = {
     requestBody: {
       content: {
         'application/json': {
-          /** Format: misskey:id */
+          /** Format: rizzkey:id */
           gameId: string;
           crc32: string;
         };

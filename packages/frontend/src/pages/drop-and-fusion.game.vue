@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -193,8 +193,8 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts" setup>
 import { computed, onDeactivated, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue';
 import * as Matter from 'matter-js';
-import * as Misskey from 'misskey-js';
-import { DropAndFusionGame, Mono } from 'misskey-bubble-game';
+import * as rizzkey from 'rizzkey-js';
+import { DropAndFusionGame, Mono } from 'rizzkey-bubble-game';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import MkRippleEffect from '@/components/MkRippleEffect.vue';
 import * as os from '@/os.js';
@@ -203,7 +203,7 @@ import MkPlusOneEffect from '@/components/MkPlusOneEffect.vue';
 import MkButton from '@/components/MkButton.vue';
 import { claimAchievement } from '@/scripts/achievements.js';
 import { defaultStore } from '@/store.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { useInterval } from '@/scripts/use-interval.js';
 import { apiUrl } from '@/config.js';
@@ -874,7 +874,7 @@ function loadImage(url: string) {
 }
 
 function getGameImageDriveFile() {
-	return new Promise<Misskey.entities.DriveFile | null>(res => {
+	return new Promise<rizzkey.entities.DriveFile | null>(res => {
 		const dcanvas = document.createElement('canvas');
 		dcanvas.width = game.GAME_WIDTH;
 		dcanvas.height = game.GAME_HEIGHT;
@@ -1109,7 +1109,7 @@ function attachGameEvents() {
 		dropReady.value = false;
 		isGameOver.value = true;
 
-		misskeyApi('bubble-game/register', {
+		rizzkeyApi('bubble-game/register', {
 			seed,
 			score: score.value,
 			gameMode: props.gameMode,
@@ -1119,7 +1119,7 @@ function attachGameEvents() {
 
 		if (props.gameMode === 'yen') {
 			yenTotal.value = (yenTotal.value ?? 0) + score.value;
-			misskeyApi('i/registry/set', {
+			rizzkeyApi('i/registry/set', {
 				scope: ['dropAndFusionGame'],
 				key: 'yenTotal',
 				value: yenTotal.value,
@@ -1129,7 +1129,7 @@ function attachGameEvents() {
 		if (score.value > (highScore.value ?? 0)) {
 			highScore.value = score.value;
 
-			misskeyApi('i/registry/set', {
+			rizzkeyApi('i/registry/set', {
 				scope: ['dropAndFusionGame'],
 				key: 'highScore:' + props.gameMode,
 				value: highScore.value,
@@ -1148,7 +1148,7 @@ useInterval(() => {
 
 onMounted(async () => {
 	try {
-		highScore.value = await misskeyApi('i/registry/get', {
+		highScore.value = await rizzkeyApi('i/registry/get', {
 			scope: ['dropAndFusionGame'],
 			key: 'highScore:' + props.gameMode,
 		});
@@ -1158,7 +1158,7 @@ onMounted(async () => {
 
 	if (props.gameMode === 'yen') {
 		try {
-			yenTotal.value = await misskeyApi('i/registry/get', {
+			yenTotal.value = await rizzkeyApi('i/registry/get', {
 				scope: ['dropAndFusionGame'],
 				key: 'yenTotal',
 			});

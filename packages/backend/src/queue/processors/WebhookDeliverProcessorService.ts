@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -40,10 +40,10 @@ export class WebhookDeliverProcessorService {
 			const res = await this.httpRequestService.send(job.data.to, {
 				method: 'POST',
 				headers: {
-					'User-Agent': 'Misskey-Hooks',
-					'X-Misskey-Host': this.config.host,
-					'X-Misskey-Hook-Id': job.data.webhookId,
-					'X-Misskey-Hook-Secret': job.data.secret,
+					'User-Agent': 'rizzkey-Hooks',
+					'X-rizzkey-Host': this.config.host,
+					'X-rizzkey-Hook-Id': job.data.webhookId,
+					'X-rizzkey-Hook-Secret': job.data.secret,
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({

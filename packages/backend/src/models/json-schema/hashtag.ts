@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -9,7 +9,7 @@ export const packedHashtagSchema = {
 		tag: {
 			type: 'string',
 			optional: false, nullable: false,
-			example: 'misskey',
+			example: 'rizzkey',
 		},
 		mentionedUsersCount: {
 			type: 'number',

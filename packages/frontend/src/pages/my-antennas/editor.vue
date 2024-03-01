@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -50,18 +50,18 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { watch, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkButton from '@/components/MkButton.vue';
 import MkInput from '@/components/MkInput.vue';
 import MkTextarea from '@/components/MkTextarea.vue';
 import MkSelect from '@/components/MkSelect.vue';
 import MkSwitch from '@/components/MkSwitch.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 
 const props = defineProps<{
-	antenna: Misskey.entities.Antenna
+	antenna: rizzkey.entities.Antenna
 }>();
 
 const emit = defineEmits<{
@@ -71,7 +71,7 @@ const emit = defineEmits<{
 }>();
 
 const name = ref<string>(props.antenna.name);
-const src = ref<Misskey.entities.AntennasCreateRequest['src']>(props.antenna.src);
+const src = ref<rizzkey.entities.AntennasCreateRequest['src']>(props.antenna.src);
 const userListId = ref<string | null>(props.antenna.userListId);
 const users = ref<string>(props.antenna.users.join('\n'));
 const keywords = ref<string>(props.antenna.keywords.map(x => x.join(' ')).join('\n'));
@@ -81,11 +81,11 @@ const localOnly = ref<boolean>(props.antenna.localOnly);
 const withReplies = ref<boolean>(props.antenna.withReplies);
 const withFile = ref<boolean>(props.antenna.withFile);
 const notify = ref<boolean>(props.antenna.notify);
-const userLists = ref<Misskey.entities.UserList[] | null>(null);
+const userLists = ref<rizzkey.entities.UserList[] | null>(null);
 
 watch(() => src.value, async () => {
 	if (src.value === 'list' && userLists.value === null) {
-		userLists.value = await misskeyApi('users/lists/list');
+		userLists.value = await rizzkeyApi('users/lists/list');
 	}
 });
 
@@ -120,7 +120,7 @@ async function deleteAntenna() {
 	});
 	if (canceled) return;
 
-	await misskeyApi('antennas/delete', {
+	await rizzkeyApi('antennas/delete', {
 		antennaId: props.antenna.id,
 	});
 
@@ -131,7 +131,7 @@ async function deleteAntenna() {
 function addUser() {
 	os.selectUser({ includeSelf: true }).then(user => {
 		users.value = users.value.trim();
-		users.value += '\n@' + Misskey.acct.toString(user as any);
+		users.value += '\n@' + rizzkey.acct.toString(user as any);
 		users.value = users.value.trim();
 	});
 }

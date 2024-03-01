@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -18,17 +18,17 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
-import * as Misskey from 'misskey-js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
+import * as rizzkey from 'rizzkey-js';
 import { useInterval } from '@/scripts/use-interval.js';
 import MkUserCardMini from '@/components/MkUserCardMini.vue';
 import { defaultStore } from '@/store.js';
 
-const newUsers = ref<Misskey.entities.UserDetailed[] | null>(null);
+const newUsers = ref<rizzkey.entities.UserDetailed[] | null>(null);
 const fetching = ref(true);
 
 const fetch = async () => {
-	const _newUsers = await misskeyApi('admin/show-users', {
+	const _newUsers = await rizzkeyApi('admin/show-users', {
 		limit: 5,
 		sort: '+createdAt',
 		origin: 'local',

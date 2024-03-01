@@ -1,16 +1,16 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { defineAsyncComponent, Ref, ShallowRef } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { claimAchievement } from './achievements.js';
 import { $i } from '@/account.js';
 import { i18n } from '@/i18n.js';
 import { instance } from '@/instance.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import copyToClipboard from '@/scripts/copy-to-clipboard.js';
 import { url } from '@/config.js';
 import { defaultStore, noteActions } from '@/store.js';
@@ -22,9 +22,9 @@ import MkRippleEffect from '@/components/MkRippleEffect.vue';
 import { isSupportShare } from '@/scripts/navigator.js';
 
 export async function getNoteClipMenu(props: {
-	note: Misskey.entities.Note;
+	note: rizzkey.entities.Note;
 	isDeleted: Ref<boolean>;
-	currentClip?: Misskey.entities.Clip;
+	currentClip?: rizzkey.entities.Clip;
 }) {
 	const isRenote = (
 		props.note.renote != null &&
@@ -33,7 +33,7 @@ export async function getNoteClipMenu(props: {
 		props.note.poll == null
 	);
 
-	const appearNote = isRenote ? props.note.renote as Misskey.entities.Note : props.note;
+	const appearNote = isRenote ? props.note.renote as rizzkey.entities.Note : props.note;
 
 	const clips = await clipsCache.fetch();
 	const menu: MenuItem[] = [...clips.map(clip => ({
@@ -41,7 +41,7 @@ export async function getNoteClipMenu(props: {
 		action: () => {
 			claimAchievement('noteClipped1');
 			os.promiseDialog(
-				misskeyApi('clips/add-note', { clipId: clip.id, noteId: appearNote.id }),
+				rizzkeyApi('clips/add-note', { clipId: clip.id, noteId: appearNote.id }),
 				null,
 				async (err) => {
 					if (err.id === '734806c4-542c-463a-9311-15c512803965') {
@@ -97,7 +97,7 @@ export async function getNoteClipMenu(props: {
 	return menu;
 }
 
-export function getAbuseNoteMenu(note: Misskey.entities.Note, text: string): MenuItem {
+export function getAbuseNoteMenu(note: rizzkey.entities.Note, text: string): MenuItem {
 	return {
 		icon: 'ti ti-exclamation-circle',
 		text,
@@ -114,7 +114,7 @@ export function getAbuseNoteMenu(note: Misskey.entities.Note, text: string): Men
 	};
 }
 
-export function getCopyNoteLinkMenu(note: Misskey.entities.Note, text: string): MenuItem {
+export function getCopyNoteLinkMenu(note: rizzkey.entities.Note, text: string): MenuItem {
 	return {
 		icon: 'ti ti-link',
 		text,
@@ -126,11 +126,11 @@ export function getCopyNoteLinkMenu(note: Misskey.entities.Note, text: string): 
 }
 
 export function getNoteMenu(props: {
-	note: Misskey.entities.Note;
-	translation: Ref<Misskey.entities.NotesTranslateResponse | null>;
+	note: rizzkey.entities.Note;
+	translation: Ref<rizzkey.entities.NotesTranslateResponse | null>;
 	translating: Ref<boolean>;
 	isDeleted: Ref<boolean>;
-	currentClip?: Misskey.entities.Clip;
+	currentClip?: rizzkey.entities.Clip;
 }) {
 	const isRenote = (
 		props.note.renote != null &&
@@ -139,7 +139,7 @@ export function getNoteMenu(props: {
 		props.note.poll == null
 	);
 
-	const appearNote = isRenote ? props.note.renote as Misskey.entities.Note : props.note;
+	const appearNote = isRenote ? props.note.renote as rizzkey.entities.Note : props.note;
 
 	const cleanups = [] as (() => void)[];
 
@@ -150,7 +150,7 @@ export function getNoteMenu(props: {
 		}).then(({ canceled }) => {
 			if (canceled) return;
 
-			misskeyApi('notes/delete', {
+			rizzkeyApi('notes/delete', {
 				noteId: appearNote.id,
 			});
 
@@ -167,7 +167,7 @@ export function getNoteMenu(props: {
 		}).then(({ canceled }) => {
 			if (canceled) return;
 
-			misskeyApi('notes/delete', {
+			rizzkeyApi('notes/delete', {
 				noteId: appearNote.id,
 			});
 
@@ -248,7 +248,7 @@ export function getNoteMenu(props: {
 	async function translate(): Promise<void> {
 		if (props.translation.value != null) return;
 		props.translating.value = true;
-		const res = await misskeyApi('notes/translate', {
+		const res = await rizzkeyApi('notes/translate', {
 			noteId: appearNote.id,
 			targetLang: miLocalStorage.getItem('lang') ?? navigator.language,
 		});
@@ -258,7 +258,7 @@ export function getNoteMenu(props: {
 
 	let menu: MenuItem[];
 	if ($i) {
-		const statePromise = misskeyApi('notes/state', {
+		const statePromise = rizzkeyApi('notes/state', {
 			noteId: appearNote.id,
 		});
 
@@ -335,7 +335,7 @@ export function getNoteMenu(props: {
 				icon: 'ti ti-user',
 				text: i18n.ts.user,
 				children: async () => {
-					const user = appearNote.userId === $i?.id ? $i : await misskeyApi('users/show', { userId: appearNote.userId });
+					const user = appearNote.userId === $i?.id ? $i : await rizzkeyApi('users/show', { userId: appearNote.userId });
 					const { menu, cleanup } = getUserMenu(user);
 					cleanups.push(cleanup);
 					return menu;
@@ -366,7 +366,7 @@ export function getNoteMenu(props: {
 					children: async () => {
 						const channelChildMenu = [] as MenuItem[];
 
-						const channel = await misskeyApi('channels/show', { channelId: appearNote.channel!.id });
+						const channel = await rizzkeyApi('channels/show', { channelId: appearNote.channel!.id });
 
 						if (channel.pinnedNoteIds.includes(appearNote.id)) {
 							channelChildMenu.push({
@@ -474,7 +474,7 @@ function smallerVisibility(a: Visibility | string, b: Visibility | string): Visi
 }
 
 export function getRenoteMenu(props: {
-	note: Misskey.entities.Note;
+	note: rizzkey.entities.Note;
 	renoteButton: ShallowRef<HTMLElement | undefined>;
 	mock?: boolean;
 }) {
@@ -485,7 +485,7 @@ export function getRenoteMenu(props: {
 		props.note.poll == null
 	);
 
-	const appearNote = isRenote ? props.note.renote as Misskey.entities.Note : props.note;
+	const appearNote = isRenote ? props.note.renote as rizzkey.entities.Note : props.note;
 
 	const channelRenoteItems: MenuItem[] = [];
 	const normalRenoteItems: MenuItem[] = [];
@@ -504,7 +504,7 @@ export function getRenoteMenu(props: {
 				}
 
 				if (!props.mock) {
-					misskeyApi('notes/create', {
+					rizzkeyApi('notes/create', {
 						renoteId: appearNote.id,
 						channelId: appearNote.channelId,
 					}).then(() => {
@@ -549,7 +549,7 @@ export function getRenoteMenu(props: {
 				}
 
 				if (!props.mock) {
-					misskeyApi('notes/create', {
+					rizzkeyApi('notes/create', {
 						localOnly,
 						visibility,
 						renoteId: appearNote.id,

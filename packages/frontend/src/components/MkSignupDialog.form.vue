@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -80,13 +80,13 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
 import { toUnicode } from 'punycode/';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkButton from './MkButton.vue';
 import MkInput from './MkInput.vue';
 import MkCaptcha, { type Captcha } from '@/components/MkCaptcha.vue';
 import * as config from '@/config.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { login } from '@/account.js';
 import { instance } from '@/instance.js';
 import { i18n } from '@/i18n.js';
@@ -98,7 +98,7 @@ const props = withDefaults(defineProps<{
 });
 
 const emit = defineEmits<{
-	(ev: 'signup', user: Misskey.entities.SigninResponse): void;
+	(ev: 'signup', user: rizzkey.entities.SigninResponse): void;
 	(ev: 'signupEmailPending'): void;
 }>();
 
@@ -185,7 +185,7 @@ function onChangeUsername(): void {
 	usernameState.value = 'wait';
 	usernameAbortController.value = new AbortController();
 
-	misskeyApi('username/available', {
+	rizzkeyApi('username/available', {
 		username: username.value,
 	}, undefined, usernameAbortController.value.signal).then(result => {
 		usernameState.value = result.available ? 'ok' : 'unavailable';
@@ -208,7 +208,7 @@ function onChangeEmail(): void {
 	emailState.value = 'wait';
 	emailAbortController.value = new AbortController();
 
-	misskeyApi('email-address/available', {
+	rizzkeyApi('email-address/available', {
 		emailAddress: email.value,
 	}, undefined, emailAbortController.value.signal).then(result => {
 		emailState.value = result.available ? 'ok' :
@@ -250,7 +250,7 @@ async function onSubmit(): Promise<void> {
 	submitting.value = true;
 
 	try {
-		await misskeyApi('signup', {
+		await rizzkeyApi('signup', {
 			username: username.value,
 			password: password.value,
 			emailAddress: email.value,
@@ -268,7 +268,7 @@ async function onSubmit(): Promise<void> {
 			});
 			emit('signupEmailPending');
 		} else {
-			const res = await misskeyApi('signin', {
+			const res = await rizzkeyApi('signin', {
 				username: username.value,
 				password: password.value,
 			});

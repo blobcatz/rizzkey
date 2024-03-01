@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -75,7 +75,7 @@ export class ApDbResolverService implements OnApplicationShutdown {
 	}
 
 	/**
-	 * AP Note => Misskey Note in DB
+	 * AP Note => rizzkey Note in DB
 	 */
 	@bindThis
 	public async getNoteFromApId(value: string | IObject): Promise<MiNote | null> {
@@ -95,7 +95,7 @@ export class ApDbResolverService implements OnApplicationShutdown {
 	}
 
 	/**
-	 * AP Person => Misskey User in DB
+	 * AP Person => rizzkey User in DB
 	 */
 	@bindThis
 	public async getUserFromApId(value: string | IObject): Promise<MiLocalUser | MiRemoteUser | null> {
@@ -117,7 +117,7 @@ export class ApDbResolverService implements OnApplicationShutdown {
 	}
 
 	/**
-	 * AP KeyId => Misskey User and Key
+	 * AP KeyId => rizzkey User and Key
 	 */
 	@bindThis
 	public async getAuthUserFromKeyId(keyId: string): Promise<{
@@ -147,7 +147,7 @@ export class ApDbResolverService implements OnApplicationShutdown {
 	}
 
 	/**
-	 * AP Actor id => Misskey User and Key
+	 * AP Actor id => rizzkey User and Key
 	 */
 	@bindThis
 	public async getAuthUserFromApId(uri: string): Promise<{

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -28,11 +28,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { i18n } from '@/i18n.js';
 
 const props = withDefaults(defineProps<{
-	role: Misskey.entities.Role;
+	role: rizzkey.entities.Role;
 	forModeration: boolean;
 	detailed: boolean;
 }>(), {

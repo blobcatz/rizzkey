@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -13,19 +13,19 @@ import { MiUser, UsersRepository } from '@/models/_.js';
 import { secureRndstr } from '@/misc/secure-rndstr.js';
 import { jobQueue } from '@/boot/common.js';
 import { api, initTestDb, signup, sleep, successfulApiCall, uploadFile } from '../utils.js';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 describe('Account Move', () => {
 	let jq: INestApplicationContext;
 	let url: URL;
 
 	let root: any;
-	let alice: misskey.entities.SignupResponse;
-	let bob: misskey.entities.SignupResponse;
-	let carol: misskey.entities.SignupResponse;
-	let dave: misskey.entities.SignupResponse;
-	let eve: misskey.entities.SignupResponse;
-	let frank: misskey.entities.SignupResponse;
+	let alice: rizzkey.entities.SignupResponse;
+	let bob: rizzkey.entities.SignupResponse;
+	let carol: rizzkey.entities.SignupResponse;
+	let dave: rizzkey.entities.SignupResponse;
+	let eve: rizzkey.entities.SignupResponse;
+	let frank: rizzkey.entities.SignupResponse;
 
 	let Users: UsersRepository;
 

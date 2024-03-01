@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -26,12 +26,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { useWidgetPropsManager, WidgetComponentEmits, WidgetComponentExpose, WidgetComponentProps } from './widget.js';
 import { GetFormResultType } from '@/scripts/form.js';
 import MkContainer from '@/components/MkContainer.vue';
 import MkMiniChart from '@/components/MkMiniChart.vue';
-import { misskeyApi, misskeyApiGet } from '@/scripts/misskey-api.js';
+import { rizzkeyApi, rizzkeyApiGet } from '@/scripts/rizzkey-api.js';
 import { useInterval } from '@/scripts/use-interval.js';
 import { i18n } from '@/i18n.js';
 import { getProxiedImageUrlNullable } from '@/scripts/media-proxy.js';
@@ -57,16 +57,16 @@ const { widgetProps, configure } = useWidgetPropsManager(name,
 	emit,
 );
 
-const instances = ref<Misskey.entities.FederationInstance[]>([]);
-const charts = ref<Misskey.entities.ChartsInstanceResponse[]>([]);
+const instances = ref<rizzkey.entities.FederationInstance[]>([]);
+const charts = ref<rizzkey.entities.ChartsInstanceResponse[]>([]);
 const fetching = ref(true);
 
 const fetch = async () => {
-	const fetchedInstances = await misskeyApi('federation/instances', {
+	const fetchedInstances = await rizzkeyApi('federation/instances', {
 		sort: '+latestRequestReceivedAt',
 		limit: 5,
 	});
-	const fetchedCharts = await Promise.all(fetchedInstances.map(i => misskeyApiGet('charts/instance', { host: i.host, limit: 16, span: 'hour' })));
+	const fetchedCharts = await Promise.all(fetchedInstances.map(i => rizzkeyApiGet('charts/instance', { host: i.host, limit: 16, span: 'hour' })));
 	instances.value = fetchedInstances;
 	charts.value = fetchedCharts;
 	fetching.value = false;

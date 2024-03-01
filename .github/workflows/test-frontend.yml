@@ -8,7 +8,7 @@ on:
     paths:
       - packages/frontend/**
       # for permissions
-      - packages/misskey-js/**
+      - packages/rizzkey-js/**
       # for e2e
       - packages/backend/**
 
@@ -16,7 +16,7 @@ on:
     paths:
       - packages/frontend/**
       # for permissions
-      - packages/misskey-js/**
+      - packages/rizzkey-js/**
       # for e2e
       - packages/backend/**
 
@@ -47,7 +47,7 @@ jobs:
     - name: Check pnpm-lock.yaml
       run: git diff --exit-code pnpm-lock.yaml
     - name: Copy Configure
-      run: cp .github/misskey/test.yml .config
+      run: cp .github/rizzkey/test.yml .config
     - name: Build
       run: pnpm build
     - name: Test
@@ -73,7 +73,7 @@ jobs:
         ports:
           - 54312:5432
         env:
-          POSTGRES_DB: test-misskey
+          POSTGRES_DB: test-rizzkey
           POSTGRES_HOST_AUTH_METHOD: trust
       redis:
         image: redis:7
@@ -103,7 +103,7 @@ jobs:
     - run: corepack enable
     - run: pnpm i --frozen-lockfile
     - name: Copy Configure
-      run: cp .github/misskey/test.yml .config
+      run: cp .github/rizzkey/test.yml .config
     - name: Build
       run: pnpm build
     # https://github.com/cypress-io/cypress/issues/4351#issuecomment-559489091

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -29,12 +29,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { watch, ref, shallowRef, computed } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkPagination from '@/components/MkPagination.vue';
 import MkButton from '@/components/MkButton.vue';
 import MkClipPreview from '@/components/MkClipPreview.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { clipsCache } from '@/cache.js';
@@ -48,12 +48,12 @@ const pagination = {
 
 const tab = ref('my');
 
-const favorites = ref<Misskey.entities.Clip[] | null>(null);
+const favorites = ref<rizzkey.entities.Clip[] | null>(null);
 
 const pagingComponent = shallowRef<InstanceType<typeof MkPagination>>();
 
 watch(tab, async () => {
-	favorites.value = await misskeyApi('clips/my-favorites');
+	favorites.value = await rizzkeyApi('clips/my-favorites');
 });
 
 async function create() {

@@ -1,4 +1,4 @@
-name: On Release Created (Publish misskey-js)
+name: On Release Created (Publish rizzkey-js)
 
 on:
   release:
@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish-misskey-js:
-    name: Publish misskey-js
+  publish-rizzkey-js:
+    name: Publish rizzkey-js
     runs-on: ubuntu-latest
 
     permissions:
@@ -39,7 +39,7 @@ jobs:
           corepack enable
           pnpm i --frozen-lockfile
           pnpm build
-          pnpm --filter misskey-js publish --access public --no-git-checks --provenance
+          pnpm --filter rizzkey-js publish --access public --no-git-checks --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

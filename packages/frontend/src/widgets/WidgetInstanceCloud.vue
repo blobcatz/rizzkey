@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -19,13 +19,13 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { shallowRef } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { useWidgetPropsManager, WidgetComponentEmits, WidgetComponentExpose, WidgetComponentProps } from './widget.js';
 import { GetFormResultType } from '@/scripts/form.js';
 import MkContainer from '@/components/MkContainer.vue';
 import MkTagCloud from '@/components/MkTagCloud.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { useInterval } from '@/scripts/use-interval.js';
 import { getProxiedImageUrlNullable } from '@/scripts/media-proxy.js';
 
@@ -50,14 +50,14 @@ const { widgetProps, configure } = useWidgetPropsManager(name,
 );
 
 const cloud = shallowRef<InstanceType<typeof MkTagCloud> | null>();
-const activeInstances = shallowRef<Misskey.entities.FederationInstance[] | null>(null);
+const activeInstances = shallowRef<rizzkey.entities.FederationInstance[] | null>(null);
 
 function onInstanceClick(i) {
 	os.pageWindow(`/instance-info/${i.host}`);
 }
 
 useInterval(() => {
-	misskeyApi('federation/instances', {
+	rizzkeyApi('federation/instances', {
 		sort: '+latestRequestReceivedAt',
 		limit: 25,
 	}).then(res => {

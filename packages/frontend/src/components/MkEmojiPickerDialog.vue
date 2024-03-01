@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -33,7 +33,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 </template>
 
 <script lang="ts" setup>
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { shallowRef } from 'vue';
 import MkModal from '@/components/MkModal.vue';
 import MkEmojiPicker from '@/components/MkEmojiPicker.vue';
@@ -45,7 +45,7 @@ const props = withDefaults(defineProps<{
 	showPinned?: boolean;
   pinnedEmojis?: string[],
 	asReactionPicker?: boolean;
-	targetNote?: Misskey.entities.Note;
+	targetNote?: rizzkey.entities.Note;
   choseAndClose?: boolean;
 }>(), {
 	manualShowing: null,

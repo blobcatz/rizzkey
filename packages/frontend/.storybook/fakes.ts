@@ -1,9 +1,9 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import type { entities } from 'misskey-js'
+import type { entities } from 'rizzkey-js'
 
 export function abuseUserReport() {
 	return {
@@ -65,7 +65,7 @@ export function file(isSensitive = false) {
 	};
 }
 
-export function userDetailed(id = 'someuserid', username = 'miskist', host = 'misskey-hub.net', name = 'Misskey User'): entities.UserDetailed {
+export function userDetailed(id = 'someuserid', username = 'miskist', host = 'misskey-hub.net', name = 'rizzkey User'): entities.UserDetailed {
 	return {
 		id,
 		username,

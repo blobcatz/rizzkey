@@ -23,7 +23,7 @@ type StreamEvents = {
 } & BroadcastEvents;
 
 /**
- * Misskey stream connection
+ * rizzkey stream connection
  */
 export default class Stream extends EventEmitter<StreamEvents> {
 	private stream: _ReconnectingWebsocket.default;

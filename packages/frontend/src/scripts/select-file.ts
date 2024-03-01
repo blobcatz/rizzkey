@@ -1,18 +1,18 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { useStream } from '@/stream.js';
 import { i18n } from '@/i18n.js';
 import { defaultStore } from '@/store.js';
 import { uploadFile } from '@/scripts/upload.js';
 
-export function chooseFileFromPc(multiple: boolean, keepOriginal = false): Promise<Misskey.entities.DriveFile[]> {
+export function chooseFileFromPc(multiple: boolean, keepOriginal = false): Promise<rizzkey.entities.DriveFile[]> {
 	return new Promise((res, rej) => {
 		const input = document.createElement('input');
 		input.type = 'file';
@@ -28,18 +28,18 @@ export function chooseFileFromPc(multiple: boolean, keepOriginal = false): Promi
 			});
 
 			// 一応廃棄
-			(window as any).__misskey_input_ref__ = null;
+			(window as any).__rizzkey_input_ref__ = null;
 		};
 
 		// https://qiita.com/fukasawah/items/b9dc732d95d99551013d
 		// iOS Safari で正常に動かす為のおまじない
-		(window as any).__misskey_input_ref__ = input;
+		(window as any).__rizzkey_input_ref__ = input;
 
 		input.click();
 	});
 }
 
-export function chooseFileFromDrive(multiple: boolean): Promise<Misskey.entities.DriveFile[]> {
+export function chooseFileFromDrive(multiple: boolean): Promise<rizzkey.entities.DriveFile[]> {
 	return new Promise((res, rej) => {
 		os.selectDriveFile(multiple).then(files => {
 			res(files);
@@ -47,7 +47,7 @@ export function chooseFileFromDrive(multiple: boolean): Promise<Misskey.entities
 	});
 }
 
-export function chooseFileFromUrl(): Promise<Misskey.entities.DriveFile> {
+export function chooseFileFromUrl(): Promise<rizzkey.entities.DriveFile> {
 	return new Promise((res, rej) => {
 		os.inputText({
 			title: i18n.ts.uploadFromUrl,
@@ -66,7 +66,7 @@ export function chooseFileFromUrl(): Promise<Misskey.entities.DriveFile> {
 				}
 			});
 
-			misskeyApi('drive/files/upload-from-url', {
+			rizzkeyApi('drive/files/upload-from-url', {
 				url: url,
 				folderId: defaultStore.state.uploadFolder,
 				marker,
@@ -80,7 +80,7 @@ export function chooseFileFromUrl(): Promise<Misskey.entities.DriveFile> {
 	});
 }
 
-function select(src: any, label: string | null, multiple: boolean): Promise<Misskey.entities.DriveFile[]> {
+function select(src: any, label: string | null, multiple: boolean): Promise<rizzkey.entities.DriveFile[]> {
 	return new Promise((res, rej) => {
 		const keepOriginal = ref(defaultStore.state.keepOriginalUploading);
 
@@ -107,10 +107,10 @@ function select(src: any, label: string | null, multiple: boolean): Promise<Miss
 	});
 }
 
-export function selectFile(src: any, label: string | null = null): Promise<Misskey.entities.DriveFile> {
+export function selectFile(src: any, label: string | null = null): Promise<rizzkey.entities.DriveFile> {
 	return select(src, label, false).then(files => files[0]);
 }
 
-export function selectFiles(src: any, label: string | null = null): Promise<Misskey.entities.DriveFile[]> {
+export function selectFiles(src: any, label: string | null = null): Promise<rizzkey.entities.DriveFile[]> {
 	return select(src, label, true);
 }

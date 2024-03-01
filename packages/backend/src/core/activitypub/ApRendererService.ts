@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -272,7 +272,7 @@ export class ApRendererService {
 			actor: `${this.config.url}/users/${noteReaction.userId}`,
 			object: note.uri ? note.uri : `${this.config.url}/notes/${noteReaction.noteId}`,
 			content: reaction,
-			_misskey_reaction: reaction,
+			_rizzkey_reaction: reaction,
 		};
 
 		if (reaction.startsWith(':')) {
@@ -397,7 +397,7 @@ export class ApRendererService {
 
 		const summary = note.cw === '' ? String.fromCharCode(0x200B) : note.cw;
 
-		const { content, noMisskeyContent } = this.apMfmService.getNoteHtml(note, apAppend);
+		const { content, norizzkeyContent } = this.apMfmService.getNoteHtml(note, apAppend);
 
 		const emojis = await this.getEmojis(note.emojis);
 		const apemojis = emojis.filter(emoji => !emoji.localOnly).map(emoji => this.renderEmoji(emoji));
@@ -427,14 +427,14 @@ export class ApRendererService {
 			attributedTo,
 			summary: summary ?? undefined,
 			content: content ?? undefined,
-			...(noMisskeyContent ? {} : {
-				_misskey_content: text,
+			...(norizzkeyContent ? {} : {
+				_rizzkey_content: text,
 				source: {
 					content: text,
-					mediaType: 'text/x.misskeymarkdown',
+					mediaType: 'text/x.rizzkeymarkdown',
 				},
 			}),
-			_misskey_quote: quote,
+			_rizzkey_quote: quote,
 			quoteUrl: quote,
 			published: this.idService.parse(note.id).date.toISOString(),
 			to,
@@ -492,7 +492,7 @@ export class ApRendererService {
 			preferredUsername: user.username,
 			name: user.name,
 			summary: profile.description ? this.mfmService.toHtml(mfm.parse(profile.description)) : null,
-			_misskey_summary: profile.description,
+			_rizzkey_summary: profile.description,
 			icon: avatar ? this.renderImage(avatar) : null,
 			image: banner ? this.renderImage(banner) : null,
 			tag,
@@ -531,7 +531,7 @@ export class ApRendererService {
 			content: note.text ?? '',
 			[poll.multiple ? 'anyOf' : 'oneOf']: poll.choices.map((text, i) => ({
 				name: text,
-				_misskey_votes: poll.votes[i],
+				_rizzkey_votes: poll.votes[i],
 				replies: {
 					type: 'Collection',
 					totalItems: poll.votes[i],
@@ -637,14 +637,14 @@ export class ApRendererService {
 					schema: 'http://schema.org#',
 					PropertyValue: 'schema:PropertyValue',
 					value: 'schema:value',
-					// Misskey
-					misskey: 'https://misskey-hub.net/ns#',
-					'_misskey_content': 'misskey:_misskey_content',
-					'_misskey_quote': 'misskey:_misskey_quote',
-					'_misskey_reaction': 'misskey:_misskey_reaction',
-					'_misskey_votes': 'misskey:_misskey_votes',
-					'_misskey_summary': 'misskey:_misskey_summary',
-					'isCat': 'misskey:isCat',
+					// rizzkey
+					rizzkey: 'https://misskey-hub.net/ns#',
+					'_rizzkey_content': 'rizzkey:_rizzkey_content',
+					'_rizzkey_quote': 'rizzkey:_rizzkey_quote',
+					'_rizzkey_reaction': 'rizzkey:_rizzkey_reaction',
+					'_rizzkey_votes': 'rizzkey:_rizzkey_votes',
+					'_rizzkey_summary': 'rizzkey:_rizzkey_summary',
+					'isCat': 'rizzkey:isCat',
 					// vcard
 					vcard: 'http://www.w3.org/2006/vcard/ns#',
 				},

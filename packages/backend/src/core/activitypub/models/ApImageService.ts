@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -86,8 +86,8 @@ export class ApImageService {
 	/**
 	 * Imageを解決します。
 	 *
-	 * Misskeyに対象のImageが登録されていればそれを返し、そうでなければ
-	 * リモートサーバーからフェッチしてMisskeyに登録しそれを返します。
+	 * rizzkeyに対象のImageが登録されていればそれを返し、そうでなければ
+	 * リモートサーバーからフェッチしてrizzkeyに登録しそれを返します。
 	 */
 	@bindThis
 	public async resolveImage(actor: MiRemoteUser, value: string | IObject): Promise<MiDriveFile> {

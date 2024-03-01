@@ -1,10 +1,10 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 /**
- * Basic OAuth tests to make sure the library is correctly integrated to Misskey
+ * Basic OAuth tests to make sure the library is correctly integrated to rizzkey
  * and not regressed by version updates or potential migration to another library.
  */
 
@@ -22,7 +22,7 @@ import pkceChallenge from 'pkce-challenge';
 import { JSDOM } from 'jsdom';
 import Fastify, { type FastifyInstance, type FastifyReply } from 'fastify';
 import { api, port, sendEnvUpdateRequest, signup } from '../utils.js';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 const host = `http://127.0.0.1:${port}`;
 
@@ -75,12 +75,12 @@ const clientConfig: ModuleOptions<'client_id'> = {
 function getMeta(html: string): { transactionId: string | undefined, clientName: string | undefined } {
 	const fragment = JSDOM.fragment(html);
 	return {
-		transactionId: fragment.querySelector<HTMLMetaElement>('meta[name="misskey:oauth:transaction-id"]')?.content,
-		clientName: fragment.querySelector<HTMLMetaElement>('meta[name="misskey:oauth:client-name"]')?.content,
+		transactionId: fragment.querySelector<HTMLMetaElement>('meta[name="rizzkey:oauth:transaction-id"]')?.content,
+		clientName: fragment.querySelector<HTMLMetaElement>('meta[name="rizzkey:oauth:client-name"]')?.content,
 	};
 }
 
-function fetchDecision(transactionId: string, user: misskey.entities.SignupResponse, { cancel }: { cancel?: boolean } = {}): Promise<Response> {
+function fetchDecision(transactionId: string, user: rizzkey.entities.SignupResponse, { cancel }: { cancel?: boolean } = {}): Promise<Response> {
 	return fetch(new URL('/oauth/decision', host), {
 		method: 'post',
 		body: new URLSearchParams({
@@ -95,14 +95,14 @@ function fetchDecision(transactionId: string, user: misskey.entities.SignupRespo
 	});
 }
 
-async function fetchDecisionFromResponse(response: Response, user: misskey.entities.SignupResponse, { cancel }: { cancel?: boolean } = {}): Promise<Response> {
+async function fetchDecisionFromResponse(response: Response, user: rizzkey.entities.SignupResponse, { cancel }: { cancel?: boolean } = {}): Promise<Response> {
 	const { transactionId } = getMeta(await response.text());
 	assert.ok(transactionId);
 
 	return await fetchDecision(transactionId, user, { cancel });
 }
 
-async function fetchAuthorizationCode(user: misskey.entities.SignupResponse, scope: string, code_challenge: string): Promise<{ client: AuthorizationCode, code: string }> {
+async function fetchAuthorizationCode(user: rizzkey.entities.SignupResponse, scope: string, code_challenge: string): Promise<{ client: AuthorizationCode, code: string }> {
 	const client = new AuthorizationCode(clientConfig);
 
 	const response = await fetch(client.authorizeURL({
@@ -139,7 +139,7 @@ function assertIndirectError(response: Response, error: string): void {
 	assert.strictEqual(location.searchParams.get('error'), error);
 
 	// https://datatracker.ietf.org/doc/html/rfc9207#name-response-parameter-iss
-	assert.strictEqual(location.searchParams.get('iss'), 'http://misskey.local');
+	assert.strictEqual(location.searchParams.get('iss'), 'http://rizzkey.local');
 	// https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1
 	assert.ok(location.searchParams.has('state'));
 }
@@ -154,8 +154,8 @@ async function assertDirectError(response: Response, status: number, error: stri
 describe('OAuth', () => {
 	let fastify: FastifyInstance;
 
-	let alice: misskey.entities.SignupResponse;
-	let bob: misskey.entities.SignupResponse;
+	let alice: rizzkey.entities.SignupResponse;
+	let bob: rizzkey.entities.SignupResponse;
 
 	let sender: (reply: FastifyReply) => void;
 
@@ -171,7 +171,7 @@ describe('OAuth', () => {
 	}, 1000 * 60 * 2);
 
 	beforeEach(async () => {
-		await sendEnvUpdateRequest({ key: 'MISSKEY_TEST_CHECK_IP_RANGE', value: '' });
+		await sendEnvUpdateRequest({ key: 'rizzkey_TEST_CHECK_IP_RANGE', value: '' });
 		sender = (reply): void => {
 			reply.send(`
 				<!DOCTYPE html>
@@ -216,7 +216,7 @@ describe('OAuth', () => {
 		assert.ok(location.searchParams.has('code'));
 		assert.strictEqual(location.searchParams.get('state'), 'state');
 		// https://datatracker.ietf.org/doc/html/rfc9207#name-response-parameter-iss
-		assert.strictEqual(location.searchParams.get('iss'), 'http://misskey.local');
+		assert.strictEqual(location.searchParams.get('iss'), 'http://rizzkey.local');
 
 		const code = new URL(location).searchParams.get('code');
 		assert.ok(code);
@@ -236,7 +236,7 @@ describe('OAuth', () => {
 		});
 		assert.strictEqual(createResult.status, 200);
 
-		const createResultBody = createResult.body as misskey.Endpoints['notes/create']['res'];
+		const createResultBody = createResult.body as rizzkey.Endpoints['notes/create']['res'];
 		assert.strictEqual(createResultBody.createdNote.text, 'test');
 	});
 
@@ -307,10 +307,10 @@ describe('OAuth', () => {
 		});
 		assert.strictEqual(createResultAlice.status, 200);
 
-		const createResultBodyAlice = await createResultAlice.body as misskey.Endpoints['notes/create']['res'];
+		const createResultBodyAlice = await createResultAlice.body as rizzkey.Endpoints['notes/create']['res'];
 		assert.strictEqual(createResultBodyAlice.createdNote.user.username, 'alice');
 
-		const createResultBodyBob = await createResultBob.body as misskey.Endpoints['notes/create']['res'];
+		const createResultBodyBob = await createResultBob.body as rizzkey.Endpoints['notes/create']['res'];
 		assert.strictEqual(createResultBodyBob.createdNote.user.username, 'bob');
 	});
 
@@ -494,7 +494,7 @@ describe('OAuth', () => {
 		// authorization, the authorization server MUST either process the
 		// request using a pre-defined default value or fail the request
 		// indicating an invalid scope."
-		// (And Misskey does the latter)
+		// (And rizzkey does the latter)
 		test('Missing scope', async () => {
 			const client = new AuthorizationCode(clientConfig);
 
@@ -537,7 +537,7 @@ describe('OAuth', () => {
 		// is different from the one requested by the client, the authorization
 		// server MUST include the "scope" response parameter to inform the
 		// client of the actual scope granted."
-		// (Although Misskey always return scope, which is also fine)
+		// (Although rizzkey always return scope, which is also fine)
 		test('Partially known scopes', async () => {
 			const { code_challenge, code_verifier } = await pkceChallenge(128);
 
@@ -605,7 +605,7 @@ describe('OAuth', () => {
 				bearer: true,
 			});
 			assert.strictEqual(createResult.status, 403);
-			assert.ok(createResult.headers.get('WWW-Authenticate')?.startsWith('Bearer realm="Misskey", error="insufficient_scope", error_description'));
+			assert.ok(createResult.headers.get('WWW-Authenticate')?.startsWith('Bearer realm="rizzkey", error="insufficient_scope", error_description'));
 		});
 	});
 
@@ -704,11 +704,11 @@ describe('OAuth', () => {
 		assert.strictEqual(response.status, 200);
 
 		const body = await response.json();
-		assert.strictEqual(body.issuer, 'http://misskey.local');
+		assert.strictEqual(body.issuer, 'http://rizzkey.local');
 		assert.ok(body.scopes_supported.includes('write:notes'));
 	});
 
-	// Any error on decision endpoint is solely on Misskey side and nothing to do with the client.
+	// Any error on decision endpoint is solely on rizzkey side and nothing to do with the client.
 	// Do not use indirect error here.
 	describe('Decision endpoint', () => {
 		test('No login token', async () => {
@@ -883,7 +883,7 @@ describe('OAuth', () => {
 		});
 
 		test('Disallow loopback', async () => {
-			await sendEnvUpdateRequest({ key: 'MISSKEY_TEST_CHECK_IP_RANGE', value: '1' });
+			await sendEnvUpdateRequest({ key: 'rizzkey_TEST_CHECK_IP_RANGE', value: '1' });
 
 			const client = new AuthorizationCode(clientConfig);
 			const response = await fetch(client.authorizeURL({

@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -199,7 +199,7 @@ export class ApPersonService implements OnModuleInit {
 	/**
 	 * uriからUser(Person)をフェッチします。
 	 *
-	 * Misskeyに対象のPersonが登録されていればそれを返し、登録がなければnullを返します。
+	 * rizzkeyに対象のPersonが登録されていればそれを返し、登録がなければnullを返します。
 	 */
 	@bindThis
 	public async fetchPerson(uri: string): Promise<MiLocalUser | MiRemoteUser | null> {
@@ -339,8 +339,8 @@ export class ApPersonService implements OnModuleInit {
 
 				let _description: string | null = null;
 
-				if (person._misskey_summary) {
-					_description = truncate(person._misskey_summary, summaryLength);
+				if (person._rizzkey_summary) {
+					_description = truncate(person._rizzkey_summary, summaryLength);
 				} else if (person.summary) {
 					_description = this.apMfmService.htmlToMfm(truncate(person.summary, summaryLength), person.tag);
 				}
@@ -416,7 +416,7 @@ export class ApPersonService implements OnModuleInit {
 
 	/**
 	 * Personの情報を更新します。
-	 * Misskeyに対象のPersonが登録されていなければ無視します。
+	 * rizzkeyに対象のPersonが登録されていなければ無視します。
 	 * もしアカウントの移行が確認された場合、アカウント移行処理を行います。
 	 *
 	 * @param uri URI of Person
@@ -515,8 +515,8 @@ export class ApPersonService implements OnModuleInit {
 
 		let _description: string | null = null;
 
-		if (person._misskey_summary) {
-			_description = truncate(person._misskey_summary, summaryLength);
+		if (person._rizzkey_summary) {
+			_description = truncate(person._rizzkey_summary, summaryLength);
 		} else if (person.summary) {
 			_description = this.apMfmService.htmlToMfm(truncate(person.summary, summaryLength), person.tag);
 		}
@@ -571,8 +571,8 @@ export class ApPersonService implements OnModuleInit {
 	/**
 	 * Personを解決します。
 	 *
-	 * Misskeyに対象のPersonが登録されていればそれを返し、そうでなければ
-	 * リモートサーバーからフェッチしてMisskeyに登録しそれを返します。
+	 * rizzkeyに対象のPersonが登録されていればそれを返し、そうでなければ
+	 * リモートサーバーからフェッチしてrizzkeyに登録しそれを返します。
 	 */
 	@bindThis
 	public async resolvePerson(uri: string, resolver?: Resolver): Promise<MiLocalUser | MiRemoteUser> {

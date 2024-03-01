@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -23,11 +23,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { useWidgetPropsManager, WidgetComponentEmits, WidgetComponentExpose, WidgetComponentProps } from './widget.js';
 import { GetFormResultType } from '@/scripts/form.js';
 import MkContainer from '@/components/MkContainer.vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { useInterval } from '@/scripts/use-interval.js';
 import { i18n } from '@/i18n.js';
 import { infoImageUrl } from '@/instance.js';
@@ -53,7 +53,7 @@ const { widgetProps, configure } = useWidgetPropsManager(name,
 	emit,
 );
 
-const users = ref<Misskey.entities.FollowingFolloweePopulated[]>([]);
+const users = ref<rizzkey.entities.FollowingFolloweePopulated[]>([]);
 const fetching = ref(true);
 let lastFetchedAt = '1970-01-01';
 
@@ -70,7 +70,7 @@ const fetch = () => {
 	now.setHours(0, 0, 0, 0);
 
 	if (now > lfAtD) {
-		misskeyApi('users/following', {
+		rizzkeyApi('users/following', {
 			limit: 18,
 			birthday: now.toISOString(),
 			userId: $i.id,

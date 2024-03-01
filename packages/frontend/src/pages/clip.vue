@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -27,12 +27,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, watch, provide, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkNotes from '@/components/MkNotes.vue';
 import { $i } from '@/account.js';
 import { i18n } from '@/i18n.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { url } from '@/config.js';
 import MkButton from '@/components/MkButton.vue';
@@ -44,7 +44,7 @@ const props = defineProps<{
 	clipId: string,
 }>();
 
-const clip = ref<Misskey.entities.Clip | null>(null);
+const clip = ref<rizzkey.entities.Clip | null>(null);
 const favorited = ref(false);
 const pagination = {
 	endpoint: 'clips/notes' as const,
@@ -57,7 +57,7 @@ const pagination = {
 const isOwned = computed<boolean | null>(() => $i && clip.value && ($i.id === clip.value.userId));
 
 watch(() => props.clipId, async () => {
-	clip.value = await misskeyApi('clips/show', {
+	clip.value = await rizzkeyApi('clips/show', {
 		clipId: props.clipId,
 	});
 	favorited.value = clip.value.isFavorited;

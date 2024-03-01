@@ -1,11 +1,11 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { utils, values } from '@syuilo/aiscript';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { $i } from '@/account.js';
 import { miLocalStorage } from '@/local-storage.js';
 import { customEmojis } from '@/custom-emojis.js';
@@ -55,7 +55,7 @@ export function createAiScriptEnv(opts) {
 				if (typeof token.value !== 'string') throw new Error('invalid token');
 			}
 			const actualToken: string|null = token?.value ?? opts.token ?? null;
-			return misskeyApi(ep.value, utils.valToJs(param), actualToken).then(res => {
+			return rizzkeyApi(ep.value, utils.valToJs(param), actualToken).then(res => {
 				return utils.jsToVal(res);
 			}, err => {
 				return values.ERROR('request_failed', utils.jsToVal(err));

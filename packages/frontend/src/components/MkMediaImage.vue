@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -52,7 +52,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { watch, ref, computed } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { getStaticImageUrl } from '@/scripts/media-proxy.js';
 import bytes from '@/filters/bytes.js';
 import ImgWithBlurhash from '@/components/MkImgWithBlurhash.vue';
@@ -62,7 +62,7 @@ import * as os from '@/os.js';
 import { iAmModerator } from '@/account.js';
 
 const props = withDefaults(defineProps<{
-	image: Misskey.entities.DriveFile;
+	image: rizzkey.entities.DriveFile;
 	raw?: boolean;
 	cover?: boolean;
 	disableImageLink?: boolean;

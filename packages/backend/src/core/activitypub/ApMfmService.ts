@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -26,20 +26,20 @@ export class ApMfmService {
 
 	@bindThis
 	public getNoteHtml(note: MiNote, apAppend?: string) {
-		let noMisskeyContent = false;
+		let norizzkeyContent = false;
 		const srcMfm = (note.text ?? '') + (apAppend ?? '');
 
 		const parsed = mfm.parse(srcMfm);
 
 		if (!apAppend && parsed?.every(n => ['text', 'unicodeEmoji', 'emojiCode', 'mention', 'hashtag', 'url'].includes(n.type))) {
-			noMisskeyContent = true;
+			norizzkeyContent = true;
 		}
 
 		const content = this.mfmService.toHtml(parsed, JSON.parse(note.mentionedRemoteUsers));
 
 		return {
 			content,
-			noMisskeyContent,
+			norizzkeyContent,
 		};
 	}
 }

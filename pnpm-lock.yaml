@@ -272,12 +272,12 @@ importers:
       mime-types:
         specifier: 2.1.35
         version: 2.1.35
-      misskey-js:
+      rizzkey-js:
         specifier: workspace:*
-        version: link:../misskey-js
-      misskey-reversi:
+        version: link:../rizzkey-js
+      rizzkey-reversi:
         specifier: workspace:*
-        version: link:../misskey-reversi
+        version: link:../rizzkey-reversi
       ms:
         specifier: 3.0.0-canary.1
         version: 3.0.0-canary.1
@@ -781,15 +781,15 @@ importers:
       mfm-js:
         specifier: 0.24.0
         version: 0.24.0
-      misskey-bubble-game:
+      rizzkey-bubble-game:
         specifier: workspace:*
-        version: link:../misskey-bubble-game
-      misskey-js:
+        version: link:../rizzkey-bubble-game
+      rizzkey-js:
         specifier: workspace:*
-        version: link:../misskey-js
-      misskey-reversi:
+        version: link:../rizzkey-js
+      rizzkey-reversi:
         specifier: workspace:*
-        version: link:../misskey-reversi
+        version: link:../rizzkey-reversi
       photoswipe:
         specifier: 5.4.3
         version: 5.4.3
@@ -1010,9 +1010,9 @@ importers:
       storybook:
         specifier: 8.0.0-beta.6
         version: 8.0.0-beta.6(react-dom@18.2.0)(react@18.2.0)
-      storybook-addon-misskey-theme:
-        specifier: github:misskey-dev/storybook-addon-misskey-theme
-        version: github.com/misskey-dev/storybook-addon-misskey-theme/cf583db098365b2ccc81a82f63ca9c93bc32b640(@storybook/blocks@8.0.0-beta.6)(@storybook/components@8.0.0-beta.6)(@storybook/core-events@8.0.0-beta.6)(@storybook/manager-api@8.0.0-beta.6)(@storybook/preview-api@8.0.0-beta.6)(@storybook/theming@8.0.0-beta.6)(@storybook/types@8.0.0-beta.6)(react-dom@18.2.0)(react@18.2.0)
+      storybook-addon-rizzkey-theme:
+        specifier: github:misskey-dev/storybook-addon-rizzkey-theme
+        version: github.com/misskey-dev/storybook-addon-rizzkey-theme/cf583db098365b2ccc81a82f63ca9c93bc32b640(@storybook/blocks@8.0.0-beta.6)(@storybook/components@8.0.0-beta.6)(@storybook/core-events@8.0.0-beta.6)(@storybook/manager-api@8.0.0-beta.6)(@storybook/preview-api@8.0.0-beta.6)(@storybook/theming@8.0.0-beta.6)(@storybook/types@8.0.0-beta.6)(react-dom@18.2.0)(react@18.2.0)
       vite-plugin-turbosnap:
         specifier: 1.0.3
         version: 1.0.3
@@ -1032,7 +1032,7 @@ importers:
         specifier: 1.8.27
         version: 1.8.27(typescript@5.3.3)
 
-  packages/misskey-bubble-game:
+  packages/rizzkey-bubble-game:
     dependencies:
       esbuild:
         specifier: 0.19.11
@@ -1078,7 +1078,7 @@ importers:
         specifier: 5.3.3
         version: 5.3.3
 
-  packages/misskey-js:
+  packages/rizzkey-js:
     dependencies:
       '@swc/cli':
         specifier: 0.1.63
@@ -1142,7 +1142,7 @@ importers:
         specifier: 5.3.3
         version: 5.3.3
 
-  packages/misskey-js/generator:
+  packages/rizzkey-js/generator:
     devDependencies:
       '@misskey-dev/eslint-plugin':
         specifier: ^1.0.0
@@ -1178,7 +1178,7 @@ importers:
         specifier: 5.3.3
         version: 5.3.3
 
-  packages/misskey-reversi:
+  packages/rizzkey-reversi:
     dependencies:
       crc-32:
         specifier: 1.2.2
@@ -1220,9 +1220,9 @@ importers:
       idb-keyval:
         specifier: 6.2.1
         version: 6.2.1
-      misskey-js:
+      rizzkey-js:
         specifier: workspace:*
-        version: link:../misskey-js
+        version: link:../rizzkey-js
     devDependencies:
       '@misskey-dev/eslint-plugin':
         specifier: 1.0.0
@@ -19987,10 +19987,10 @@ packages:
       vscode-languageclient: 9.0.1
     dev: false
 
-  github.com/misskey-dev/storybook-addon-misskey-theme/cf583db098365b2ccc81a82f63ca9c93bc32b640(@storybook/blocks@8.0.0-beta.6)(@storybook/components@8.0.0-beta.6)(@storybook/core-events@8.0.0-beta.6)(@storybook/manager-api@8.0.0-beta.6)(@storybook/preview-api@8.0.0-beta.6)(@storybook/theming@8.0.0-beta.6)(@storybook/types@8.0.0-beta.6)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {tarball: https://codeload.github.com/misskey-dev/storybook-addon-misskey-theme/tar.gz/cf583db098365b2ccc81a82f63ca9c93bc32b640}
-    id: github.com/misskey-dev/storybook-addon-misskey-theme/cf583db098365b2ccc81a82f63ca9c93bc32b640
-    name: storybook-addon-misskey-theme
+  github.com/misskey-dev/storybook-addon-rizzkey-theme/cf583db098365b2ccc81a82f63ca9c93bc32b640(@storybook/blocks@8.0.0-beta.6)(@storybook/components@8.0.0-beta.6)(@storybook/core-events@8.0.0-beta.6)(@storybook/manager-api@8.0.0-beta.6)(@storybook/preview-api@8.0.0-beta.6)(@storybook/theming@8.0.0-beta.6)(@storybook/types@8.0.0-beta.6)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {tarball: https://codeload.github.com/misskey-dev/storybook-addon-rizzkey-theme/tar.gz/cf583db098365b2ccc81a82f63ca9c93bc32b640}
+    id: github.com/misskey-dev/storybook-addon-rizzkey-theme/cf583db098365b2ccc81a82f63ca9c93bc32b640
+    name: storybook-addon-rizzkey-theme
     version: 0.0.0
     peerDependencies:
       '@storybook/blocks': ^7.0.0-rc.4

@@ -1,17 +1,17 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { StoryObj } from '@storybook/vue3';
 import { expect, within } from '@storybook/test';
-import MkMisskeyFlavoredMarkdown from './MkMisskeyFlavoredMarkdown.js';
+import MkrizzkeyFlavoredMarkdown from './MkrizzkeyFlavoredMarkdown.js';
 export const Default = {
 	render(args) {
 		return {
 			components: {
-				MkMisskeyFlavoredMarkdown,
+				MkrizzkeyFlavoredMarkdown,
 			},
 			setup() {
 				return {
@@ -25,7 +25,7 @@ export const Default = {
 					};
 				},
 			},
-			template: '<MkMisskeyFlavoredMarkdown v-bind="props" />',
+			template: '<MkrizzkeyFlavoredMarkdown v-bind="props" />',
 		};
 	},
 	async play({ canvasElement, args }) {
@@ -54,25 +54,25 @@ export const Default = {
 	parameters: {
 		layout: 'centered',
 	},
-} satisfies StoryObj<typeof MkMisskeyFlavoredMarkdown>;
+} satisfies StoryObj<typeof MkrizzkeyFlavoredMarkdown>;
 export const Plain = {
 	...Default,
 	args: {
 		...Default.args,
 		plain: true,
 	},
-} satisfies StoryObj<typeof MkMisskeyFlavoredMarkdown>;
+} satisfies StoryObj<typeof MkrizzkeyFlavoredMarkdown>;
 export const Nowrap = {
 	...Default,
 	args: {
 		...Default.args,
 		nowrap: true,
 	},
-} satisfies StoryObj<typeof MkMisskeyFlavoredMarkdown>;
+} satisfies StoryObj<typeof MkrizzkeyFlavoredMarkdown>;
 export const IsNotNote = {
 	...Default,
 	args: {
 		...Default.args,
 		isNote: false,
 	},
-} satisfies StoryObj<typeof MkMisskeyFlavoredMarkdown>;
+} satisfies StoryObj<typeof MkrizzkeyFlavoredMarkdown>;

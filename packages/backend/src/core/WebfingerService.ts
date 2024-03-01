@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -46,7 +46,7 @@ export class WebfingerService {
 		const m = query.match(mRegex);
 		if (m) {
 			const hostname = m[2];
-			const useHttp = process.env.MISSKEY_WEBFINGER_USE_HTTP && process.env.MISSKEY_WEBFINGER_USE_HTTP.toLowerCase() === 'true';
+			const useHttp = process.env.rizzkey_WEBFINGER_USE_HTTP && process.env.rizzkey_WEBFINGER_USE_HTTP.toLowerCase() === 'true';
 			return `http${useHttp ? '' : 's'}://${hostname}/.well-known/webfinger?${urlQuery({ resource: `acct:${query}` })}`;
 		}
 

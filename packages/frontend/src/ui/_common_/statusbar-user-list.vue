@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -32,9 +32,9 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MarqueeText from '@/components/MkMarquee.vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { useInterval } from '@/scripts/use-interval.js';
 import { getNoteSummary } from '@/scripts/get-note-summary.js';
 import { notePage } from '@/filters/note.js';
@@ -48,13 +48,13 @@ const props = defineProps<{
 	refreshIntervalSec?: number;
 }>();
 
-const notes = ref<Misskey.entities.Note[]>([]);
+const notes = ref<rizzkey.entities.Note[]>([]);
 const fetching = ref(true);
 const key = ref(0);
 
 const tick = () => {
 	if (props.userListId == null) return;
-	misskeyApi('notes/user-list-timeline', {
+	rizzkeyApi('notes/user-list-timeline', {
 		listId: props.userListId,
 	}).then(res => {
 		notes.value = res;

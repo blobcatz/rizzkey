@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -21,7 +21,7 @@ const INVALID = false;
 describe('api:notes/create', () => {
 	describe('validation', () => {
 		const v = getValidator(paramDef);
-		const tooLong = readFile(_dirname + '/../../../../../test/resources/misskey.svg', 'utf-8');
+		const tooLong = readFile(_dirname + '/../../../../../test/resources/rizzkey.svg', 'utf-8');
 
 		test('reject empty', () => {
 			const valid = v({ });

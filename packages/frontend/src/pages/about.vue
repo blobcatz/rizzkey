@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -26,16 +26,16 @@ SPDX-License-Identifier: AGPL-3.0-only
 				<FormSection>
 					<div class="_gaps_m">
 						<MkKeyValue :copy="version">
-							<template #key>Misskey</template>
+							<template #key>rizzkey</template>
 							<template #value>{{ version }}</template>
 						</MkKeyValue>
-						<div v-html="i18n.tsx.poweredByMisskeyDescription({ name: instance.name ?? host })">
+						<div v-html="i18n.tsx.poweredByrizzkeyDescription({ name: instance.name ?? host })">
 						</div>
-						<FormLink to="/about-misskey">
+						<FormLink to="/about-rizzkey">
 							<template #icon><i class="ti ti-info-circle"></i></template>
-							{{ i18n.ts.aboutMisskey }}
+							{{ i18n.ts.aboutrizzkey }}
 						</FormLink>
-						<FormLink v-if="instance.repositoryUrl || instance.providesTarball" :to="instance.repositoryUrl || `/tarball/misskey-${version}.tar.gz`" external>
+						<FormLink v-if="instance.repositoryUrl || instance.providesTarball" :to="instance.repositoryUrl || `/tarball/rizzkey-${version}.tar.gz`" external>
 							<template #icon><i class="ti ti-code"></i></template>
 							{{ i18n.ts.sourceCode }}
 						</FormLink>
@@ -131,7 +131,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, watch, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XEmojis from './about.emojis.vue';
 import XFederation from './about.federation.vue';
 import { version, host } from '@/config.js';
@@ -144,7 +144,7 @@ import MkKeyValue from '@/components/MkKeyValue.vue';
 import MkInfo from '@/components/MkInfo.vue';
 import MkInstanceStats from '@/components/MkInstanceStats.vue';
 import MkHorizontalSwipe from '@/components/MkHorizontalSwipe.vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import number from '@/filters/number.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
@@ -157,7 +157,7 @@ const props = withDefaults(defineProps<{
 	initialTab: 'overview',
 });
 
-const stats = ref<Misskey.entities.StatsResponse | null>(null);
+const stats = ref<rizzkey.entities.StatsResponse | null>(null);
 const tab = ref(props.initialTab);
 
 watch(tab, () => {
@@ -166,7 +166,7 @@ watch(tab, () => {
 	}
 });
 
-const initStats = () => misskeyApi('stats', {
+const initStats = () => rizzkeyApi('stats', {
 }).then((res) => {
 	stats.value = res;
 });

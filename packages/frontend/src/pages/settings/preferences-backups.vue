@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -43,7 +43,7 @@ import FormSection from '@/components/form/section.vue';
 import MkButton from '@/components/MkButton.vue';
 import MkInfo from '@/components/MkInfo.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { ColdDeviceStorage, defaultStore } from '@/store.js';
 import { unisonReload } from '@/scripts/unison-reload.js';
 import { useStream } from '@/stream.js';
@@ -124,13 +124,13 @@ const coldDeviceStorageSaveKeys: (keyof typeof ColdDeviceStorage.default)[] = [
 
 const scope = ['clientPreferencesProfiles'];
 
-const profileProps = ['name', 'createdAt', 'updatedAt', 'misskeyVersion', 'settings', 'host'];
+const profileProps = ['name', 'createdAt', 'updatedAt', 'rizzkeyVersion', 'settings', 'host'];
 
 type Profile = {
 	name: string;
 	createdAt: string;
 	updatedAt: string | null;
-	misskeyVersion: string;
+	rizzkeyVersion: string;
 	host: string;
 	settings: {
 		hot: Record<keyof typeof defaultStoreSaveKeys, unknown>;
@@ -145,7 +145,7 @@ const connection = $i && useStream().useChannel('main');
 
 const profiles = ref<Record<string, Profile> | null>(null);
 
-misskeyApi('i/registry/get-all', { scope })
+rizzkeyApi('i/registry/get-all', { scope })
 	.then(res => {
 		profiles.value = res || {};
 	});
@@ -161,7 +161,7 @@ function validate(profile: any): void {
 	if (Object.keys(profile).some(key => !profileProps.includes(key))) throw new Error('Unnecessary properties exist');
 
 	if (!profile.name) throw new Error('Missing required prop: name');
-	if (!profile.misskeyVersion) throw new Error('Missing required prop: misskeyVersion');
+	if (!profile.rizzkeyVersion) throw new Error('Missing required prop: rizzkeyVersion');
 
 	// Check if createdAt and updatedAt is Date
 	// https://zenn.dev/lollipop_onl/articles/eoz-judge-js-invalid-date
@@ -219,7 +219,7 @@ async function saveNew(): Promise<void> {
 		name,
 		createdAt: (new Date()).toISOString(),
 		updatedAt: null,
-		misskeyVersion: version,
+		rizzkeyVersion: version,
 		host,
 		settings: getSettings(),
 	};
@@ -260,12 +260,12 @@ function loadFile(): void {
 		await os.apiWithDialog('i/registry/set', { scope, key: id, value: profile });
 
 		// 一応廃棄
-		(window as any).__misskey_input_ref__ = null;
+		(window as any).__rizzkey_input_ref__ = null;
 	};
 
 	// https://qiita.com/fukasawah/items/b9dc732d95d99551013d
 	// iOS Safari で正常に動かす為のおまじない
-	(window as any).__misskey_input_ref__ = input;
+	(window as any).__rizzkey_input_ref__ = input;
 
 	input.click();
 }
@@ -360,7 +360,7 @@ async function save(id: string): Promise<void> {
 		name,
 		createdAt,
 		updatedAt: (new Date()).toISOString(),
-		misskeyVersion: version,
+		rizzkeyVersion: version,
 		host,
 		settings: getSettings(),
 	};

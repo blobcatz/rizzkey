@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -26,11 +26,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkButton from '@/components/MkButton.vue';
 import MkLink from '@/components/MkLink.vue';
 import { version } from '@/config.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { unisonReload } from '@/scripts/unison-reload.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
@@ -45,9 +45,9 @@ const props = withDefaults(defineProps<{
 
 const loaded = ref(false);
 const serverIsDead = ref(false);
-const meta = ref<Misskey.entities.MetaResponse | null>(null);
+const meta = ref<rizzkey.entities.MetaResponse | null>(null);
 
-misskeyApi('meta', {
+rizzkeyApi('meta', {
 	detail: false,
 }).then(res => {
 	loaded.value = true;

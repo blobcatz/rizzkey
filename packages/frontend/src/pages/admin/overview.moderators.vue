@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -18,15 +18,15 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
-import * as Misskey from 'misskey-js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
+import * as rizzkey from 'rizzkey-js';
 import { defaultStore } from '@/store.js';
 
-const moderators = ref<Misskey.entities.UserDetailed[] | null>(null);
+const moderators = ref<rizzkey.entities.UserDetailed[] | null>(null);
 const fetching = ref(true);
 
 onMounted(async () => {
-	moderators.value = await misskeyApi('admin/show-users', {
+	moderators.value = await rizzkeyApi('admin/show-users', {
 		sort: '+lastActiveDate',
 		state: 'adminOrModerator',
 		limit: 30,

@@ -1,17 +1,17 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { MaybeRefOrGetter, Ref, inject, isRef, onActivated, onBeforeUnmount, provide, ref, toValue, watch } from 'vue';
 
 export type PageMetadata = {
 	title: string;
 	subtitle?: string;
 	icon?: string | null;
-	avatar?: Misskey.entities.User | null;
-	userName?: Misskey.entities.User | null;
+	avatar?: rizzkey.entities.User | null;
+	userName?: rizzkey.entities.User | null;
 	needWideArea?: boolean;
 };
 

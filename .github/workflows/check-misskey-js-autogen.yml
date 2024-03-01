@@ -1,4 +1,4 @@
-name: Check Misskey JS autogen
+name: Check rizzkey JS autogen
 
 on:
   pull_request_target:
@@ -9,7 +9,7 @@ on:
       - packages/backend/**
 
 jobs:
-  check-misskey-js-autogen:
+  check-rizzkey-js-autogen:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -43,7 +43,7 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.3.3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          check-regexp: get-from-misskey .+
+          check-regexp: get-from-rizzkey .+
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 30
 
@@ -61,7 +61,7 @@ jobs:
 
             console.log(workflows.map(x => ({name: x.name, title: x.display_title})));
 
-            const run_id = workflows.find(x => x.name.includes("Get api.json from Misskey")).id;
+            const run_id = workflows.find(x => x.name.includes("Get api.json from rizzkey")).id;
 
             let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
@@ -92,16 +92,16 @@ jobs:
         run: |-
           checksum=$(realpath head_checksum)
 
-          cd packages/misskey-js/src
+          cd packages/rizzkey-js/src
           find autogen -type f -exec sh -c 'echo $(sed -E "s/^\s+\*\s+generatedAt:.+$//" {} | sha256sum | cut -d" " -f 1) {}' \; > $checksum
           cd ../../..
 
       - name: build autogen
         run: |-
             checksum=$(realpath ${api_json_name}_checksum)
-            mv $api_json_name packages/misskey-js/generator/api.json
+            mv $api_json_name packages/rizzkey-js/generator/api.json
 
-            cd packages/misskey-js/generator
+            cd packages/rizzkey-js/generator
             pnpm run generate
             cd built
             find autogen -type f -exec sh -c 'echo $(sed -E "s/^\s+\*\s+generatedAt:.+$//" {} | sha256sum | cut -d" " -f 1) {}' \; > $checksum
@@ -114,21 +114,21 @@ jobs:
         if: failure()
         uses: thollander/actions-comment-pull-request@v2
         with:
-          comment_tag: check-misskey-js-autogen
+          comment_tag: check-rizzkey-js-autogen
           message: |-
             Thank you for sending us a great Pull Request! 👍
-            Please regenerate misskey-js type definitions! 🙏
+            Please regenerate rizzkey-js type definitions! 🙏
 
             example:
             ```sh
-            pnpm run build-misskey-js-with-types
+            pnpm run build-rizzkey-js-with-types
             ```
 
       - name: send message
         if: success()
         uses: thollander/actions-comment-pull-request@v2
         with:
-          comment_tag: check-misskey-js-autogen
+          comment_tag: check-rizzkey-js-autogen
           mode: delete
           message: "Thank you!"
           create_if_not_exists: false

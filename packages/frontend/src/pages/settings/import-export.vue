@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -125,7 +125,7 @@ import FormSection from '@/components/form/section.vue';
 import MkFolder from '@/components/MkFolder.vue';
 import MkSwitch from '@/components/MkSwitch.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { selectFile } from '@/scripts/select-file.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
@@ -158,19 +158,19 @@ const onError = (ev) => {
 };
 
 const exportNotes = () => {
-	misskeyApi('i/export-notes', {}).then(onExportSuccess).catch(onError);
+	rizzkeyApi('i/export-notes', {}).then(onExportSuccess).catch(onError);
 };
 
 const exportFavorites = () => {
-	misskeyApi('i/export-favorites', {}).then(onExportSuccess).catch(onError);
+	rizzkeyApi('i/export-favorites', {}).then(onExportSuccess).catch(onError);
 };
 
 const exportClips = () => {
-	misskeyApi('i/export-clips', {}).then(onExportSuccess).catch(onError);
+	rizzkeyApi('i/export-clips', {}).then(onExportSuccess).catch(onError);
 };
 
 const exportFollowing = () => {
-	misskeyApi('i/export-following', {
+	rizzkeyApi('i/export-following', {
 		excludeMuting: excludeMutingUsers.value,
 		excludeInactive: excludeInactiveUsers.value,
 	})
@@ -178,24 +178,24 @@ const exportFollowing = () => {
 };
 
 const exportBlocking = () => {
-	misskeyApi('i/export-blocking', {}).then(onExportSuccess).catch(onError);
+	rizzkeyApi('i/export-blocking', {}).then(onExportSuccess).catch(onError);
 };
 
 const exportUserLists = () => {
-	misskeyApi('i/export-user-lists', {}).then(onExportSuccess).catch(onError);
+	rizzkeyApi('i/export-user-lists', {}).then(onExportSuccess).catch(onError);
 };
 
 const exportMuting = () => {
-	misskeyApi('i/export-mute', {}).then(onExportSuccess).catch(onError);
+	rizzkeyApi('i/export-mute', {}).then(onExportSuccess).catch(onError);
 };
 
 const exportAntennas = () => {
-	misskeyApi('i/export-antennas', {}).then(onExportSuccess).catch(onError);
+	rizzkeyApi('i/export-antennas', {}).then(onExportSuccess).catch(onError);
 };
 
 const importFollowing = async (ev) => {
 	const file = await selectFile(ev.currentTarget ?? ev.target);
-	misskeyApi('i/import-following', {
+	rizzkeyApi('i/import-following', {
 		fileId: file.id,
 		withReplies: withReplies.value,
 	}).then(onImportSuccess).catch(onError);
@@ -203,22 +203,22 @@ const importFollowing = async (ev) => {
 
 const importUserLists = async (ev) => {
 	const file = await selectFile(ev.currentTarget ?? ev.target);
-	misskeyApi('i/import-user-lists', { fileId: file.id }).then(onImportSuccess).catch(onError);
+	rizzkeyApi('i/import-user-lists', { fileId: file.id }).then(onImportSuccess).catch(onError);
 };
 
 const importMuting = async (ev) => {
 	const file = await selectFile(ev.currentTarget ?? ev.target);
-	misskeyApi('i/import-muting', { fileId: file.id }).then(onImportSuccess).catch(onError);
+	rizzkeyApi('i/import-muting', { fileId: file.id }).then(onImportSuccess).catch(onError);
 };
 
 const importBlocking = async (ev) => {
 	const file = await selectFile(ev.currentTarget ?? ev.target);
-	misskeyApi('i/import-blocking', { fileId: file.id }).then(onImportSuccess).catch(onError);
+	rizzkeyApi('i/import-blocking', { fileId: file.id }).then(onImportSuccess).catch(onError);
 };
 
 const importAntennas = async (ev) => {
 	const file = await selectFile(ev.currentTarget ?? ev.target);
-	misskeyApi('i/import-antennas', { fileId: file.id }).then(onImportSuccess).catch(onError);
+	rizzkeyApi('i/import-antennas', { fileId: file.id }).then(onImportSuccess).catch(onError);
 };
 
 const headerActions = computed(() => []);

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -46,7 +46,7 @@ import { $i, getAccounts } from '@/account.js';
 import MkButton from '@/components/MkButton.vue';
 import { instance } from '@/instance.js';
 import { apiWithDialog, promiseDialog } from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 
 defineProps<{
@@ -83,7 +83,7 @@ function subscribe() {
 			pushSubscription.value = subscription;
 
 			// Register
-			pushRegistrationInServer.value = await misskeyApi('sw/register', {
+			pushRegistrationInServer.value = await rizzkeyApi('sw/register', {
 				endpoint: subscription.endpoint,
 				auth: encode(subscription.getKey('auth')),
 				publickey: encode(subscription.getKey('p256dh')),
@@ -160,7 +160,7 @@ if (navigator.serviceWorker == null) {
 			supported.value = true;
 
 			if (pushSubscription.value) {
-				const res = await misskeyApi('sw/show-registration', {
+				const res = await rizzkeyApi('sw/show-registration', {
 					endpoint: pushSubscription.value.endpoint,
 				});
 

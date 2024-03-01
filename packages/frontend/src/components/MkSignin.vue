@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -51,7 +51,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts" setup>
 import { defineAsyncComponent, ref } from 'vue';
 import { toUnicode } from 'punycode/';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { supported as webAuthnSupported, get as webAuthnRequest, parseRequestOptionsFromJSON } from '@github/webauthn-json/browser-ponyfill';
 import { showSuspendedDialog } from '@/scripts/show-suspended-dialog.js';
 import MkButton from '@/components/MkButton.vue';
@@ -59,12 +59,12 @@ import MkInput from '@/components/MkInput.vue';
 import MkInfo from '@/components/MkInfo.vue';
 import { host as configHost } from '@/config.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { login } from '@/account.js';
 import { i18n } from '@/i18n.js';
 
 const signing = ref(false);
-const user = ref<Misskey.entities.UserDetailed | null>(null);
+const user = ref<rizzkey.entities.UserDetailed | null>(null);
 const username = ref('');
 const password = ref('');
 const token = ref('');
@@ -96,7 +96,7 @@ const props = defineProps({
 });
 
 function onUsernameChange(): void {
-	misskeyApi('users/show', {
+	rizzkeyApi('users/show', {
 		username: username.value,
 	}).then(userResponse => {
 		user.value = userResponse;
@@ -122,7 +122,7 @@ async function queryKey(): Promise<void> {
 			credentialRequest.value = null;
 			queryingKey.value = false;
 			signing.value = true;
-			return misskeyApi('signin', {
+			return rizzkeyApi('signin', {
 				username: username.value,
 				password: password.value,
 				credential: credential.toJSON(),
@@ -144,7 +144,7 @@ function onSubmit(): void {
 	signing.value = true;
 	if (!totpLogin.value && user.value && user.value.twoFactorEnabled) {
 		if (webAuthnSupported() && user.value.securityKeys) {
-			misskeyApi('signin', {
+			rizzkeyApi('signin', {
 				username: username.value,
 				password: password.value,
 			}).then(res => {
@@ -161,7 +161,7 @@ function onSubmit(): void {
 			signing.value = false;
 		}
 	} else {
-		misskeyApi('signin', {
+		rizzkeyApi('signin', {
 			username: username.value,
 			password: password.value,
 			token: user.value?.twoFactorEnabled ? token.value : undefined,

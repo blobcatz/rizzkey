@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -70,13 +70,13 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, ref, watch, defineAsyncComponent } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkButton from '@/components/MkButton.vue';
 import MkInput from '@/components/MkInput.vue';
 import MkColorInput from '@/components/MkColorInput.vue';
 import { selectFile } from '@/scripts/select-file.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { i18n } from '@/i18n.js';
 import MkFolder from '@/components/MkFolder.vue';
@@ -92,7 +92,7 @@ const props = defineProps<{
 	channelId?: string;
 }>();
 
-const channel = ref<Misskey.entities.Channel | null>(null);
+const channel = ref<rizzkey.entities.Channel | null>(null);
 const name = ref<string | null>(null);
 const description = ref<string | null>(null);
 const bannerUrl = ref<string | null>(null);
@@ -100,13 +100,13 @@ const bannerId = ref<string | null>(null);
 const color = ref('#000');
 const isSensitive = ref(false);
 const allowRenoteToExternal = ref(true);
-const pinnedNotes = ref<{ id: Misskey.entities.Note['id'] }[]>([]);
+const pinnedNotes = ref<{ id: rizzkey.entities.Note['id'] }[]>([]);
 
 watch(() => bannerId.value, async () => {
 	if (bannerId.value == null) {
 		bannerUrl.value = null;
 	} else {
-		bannerUrl.value = (await misskeyApi('drive/files/show', {
+		bannerUrl.value = (await rizzkeyApi('drive/files/show', {
 			fileId: bannerId.value,
 		})).url;
 	}
@@ -115,7 +115,7 @@ watch(() => bannerId.value, async () => {
 async function fetchChannel() {
 	if (props.channelId == null) return;
 
-	channel.value = await misskeyApi('channels/show', {
+	channel.value = await rizzkeyApi('channels/show', {
 		channelId: props.channelId,
 	});
 
@@ -180,7 +180,7 @@ async function archive() {
 
 	if (canceled) return;
 
-	misskeyApi('channels/update', {
+	rizzkeyApi('channels/update', {
 		channelId: props.channelId,
 		isArchived: true,
 	}).then(() => {

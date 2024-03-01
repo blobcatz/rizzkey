@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -54,7 +54,7 @@ export const meta = {
 export const paramDef = {
 	type: 'object',
 	properties: {
-		pageId: { type: 'string', format: 'misskey:id' },
+		pageId: { type: 'string', format: 'rizzkey:id' },
 		title: { type: 'string' },
 		name: { type: 'string', minLength: 1 },
 		summary: { type: 'string', nullable: true },
@@ -65,7 +65,7 @@ export const paramDef = {
 			type: 'object', additionalProperties: true,
 		} },
 		script: { type: 'string' },
-		eyeCatchingImageId: { type: 'string', format: 'misskey:id', nullable: true },
+		eyeCatchingImageId: { type: 'string', format: 'rizzkey:id', nullable: true },
 		font: { type: 'string', enum: ['serif', 'sans-serif'] },
 		alignCenter: { type: 'boolean' },
 		hideTitleWhenPinned: { type: 'boolean' },

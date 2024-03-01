@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -31,7 +31,7 @@ export const paramDef = {
 	type: 'object',
 	properties: {
 		url: { type: 'string' },
-		folderId: { type: 'string', format: 'misskey:id', nullable: true, default: null },
+		folderId: { type: 'string', format: 'rizzkey:id', nullable: true, default: null },
 		isSensitive: { type: 'boolean', default: false },
 		comment: { type: 'string', nullable: true, maxLength: 512, default: null },
 		marker: { type: 'string', nullable: true, default: null },

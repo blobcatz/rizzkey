@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -54,7 +54,7 @@ await fs.readFile(
 			'../../assets/**',
 			'../../fluent-emojis/**',
 			'../../locales/ja-JP.yml',
-			'../../misskey-assets/**',
+			'../../rizzkey-assets/**',
 			'assets/**',
 			'public/**',
 			'../../pnpm-lock.yaml',

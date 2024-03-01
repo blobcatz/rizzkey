@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -18,12 +18,12 @@ import {
 	uploadFile,
 	waitFire,
 } from '../utils.js';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 describe('API', () => {
-	let alice: misskey.entities.SignupResponse;
-	let bob: misskey.entities.SignupResponse;
-	let carol: misskey.entities.SignupResponse;
+	let alice: rizzkey.entities.SignupResponse;
+	let bob: rizzkey.entities.SignupResponse;
+	let carol: rizzkey.entities.SignupResponse;
 
 	beforeAll(async () => {
 		alice = await signup({ username: 'alice' });
@@ -47,7 +47,7 @@ describe('API', () => {
 			assert.strictEqual(res.status, 400);
 		});
 
-		test('invalid misskey:id (empty string)', async () => {
+		test('invalid rizzkey:id (empty string)', async () => {
 			const res = await api('/test', {
 				required: true,
 				id: '',
@@ -55,7 +55,7 @@ describe('API', () => {
 			assert.strictEqual(res.status, 400);
 		});
 
-		test('valid misskey:id', async () => {
+		test('valid rizzkey:id', async () => {
 			const res = await api('/test', {
 				required: true,
 				id: '8wvhjghbxu',
@@ -216,7 +216,7 @@ describe('API', () => {
 					bearer: true,
 				});
 				assert.strictEqual(result.status, 401);
-				assert.ok(result.headers.get('WWW-Authenticate')?.startsWith('Bearer realm="Misskey", error="invalid_token", error_description'));
+				assert.ok(result.headers.get('WWW-Authenticate')?.startsWith('Bearer realm="rizzkey", error="invalid_token", error_description'));
 			});
 
 			test('multipartリクエスト', async () => {
@@ -225,7 +225,7 @@ describe('API', () => {
 					bearer: true,
 				});
 				assert.strictEqual(result.status, 401);
-				assert.ok(result.headers.get('WWW-Authenticate')?.startsWith('Bearer realm="Misskey", error="invalid_token", error_description'));
+				assert.ok(result.headers.get('WWW-Authenticate')?.startsWith('Bearer realm="rizzkey", error="invalid_token", error_description'));
 			});
 
 			test('streaming', async () => {
@@ -238,7 +238,7 @@ describe('API', () => {
 					() => { },
 				), (err: IncomingMessage) => {
 					assert.strictEqual(err.statusCode, 401);
-					assert.ok(err.headers['www-authenticate']?.startsWith('Bearer realm="Misskey", error="invalid_token", error_description'));
+					assert.ok(err.headers['www-authenticate']?.startsWith('Bearer realm="rizzkey", error="invalid_token", error_description'));
 					return true;
 				});
 			});
@@ -248,13 +248,13 @@ describe('API', () => {
 			test('一般リクエスト', async () => {
 				const result = await api('/admin/get-index-stats', {});
 				assert.strictEqual(result.status, 401);
-				assert.strictEqual(result.headers.get('WWW-Authenticate'), 'Bearer realm="Misskey"');
+				assert.strictEqual(result.headers.get('WWW-Authenticate'), 'Bearer realm="rizzkey"');
 			});
 
 			test('multipartリクエスト', async () => {
 				const result = await uploadFile();
 				assert.strictEqual(result.status, 401);
-				assert.strictEqual(result.headers.get('WWW-Authenticate'), 'Bearer realm="Misskey"');
+				assert.strictEqual(result.headers.get('WWW-Authenticate'), 'Bearer realm="rizzkey"');
 			});
 		});
 
@@ -264,7 +264,7 @@ describe('API', () => {
 				bearer: true,
 			});
 			assert.strictEqual(result.status, 400);
-			assert.ok(result.headers.get('WWW-Authenticate')?.startsWith('Bearer realm="Misskey", error="invalid_request", error_description'));
+			assert.ok(result.headers.get('WWW-Authenticate')?.startsWith('Bearer realm="rizzkey", error="invalid_request", error_description'));
 		});
 
 		describe('invalid bearer format', () => {

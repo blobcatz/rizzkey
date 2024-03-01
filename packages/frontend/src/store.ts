@@ -1,10 +1,10 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { markRaw, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { miLocalStorage } from './local-storage.js';
 import type { SoundType } from '@/scripts/sound.js';
 import type { BuiltinTheme as ShikiBuiltinTheme } from 'shiki';
@@ -18,16 +18,16 @@ interface PostFormAction {
 
 interface UserAction {
 	title: string,
-	handler: (user: Misskey.entities.UserDetailed) => void;
+	handler: (user: rizzkey.entities.UserDetailed) => void;
 }
 
 interface NoteAction {
 	title: string,
-	handler: (note: Misskey.entities.Note) => void;
+	handler: (note: rizzkey.entities.Note) => void;
 }
 
 interface NoteViewInterruptor {
-	handler: (note: Misskey.entities.Note) => unknown;
+	handler: (note: rizzkey.entities.Note) => unknown;
 }
 
 interface NotePostInterruptor {
@@ -35,7 +35,7 @@ interface NotePostInterruptor {
 }
 
 interface PageViewInterruptor {
-	handler: (page: Misskey.entities.Page) => unknown;
+	handler: (page: rizzkey.entities.Page) => unknown;
 }
 
 /** サウンド設定 */
@@ -185,7 +185,7 @@ export const defaultStore = markRaw(new Storage('base', {
 		where: 'deviceAccount',
 		default: {
 			src: 'home' as 'home' | 'local' | 'social' | 'global' | `list:${string}`,
-			userList: null as Misskey.entities.UserList | null,
+			userList: null as rizzkey.entities.UserList | null,
 			filter: {
 				withReplies: true,
 				withRenotes: true,
@@ -196,7 +196,7 @@ export const defaultStore = markRaw(new Storage('base', {
 	},
 	pinnedUserLists: {
 		where: 'deviceAccount',
-		default: [] as Misskey.entities.UserList[],
+		default: [] as rizzkey.entities.UserList[],
 	},
 
 	overridedDeviceKind: {

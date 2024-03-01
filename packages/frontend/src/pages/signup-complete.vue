@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -31,7 +31,7 @@ import MkAnimBg from '@/components/MkAnimBg.vue';
 import { login } from '@/account.js';
 import { i18n } from '@/i18n.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 
 const submitting = ref(false);
 
@@ -43,7 +43,7 @@ function submit() {
 	if (submitting.value) return;
 	submitting.value = true;
 
-	misskeyApi('signup-pending', {
+	rizzkeyApi('signup-pending', {
 		code: props.code,
 	}).then(res => {
 		return login(res.i, '/');

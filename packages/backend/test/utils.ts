@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -17,7 +17,7 @@ import { Packed } from '@/misc/json-schema.js';
 import { validateContentTypeSetAsActivityPub } from '@/core/activitypub/misc/validator.js';
 import { entities } from '../src/postgres.js';
 import { loadConfig } from '../src/config.js';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 export { server as startServer, jobQueue as startJobQueue } from '@/boot/common.js';
 
@@ -130,7 +130,7 @@ function timeoutPromise<T>(p: Promise<T>, timeout: number): Promise<T> {
 	]);
 }
 
-export const signup = async (params?: Partial<misskey.Endpoints['signup']['req']>): Promise<NonNullable<misskey.Endpoints['signup']['res']>> => {
+export const signup = async (params?: Partial<rizzkey.Endpoints['signup']['req']>): Promise<NonNullable<rizzkey.Endpoints['signup']['res']>> => {
 	const q = Object.assign({
 		username: randomString(),
 		password: 'test',
@@ -141,7 +141,7 @@ export const signup = async (params?: Partial<misskey.Endpoints['signup']['req']
 	return res.body;
 };
 
-export const post = async (user: UserToken, params?: misskey.Endpoints['notes/create']['req']): Promise<misskey.entities.Note> => {
+export const post = async (user: UserToken, params?: rizzkey.Endpoints['notes/create']['req']): Promise<rizzkey.entities.Note> => {
 	const q = params;
 
 	const res = await api('notes/create', q, user);
@@ -149,13 +149,13 @@ export const post = async (user: UserToken, params?: misskey.Endpoints['notes/cr
 	return res.body ? res.body.createdNote : null;
 };
 
-export const createAppToken = async (user: UserToken, permissions: (typeof misskey.permissions)[number][]) => {
+export const createAppToken = async (user: UserToken, permissions: (typeof rizzkey.permissions)[number][]) => {
 	const res = await api('miauth/gen-token', {
 		session: randomUUID(),
 		permission: permissions,
 	}, user);
 
-	return (res.body as misskey.entities.MiauthGenTokenResponse).token;
+	return (res.body as rizzkey.entities.MiauthGenTokenResponse).token;
 };
 
 // 非公開ノートをAPI越しに見たときのノート NoteEntityService.ts
@@ -298,7 +298,7 @@ interface UploadOptions {
 export const uploadFile = async (user?: UserToken, { path, name, blob }: UploadOptions = {}): Promise<{
 	status: number,
 	headers: Headers,
-	body: misskey.Endpoints['drive/files/create']['res'] | null
+	body: rizzkey.Endpoints['drive/files/create']['res'] | null
 }> => {
 	const absPath = path == null
 		? new URL('resources/Lenna.jpg', import.meta.url)
@@ -327,7 +327,7 @@ export const uploadFile = async (user?: UserToken, { path, name, blob }: UploadO
 		headers,
 	});
 
-	const body = res.status !== 204 ? await res.json() as misskey.Endpoints['drive/files/create']['res'] : null;
+	const body = res.status !== 204 ? await res.json() as rizzkey.Endpoints['drive/files/create']['res'] : null;
 	return {
 		status: res.status,
 		headers: res.headers,
@@ -355,7 +355,7 @@ export const uploadUrl = async (user: UserToken, url: string): Promise<Packed<'D
 	return catcher;
 };
 
-export function connectStream<C extends keyof misskey.Channels>(user: UserToken, channel: C, listener: (message: Record<string, any>) => any, params?: misskey.Channels[C]['params']): Promise<WebSocket> {
+export function connectStream<C extends keyof rizzkey.Channels>(user: UserToken, channel: C, listener: (message: Record<string, any>) => any, params?: rizzkey.Channels[C]['params']): Promise<WebSocket> {
 	return new Promise((res, rej) => {
 		const url = new URL(`ws://127.0.0.1:${port}/streaming`);
 		const options: ClientOptions = {};
@@ -390,7 +390,7 @@ export function connectStream<C extends keyof misskey.Channels>(user: UserToken,
 	});
 }
 
-export const waitFire = async <C extends keyof misskey.Channels>(user: UserToken, channel: C, trgr: () => any, cond: (msg: Record<string, any>) => boolean, params?: misskey.Channels[C]['params']) => {
+export const waitFire = async <C extends keyof rizzkey.Channels>(user: UserToken, channel: C, trgr: () => any, cond: (msg: Record<string, any>) => boolean, params?: rizzkey.Channels[C]['params']) => {
 	return new Promise<boolean>(async (res, rej) => {
 		let timer: NodeJS.Timeout | null = null;
 
@@ -435,7 +435,7 @@ export const waitFire = async <C extends keyof misskey.Channels>(user: UserToken
  */
 export function makeStreamCatcher<T>(
 	user: UserToken,
-	channel: keyof misskey.Channels,
+	channel: keyof rizzkey.Channels,
 	cond: (message: Record<string, any>) => boolean,
 	extractor: (message: Record<string, any>) => T,
 	timeout = 60 * 1000): Promise<T> {

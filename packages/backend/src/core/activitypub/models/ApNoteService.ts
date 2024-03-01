@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -104,7 +104,7 @@ export class ApNoteService {
 	/**
 	 * Noteをフェッチします。
 	 *
-	 * Misskeyに対象のNoteが登録されていればそれを返します。
+	 * rizzkeyに対象のNoteが登録されていればそれを返します。
 	 */
 	@bindThis
 	public async fetchNote(object: string | IObject): Promise<MiNote | null> {
@@ -168,10 +168,10 @@ export class ApNoteService {
 
 		// テキストのパース
 		let text: string | null = null;
-		if (note.source?.mediaType === 'text/x.misskeymarkdown' && typeof note.source.content === 'string') {
+		if (note.source?.mediaType === 'text/x.rizzkeymarkdown' && typeof note.source.content === 'string') {
 			text = note.source.content;
-		} else if (typeof note._misskey_content !== 'undefined') {
-			text = note._misskey_content;
+		} else if (typeof note._rizzkey_content !== 'undefined') {
+			text = note._rizzkey_content;
 		} else if (typeof note.content === 'string') {
 			text = this.apMfmService.htmlToMfm(note.content, note.tag);
 		}
@@ -239,7 +239,7 @@ export class ApNoteService {
 		// 引用
 		let quote: MiNote | undefined | null = null;
 
-		if (note._misskey_quote ?? note.quoteUrl) {
+		if (note._rizzkey_quote ?? note.quoteUrl) {
 			const tryResolveNote = async (uri: string): Promise<
 				| { status: 'ok'; res: MiNote }
 				| { status: 'permerror' | 'temperror' }
@@ -256,7 +256,7 @@ export class ApNoteService {
 				}
 			};
 
-			const uris = unique([note._misskey_quote, note.quoteUrl].filter(isNotNull));
+			const uris = unique([note._rizzkey_quote, note.quoteUrl].filter(isNotNull));
 			const results = await Promise.all(uris.map(tryResolveNote));
 
 			quote = results.filter((x): x is { status: 'ok', res: MiNote } => x.status === 'ok').map(x => x.res).at(0);
@@ -331,8 +331,8 @@ export class ApNoteService {
 	/**
 	 * Noteを解決します。
 	 *
-	 * Misskeyに対象のNoteが登録されていればそれを返し、そうでなければ
-	 * リモートサーバーからフェッチしてMisskeyに登録しそれを返します。
+	 * rizzkeyに対象のNoteが登録されていればそれを返し、そうでなければ
+	 * リモートサーバーからフェッチしてrizzkeyに登録しそれを返します。
 	 */
 	@bindThis
 	public async resolveNote(value: string | IObject, options: { sentFrom?: URL, resolver?: Resolver } = {}): Promise<MiNote | null> {

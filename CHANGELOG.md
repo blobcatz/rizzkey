@@ -27,7 +27,7 @@
 
 ### Client
 - Enhance: ノート作成画面のファイル添付メニューの区切り線の位置を調整
-- Fix: syuilo/misskeyの時代からあるインスタンスが改変されたバージョンであると誤認識される問題
+- Fix: syuilo/rizzkeyの時代からあるインスタンスが改変されたバージョンであると誤認識される問題
 - Fix: MFMのオートコンプリートが出るべき状況で出ないことがある問題を修正
 - Fix: チャートのラベルが消えている問題を修正
 - Fix: 画面表示後最初の音声再生が爆音になることがある問題を修正
@@ -187,8 +187,8 @@
 	3. 「リアクション設定から上書きする」ボタンを押すことで、アップデート前の状態に戻すことができます。
 
 ### General
-- Feat: メールアドレスの認証にverifymail.ioを使えるように (cherry-pick from https://github.com/TeamNijimiss/misskey/commit/971ba07a44550f68d2ba31c62066db2d43a0caed)
-- Feat: モデレーターがユーザーのアイコンもしくはバナー画像を未設定状態にできる機能を追加 (cherry-pick from https://github.com/TeamNijimiss/misskey/commit/e0eb5a752f6e5616d6312bb7c9790302f9dbff83)
+- Feat: メールアドレスの認証にverifymail.ioを使えるように (cherry-pick from https://github.com/TeamNijimiss/rizzkey/commit/971ba07a44550f68d2ba31c62066db2d43a0caed)
+- Feat: モデレーターがユーザーのアイコンもしくはバナー画像を未設定状態にできる機能を追加 (cherry-pick from https://github.com/TeamNijimiss/rizzkey/commit/e0eb5a752f6e5616d6312bb7c9790302f9dbff83)
 - Feat: TL上からノートが見えなくなるワードミュートであるハードミュートを追加
 - Enhance: 指定したドメインのメールアドレスの登録を弾くことができるように
 - Enhance: 公開ロールにアサインされたときに通知が作成されるように
@@ -230,7 +230,7 @@
 	（例: ` ```js ` → Javascript, ` ```ais ` → AiScript）
 -	Enhance: 絵文字などのオートコンプリートでShift+Tabを押すと前の候補を選択できるように
 - Enhance: チャンネルに新規の投稿がある場合にバッジを表示させる
-- Enhance: サウンド設定に「サウンドを出力しない」と「Misskeyがアクティブな時のみサウンドを出力する」を追加
+- Enhance: サウンド設定に「サウンドを出力しない」と「rizzkeyがアクティブな時のみサウンドを出力する」を追加
 - Enhance: 設定したタグをトレンドに表示させないようにする項目を管理画面で設定できるように
 - Enhance: 絵文字ピッカーのカテゴリに「/」を入れることでフォルダ分け表示できるように
 - Fix: 「設定のバックアップ」で一部の項目がバックアップに含まれていなかった問題を修正
@@ -336,10 +336,10 @@
 
 ### Client
 - Feat: プラグイン・テーマを外部サイトから直接インストールできるようになりました
-	- 外部サイトでの実装が必要です。詳細は Misskey Hub をご覧ください
+	- 外部サイトでの実装が必要です。詳細は rizzkey Hub をご覧ください
 	  https://misskey-hub.net/docs/for-developers/publish-on-your-website/
 - Feat: 通知をグルーピングして表示するオプション(オプトアウト)
-- Feat: Misskeyの基本的なチュートリアルを実装
+- Feat: rizzkeyの基本的なチュートリアルを実装
 - Feat: スワイプしてタイムラインを再読込できるように
 	- PCの場合は右上のボタンからでも再読込できます
 - Enhance: タイムラインの自動更新を無効にできるように
@@ -356,7 +356,7 @@
 - Fix: 投稿フォームでのユーザー変更がプレビューに反映されない問題を修正
 - Fix: ユーザーページの ノート > ファイル付き タブにリプライが表示されてしまう
 - Fix: 「検索」MFMにおいて一部の検索キーワードが正しく認識されない問題を修正
-- Fix: 一部の言語でMisskey Webがクラッシュする問題を修正
+- Fix: 一部の言語でrizzkey Webがクラッシュする問題を修正
 - Fix: チャンネルの作成・更新時に失敗した場合何も表示されない問題を修正 #11983
 - Fix: 個人カードのemojiがバッテリーになっている問題を修正
 - Fix: 標準テーマと同じIDを使用してインストールできてしまう問題を修正
@@ -372,7 +372,7 @@
 - Enhance: RedisへのTLのキャッシュ(FTT)をオフにできるように
 - Enhance: フォローしているチャンネルをフォロー解除した時（またはその逆）、タイムラインに反映される間隔を改善
 - Enhance: プロフィールの自己紹介欄のMFMが連合するようになりました
-	- 相手がMisskey v2023.11.0以降である必要があります
+	- 相手がrizzkey v2023.11.0以降である必要があります
 - Enhance: チャンネル取得時のパフォーマンスを向上
 - Enhance: AP: ApplicationタイプのアカウントをisBotとして扱うように
 - Fix: リストTLに自分のフォロワー限定投稿が含まれない問題を修正
@@ -534,7 +534,7 @@
 	- センシティブチャンネルのNoteのReNoteはデフォルトでHome TLに流れるようになりました
 	- センシティブチャンネルのノートはユーザープロフィールに表示されません
 - Feat: 二要素認証のバックアップコードが生成されるようになりました
-	- ref. https://github.com/MisskeyIO/misskey/pull/121
+	- ref. https://github.com/rizzkeyIO/rizzkey/pull/121
 - Feat: 二要素認証でパスキーをサポートするようになりました
 - Feat: 指定したユーザーが投稿したときに通知できるようになりました
 - Feat: プロフィールでのリンク検証
@@ -572,7 +572,7 @@
 - Enhance: Playの操作を行うAPI TokenをAPIコンソールから発行できるように
 - Enhance: リアクションの表示サイズをより大きくできるように
 - Enhance: AiScriptを0.16.0に更新
-- Enhance: AiScriptからMisskeyサーバーAPIを呼び出す際の制限を撤廃
+- Enhance: AiScriptからrizzkeyサーバーAPIを呼び出す際の制限を撤廃
 - Enhance: AiScriptで`LOCALE`として現在の設定言語を取得できるように
 - Enhance: Mk:apiが失敗した時にエラー型の値（AiScript 0.16.0で追加）を返すように
 - Enhance: ScratchpadでAsync:系関数やボタンのコールバックなどのエラーにもダイアログを出すように（試験的なためPlayなどには未実装）
@@ -586,9 +586,9 @@
 - Fix: iOSで画面を回転させるとテキストサイズが変わる問題を修正
 - Fix: word mute for sub note is not applied
 - Fix: タイムラインを下にスクロールしてノート画面に移動して再び戻ったら以前のスクロール位置を失う問題を修正
-- Fix: Misskeyプラグインをインストールする際のAiScriptバージョンのチェックが0.14.0以降に対応していない問題を修正
+- Fix: rizzkeyプラグインをインストールする際のAiScriptバージョンのチェックが0.14.0以降に対応していない問題を修正
 - Fix: 他のサーバーのユーザーへ「メッセージを送信」した時の初期テキストのメンションが間違っている問題を修正
-- Fix: 環境によってはMisskey Webが開けない問題を修正
+- Fix: 環境によってはrizzkey Webが開けない問題を修正
 - Fix: プラグインの権限リストが見れない問題を修正
 - Fix: 複数の階層があるメニューで、短くタップすると正常に動かない場合がある問題を修正
 - Fix: アニメーションがオフのとき、スマホで子メニューの選択ができない問題を修正
@@ -755,8 +755,8 @@
 ## 13.12.2
 
 ## NOTE
-Meilisearchの設定に`index`が必要になりました。値はMisskeyサーバーのホスト名にすることをお勧めします(アルファベット、ハイフン、アンダーバーのみ使用可能)。例: `misskey-io`
-過去に作成された`notes`インデックスは、`<index名>---notes`にリネームが必要です。例: `misskey-io---notes`
+Meilisearchの設定に`index`が必要になりました。値はrizzkeyサーバーのホスト名にすることをお勧めします(アルファベット、ハイフン、アンダーバーのみ使用可能)。例: `rizzkey-io`
+過去に作成された`notes`インデックスは、`<index名>---notes`にリネームが必要です。例: `rizzkey-io---notes`
 
 ### General
 - 投稿したコンテンツのAIによる学習を軽減するオプションを追加
@@ -774,7 +774,7 @@ Meilisearchの設定に`index`が必要になりました。値はMisskeyサー�
 
 ### Server
 - センシティブワードの登録にAnd、正規表現が使用できるようになりました。
-- Fix: ひとつのMeilisearchサーバーを複数のMisskeyサーバーで使えない問題を修正
+- Fix: ひとつのMeilisearchサーバーを複数のrizzkeyサーバーで使えない問題を修正
 
 ## 13.12.1
 
@@ -839,7 +839,7 @@ Meilisearchの設定に`index`が必要になりました。値はMisskeyサー�
 
 ### Server
 - channel/searchのqueryが空の場合に全てのチャンネルを返すように変更
-- 環境変数MISSKEY_CONFIG_YMLで設定ファイルをdefault.ymlから変更可能に
+- 環境変数rizzkey_CONFIG_YMLで設定ファイルをdefault.ymlから変更可能に
 - Fix: 他のサーバーの情報が取得できないことがある問題を修正
 - Fix: エクスポートデータの拡張子がunknownになる問題を修正
 - Fix: Content-Dispositionのパースでエラーが発生した場合にダウンロードが完了しない問題を修正
@@ -863,8 +863,8 @@ Meilisearchの設定に`index`が必要になりました。値はMisskeyサー�
 
 ### Server
 - フォローインポートなどでの大量のフォロー等操作をキューイングするように #10544 @nmkj-io
-- Misskey Webでのサーバーサイドエラー画面を改善
-- Misskey Webでのサーバーサイドエラーのログが残るように
+- rizzkey Webでのサーバーサイドエラー画面を改善
+- rizzkey Webでのサーバーサイドエラーのログが残るように
 - ノート作成時のアンテナ追加パフォーマンスを改善
 - アンテナとロールTLのuntil/sinceプロパティが動くように
 
@@ -991,7 +991,7 @@ Meilisearchの設定に`index`が必要になりました。値はMisskeyサー�
 ## 13.10.1
 
 ### Client
-- Misskey PlayのPlayボタンを押した時にエラーが発生する問題を修正
+- rizzkey PlayのPlayボタンを押した時にエラーが発生する問題を修正
 
 ## 13.10.0
 
@@ -1026,7 +1026,7 @@ Meilisearchの設定に`index`が必要になりました。値はMisskeyサー�
 - /api-consoleページにアクセスすると404が出る問題を修正
 - Safariでプラグインが複数ある場合に正常に読み込まれない問題を修正
 - Bookwyrmのユーザーのプロフィールページで「リモートで表示」をタップしても反応がない問題を修正
-- 非ログイン時の「Misskeyについて」の表示を修正
+- 非ログイン時の「rizzkeyについて」の表示を修正
 - PC版にて「設定」「コントロールパネル」のリンクを2度以上続けてクリックした際に空白のページが表示される問題を修正
 
 ### Server
@@ -1419,7 +1419,7 @@ Meilisearchの設定に`index`が必要になりました。値はMisskeyサー�
 ## 13.0.0 (2023/01/16)
 
 ### TL;DR
-- New features (Role system, Misskey Play, New widgets, New charts, 🍪👈, etc)
+- New features (Role system, rizzkey Play, New widgets, New charts, 🍪👈, etc)
 - Rewriten backend
 - Better performance (backend and frontend)
 - Various usability improvements
@@ -1428,14 +1428,14 @@ Meilisearchの設定に`index`が必要になりました。値はMisskeyサー�
 ### Notable features
 - ロール機能
 	- 従来より柔軟にユーザーのポリシーを管理できます。例えば、「インスタンスのパトロンはアンテナを30個まで作れる」「基本的にLTLは見れないが、許可した人だけ見れる」「招待制インスタンスだけどユーザーなら誰でも他者を招待できる」のような運用はもちろん、「ローカルユーザーかつアカウント作成から1日未満のユーザーはパブリックな投稿を行えない」のように複数条件を組み合わせて、自動でロールを付与する設定も可能です。
-- Misskey Play
+- rizzkey Play
 	- 従来の動的なPagesに代わる、新しいプラットフォームです。動的なコンテンツ(アプリケーション)に特化していて、Pagesに比べてはるかに柔軟なアプリケーションを作成可能です。
 
 ### Changes
 #### For server admins
 - Node.js 18.x or later is required
 - PostgreSQL 15.x is required
-	- Misskey not using 15 specific features at 13.0.0, but may do so in the future.
+	- rizzkey not using 15 specific features at 13.0.0, but may do so in the future.
 	- Docker環境でPostgreSQLのアップデートを行う際のガイドはこちら: https://github.com/misskey-dev/misskey/pull/9641#issue-1536336620
 - Elasticsearchのサポートが削除されました
 	- 代わりに今後任意の検索プロバイダを設定できる仕組みを構想しています。その仕組みを使えば今まで通りElasticsearchも利用できます
@@ -1456,7 +1456,7 @@ Meilisearchの設定に`index`が必要になりました。値はMisskeyサー�
 - アンケートに投票された際に通知が作成されなくなりました
 - ノートの数式埋め込みが削除されました
 - 新たに動的なPagesを作ることはできなくなりました
-	- 代わりにAiScriptを用いてより柔軟に動的なコンテンツを作成できるMisskey Play機能が実装されています。
+	- 代わりにAiScriptを用いてより柔軟に動的なコンテンツを作成できるrizzkey Play機能が実装されています。
 - AiScriptが0.12.2にアップデートされました
 	- 0.12.xの変更点についてはこちら https://github.com/syuilo/aiscript/blob/master/CHANGELOG.md#0120
 	- 0.12.x未満のプラグインは読み込むことはできません
@@ -1469,7 +1469,7 @@ Meilisearchの設定に`index`が必要になりました。値はMisskeyサー�
 	- カスタム絵文字一覧情報を取得するには、`emojis`エンドポイントにリクエストします
 - API: カスタム絵文字エンティティに`url`プロパティが含まれなくなりました
 	- 絵文字画像を表示するには、`<instance host>/emoji/<emoji name>.webp`にリクエストすると画像が返ります。
-	- e.g. `https://p1.a9z.dev/emoji/misskey.webp`
+	- e.g. `https://p1.a9z.dev/emoji/rizzkey.webp`
 	- remote: `https://p1.a9z.dev/emoji/syuilo_birth_present@mk.f72u.net.webp`
 - API: `user`および`note`エンティティに`emojis`プロパティが含まれなくなりました
 - API: `user`エンティティに`avatarColor`および`bannerColor`プロパティが含まれなくなりました
@@ -1478,7 +1478,7 @@ Meilisearchの設定に`index`が必要になりました。値はMisskeyサー�
 
 ### Improvements
 - Role system @syuilo
-- Misskey Play @syuilo
+- rizzkey Play @syuilo
 - Introduce retention-rate aggregation @syuilo
 - Make possible to export favorited notes @syuilo
 - Add per user pv chart @syuilo
@@ -1774,7 +1774,7 @@ same as 12.112.0
 - Server: Fix `Cannot find module` issue @mei23
 - Federation: Add rel attribute to host-meta @mei23
 - Federation: add id for activitypub follows @Johann150
-- Federation: use `source` instead of `_misskey_content` @Johann150
+- Federation: use `source` instead of `_rizzkey_content` @Johann150
 - Federation: ensure resolver does not fetch local resources via HTTP(S) @Johann150
 - Federation: correctly render empty note text @Johann150
 - Federation: Fix quote renotes containing no text being federated correctly @Johann150
@@ -1853,7 +1853,7 @@ same as 12.112.0
 
 ### Changes
 - ノートの最大文字数を設定できる機能が廃止され、デフォルトで一律3000文字になりました @syuilo
-- Misskey can no longer terminate HTTPS connections. @Johann150
+- rizzkey can no longer terminate HTTPS connections. @Johann150
   - If you did not use a reverse proxy (e.g. nginx) before, you will probably need to adjust
     your configuration file and set up a reverse proxy. The `https` configuration key is no
     longer recognized!
@@ -2008,7 +2008,7 @@ same as 12.112.0
 - カスタム絵文字一括編集機能
 - カスタム絵文字一括インポート
 - 投稿フォームで一時的に投稿するアカウントを切り替えられるように
-- Unifying Misskey-specific IRIs in JSON-LD `@context`
+- Unifying rizzkey-specific IRIs in JSON-LD `@context`
 - クライアントのパフォーマンス向上
 - セキュリティの向上
 
@@ -2238,7 +2238,7 @@ same as 12.112.0
 - MFM: Disallows < and > in hashtags
 
 ### Changes
-- 保守性やユーザビリティの観点から、Misskeyのコマンドラインオプションが削除されました。
+- 保守性やユーザビリティの観点から、rizzkeyのコマンドラインオプションが削除されました。
 	- 必要であれば、代わりに環境変数で設定することができます
 - MFM: パフォーマンス、保守性、構文誤認識抑制の観点から、旧関数構文のサポートが削除されました。
 	- 旧構文(`[foo bar]`)を使用せず、現行の構文(`$[foo bar]`)を使用してください。
@@ -2325,7 +2325,7 @@ same as 12.112.0
 ### Features
 - ノートの翻訳機能を追加
   - 有効にするには、サーバー管理者がDeepLの無料アカウントを登録し、取得した認証キーを「インスタンス設定 > その他 > DeepL Auth Key」に設定する必要があります。
-- Misskey更新時にダイアログを表示するように
+- rizzkey更新時にダイアログを表示するように
 - ジョブキューウィジェットに警報音を鳴らす設定を追加
 
 ### Improvements
@@ -2348,13 +2348,13 @@ same as 12.112.0
 ### Improvements
 - 絵文字オートコンプリートで一文字目は最近使った絵文字をサジェストするように
 - 絵文字オートコンプリートのパフォーマンスを改善
-- about-misskeyページにドキュメントへのリンクを追加
+- about-rizzkeyページにドキュメントへのリンクを追加
 - Docker: Node.jsを16.6.2に
 - 依存関係の更新
 - 翻訳の更新
 
 ### Bugfixes
-- Misskey更新時、テーマキャッシュの影響でスタイルがおかしくなる問題を修正
+- rizzkey更新時、テーマキャッシュの影響でスタイルがおかしくなる問題を修正
 
 ## 12.86.0 (2021/08/11)
 

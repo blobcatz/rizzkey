@@ -1,2 +1,2 @@
-# Misskey Backend
+# rizzkey Backend
 ![](../../assets/backend.png)

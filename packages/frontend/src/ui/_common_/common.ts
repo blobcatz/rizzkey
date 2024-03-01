@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -111,8 +111,8 @@ export function openInstanceMenu(ev: MouseEvent) {
 		},
 	} : undefined, {
 		type: 'link',
-		text: i18n.ts.aboutMisskey,
-		to: '/about-misskey',
+		text: i18n.ts.aboutrizzkey,
+		to: '/about-rizzkey',
 	}], ev.currentTarget ?? ev.target, {
 		align: 'left',
 	});

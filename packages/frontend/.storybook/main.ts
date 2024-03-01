@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -21,7 +21,7 @@ const config = {
 		getAbsolutePath('@storybook/addon-links'),
 		getAbsolutePath('@storybook/addon-storysource'),
 		getAbsolutePath('@storybook/addon-mdx-gfm'),
-		resolve(_dirname, '../node_modules/storybook-addon-misskey-theme'),
+		resolve(_dirname, '../node_modules/storybook-addon-rizzkey-theme'),
 	],
 	framework: {
 		name: getAbsolutePath('@storybook/vue3-vite') as '@storybook/vue3-vite',

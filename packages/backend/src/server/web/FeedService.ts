@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -59,7 +59,7 @@ export class FeedService {
 			id: author.link,
 			title: `${author.name} (@${user.username}@${this.config.host})`,
 			updated: notes.length !== 0 ? this.idService.parse(notes[0].id).date : undefined,
-			generator: 'Misskey',
+			generator: 'rizzkey',
 			description: `${user.notesCount} Notes, ${profile.followingVisibility === 'public' ? user.followingCount : '?'} Following, ${profile.followersVisibility === 'public' ? user.followersCount : '?'} Followers${profile.description ? ` · ${profile.description}` : ''}`,
 			link: author.link,
 			image: user.avatarUrl ?? this.userEntityService.getIdenticonUrl(user),

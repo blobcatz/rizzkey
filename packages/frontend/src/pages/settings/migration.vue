@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -59,14 +59,14 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import FormInfo from '@/components/MkInfo.vue';
 import MkInput from '@/components/MkInput.vue';
 import MkButton from '@/components/MkButton.vue';
 import MkFolder from '@/components/MkFolder.vue';
 import MkUserInfo from '@/components/MkUserInfo.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { signinRequired } from '@/account.js';
@@ -75,19 +75,19 @@ import { unisonReload } from '@/scripts/unison-reload.js';
 const $i = signinRequired();
 
 const moveToAccount = ref('');
-const movedTo = ref<Misskey.entities.UserDetailed>();
+const movedTo = ref<rizzkey.entities.UserDetailed>();
 const accountAliases = ref(['']);
 
 async function init() {
 	if ($i.movedTo) {
-		movedTo.value = await misskeyApi('users/show', { userId: $i.movedTo });
+		movedTo.value = await rizzkeyApi('users/show', { userId: $i.movedTo });
 	} else {
 		moveToAccount.value = '';
 	}
 
 	if ($i.alsoKnownAs && $i.alsoKnownAs.length > 0) {
-		const alsoKnownAs = await misskeyApi('users/show', { userIds: $i.alsoKnownAs });
-		accountAliases.value = (alsoKnownAs && alsoKnownAs.length > 0) ? alsoKnownAs.map(user => `@${Misskey.acct.toString(user)}`) : [''];
+		const alsoKnownAs = await rizzkeyApi('users/show', { userIds: $i.alsoKnownAs });
+		accountAliases.value = (alsoKnownAs && alsoKnownAs.length > 0) ? alsoKnownAs.map(user => `@${rizzkey.acct.toString(user)}`) : [''];
 	} else {
 		accountAliases.value = [''];
 	}

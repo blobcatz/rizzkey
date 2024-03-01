@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -91,7 +91,7 @@ import MkButton from '@/components/MkButton.vue';
 import FormSuspense from '@/components/form/suspense.vue';
 import FormSlot from '@/components/form/slot.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { fetchInstance } from '@/instance.js';
 import { i18n } from '@/i18n.js';
 
@@ -109,7 +109,7 @@ const turnstileSiteKey = ref<string | null>(null);
 const turnstileSecretKey = ref<string | null>(null);
 
 async function init() {
-	const meta = await misskeyApi('admin/meta');
+	const meta = await rizzkeyApi('admin/meta');
 	hcaptchaSiteKey.value = meta.hcaptchaSiteKey;
 	hcaptchaSecretKey.value = meta.hcaptchaSecretKey;
 	mcaptchaSiteKey.value = meta.mcaptchaSiteKey;

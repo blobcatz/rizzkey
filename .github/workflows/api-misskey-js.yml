@@ -1,12 +1,12 @@
-name: API report (misskey.js)
+name: API report (rizzkey.js)
 
 on:
   push:
     paths:
-      - packages/misskey-js/**
+      - packages/rizzkey-js/**
   pull_request:
     paths:
-      - packages/misskey-js/**
+      - packages/rizzkey-js/**
 
 jobs:
   report:
@@ -29,14 +29,14 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: Build
-        run: pnpm --filter misskey-js build
+        run: pnpm --filter rizzkey-js build
 
       - name: Check files
-        run: ls packages/misskey-js/built
+        run: ls packages/rizzkey-js/built
 
       - name: API report
-        run: pnpm --filter misskey-js api-prod
+        run: pnpm --filter rizzkey-js api-prod
 
       - name: Show report
         if: always()
-        run: cat packages/misskey-js/temp/misskey-js.api.md
+        run: cat packages/rizzkey-js/temp/rizzkey-js.api.md

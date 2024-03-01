@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -70,11 +70,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onMounted, provide, ref, computed } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XCommon from './_common_/common.vue';
 import { instanceName } from '@/config.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { instance } from '@/instance.js';
 import XSigninDialog from '@/components/MkSigninDialog.vue';
 import XSignupDialog from '@/components/MkSignupDialog.vue';
@@ -114,7 +114,7 @@ const isTimelineAvailable = ref(instance.policies?.ltlAvailable || instance.poli
 const showMenu = ref(false);
 const isDesktop = ref(window.innerWidth >= DESKTOP_THRESHOLD);
 const narrow = ref(window.innerWidth < 1280);
-const meta = ref<Misskey.entities.MetaResponse>();
+const meta = ref<rizzkey.entities.MetaResponse>();
 
 const keymap = computed(() => {
 	return {
@@ -128,7 +128,7 @@ const keymap = computed(() => {
 	};
 });
 
-misskeyApi('meta', { detail: true }).then(res => {
+rizzkeyApi('meta', { detail: true }).then(res => {
 	meta.value = res;
 });
 

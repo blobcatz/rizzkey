@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -28,17 +28,17 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { sum } from '@/scripts/array.js';
 import { pleaseLogin } from '@/scripts/please-login.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { useInterval } from '@/scripts/use-interval.js';
 
 const props = defineProps<{
 	noteId: string;
-	poll: NonNullable<Misskey.entities.Note['poll']>;
+	poll: NonNullable<rizzkey.entities.Note['poll']>;
 	readOnly?: boolean;
 }>();
 
@@ -86,7 +86,7 @@ const vote = async (id) => {
 	});
 	if (canceled) return;
 
-	await misskeyApi('notes/polls/vote', {
+	await rizzkeyApi('notes/polls/vote', {
 		noteId: props.noteId,
 		choice: id,
 	});

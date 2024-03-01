@@ -1,12 +1,12 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { Inject, Injectable } from '@nestjs/common';
 import * as Redis from 'ioredis';
 import { ModuleRef } from '@nestjs/core';
-import * as Reversi from 'misskey-reversi';
+import * as Reversi from 'rizzkey-reversi';
 import { IsNull, LessThan, MoreThan } from 'typeorm';
 import type {
 	MiReversiGame,

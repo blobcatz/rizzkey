@@ -1,13 +1,13 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { throttle } from 'throttle-debounce';
 import { markRaw } from 'vue';
-import { notificationTypes } from 'misskey-js';
+import { notificationTypes } from 'rizzkey-js';
 import { Storage } from '@/pizzax.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { deepClone } from '@/scripts/clone.js';
 
 type ColumnWidget = {
@@ -70,7 +70,7 @@ export const loadDeck = async () => {
 	let deck;
 
 	try {
-		deck = await misskeyApi('i/registry/get', {
+		deck = await rizzkeyApi('i/registry/get', {
 			scope: ['client', 'deck', 'profiles'],
 			key: deckStore.state.profile,
 		});
@@ -95,7 +95,7 @@ export const loadDeck = async () => {
 
 // TODO: deckがloadされていない状態でsaveすると意図せず上書きが発生するので対策する
 export const saveDeck = throttle(1000, () => {
-	misskeyApi('i/registry/set', {
+	rizzkeyApi('i/registry/set', {
 		scope: ['client', 'deck', 'profiles'],
 		key: deckStore.state.profile,
 		value: {
@@ -106,13 +106,13 @@ export const saveDeck = throttle(1000, () => {
 });
 
 export async function getProfiles(): Promise<string[]> {
-	return await misskeyApi('i/registry/keys', {
+	return await rizzkeyApi('i/registry/keys', {
 		scope: ['client', 'deck', 'profiles'],
 	});
 }
 
 export async function deleteProfile(key: string): Promise<void> {
-	return await misskeyApi('i/registry/remove', {
+	return await rizzkeyApi('i/registry/remove', {
 		scope: ['client', 'deck', 'profiles'],
 		key: key,
 	});

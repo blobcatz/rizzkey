@@ -1,17 +1,17 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { onUnmounted, Ref, ShallowRef } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { useStream } from '@/stream.js';
 import { $i } from '@/account.js';
 
 export function useNoteCapture(props: {
 	rootEl: ShallowRef<HTMLElement | undefined>;
-	note: Ref<Misskey.entities.Note>;
-	pureNote: Ref<Misskey.entities.Note>;
+	note: Ref<rizzkey.entities.Note>;
+	pureNote: Ref<rizzkey.entities.Note>;
 	isDeletedRef: Ref<boolean>;
 }) {
 	const note = props.note;

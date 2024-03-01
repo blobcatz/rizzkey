@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -90,7 +90,7 @@ import MkSelect from '@/components/MkSelect.vue';
 import MkChart from '@/components/MkChart.vue';
 import { useChartTooltip } from '@/scripts/use-chart-tooltip.js';
 import * as os from '@/os.js';
-import { misskeyApiGet } from '@/scripts/misskey-api.js';
+import { rizzkeyApiGet } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import MkHeatmap, { type HeatmapSource } from '@/components/MkHeatmap.vue';
 import MkFoldableSection from '@/components/MkFoldableSection.vue';
@@ -164,7 +164,7 @@ function createDoughnut(chartEl, tooltip, data) {
 }
 
 onMounted(() => {
-	misskeyApiGet('federation/stats', { limit: 30 }).then(fedStats => {
+	rizzkeyApiGet('federation/stats', { limit: 30 }).then(fedStats => {
 		type ChartData = {
 			name: string,
 			color: string | null,

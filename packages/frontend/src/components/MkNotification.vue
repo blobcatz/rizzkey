@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -137,21 +137,21 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkReactionIcon from '@/components/MkReactionIcon.vue';
 import MkButton from '@/components/MkButton.vue';
 import { getNoteSummary } from '@/scripts/get-note-summary.js';
 import { notePage } from '@/filters/note.js';
 import { userPage } from '@/filters/user.js';
 import { i18n } from '@/i18n.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { signinRequired } from '@/account.js';
 import { infoImageUrl } from '@/instance.js';
 
 const $i = signinRequired();
 
 const props = withDefaults(defineProps<{
-	notification: Misskey.entities.Notification;
+	notification: rizzkey.entities.Notification;
 	withTime?: boolean;
 	full?: boolean;
 }>(), {
@@ -164,13 +164,13 @@ const followRequestDone = ref(false);
 const acceptFollowRequest = () => {
 	if (props.notification.user == null) return;
 	followRequestDone.value = true;
-	misskeyApi('following/requests/accept', { userId: props.notification.user.id });
+	rizzkeyApi('following/requests/accept', { userId: props.notification.user.id });
 };
 
 const rejectFollowRequest = () => {
 	if (props.notification.user == null) return;
 	followRequestDone.value = true;
-	misskeyApi('following/requests/reject', { userId: props.notification.user.id });
+	rizzkeyApi('following/requests/reject', { userId: props.notification.user.id });
 };
 </script>
 

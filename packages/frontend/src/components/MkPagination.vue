@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -44,23 +44,23 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts">
 import { computed, ComputedRef, isRef, nextTick, onActivated, onBeforeMount, onBeforeUnmount, onDeactivated, ref, shallowRef, watch } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { onScrollTop, isTopVisible, getBodyScrollHeight, getScrollContainer, onScrollBottom, scrollToBottom, scroll, isBottomVisible } from '@/scripts/scroll.js';
 import { useDocumentVisibility } from '@/scripts/use-document-visibility.js';
 import { defaultStore } from '@/store.js';
-import { MisskeyEntity } from '@/types/date-separated-list.js';
+import { rizzkeyEntity } from '@/types/date-separated-list.js';
 import { i18n } from '@/i18n.js';
 
 const SECOND_FETCH_LIMIT = 30;
 const TOLERANCE = 16;
 const APPEAR_MINIMUM_INTERVAL = 600;
 
-export type Paging<E extends keyof Misskey.Endpoints = keyof Misskey.Endpoints> = {
+export type Paging<E extends keyof rizzkey.Endpoints = keyof rizzkey.Endpoints> = {
 	endpoint: E;
 	limit: number;
-	params?: Misskey.Endpoints[E]['req'] | ComputedRef<Misskey.Endpoints[E]['req']>;
+	params?: rizzkey.Endpoints[E]['req'] | ComputedRef<rizzkey.Endpoints[E]['req']>;
 
 	/**
 	 * 検索APIのような、ページング不可なエンドポイントを利用する場合
@@ -78,13 +78,13 @@ export type Paging<E extends keyof Misskey.Endpoints = keyof Misskey.Endpoints> 
 	pageEl?: HTMLElement;
 };
 
-type MisskeyEntityMap = Map<string, MisskeyEntity>;
+type rizzkeyEntityMap = Map<string, rizzkeyEntity>;
 
-function arrayToEntries(entities: MisskeyEntity[]): [string, MisskeyEntity][] {
+function arrayToEntries(entities: rizzkeyEntity[]): [string, rizzkeyEntity][] {
 	return entities.map(en => [en.id, en]);
 }
 
-function concatMapWithArray(map: MisskeyEntityMap, entities: MisskeyEntity[]): MisskeyEntityMap {
+function concatMapWithArray(map: rizzkeyEntityMap, entities: rizzkeyEntity[]): rizzkeyEntityMap {
 	return new Map([...map, ...arrayToEntries(entities)]);
 }
 
@@ -117,13 +117,13 @@ const scrollRemove = ref<(() => void) | null>(null);
  * 表示するアイテムのソース
  * 最新が0番目
  */
-const items = ref<MisskeyEntityMap>(new Map());
+const items = ref<rizzkeyEntityMap>(new Map());
 
 /**
  * タブが非アクティブなどの場合に更新を貯めておく
  * 最新が0番目
  */
-const queue = ref<MisskeyEntityMap>(new Map());
+const queue = ref<rizzkeyEntityMap>(new Map());
 
 const offset = ref(0);
 
@@ -204,7 +204,7 @@ async function init(): Promise<void> {
 	queue.value = new Map();
 	fetching.value = true;
 	const params = props.pagination.params ? isRef(props.pagination.params) ? props.pagination.params.value : props.pagination.params : {};
-	await misskeyApi<MisskeyEntity[]>(props.pagination.endpoint, {
+	await rizzkeyApi<rizzkeyEntity[]>(props.pagination.endpoint, {
 		...params,
 		limit: props.pagination.limit ?? 10,
 		allowPartial: true,
@@ -240,7 +240,7 @@ const fetchMore = async (): Promise<void> => {
 	if (!more.value || fetching.value || moreFetching.value || items.value.size === 0) return;
 	moreFetching.value = true;
 	const params = props.pagination.params ? isRef(props.pagination.params) ? props.pagination.params.value : props.pagination.params : {};
-	await misskeyApi<MisskeyEntity[]>(props.pagination.endpoint, {
+	await rizzkeyApi<rizzkeyEntity[]>(props.pagination.endpoint, {
 		...params,
 		limit: SECOND_FETCH_LIMIT,
 		...(props.pagination.offsetMode ? {
@@ -304,7 +304,7 @@ const fetchMoreAhead = async (): Promise<void> => {
 	if (!more.value || fetching.value || moreFetching.value || items.value.size === 0) return;
 	moreFetching.value = true;
 	const params = props.pagination.params ? isRef(props.pagination.params) ? props.pagination.params.value : props.pagination.params : {};
-	await misskeyApi<MisskeyEntity[]>(props.pagination.endpoint, {
+	await rizzkeyApi<rizzkeyEntity[]>(props.pagination.endpoint, {
 		...params,
 		limit: SECOND_FETCH_LIMIT,
 		...(props.pagination.offsetMode ? {
@@ -379,7 +379,7 @@ watch(visibility, () => {
  * ストリーミングから降ってきたアイテムはこれで追加する
  * @param item アイテム
  */
-const prepend = (item: MisskeyEntity): void => {
+const prepend = (item: rizzkeyEntity): void => {
 	if (items.value.size === 0) {
 		items.value.set(item.id, item);
 		fetching.value = false;
@@ -394,7 +394,7 @@ const prepend = (item: MisskeyEntity): void => {
  * 新着アイテムをitemsの先頭に追加し、displayLimitを適用する
  * @param newItems 新しいアイテムの配列
  */
-function unshiftItems(newItems: MisskeyEntity[]) {
+function unshiftItems(newItems: rizzkeyEntity[]) {
 	const length = newItems.length + items.value.size;
 	items.value = new Map([...arrayToEntries(newItems), ...items.value].slice(0, props.displayLimit));
 
@@ -405,7 +405,7 @@ function unshiftItems(newItems: MisskeyEntity[]) {
  * 古いアイテムをitemsの末尾に追加し、displayLimitを適用する
  * @param oldItems 古いアイテムの配列
  */
-function concatItems(oldItems: MisskeyEntity[]) {
+function concatItems(oldItems: rizzkeyEntity[]) {
 	const length = oldItems.length + items.value.size;
 	items.value = new Map([...items.value, ...arrayToEntries(oldItems)].slice(0, props.displayLimit));
 
@@ -417,14 +417,14 @@ function executeQueue() {
 	queue.value = new Map();
 }
 
-function prependQueue(newItem: MisskeyEntity) {
-	queue.value = new Map([[newItem.id, newItem], ...queue.value].slice(0, props.displayLimit) as [string, MisskeyEntity][]);
+function prependQueue(newItem: rizzkeyEntity) {
+	queue.value = new Map([[newItem.id, newItem], ...queue.value].slice(0, props.displayLimit) as [string, rizzkeyEntity][]);
 }
 
 /*
  * アイテムを末尾に追加する（使うの？）
  */
-const appendItem = (item: MisskeyEntity): void => {
+const appendItem = (item: rizzkeyEntity): void => {
 	items.value.set(item.id, item);
 };
 
@@ -433,7 +433,7 @@ const removeItem = (id: string) => {
 	queue.value.delete(id);
 };
 
-const updateItem = (id: MisskeyEntity['id'], replacer: (old: MisskeyEntity) => MisskeyEntity): void => {
+const updateItem = (id: rizzkeyEntity['id'], replacer: (old: rizzkeyEntity) => rizzkeyEntity): void => {
 	const item = items.value.get(id);
 	if (item) items.value.set(id, replacer(item));
 

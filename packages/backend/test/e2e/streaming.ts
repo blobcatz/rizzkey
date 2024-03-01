@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -9,7 +9,7 @@ import * as assert from 'assert';
 import { WebSocket } from 'ws';
 import { MiFollowing } from '@/models/Following.js';
 import { api, createAppToken, initTestDb, port, post, signup, waitFire } from '../utils.js';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 describe('Streaming', () => {
 	let Followings: any;
@@ -30,19 +30,19 @@ describe('Streaming', () => {
 
 	describe('Streaming', () => {
 		// Local users
-		let ayano: misskey.entities.SignupResponse;
-		let kyoko: misskey.entities.SignupResponse;
-		let chitose: misskey.entities.SignupResponse;
-		let kanako: misskey.entities.SignupResponse;
+		let ayano: rizzkey.entities.SignupResponse;
+		let kyoko: rizzkey.entities.SignupResponse;
+		let chitose: rizzkey.entities.SignupResponse;
+		let kanako: rizzkey.entities.SignupResponse;
 
 		// Remote users
-		let akari: misskey.entities.SignupResponse;
-		let chinatsu: misskey.entities.SignupResponse;
-		let takumi: misskey.entities.SignupResponse;
+		let akari: rizzkey.entities.SignupResponse;
+		let chinatsu: rizzkey.entities.SignupResponse;
+		let takumi: rizzkey.entities.SignupResponse;
 
-		let kyokoNote: misskey.entities.Note;
-		let kanakoNote: misskey.entities.Note;
-		let takumiNote: misskey.entities.Note;
+		let kyokoNote: rizzkey.entities.Note;
+		let kanakoNote: rizzkey.entities.Note;
+		let takumiNote: rizzkey.entities.Note;
 		let list: any;
 
 		beforeAll(async () => {

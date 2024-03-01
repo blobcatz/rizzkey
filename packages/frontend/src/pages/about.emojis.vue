@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -37,7 +37,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { watch, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XEmoji from './emojis.emoji.vue';
 import MkButton from '@/components/MkButton.vue';
 import MkInput from '@/components/MkInput.vue';
@@ -48,7 +48,7 @@ import { $i } from '@/account.js';
 
 const customEmojiTags = getCustomEmojiTags();
 const q = ref('');
-const searchEmojis = ref<Misskey.entities.EmojiSimple[]>(null);
+const searchEmojis = ref<rizzkey.entities.EmojiSimple[]>(null);
 const selectedTags = ref(new Set());
 
 function search() {

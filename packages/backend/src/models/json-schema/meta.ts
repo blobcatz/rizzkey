@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -35,7 +35,7 @@ export const packedMetaLiteSchema = {
 			type: 'string',
 			optional: false, nullable: false,
 			format: 'url',
-			example: 'https://misskey.example.com',
+			example: 'https://rizzkey.example.com',
 		},
 		description: {
 			type: 'string',

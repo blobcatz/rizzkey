@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -21,13 +21,13 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkButton from '@/components/MkButton.vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 
 const props = defineProps<{
-	session: Misskey.entities.AuthSessionShowResponse;
+	session: rizzkey.entities.AuthSessionShowResponse;
 }>();
 
 const emit = defineEmits<{
@@ -44,7 +44,7 @@ const name = computed(() => {
 });
 
 function cancel() {
-	misskeyApi('auth/deny', {
+	rizzkeyApi('auth/deny', {
 		token: props.session.token,
 	}).then(() => {
 		emit('denied');
@@ -52,7 +52,7 @@ function cancel() {
 }
 
 function accept() {
-	misskeyApi('auth/accept', {
+	rizzkeyApi('auth/accept', {
 		token: props.session.token,
 	}).then(() => {
 		emit('accepted');

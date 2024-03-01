@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -71,12 +71,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, watch, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkPostForm from '@/components/MkPostForm.vue';
 import MkTimeline from '@/components/MkTimeline.vue';
 import XChannelFollowButton from '@/components/MkChannelFollowButton.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { $i, iAmModerator } from '@/account.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
@@ -104,7 +104,7 @@ const props = defineProps<{
 
 const tab = ref('overview');
 
-const channel = ref<Misskey.entities.Channel | null>(null);
+const channel = ref<rizzkey.entities.Channel | null>(null);
 const favorited = ref(false);
 const searchQuery = ref('');
 const searchPagination = ref();
@@ -118,7 +118,7 @@ const featuredPagination = computed(() => ({
 }));
 
 watch(() => props.channelId, async () => {
-	channel.value = await misskeyApi('channels/show', {
+	channel.value = await rizzkeyApi('channels/show', {
 		channelId: props.channelId,
 	});
 	favorited.value = channel.value.isFavorited ?? false;

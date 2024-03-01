@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -7,21 +7,21 @@ process.env.NODE_ENV = 'test';
 
 import * as assert from 'assert';
 import { api, post, signup } from '../utils.js';
-import type * as misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 describe('API visibility', () => {
 	describe('Note visibility', () => {
 		//#region vars
 		/** ヒロイン */
-		let alice: misskey.entities.SignupResponse;
+		let alice: rizzkey.entities.SignupResponse;
 		/** フォロワー */
-		let follower: misskey.entities.SignupResponse;
+		let follower: rizzkey.entities.SignupResponse;
 		/** 非フォロワー */
-		let other: misskey.entities.SignupResponse;
+		let other: rizzkey.entities.SignupResponse;
 		/** 非フォロワーでもリプライやメンションをされた人 */
-		let target: misskey.entities.SignupResponse;
+		let target: rizzkey.entities.SignupResponse;
 		/** specified mentionでmentionを飛ばされる人 */
-		let target2: misskey.entities.SignupResponse;
+		let target2: rizzkey.entities.SignupResponse;
 
 		/** public-post */
 		let pub: any;

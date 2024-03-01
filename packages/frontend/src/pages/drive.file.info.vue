@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -71,7 +71,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script setup lang="ts">
 import { ref, computed, defineAsyncComponent, onMounted } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkInfo from '@/components/MkInfo.vue';
 import MkMediaList from '@/components/MkMediaList.vue';
 import MkKeyValue from '@/components/MkKeyValue.vue';
@@ -79,7 +79,7 @@ import bytes from '@/filters/bytes.js';
 import { infoImageUrl } from '@/instance.js';
 import { i18n } from '@/i18n.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { useRouter } from '@/router/supplier.js';
 
 const router = useRouter();
@@ -89,13 +89,13 @@ const props = defineProps<{
 }>();
 
 const fetching = ref(true);
-const file = ref<Misskey.entities.DriveFile>();
+const file = ref<rizzkey.entities.DriveFile>();
 const isImage = computed(() => file.value?.type.startsWith('image/'));
 
 async function fetch() {
 	fetching.value = true;
 
-	file.value = await misskeyApi('drive/files/show', {
+	file.value = await rizzkeyApi('drive/files/show', {
 		fileId: props.fileId,
 	}).catch((err) => {
 		console.error(err);

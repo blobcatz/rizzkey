@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -72,8 +72,8 @@ SPDX-License-Identifier: AGPL-3.0-only
 						<div class="_gaps_s" style="padding: 16px;">
 							<div><b>Credit</b></div>
 							<div>
-								<div>Ai-chan illustration: @poteriri@misskey.io</div>
-								<div>BGM: @ys@misskey.design</div>
+								<div>Ai-chan illustration: @poteriri@rizzkey.io</div>
+								<div>BGM: @ys@rizzkey.design</div>
 							</div>
 						</div>
 					</div>
@@ -93,7 +93,7 @@ import MkButton from '@/components/MkButton.vue';
 import { i18n } from '@/i18n.js';
 import MkSelect from '@/components/MkSelect.vue';
 import MkSwitch from '@/components/MkSwitch.vue';
-import { misskeyApiGet } from '@/scripts/misskey-api.js';
+import { rizzkeyApiGet } from '@/scripts/rizzkey-api.js';
 
 const gameMode = ref<'normal' | 'square' | 'yen' | 'sweets' | 'space'>('normal');
 const gameStarted = ref(false);
@@ -101,7 +101,7 @@ const mute = ref(false);
 const ranking = ref(null);
 
 watch(gameMode, async () => {
-	ranking.value = await misskeyApiGet('bubble-game/ranking', { gameMode: gameMode.value });
+	ranking.value = await rizzkeyApiGet('bubble-game/ranking', { gameMode: gameMode.value });
 }, { immediate: true });
 
 function getScoreUnit(gameMode: string) {

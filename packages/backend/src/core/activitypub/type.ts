@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -12,7 +12,7 @@ export interface IObject {
 	id?: string;
 	name?: string | null;
 	summary?: string;
-	_misskey_summary?: string;
+	_rizzkey_summary?: string;
 	published?: string;
 	cc?: ApObject;
 	to?: ApObject;
@@ -116,8 +116,8 @@ export interface IPost extends IObject {
 		content: string;
 		mediaType: string;
 	};
-	_misskey_quote?: string;
-	_misskey_content?: string;
+	_rizzkey_quote?: string;
+	_rizzkey_content?: string;
 	quoteUrl?: string;
 }
 
@@ -128,7 +128,7 @@ export interface IQuestion extends IObject {
 		content: string;
 		mediaType: string;
 	};
-	_misskey_quote?: string;
+	_rizzkey_quote?: string;
 	quoteUrl?: string;
 	oneOf?: IQuestionChoice[];
 	anyOf?: IQuestionChoice[];
@@ -142,7 +142,7 @@ export const isQuestion = (object: IObject): object is IQuestion =>
 interface IQuestionChoice {
 	name?: string;
 	replies?: ICollection;
-	_misskey_votes?: number;
+	_rizzkey_votes?: number;
 }
 export interface ITombstone extends IObject {
 	type: 'Tombstone';
@@ -292,7 +292,7 @@ export interface IRemove extends IActivity {
 
 export interface ILike extends IActivity {
 	type: 'Like' | 'EmojiReaction' | 'EmojiReact';
-	_misskey_reaction?: string;
+	_rizzkey_reaction?: string;
 }
 
 export interface IAnnounce extends IActivity {

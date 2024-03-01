@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -94,7 +94,7 @@ export class NotificationService implements OnApplicationShutdown {
 	): Promise<MiNotification | null> {
 		const profile = await this.cacheService.userProfileCache.fetch(notifieeId);
 
-		// 古いMisskeyバージョンのキャッシュが残っている可能性がある
+		// 古いrizzkeyバージョンのキャッシュが残っている可能性がある
 		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		const recieveConfig = (profile.notificationRecieveConfig ?? {})[type];
 		if (recieveConfig?.type === 'never') {

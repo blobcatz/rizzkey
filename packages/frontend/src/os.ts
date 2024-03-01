@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -7,10 +7,10 @@
 
 import { Component, markRaw, Ref, ref, defineAsyncComponent } from 'vue';
 import { EventEmitter } from 'eventemitter3';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import type { ComponentProps as CP } from 'vue-component-type-helpers';
 import type { Form, GetFormResultType } from '@/scripts/form.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import MkPostFormDialog from '@/components/MkPostFormDialog.vue';
 import MkWaitingDialog from '@/components/MkWaitingDialog.vue';
@@ -27,12 +27,12 @@ import { showMovedDialog } from '@/scripts/show-moved-dialog.js';
 
 export const openingWindowsCount = ref(0);
 
-export const apiWithDialog = (<E extends keyof Misskey.Endpoints = keyof Misskey.Endpoints, P extends Misskey.Endpoints[E]['req'] = Misskey.Endpoints[E]['req']>(
+export const apiWithDialog = (<E extends keyof rizzkey.Endpoints = keyof rizzkey.Endpoints, P extends rizzkey.Endpoints[E]['req'] = rizzkey.Endpoints[E]['req']>(
 	endpoint: E,
 	data: P = {} as any,
 	token?: string | null | undefined,
 ) => {
-	const promise = misskeyApi(endpoint, data, token);
+	const promise = rizzkeyApi(endpoint, data, token);
 	promiseDialog(promise, null, async (err) => {
 		let title: string | undefined;
 		let text = err.message + '\n' + err.id;
@@ -82,12 +82,12 @@ export const apiWithDialog = (<E extends keyof Misskey.Endpoints = keyof Misskey
 	});
 
 	return promise;
-}) as typeof misskeyApi;
+}) as typeof rizzkeyApi;
 
 export function promiseDialog<T extends Promise<any>>(
 	promise: T,
 	onSuccess?: ((res: any) => void) | null,
-	onFailure?: ((err: Misskey.api.APIError) => void) | null,
+	onFailure?: ((err: rizzkey.api.APIError) => void) | null,
 	text?: string,
 ): T {
 	const showing = ref(true);
@@ -528,7 +528,7 @@ export function form<F extends Form>(title: string, f: F): Promise<{ canceled: t
 	});
 }
 
-export async function selectUser(opts: { includeSelf?: boolean; localOnly?: boolean; } = {}): Promise<Misskey.entities.UserDetailed> {
+export async function selectUser(opts: { includeSelf?: boolean; localOnly?: boolean; } = {}): Promise<rizzkey.entities.UserDetailed> {
 	return new Promise(resolve => {
 		popup(defineAsyncComponent(() => import('@/components/MkUserSelectDialog.vue')), {
 			includeSelf: opts.includeSelf,
@@ -541,7 +541,7 @@ export async function selectUser(opts: { includeSelf?: boolean; localOnly?: bool
 	});
 }
 
-export async function selectDriveFile(multiple: boolean): Promise<Misskey.entities.DriveFile[]> {
+export async function selectDriveFile(multiple: boolean): Promise<rizzkey.entities.DriveFile[]> {
 	return new Promise(resolve => {
 		popup(defineAsyncComponent(() => import('@/components/MkDriveSelectDialog.vue')), {
 			type: 'file',
@@ -556,7 +556,7 @@ export async function selectDriveFile(multiple: boolean): Promise<Misskey.entiti
 	});
 }
 
-export async function selectDriveFolder(multiple: boolean): Promise<Misskey.entities.DriveFolder[]> {
+export async function selectDriveFolder(multiple: boolean): Promise<rizzkey.entities.DriveFolder[]> {
 	return new Promise(resolve => {
 		popup(defineAsyncComponent(() => import('@/components/MkDriveSelectDialog.vue')), {
 			type: 'folder',
@@ -584,10 +584,10 @@ export async function pickEmoji(src: HTMLElement, opts: ComponentProps<typeof Mk
 	});
 }
 
-export async function cropImage(image: Misskey.entities.DriveFile, options: {
+export async function cropImage(image: rizzkey.entities.DriveFile, options: {
 	aspectRatio: number;
 	uploadFolder?: string | null;
-}): Promise<Misskey.entities.DriveFile> {
+}): Promise<rizzkey.entities.DriveFile> {
 	return new Promise(resolve => {
 		popup(defineAsyncComponent(() => import('@/components/MkCropperDialog.vue')), {
 			file: image,
@@ -655,7 +655,7 @@ export function post(props: Record<string, any> = {}): Promise<void> {
 		// NOTE: ただ、dynamic importしない場合、MkPostFormDialogインスタンスが使いまわされ、
 		//       Vueが渡されたコンポーネントに内部的に__propsというプロパティを生やす影響で、
 		//       複数のpost formを開いたときに場合によってはエラーになる
-		//       もちろん複数のpost formを開けること自体Misskeyサイドのバグなのだが
+		//       もちろん複数のpost formを開けること自体rizzkeyサイドのバグなのだが
 		let dispose;
 		popup(MkPostFormDialog, props, {
 			closed: () => {

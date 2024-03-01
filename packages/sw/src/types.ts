@@ -1,9 +1,9 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import type * as Misskey from 'misskey-js';
+import type * as rizzkey from 'rizzkey-js';
 
 export type SwMessageOrderType = 'post' | 'push';
 
@@ -17,10 +17,10 @@ export type SwMessage = {
 
 // Defined also @/core/PushNotificationService.ts#L12
 type PushNotificationDataSourceMap = {
-	notification: Misskey.entities.Notification;
+	notification: rizzkey.entities.Notification;
 	unreadAntennaNote: {
 		antenna: { id: string; name: string };
-		note: Misskey.entities.Note;
+		note: rizzkey.entities.Note;
 	};
 	readAllNotifications: undefined;
 };

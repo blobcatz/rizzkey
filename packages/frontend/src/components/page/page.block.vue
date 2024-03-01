@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -9,7 +9,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XText from './page.text.vue';
 import XSection from './page.section.vue';
 import XImage from './page.image.vue';
@@ -26,8 +26,8 @@ function getComponent(type: string) {
 }
 
 defineProps<{
-	block: Misskey.entities.PageBlock,
+	block: rizzkey.entities.PageBlock,
 	h: number,
-	page: Misskey.entities.Page,
+	page: rizzkey.entities.Page,
 }>();
 </script>

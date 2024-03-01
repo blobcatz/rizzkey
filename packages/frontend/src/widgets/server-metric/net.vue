@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -50,17 +50,17 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onMounted, onBeforeUnmount, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import bytes from '@/filters/bytes.js';
 
 const props = defineProps<{
-	connection: Misskey.ChannelConnection<Misskey.Channels['serverStats']>,
-	meta: Misskey.entities.ServerInfoResponse
+	connection: rizzkey.ChannelConnection<rizzkey.Channels['serverStats']>,
+	meta: rizzkey.entities.ServerInfoResponse
 }>();
 
 const viewBoxX = ref<number>(50);
 const viewBoxY = ref<number>(30);
-const stats = ref<Misskey.entities.ServerStats[]>([]);
+const stats = ref<rizzkey.entities.ServerStats[]>([]);
 const inPolylinePoints = ref<string>('');
 const outPolylinePoints = ref<string>('');
 const inPolygonPoints = ref<string>('');
@@ -86,7 +86,7 @@ onBeforeUnmount(() => {
 	props.connection.off('statsLog', onStatsLog);
 });
 
-function onStats(connStats: Misskey.entities.ServerStats) {
+function onStats(connStats: rizzkey.entities.ServerStats) {
 	stats.value.push(connStats);
 	if (stats.value.length > 50) stats.value.shift();
 
@@ -110,7 +110,7 @@ function onStats(connStats: Misskey.entities.ServerStats) {
 	outRecent.value = connStats.net.tx;
 }
 
-function onStatsLog(statsLog: Misskey.entities.ServerStatsLog) {
+function onStatsLog(statsLog: rizzkey.entities.ServerStatsLog) {
 	for (const revStats of statsLog.reverse()) {
 		onStats(revStats);
 	}

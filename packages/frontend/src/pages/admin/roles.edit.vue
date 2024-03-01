@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -23,12 +23,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { v4 as uuid } from 'uuid';
 import XHeader from './_header_.vue';
 import XEditor from './roles.editor.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import MkButton from '@/components/MkButton.vue';
@@ -41,11 +41,11 @@ const props = defineProps<{
 	id?: string;
 }>();
 
-const role = ref<Misskey.entities.Role | null>(null);
+const role = ref<rizzkey.entities.Role | null>(null);
 const data = ref<any>(null);
 
 if (props.id) {
-	role.value = await misskeyApi('admin/roles/show', {
+	role.value = await rizzkeyApi('admin/roles/show', {
 		roleId: props.id,
 	});
 

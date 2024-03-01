@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -40,7 +40,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { acct } from '@/filters/user.js';
 import { i18n } from '@/i18n.js';
 import MkKeyValue from '@/components/MkKeyValue.vue';
@@ -48,7 +48,7 @@ import FormSection from '@/components/form/section.vue';
 import MkObjectView from '@/components/MkObjectView.vue';
 
 const props = defineProps<{
-	user: Misskey.entities.User;
+	user: rizzkey.entities.User;
 }>();
 
 const moderator = computed(() => props.user.isModerator ?? false);

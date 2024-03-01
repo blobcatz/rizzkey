@@ -9,14 +9,14 @@ on:
       - packages/backend/**
       - packages/frontend/**
       - packages/sw/**
-      - packages/misskey-js/**
+      - packages/rizzkey-js/**
       - packages/shared/.eslintrc.js
   pull_request:
     paths:
       - packages/backend/**
       - packages/frontend/**
       - packages/sw/**
-      - packages/misskey-js/**
+      - packages/rizzkey-js/**
       - packages/shared/.eslintrc.js
 
 jobs:
@@ -48,7 +48,7 @@ jobs:
         - backend
         - frontend
         - sw
-        - misskey-js
+        - rizzkey-js
     steps:
     - uses: actions/checkout@v4.1.1
       with:
@@ -74,7 +74,7 @@ jobs:
       matrix:
         workspace:
         - backend
-        - misskey-js
+        - rizzkey-js
     steps:
     - uses: actions/checkout@v4.1.1
       with:
@@ -90,8 +90,8 @@ jobs:
         cache: 'pnpm'
     - run: corepack enable
     - run: pnpm i --frozen-lockfile
-    - run: pnpm --filter misskey-js run build
+    - run: pnpm --filter rizzkey-js run build
       if: ${{ matrix.workspace == 'backend' }}
-    - run: pnpm --filter misskey-reversi run build:tsc
+    - run: pnpm --filter rizzkey-reversi run build:tsc
       if: ${{ matrix.workspace == 'backend' }}
     - run: pnpm --filter ${{ matrix.workspace }} run typecheck

@@ -1,11 +1,11 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { App } from 'vue';
 
-import Mfm from './global/MkMisskeyFlavoredMarkdown.js';
+import Mfm from './global/MkrizzkeyFlavoredMarkdown.js';
 import MkA from './global/MkA.vue';
 import MkAcct from './global/MkAcct.vue';
 import MkAvatar from './global/MkAvatar.vue';

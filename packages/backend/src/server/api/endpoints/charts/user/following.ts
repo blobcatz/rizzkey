@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -24,7 +24,7 @@ export const paramDef = {
 		span: { type: 'string', enum: ['day', 'hour'] },
 		limit: { type: 'integer', minimum: 1, maximum: 500, default: 30 },
 		offset: { type: 'integer', nullable: true, default: null },
-		userId: { type: 'string', format: 'misskey:id' },
+		userId: { type: 'string', format: 'rizzkey:id' },
 	},
 	required: ['span', 'userId'],
 } as const;

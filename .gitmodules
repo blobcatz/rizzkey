@@ -1,5 +1,5 @@
-[submodule "misskey-assets"]
-	path = misskey-assets
+[submodule "rizzkey-assets"]
+	path = rizzkey-assets
 	url = https://github.com/misskey-dev/assets.git
 [submodule "fluent-emojis"]
 	path = fluent-emojis

@@ -1,11 +1,11 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 
-export function shouldCollapsed(note: Misskey.entities.Note, urls: string[]): boolean {
+export function shouldCollapsed(note: rizzkey.entities.Note, urls: string[]): boolean {
 	const collapsed = note.cw == null && note.text != null && (
 		(note.text.includes('$[x2')) ||
 		(note.text.includes('$[x3')) ||

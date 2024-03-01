@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -43,10 +43,10 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onMounted, ref, computed } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XForm from './auth.form.vue';
 import MkSignin from '@/components/MkSignin.vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { $i, login } from '@/account.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { i18n } from '@/i18n.js';
@@ -56,7 +56,7 @@ const props = defineProps<{
 }>();
 
 const state = ref<'waiting' | 'accepted' | 'fetch-session-error' | 'denied' | null>(null);
-const session = ref<Misskey.entities.AuthSessionShowResponse | null>(null);
+const session = ref<rizzkey.entities.AuthSessionShowResponse | null>(null);
 
 function accepted() {
 	state.value = 'accepted';
@@ -75,13 +75,13 @@ onMounted(async () => {
 	if (!$i) return;
 
 	try {
-		session.value = await misskeyApi('auth/session/show', {
+		session.value = await rizzkeyApi('auth/session/show', {
 			token: props.token,
 		});
 
 		// 既に連携していた場合
 		if (session.value.app.isAuthorized) {
-			await misskeyApi('auth/accept', {
+			await rizzkeyApi('auth/accept', {
 				token: session.value.token,
 			});
 			accepted();

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -62,15 +62,15 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import * as Misskey from 'misskey-js';
-import { misskeyApi, misskeyApiGet } from '@/scripts/misskey-api.js';
+import * as rizzkey from 'rizzkey-js';
+import { rizzkeyApi, rizzkeyApiGet } from '@/scripts/rizzkey-api.js';
 import MkNumberDiff from '@/components/MkNumberDiff.vue';
 import MkNumber from '@/components/MkNumber.vue';
 import { i18n } from '@/i18n.js';
 import { customEmojis } from '@/custom-emojis.js';
 import { defaultStore } from '@/store.js';
 
-const stats = ref<Misskey.entities.StatsResponse | null>(null);
+const stats = ref<rizzkey.entities.StatsResponse | null>(null);
 const usersComparedToThePrevDay = ref<number>();
 const notesComparedToThePrevDay = ref<number>();
 const onlineUsersCount = ref(0);
@@ -78,17 +78,17 @@ const fetching = ref(true);
 
 onMounted(async () => {
 	const [_stats, _onlineUsersCount] = await Promise.all([
-		misskeyApi('stats', {}),
-		misskeyApiGet('get-online-users-count').then(res => res.count),
+		rizzkeyApi('stats', {}),
+		rizzkeyApiGet('get-online-users-count').then(res => res.count),
 	]);
 	stats.value = _stats;
 	onlineUsersCount.value = _onlineUsersCount;
 
-	misskeyApiGet('charts/users', { limit: 2, span: 'day' }).then(chart => {
+	rizzkeyApiGet('charts/users', { limit: 2, span: 'day' }).then(chart => {
 		usersComparedToThePrevDay.value = stats.value.originalUsersCount - chart.local.total[1];
 	});
 
-	misskeyApiGet('charts/notes', { limit: 2, span: 'day' }).then(chart => {
+	rizzkeyApiGet('charts/notes', { limit: 2, span: 'day' }).then(chart => {
 		notesComparedToThePrevDay.value = stats.value.originalNotesCount - chart.local.total[1];
 	});
 

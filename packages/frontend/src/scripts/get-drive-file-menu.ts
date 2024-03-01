@@ -1,38 +1,38 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { defineAsyncComponent } from 'vue';
 import { i18n } from '@/i18n.js';
 import copyToClipboard from '@/scripts/copy-to-clipboard.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { MenuItem } from '@/types/menu.js';
 import { defaultStore } from '@/store.js';
 
-function rename(file: Misskey.entities.DriveFile) {
+function rename(file: rizzkey.entities.DriveFile) {
 	os.inputText({
 		title: i18n.ts.renameFile,
 		placeholder: i18n.ts.inputNewFileName,
 		default: file.name,
 	}).then(({ canceled, result: name }) => {
 		if (canceled) return;
-		misskeyApi('drive/files/update', {
+		rizzkeyApi('drive/files/update', {
 			fileId: file.id,
 			name: name,
 		});
 	});
 }
 
-function describe(file: Misskey.entities.DriveFile) {
+function describe(file: rizzkey.entities.DriveFile) {
 	os.popup(defineAsyncComponent(() => import('@/components/MkFileCaptionEditWindow.vue')), {
 		default: file.comment ?? '',
 		file: file,
 	}, {
 		done: caption => {
-			misskeyApi('drive/files/update', {
+			rizzkeyApi('drive/files/update', {
 				fileId: file.id,
 				comment: caption.length === 0 ? null : caption,
 			});
@@ -40,8 +40,8 @@ function describe(file: Misskey.entities.DriveFile) {
 	}, 'closed');
 }
 
-function toggleSensitive(file: Misskey.entities.DriveFile) {
-	misskeyApi('drive/files/update', {
+function toggleSensitive(file: rizzkey.entities.DriveFile) {
+	rizzkeyApi('drive/files/update', {
 		fileId: file.id,
 		isSensitive: !file.isSensitive,
 	}).catch(err => {
@@ -53,7 +53,7 @@ function toggleSensitive(file: Misskey.entities.DriveFile) {
 	});
 }
 
-function copyUrl(file: Misskey.entities.DriveFile) {
+function copyUrl(file: rizzkey.entities.DriveFile) {
 	copyToClipboard(file.url);
 	os.success();
 }
@@ -63,19 +63,19 @@ function addApp() {
 	alert('not implemented yet');
 }
 */
-async function deleteFile(file: Misskey.entities.DriveFile) {
+async function deleteFile(file: rizzkey.entities.DriveFile) {
 	const { canceled } = await os.confirm({
 		type: 'warning',
 		text: i18n.tsx.driveFileDeleteConfirm({ name: file.name }),
 	});
 
 	if (canceled) return;
-	misskeyApi('drive/files/delete', {
+	rizzkeyApi('drive/files/delete', {
 		fileId: file.id,
 	});
 }
 
-export function getDriveFileMenu(file: Misskey.entities.DriveFile, folder?: Misskey.entities.DriveFolder | null): MenuItem[] {
+export function getDriveFileMenu(file: rizzkey.entities.DriveFile, folder?: rizzkey.entities.DriveFolder | null): MenuItem[] {
 	const isImage = file.type.startsWith('image/');
 	let menu;
 	menu = [{

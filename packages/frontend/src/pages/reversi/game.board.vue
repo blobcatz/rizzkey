@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -143,8 +143,8 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, onActivated, onDeactivated, onMounted, onUnmounted, ref, shallowRef, triggerRef, watch } from 'vue';
-import * as Misskey from 'misskey-js';
-import * as Reversi from 'misskey-reversi';
+import * as rizzkey from 'rizzkey-js';
+import * as Reversi from 'rizzkey-reversi';
 import MkButton from '@/components/MkButton.vue';
 import MkFolder from '@/components/MkFolder.vue';
 import MkSwitch from '@/components/MkSwitch.vue';
@@ -152,7 +152,7 @@ import { deepClone } from '@/scripts/clone.js';
 import { useInterval } from '@/scripts/use-interval.js';
 import { signinRequired } from '@/account.js';
 import { i18n } from '@/i18n.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { userPage } from '@/filters/user.js';
 import * as sound from '@/scripts/sound.js';
 import * as os from '@/os.js';
@@ -161,15 +161,15 @@ import { confetti } from '@/scripts/confetti.js';
 const $i = signinRequired();
 
 const props = defineProps<{
-	game: Misskey.entities.ReversiGameDetailed;
-	connection?: Misskey.ChannelConnection<Misskey.Channels['reversiGame']> | null;
+	game: rizzkey.entities.ReversiGameDetailed;
+	connection?: rizzkey.ChannelConnection<rizzkey.Channels['reversiGame']> | null;
 }>();
 
 const showBoardLabels = ref<boolean>(false);
 const useAvatarAsStone = ref<boolean>(true);
 const autoplaying = ref<boolean>(false);
 // eslint-disable-next-line vue/no-setup-props-destructure
-const game = ref<Misskey.entities.ReversiGameDetailed & { logs: Reversi.Serializer.SerializedLog[] }>(deepClone(props.game));
+const game = ref<rizzkey.entities.ReversiGameDetailed & { logs: Reversi.Serializer.SerializedLog[] }>(deepClone(props.game));
 const logPos = ref<number>(game.value.logs.length);
 const engine = shallowRef<Reversi.Game>(Reversi.Serializer.restoreGame({
 	map: game.value.map,
@@ -243,7 +243,7 @@ if (game.value.isStarted && !game.value.isEnded) {
 		if (game.value.isEnded) return;
 		const crc32 = engine.value.calcCrc32();
 		if (_DEV_) console.log('crc32', crc32);
-		misskeyApi('reversi/verify', {
+		rizzkeyApi('reversi/verify', {
 			gameId: game.value.id,
 			crc32: crc32.toString(),
 		}).then((res) => {
@@ -323,7 +323,7 @@ async function onStreamLog(log) {
 				});
 
 				if (log.player !== engine.value.turn) { // = desyncが発生している
-					const _game = await misskeyApi('reversi/show-game', {
+					const _game = await rizzkeyApi('reversi/show-game', {
 						gameId: props.game.id,
 					});
 					restoreGame(_game);
@@ -405,7 +405,7 @@ async function surrender() {
 	});
 	if (canceled) return;
 
-	misskeyApi('reversi/surrender', {
+	rizzkeyApi('reversi/surrender', {
 		gameId: game.value.id,
 	});
 }
@@ -442,7 +442,7 @@ function autoplay() {
 
 function share() {
 	os.post({
-		initialText: `#MisskeyReversi ${location.href}`,
+		initialText: `#rizzkeyReversi ${location.href}`,
 		instant: true,
 	});
 }

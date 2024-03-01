@@ -1,10 +1,10 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 export const postMessageEventTypes = [
-	'misskey:shareForm:shareCompleted',
+	'rizzkey:shareForm:shareCompleted',
 ] as const;
 
 export type PostMessageEventType = typeof postMessageEventTypes[number];

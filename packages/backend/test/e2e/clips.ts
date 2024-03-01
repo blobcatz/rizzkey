@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -136,7 +136,7 @@ describe('クリップ', () => {
 		alice = await signup({ username: 'alice' });
 		bob = await signup({ username: 'bob' });
 
-		// FIXME: misskey-jsのNoteはoutdatedなので直接変換できない
+		// FIXME: rizzkey-jsのNoteはoutdatedなので直接変換できない
 		aliceNote = await post(alice, { text: 'test' }) as any;
 		aliceHomeNote = await post(alice, { text: 'home only', visibility: 'home' }) as any;
 		aliceFollowersNote = await post(alice, { text: 'followers only', visibility: 'followers' }) as any;

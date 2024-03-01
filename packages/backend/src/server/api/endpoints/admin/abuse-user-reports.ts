@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -83,8 +83,8 @@ export const paramDef = {
 	type: 'object',
 	properties: {
 		limit: { type: 'integer', minimum: 1, maximum: 100, default: 10 },
-		sinceId: { type: 'string', format: 'misskey:id' },
-		untilId: { type: 'string', format: 'misskey:id' },
+		sinceId: { type: 'string', format: 'rizzkey:id' },
+		untilId: { type: 'string', format: 'rizzkey:id' },
 		state: { type: 'string', nullable: true, default: null },
 		reporterOrigin: { type: 'string', enum: ['combined', 'local', 'remote'], default: 'combined' },
 		targetUserOrigin: { type: 'string', enum: ['combined', 'local', 'remote'], default: 'combined' },

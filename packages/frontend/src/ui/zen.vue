@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -17,7 +17,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 	See https://github.com/misskey-dev/misskey/issues/10905
 -->
 <div v-if="showBottom" :class="$style.bottom">
-	<button v-tooltip="i18n.ts.goToMisskey" :class="['_button', '_shadow', $style.button]" @click="goToMisskey"><i class="ti ti-home"></i></button>
+	<button v-tooltip="i18n.ts.goTorizzkey" :class="['_button', '_shadow', $style.button]" @click="goTorizzkey"><i class="ti ti-home"></i></button>
 </div>
 </template>
 
@@ -49,7 +49,7 @@ provideMetadataReceiver((metadataGetter) => {
 });
 provideReactiveMetadata(pageMetadata);
 
-function goToMisskey() {
+function goTorizzkey() {
 	window.location.href = '/';
 }
 

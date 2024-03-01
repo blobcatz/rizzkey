@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -104,7 +104,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref, shallowRef, computed, watch, onMounted } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XSection from '@/components/MkEmojiPicker.section.vue';
 import {
 	emojilist,
@@ -132,7 +132,7 @@ const props = withDefaults(defineProps<{
 	asDrawer?: boolean;
 	asWindow?: boolean;
 	asReactionPicker?: boolean; // 今は使われてないが将来的に使いそう
-	targetNote?: Misskey.entities.Note;
+	targetNote?: rizzkey.entities.Note;
 }>(), {
 	showPinned: true,
 });
@@ -163,7 +163,7 @@ const size = computed(() => emojiPickerScale.value);
 const width = computed(() => emojiPickerWidth.value);
 const height = computed(() => emojiPickerHeight.value);
 const q = ref<string>('');
-const searchResultCustom = ref<Misskey.entities.EmojiSimple[]>([]);
+const searchResultCustom = ref<rizzkey.entities.EmojiSimple[]>([]);
 const searchResultUnicode = ref<UnicodeEmojiDef[]>([]);
 const tab = ref<'index' | 'custom' | 'unicode' | 'tags'>('index');
 
@@ -210,7 +210,7 @@ watch(q, () => {
 	const searchCustom = () => {
 		const max = 100;
 		const emojis = customEmojis.value;
-		const matches = new Set<Misskey.entities.EmojiSimple>();
+		const matches = new Set<rizzkey.entities.EmojiSimple>();
 
 		const exactMatch = emojis.find(emoji => emoji.name === newQ);
 		if (exactMatch) matches.add(exactMatch);
@@ -353,11 +353,11 @@ watch(q, () => {
 	searchResultUnicode.value = Array.from(searchUnicode());
 });
 
-function canReact(emoji: Misskey.entities.EmojiSimple | UnicodeEmojiDef): boolean {
+function canReact(emoji: rizzkey.entities.EmojiSimple | UnicodeEmojiDef): boolean {
 	return !props.targetNote || checkReactionPermissions($i!, props.targetNote, emoji);
 }
 
-function filterCategory(emoji: Misskey.entities.EmojiSimple, category: string): boolean {
+function filterCategory(emoji: rizzkey.entities.EmojiSimple, category: string): boolean {
 	return category === '' ? (emoji.category === 'null' || !emoji.category) : emoji.category === category;
 }
 
@@ -374,7 +374,7 @@ function reset() {
 	q.value = '';
 }
 
-function getKey(emoji: string | Misskey.entities.EmojiSimple | UnicodeEmojiDef): string {
+function getKey(emoji: string | rizzkey.entities.EmojiSimple | UnicodeEmojiDef): string {
 	return typeof emoji === 'string' ? emoji : 'char' in emoji ? emoji.char : `:${emoji.name}:`;
 }
 

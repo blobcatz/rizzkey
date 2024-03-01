@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -68,7 +68,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkButton from '@/components/MkButton.vue';
 import MkSwitch from '@/components/MkSwitch.vue';
 import MkObjectView from '@/components/MkObjectView.vue';
@@ -79,14 +79,14 @@ import MkUserCardMini from '@/components/MkUserCardMini.vue';
 import MkInfo from '@/components/MkInfo.vue';
 import bytes from '@/filters/bytes.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { iAmAdmin, iAmModerator } from '@/account.js';
 
 const tab = ref('overview');
-const file = ref<Misskey.entities.DriveFile | null>(null);
-const info = ref<Misskey.entities.AdminDriveShowFileResponse | null>(null);
+const file = ref<rizzkey.entities.DriveFile | null>(null);
+const info = ref<rizzkey.entities.AdminDriveShowFileResponse | null>(null);
 const isSensitive = ref<boolean>(false);
 
 const props = defineProps<{
@@ -94,8 +94,8 @@ const props = defineProps<{
 }>();
 
 async function fetch() {
-	file.value = await misskeyApi('drive/files/show', { fileId: props.fileId });
-	info.value = await misskeyApi('admin/drive/show-file', { fileId: props.fileId });
+	file.value = await rizzkeyApi('drive/files/show', { fileId: props.fileId });
+	info.value = await rizzkeyApi('admin/drive/show-file', { fileId: props.fileId });
 	isSensitive.value = file.value.isSensitive;
 }
 
@@ -114,7 +114,7 @@ async function del() {
 }
 
 async function toggleIsSensitive(v) {
-	await misskeyApi('drive/files/update', { fileId: props.fileId, isSensitive: v });
+	await rizzkeyApi('drive/files/update', { fileId: props.fileId, isSensitive: v });
 	isSensitive.value = v;
 }
 

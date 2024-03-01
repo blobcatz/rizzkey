@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -77,7 +77,7 @@ export class NodeinfoServerService {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const document: any = {
 				software: {
-					name: 'misskey',
+					name: 'rizzkey',
 					version: this.config.version,
 					homepage: nodeinfo_homepage,
 					repository: meta.repositoryUrl,

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -54,7 +54,7 @@ import MkInfo from '@/components/MkInfo.vue';
 import MkInput from '@/components/MkInput.vue';
 import MkSwitch from '@/components/MkSwitch.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { signinRequired } from '@/account.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
@@ -65,7 +65,7 @@ const $i = signinRequired();
 const emailAddress = ref($i.email);
 
 const onChangeReceiveAnnouncementEmail = (v) => {
-	misskeyApi('i/update', {
+	rizzkeyApi('i/update', {
 		receiveAnnouncementEmail: v,
 	});
 };
@@ -88,7 +88,7 @@ const emailNotification_follow = ref($i.emailNotificationTypes.includes('follow'
 const emailNotification_receiveFollowRequest = ref($i.emailNotificationTypes.includes('receiveFollowRequest'));
 
 const saveNotificationSettings = () => {
-	misskeyApi('i/update', {
+	rizzkeyApi('i/update', {
 		emailNotificationTypes: [
 			...[emailNotification_mention.value ? 'mention' : null],
 			...[emailNotification_reply.value ? 'reply' : null],

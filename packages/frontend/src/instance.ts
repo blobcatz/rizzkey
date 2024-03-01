@@ -1,18 +1,18 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 import { computed, reactive } from 'vue';
-import * as Misskey from 'misskey-js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import * as rizzkey from 'rizzkey-js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { miLocalStorage } from '@/local-storage.js';
 import { DEFAULT_INFO_IMAGE_URL, DEFAULT_NOT_FOUND_IMAGE_URL, DEFAULT_SERVER_ERROR_IMAGE_URL } from '@/const.js';
 
 // TODO: 他のタブと永続化されたstateを同期
 
 //#region loader
-const providedMetaEl = document.getElementById('misskey_meta');
+const providedMetaEl = document.getElementById('rizzkey_meta');
 
 let cachedMeta = miLocalStorage.getItem('instance') ? JSON.parse(miLocalStorage.getItem('instance')!) : null;
 let cachedAt = miLocalStorage.getItem('instanceCachedAt') ? parseInt(miLocalStorage.getItem('instanceCachedAt')!) : 0;
@@ -28,7 +28,7 @@ if (providedAt > cachedAt) {
 
 // TODO: instanceをリアクティブにするかは再考の余地あり
 
-export const instance: Misskey.entities.MetaResponse = reactive(cachedMeta ?? {});
+export const instance: rizzkey.entities.MetaResponse = reactive(cachedMeta ?? {});
 
 export const serverErrorImageUrl = computed(() => instance.serverErrorImageUrl ?? DEFAULT_SERVER_ERROR_IMAGE_URL);
 
@@ -45,7 +45,7 @@ export async function fetchInstance(force = false): Promise<void> {
 		}
 	}
 
-	const meta = await misskeyApi('meta', {
+	const meta = await rizzkeyApi('meta', {
 		detail: false,
 	});
 

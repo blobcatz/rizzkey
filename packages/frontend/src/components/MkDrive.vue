@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -96,14 +96,14 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { nextTick, onActivated, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkButton from './MkButton.vue';
 import type { MenuItem } from '@/types/menu.js';
 import XNavFolder from '@/components/MkDrive.navFolder.vue';
 import XFolder from '@/components/MkDrive.folder.vue';
 import XFile from '@/components/MkDrive.file.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { useStream } from '@/stream.js';
 import { defaultStore } from '@/store.js';
 import { i18n } from '@/i18n.js';
@@ -111,7 +111,7 @@ import { uploadFile, uploads } from '@/scripts/upload.js';
 import { claimAchievement } from '@/scripts/achievements.js';
 
 const props = withDefaults(defineProps<{
-	initialFolder?: Misskey.entities.DriveFolder;
+	initialFolder?: rizzkey.entities.DriveFolder;
 	type?: string;
 	multiple?: boolean;
 	select?: 'file' | 'folder' | null;
@@ -121,24 +121,24 @@ const props = withDefaults(defineProps<{
 });
 
 const emit = defineEmits<{
-	(ev: 'selected', v: Misskey.entities.DriveFile | Misskey.entities.DriveFolder): void;
-	(ev: 'change-selection', v: Misskey.entities.DriveFile[] | Misskey.entities.DriveFolder[]): void;
+	(ev: 'selected', v: rizzkey.entities.DriveFile | rizzkey.entities.DriveFolder): void;
+	(ev: 'change-selection', v: rizzkey.entities.DriveFile[] | rizzkey.entities.DriveFolder[]): void;
 	(ev: 'move-root'): void;
-	(ev: 'cd', v: Misskey.entities.DriveFolder | null): void;
-	(ev: 'open-folder', v: Misskey.entities.DriveFolder): void;
+	(ev: 'cd', v: rizzkey.entities.DriveFolder | null): void;
+	(ev: 'open-folder', v: rizzkey.entities.DriveFolder): void;
 }>();
 
 const loadMoreFiles = shallowRef<InstanceType<typeof MkButton>>();
 const fileInput = shallowRef<HTMLInputElement>();
 
-const folder = ref<Misskey.entities.DriveFolder | null>(null);
-const files = ref<Misskey.entities.DriveFile[]>([]);
-const folders = ref<Misskey.entities.DriveFolder[]>([]);
+const folder = ref<rizzkey.entities.DriveFolder | null>(null);
+const files = ref<rizzkey.entities.DriveFile[]>([]);
+const folders = ref<rizzkey.entities.DriveFolder[]>([]);
 const moreFiles = ref(false);
 const moreFolders = ref(false);
-const hierarchyFolders = ref<Misskey.entities.DriveFolder[]>([]);
-const selectedFiles = ref<Misskey.entities.DriveFile[]>([]);
-const selectedFolders = ref<Misskey.entities.DriveFolder[]>([]);
+const hierarchyFolders = ref<rizzkey.entities.DriveFolder[]>([]);
+const selectedFiles = ref<rizzkey.entities.DriveFile[]>([]);
+const selectedFolders = ref<rizzkey.entities.DriveFolder[]>([]);
 const uploadings = uploads;
 const connection = useStream().useChannel('drive');
 const keepOriginal = ref<boolean>(defaultStore.state.keepOriginalUploading); // 外部渡しが多いので$refは使わないほうがよい
@@ -158,11 +158,11 @@ const ilFilesObserver = new IntersectionObserver(
 
 watch(folder, () => emit('cd', folder.value));
 
-function onStreamDriveFileCreated(file: Misskey.entities.DriveFile) {
+function onStreamDriveFileCreated(file: rizzkey.entities.DriveFile) {
 	addFile(file, true);
 }
 
-function onStreamDriveFileUpdated(file: Misskey.entities.DriveFile) {
+function onStreamDriveFileUpdated(file: rizzkey.entities.DriveFile) {
 	const current = folder.value ? folder.value.id : null;
 	if (current !== file.folderId) {
 		removeFile(file);
@@ -175,11 +175,11 @@ function onStreamDriveFileDeleted(fileId: string) {
 	removeFile(fileId);
 }
 
-function onStreamDriveFolderCreated(createdFolder: Misskey.entities.DriveFolder) {
+function onStreamDriveFolderCreated(createdFolder: rizzkey.entities.DriveFolder) {
 	addFolder(createdFolder, true);
 }
 
-function onStreamDriveFolderUpdated(updatedFolder: Misskey.entities.DriveFolder) {
+function onStreamDriveFolderUpdated(updatedFolder: rizzkey.entities.DriveFolder) {
 	const current = folder.value ? folder.value.id : null;
 	if (current !== updatedFolder.parentId) {
 		removeFolder(updatedFolder);
@@ -256,7 +256,7 @@ function onDrop(ev: DragEvent): any {
 		const file = JSON.parse(driveFile);
 		if (files.value.some(f => f.id === file.id)) return;
 		removeFile(file.id);
-		misskeyApi('drive/files/update', {
+		rizzkeyApi('drive/files/update', {
 			fileId: file.id,
 			folderId: folder.value ? folder.value.id : null,
 		});
@@ -272,7 +272,7 @@ function onDrop(ev: DragEvent): any {
 		if (folder.value && droppedFolder.id === folder.value.id) return false;
 		if (folders.value.some(f => f.id === droppedFolder.id)) return false;
 		removeFolder(droppedFolder.id);
-		misskeyApi('drive/folders/update', {
+		rizzkeyApi('drive/folders/update', {
 			folderId: droppedFolder.id,
 			parentId: folder.value ? folder.value.id : null,
 		}).then(() => {
@@ -309,7 +309,7 @@ function urlUpload() {
 		placeholder: i18n.ts.uploadFromUrlDescription,
 	}).then(({ canceled, result: url }) => {
 		if (canceled || !url) return;
-		misskeyApi('drive/files/upload-from-url', {
+		rizzkeyApi('drive/files/upload-from-url', {
 			url: url,
 			folderId: folder.value ? folder.value.id : undefined,
 		});
@@ -327,7 +327,7 @@ function createFolder() {
 		placeholder: i18n.ts.folderName,
 	}).then(({ canceled, result: name }) => {
 		if (canceled) return;
-		misskeyApi('drive/folders/create', {
+		rizzkeyApi('drive/folders/create', {
 			name: name,
 			parentId: folder.value ? folder.value.id : undefined,
 		}).then(createdFolder => {
@@ -336,14 +336,14 @@ function createFolder() {
 	});
 }
 
-function renameFolder(folderToRename: Misskey.entities.DriveFolder) {
+function renameFolder(folderToRename: rizzkey.entities.DriveFolder) {
 	os.inputText({
 		title: i18n.ts.renameFolder,
 		placeholder: i18n.ts.inputNewFolderName,
 		default: folderToRename.name,
 	}).then(({ canceled, result: name }) => {
 		if (canceled) return;
-		misskeyApi('drive/folders/update', {
+		rizzkeyApi('drive/folders/update', {
 			folderId: folderToRename.id,
 			name: name,
 		}).then(updatedFolder => {
@@ -353,8 +353,8 @@ function renameFolder(folderToRename: Misskey.entities.DriveFolder) {
 	});
 }
 
-function deleteFolder(folderToDelete: Misskey.entities.DriveFolder) {
-	misskeyApi('drive/folders/delete', {
+function deleteFolder(folderToDelete: rizzkey.entities.DriveFolder) {
+	rizzkeyApi('drive/folders/delete', {
 		folderId: folderToDelete.id,
 	}).then(() => {
 		// 削除時に親フォルダに移動
@@ -384,13 +384,13 @@ function onChangeFileInput() {
 	}
 }
 
-function upload(file: File, folderToUpload?: Misskey.entities.DriveFolder | null) {
+function upload(file: File, folderToUpload?: rizzkey.entities.DriveFolder | null) {
 	uploadFile(file, (folderToUpload && typeof folderToUpload === 'object') ? folderToUpload.id : null, undefined, keepOriginal.value).then(res => {
 		addFile(res, true);
 	});
 }
 
-function chooseFile(file: Misskey.entities.DriveFile) {
+function chooseFile(file: rizzkey.entities.DriveFile) {
 	const isAlreadySelected = selectedFiles.value.some(f => f.id === file.id);
 	if (props.multiple) {
 		if (isAlreadySelected) {
@@ -409,7 +409,7 @@ function chooseFile(file: Misskey.entities.DriveFile) {
 	}
 }
 
-function chooseFolder(folderToChoose: Misskey.entities.DriveFolder) {
+function chooseFolder(folderToChoose: rizzkey.entities.DriveFolder) {
 	const isAlreadySelected = selectedFolders.value.some(f => f.id === folderToChoose.id);
 	if (props.multiple) {
 		if (isAlreadySelected) {
@@ -428,7 +428,7 @@ function chooseFolder(folderToChoose: Misskey.entities.DriveFolder) {
 	}
 }
 
-function move(target?: Misskey.entities.DriveFolder | Misskey.entities.DriveFolder['id' | 'parentId']) {
+function move(target?: rizzkey.entities.DriveFolder | rizzkey.entities.DriveFolder['id' | 'parentId']) {
 	if (!target) {
 		goRoot();
 		return;
@@ -438,7 +438,7 @@ function move(target?: Misskey.entities.DriveFolder | Misskey.entities.DriveFold
 
 	fetching.value = true;
 
-	misskeyApi('drive/folders/show', {
+	rizzkeyApi('drive/folders/show', {
 		folderId: target,
 	}).then(folderToMove => {
 		folder.value = folderToMove;
@@ -456,7 +456,7 @@ function move(target?: Misskey.entities.DriveFolder | Misskey.entities.DriveFold
 	});
 }
 
-function addFolder(folderToAdd: Misskey.entities.DriveFolder, unshift = false) {
+function addFolder(folderToAdd: rizzkey.entities.DriveFolder, unshift = false) {
 	const current = folder.value ? folder.value.id : null;
 	if (current !== folderToAdd.parentId) return;
 
@@ -473,7 +473,7 @@ function addFolder(folderToAdd: Misskey.entities.DriveFolder, unshift = false) {
 	}
 }
 
-function addFile(fileToAdd: Misskey.entities.DriveFile, unshift = false) {
+function addFile(fileToAdd: rizzkey.entities.DriveFile, unshift = false) {
 	const current = folder.value ? folder.value.id : null;
 	if (current !== fileToAdd.folderId) return;
 
@@ -490,30 +490,30 @@ function addFile(fileToAdd: Misskey.entities.DriveFile, unshift = false) {
 	}
 }
 
-function removeFolder(folderToRemove: Misskey.entities.DriveFolder | string) {
+function removeFolder(folderToRemove: rizzkey.entities.DriveFolder | string) {
 	const folderIdToRemove = typeof folderToRemove === 'object' ? folderToRemove.id : folderToRemove;
 	folders.value = folders.value.filter(f => f.id !== folderIdToRemove);
 }
 
-function removeFile(file: Misskey.entities.DriveFile | string) {
+function removeFile(file: rizzkey.entities.DriveFile | string) {
 	const fileId = typeof file === 'object' ? file.id : file;
 	files.value = files.value.filter(f => f.id !== fileId);
 }
 
-function appendFile(file: Misskey.entities.DriveFile) {
+function appendFile(file: rizzkey.entities.DriveFile) {
 	addFile(file);
 }
 
-function appendFolder(folderToAppend: Misskey.entities.DriveFolder) {
+function appendFolder(folderToAppend: rizzkey.entities.DriveFolder) {
 	addFolder(folderToAppend);
 }
 
 /*
-function prependFile(file: Misskey.entities.DriveFile) {
+function prependFile(file: rizzkey.entities.DriveFile) {
 	addFile(file, true);
 }
 
-function prependFolder(folderToPrepend: Misskey.entities.DriveFolder) {
+function prependFolder(folderToPrepend: rizzkey.entities.DriveFolder) {
 	addFolder(folderToPrepend, true);
 }
 */
@@ -537,7 +537,7 @@ async function fetch() {
 	const foldersMax = 30;
 	const filesMax = 30;
 
-	const foldersPromise = misskeyApi('drive/folders', {
+	const foldersPromise = rizzkeyApi('drive/folders', {
 		folderId: folder.value ? folder.value.id : null,
 		limit: foldersMax + 1,
 	}).then(fetchedFolders => {
@@ -548,7 +548,7 @@ async function fetch() {
 		return fetchedFolders;
 	});
 
-	const filesPromise = misskeyApi('drive/files', {
+	const filesPromise = rizzkeyApi('drive/files', {
 		folderId: folder.value ? folder.value.id : null,
 		type: props.type,
 		limit: filesMax + 1,
@@ -573,7 +573,7 @@ function fetchMoreFolders() {
 
 	const max = 30;
 
-	misskeyApi('drive/folders', {
+	rizzkeyApi('drive/folders', {
 		folderId: folder.value ? folder.value.id : null,
 		type: props.type,
 		untilId: folders.value.at(-1)?.id,
@@ -596,7 +596,7 @@ function fetchMoreFiles() {
 	const max = 30;
 
 	// ファイル一覧取得
-	misskeyApi('drive/files', {
+	rizzkeyApi('drive/files', {
 		folderId: folder.value ? folder.value.id : null,
 		type: props.type,
 		untilId: files.value.at(-1)?.id,
@@ -639,7 +639,7 @@ function getMenu() {
 	} : undefined, folder.value ? {
 		text: i18n.ts.deleteFolder,
 		icon: 'ti ti-trash',
-		action: () => { deleteFolder(folder.value as Misskey.entities.DriveFolder); },
+		action: () => { deleteFolder(folder.value as rizzkey.entities.DriveFolder); },
 	} : undefined, {
 		text: i18n.ts.createFolder,
 		icon: 'ti ti-folder-plus',

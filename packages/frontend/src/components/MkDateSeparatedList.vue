@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -10,12 +10,12 @@ import { isDebuggerEnabled, stackTraceInstances } from '@/debug.js';
 import { i18n } from '@/i18n.js';
 import * as os from '@/os.js';
 import { defaultStore } from '@/store.js';
-import { MisskeyEntity } from '@/types/date-separated-list.js';
+import { rizzkeyEntity } from '@/types/date-separated-list.js';
 
 export default defineComponent({
 	props: {
 		items: {
-			type: Array as PropType<MisskeyEntity[]>,
+			type: Array as PropType<rizzkeyEntity[]>,
 			required: true,
 		},
 		direction: {

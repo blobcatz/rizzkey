@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -19,20 +19,20 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import * as rizzkey from 'rizzkey-js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 
 const props = defineProps<{
-	folder?: Misskey.entities.DriveFolder;
-	parentFolder: Misskey.entities.DriveFolder | null;
+	folder?: rizzkey.entities.DriveFolder;
+	parentFolder: rizzkey.entities.DriveFolder | null;
 }>();
 
 const emit = defineEmits<{
-	(ev: 'move', v?: Misskey.entities.DriveFolder): void;
-	(ev: 'upload', file: File, folder?: Misskey.entities.DriveFolder | null): void;
-	(ev: 'removeFile', v: Misskey.entities.DriveFile['id']): void;
-	(ev: 'removeFolder', v: Misskey.entities.DriveFolder['id']): void;
+	(ev: 'move', v?: rizzkey.entities.DriveFolder): void;
+	(ev: 'upload', file: File, folder?: rizzkey.entities.DriveFolder | null): void;
+	(ev: 'removeFile', v: rizzkey.entities.DriveFile['id']): void;
+	(ev: 'removeFolder', v: rizzkey.entities.DriveFolder['id']): void;
 }>();
 
 const hover = ref(false);
@@ -112,7 +112,7 @@ function onDrop(ev: DragEvent) {
 	if (driveFile != null && driveFile !== '') {
 		const file = JSON.parse(driveFile);
 		emit('removeFile', file.id);
-		misskeyApi('drive/files/update', {
+		rizzkeyApi('drive/files/update', {
 			fileId: file.id,
 			folderId: props.folder ? props.folder.id : null,
 		});
@@ -126,7 +126,7 @@ function onDrop(ev: DragEvent) {
 		// 移動先が自分自身ならreject
 		if (props.folder && folder.id === props.folder.id) return;
 		emit('removeFolder', folder.id);
-		misskeyApi('drive/folders/update', {
+		rizzkeyApi('drive/folders/update', {
 			folderId: folder.id,
 			parentId: props.folder ? props.folder.id : null,
 		});

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -58,7 +58,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import tinycolor from 'tinycolor2';
 import FormLink from '@/components/form/link.vue';
 import MkSwitch from '@/components/MkSwitch.vue';
@@ -66,7 +66,7 @@ import FormSection from '@/components/form/section.vue';
 import MkKeyValue from '@/components/MkKeyValue.vue';
 import FormSplit from '@/components/form/split.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import bytes from '@/filters/bytes.js';
 import { defaultStore } from '@/store.js';
 import MkChart from '@/components/MkChart.vue';
@@ -79,7 +79,7 @@ const $i = signinRequired();
 const fetching = ref(true);
 const usage = ref<number | null>(null);
 const capacity = ref<number | null>(null);
-const uploadFolder = ref<Misskey.entities.DriveFolder | null>(null);
+const uploadFolder = ref<rizzkey.entities.DriveFolder | null>(null);
 const alwaysMarkNsfw = ref($i.alwaysMarkNsfw);
 const autoSensitive = ref($i.autoSensitive);
 
@@ -97,14 +97,14 @@ const meterStyle = computed(() => {
 
 const keepOriginalUploading = computed(defaultStore.makeGetterSetter('keepOriginalUploading'));
 
-misskeyApi('drive').then(info => {
+rizzkeyApi('drive').then(info => {
 	capacity.value = info.capacity;
 	usage.value = info.usage;
 	fetching.value = false;
 });
 
 if (defaultStore.state.uploadFolder) {
-	misskeyApi('drive/folders/show', {
+	rizzkeyApi('drive/folders/show', {
 		folderId: defaultStore.state.uploadFolder,
 	}).then(response => {
 		uploadFolder.value = response;
@@ -116,7 +116,7 @@ function chooseUploadFolder() {
 		defaultStore.set('uploadFolder', folder[0] ? folder[0].id : null);
 		os.success();
 		if (defaultStore.state.uploadFolder) {
-			uploadFolder.value = await misskeyApi('drive/folders/show', {
+			uploadFolder.value = await rizzkeyApi('drive/folders/show', {
 				folderId: defaultStore.state.uploadFolder,
 			});
 		} else {
@@ -126,7 +126,7 @@ function chooseUploadFolder() {
 }
 
 function saveProfile() {
-	misskeyApi('i/update', {
+	rizzkeyApi('i/update', {
 		alwaysMarkNsfw: !!alwaysMarkNsfw.value,
 		autoSensitive: !!autoSensitive.value,
 	}).catch(err => {

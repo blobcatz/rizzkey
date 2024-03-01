@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -23,7 +23,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 		/>
 		<div v-else-if="state === 'posted'" class="_buttonsCenter">
 			<MkButton primary @click="close">{{ i18n.ts.close }}</MkButton>
-			<MkButton @click="goToMisskey">{{ i18n.ts.goToMisskey }}</MkButton>
+			<MkButton @click="goTorizzkey">{{ i18n.ts.goTorizzkey }}</MkButton>
 		</div>
 	</MkSpacer>
 </MkStickyContainer>
@@ -33,30 +33,30 @@ SPDX-License-Identifier: AGPL-3.0-only
 // SPECIFICATION: https://misskey-hub.net/docs/for-users/features/share-form/
 
 import { ref, computed } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkButton from '@/components/MkButton.vue';
 import MkPostForm from '@/components/MkPostForm.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { postMessageToParentWindow } from '@/scripts/post-message.js';
 import { i18n } from '@/i18n.js';
 
 const urlParams = new URLSearchParams(window.location.search);
 const localOnlyQuery = urlParams.get('localOnly');
-const visibilityQuery = urlParams.get('visibility') as typeof Misskey.noteVisibilities[number];
+const visibilityQuery = urlParams.get('visibility') as typeof rizzkey.noteVisibilities[number];
 
 const state = ref<'fetching' | 'writing' | 'posted'>('fetching');
 const title = ref(urlParams.get('title'));
 const text = urlParams.get('text');
 const url = urlParams.get('url');
 const initialText = ref<string | undefined>();
-const reply = ref<Misskey.entities.Note | undefined>();
-const renote = ref<Misskey.entities.Note | undefined>();
-const visibility = ref(Misskey.noteVisibilities.includes(visibilityQuery) ? visibilityQuery : undefined);
+const reply = ref<rizzkey.entities.Note | undefined>();
+const renote = ref<rizzkey.entities.Note | undefined>();
+const visibility = ref(rizzkey.noteVisibilities.includes(visibilityQuery) ? visibilityQuery : undefined);
 const localOnly = ref(localOnlyQuery === '0' ? false : localOnlyQuery === '1' ? true : undefined);
-const files = ref([] as Misskey.entities.DriveFile[]);
-const visibleUsers = ref([] as Misskey.entities.UserDetailed[]);
+const files = ref([] as rizzkey.entities.DriveFile[]);
+const visibleUsers = ref([] as rizzkey.entities.UserDetailed[]);
 
 async function init() {
 	let noteText = '';
@@ -73,11 +73,11 @@ async function init() {
 		await Promise.all(
 			[
 				...(visibleUserIds ? visibleUserIds.split(',').map(userId => ({ userId })) : []),
-				...(visibleAccts ? visibleAccts.split(',').map(Misskey.acct.parse) : []),
+				...(visibleAccts ? visibleAccts.split(',').map(rizzkey.acct.parse) : []),
 			]
 			// TypeScriptの指示通りに変換する
 				.map(q => 'username' in q ? { username: q.username, host: q.host === null ? undefined : q.host } : q)
-				.map(q => misskeyApi('users/show', q)
+				.map(q => rizzkeyApi('users/show', q)
 					.then(user => {
 						visibleUsers.value.push(user);
 					}, () => {
@@ -92,11 +92,11 @@ async function init() {
 		const replyId = urlParams.get('replyId');
 		const replyUri = urlParams.get('replyUri');
 		if (replyId) {
-			reply.value = await misskeyApi('notes/show', {
+			reply.value = await rizzkeyApi('notes/show', {
 				noteId: replyId,
 			});
 		} else if (replyUri) {
-			const obj = await misskeyApi('ap/show', {
+			const obj = await rizzkeyApi('ap/show', {
 				uri: replyUri,
 			});
 			if (obj.type === 'Note') {
@@ -109,11 +109,11 @@ async function init() {
 		const renoteId = urlParams.get('renoteId');
 		const renoteUri = urlParams.get('renoteUri');
 		if (renoteId) {
-			renote.value = await misskeyApi('notes/show', {
+			renote.value = await rizzkeyApi('notes/show', {
 				noteId: renoteId,
 			});
 		} else if (renoteUri) {
-			const obj = await misskeyApi('ap/show', {
+			const obj = await rizzkeyApi('ap/show', {
 				uri: renoteUri,
 			});
 			if (obj.type === 'Note') {
@@ -127,7 +127,7 @@ async function init() {
 		if (fileIds) {
 			await Promise.all(
 				fileIds.split(',')
-					.map(fileId => misskeyApi('drive/files/show', { fileId })
+					.map(fileId => rizzkeyApi('drive/files/show', { fileId })
 						.then(file => {
 							files.value.push(file);
 						}, () => {
@@ -159,13 +159,13 @@ function close(): void {
 	}, 100);
 }
 
-function goToMisskey(): void {
+function goTorizzkey(): void {
 	location.href = '/';
 }
 
 function onPosted(): void {
 	state.value = 'posted';
-	postMessageToParentWindow('misskey:shareForm:shareCompleted');
+	postMessageToParentWindow('rizzkey:shareForm:shareCompleted');
 }
 
 const headerActions = computed(() => []);

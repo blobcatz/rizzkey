@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -20,14 +20,14 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import {} from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkPagination from '@/components/MkPagination.vue';
 import MkStickyContainer from '@/components/global/MkStickyContainer.vue';
 import MkSpacer from '@/components/global/MkSpacer.vue';
 import MkAvatars from '@/components/MkAvatars.vue';
 
 const props = defineProps<{
-	user: Misskey.entities.UserDetailed;
+	user: rizzkey.entities.UserDetailed;
 }>();
 
 const pagination = {

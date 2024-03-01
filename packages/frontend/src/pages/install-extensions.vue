@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -86,7 +86,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 			<div :class="$style.extInstallerNormDesc">{{ errorKV?.description }}</div>
 			<div class="_buttonsCenter">
 				<MkButton @click="goBack()">{{ i18n.ts.goBack }}</MkButton>
-				<MkButton @click="goToMisskey()">{{ i18n.ts.goToMisskey }}</MkButton>
+				<MkButton @click="goTorizzkey()">{{ i18n.ts.goTorizzkey }}</MkButton>
 			</div>
 		</div>
 	</MkSpacer>
@@ -105,7 +105,7 @@ import MkInfo from '@/components/MkInfo.vue';
 import MkFolder from '@/components/MkFolder.vue';
 import MkKeyValue from '@/components/MkKeyValue.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { AiScriptPluginMeta, parsePluginMeta, installPlugin } from '@/scripts/install-plugin.js';
 import { parseThemeCode, installTheme } from '@/scripts/install-theme.js';
 import { unisonReload } from '@/scripts/unison-reload.js';
@@ -147,7 +147,7 @@ function goBack(): void {
 	history.back();
 }
 
-function goToMisskey(): void {
+function goTorizzkey(): void {
 	location.href = '/';
 }
 
@@ -160,7 +160,7 @@ async function fetch() {
 		uiPhase.value = 'error';
 		return;
 	}
-	const res = await misskeyApi('fetch-external-resources', {
+	const res = await rizzkeyApi('fetch-external-resources', {
 		url: url.value,
 		hash: hash.value,
 	}).catch((err) => {

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -29,12 +29,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { userName } from '@/filters/user.js';
 import MediaImage from '@/components/MkMediaImage.vue';
 
 const props = defineProps<{
-	page: Misskey.entities.Page;
+	page: rizzkey.entities.Page;
 }>();
 </script>
 

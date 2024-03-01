@@ -1,20 +1,20 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { ref } from 'vue';
 import { apiUrl } from '@/config.js';
 import { $i } from '@/account.js';
 export const pendingApiRequestsCount = ref(0);
 
-// Implements Misskey.api.ApiClient.request
-export function misskeyApi<
+// Implements rizzkey.api.ApiClient.request
+export function rizzkeyApi<
 	ResT = void,
-	E extends keyof Misskey.Endpoints = keyof Misskey.Endpoints,
-	P extends Misskey.Endpoints[E]['req'] = Misskey.Endpoints[E]['req'],
-	_ResT = ResT extends void ? Misskey.api.SwitchCaseResponseType<E, P> : ResT,
+	E extends keyof rizzkey.Endpoints = keyof rizzkey.Endpoints,
+	P extends rizzkey.Endpoints[E]['req'] = rizzkey.Endpoints[E]['req'],
+	_ResT = ResT extends void ? rizzkey.api.SwitchCaseResponseType<E, P> : ResT,
 >(
 	endpoint: E,
 	data: P = {} as any,
@@ -61,12 +61,12 @@ export function misskeyApi<
 	return promise;
 }
 
-// Implements Misskey.api.ApiClient.request
-export function misskeyApiGet<
+// Implements rizzkey.api.ApiClient.request
+export function rizzkeyApiGet<
 	ResT = void,
-	E extends keyof Misskey.Endpoints = keyof Misskey.Endpoints,
-	P extends Misskey.Endpoints[E]['req'] = Misskey.Endpoints[E]['req'],
-	_ResT = ResT extends void ? Misskey.api.SwitchCaseResponseType<E, P> : ResT,
+	E extends keyof rizzkey.Endpoints = keyof rizzkey.Endpoints,
+	P extends rizzkey.Endpoints[E]['req'] = rizzkey.Endpoints[E]['req'],
+	_ResT = ResT extends void ? rizzkey.api.SwitchCaseResponseType<E, P> : ResT,
 >(
 	endpoint: E,
 	data: P = {} as any,

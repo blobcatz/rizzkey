@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "misskey.fullname" . }}
+  name: {{ include "rizzkey.fullname" . }}
   labels:
-    {{- include "misskey.labels" . | nindent 4 }}
+    {{- include "rizzkey.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
-      {{- include "misskey.selectorLabels" . | nindent 6 }}
+      {{- include "rizzkey.selectorLabels" . | nindent 6 }}
   replicas: 1
   template:
     metadata:
       labels:
-        {{- include "misskey.selectorLabels" . | nindent 8 }}
+        {{- include "rizzkey.selectorLabels" . | nindent 8 }}
     spec:
       containers:
-        - name: misskey
+        - name: rizzkey
           image: {{ .Values.image }}
           env:
             - name: NODE_ENV
               value: {{ .Values.environment }}
           volumeMounts:
-            - name: {{ include "misskey.fullname" . }}-configuration
-              mountPath: /misskey/.config
+            - name: {{ include "rizzkey.fullname" . }}-configuration
+              mountPath: /rizzkey/.config
               readOnly: true
           ports:
             - containerPort: 3000
@@ -30,11 +30,11 @@ spec:
           image: postgres:15-alpine
           env:
             - name: POSTGRES_USER
-              value: "example-misskey-user"
+              value: "example-rizzkey-user"
             - name: POSTGRES_PASSWORD
-              value: "example-misskey-pass"
+              value: "example-rizzkey-pass"
             - name: POSTGRES_DB
-              value: "misskey"
+              value: "rizzkey"
           ports:
             - containerPort: 5432
         - name: redis
@@ -42,6 +42,6 @@ spec:
           ports:
             - containerPort: 6379
       volumes:
-        - name: {{ include "misskey.fullname" . }}-configuration
+        - name: {{ include "rizzkey.fullname" . }}-configuration
           configMap:
-            name: {{ include "misskey.fullname" . }}-configuration
+            name: {{ include "rizzkey.fullname" . }}-configuration

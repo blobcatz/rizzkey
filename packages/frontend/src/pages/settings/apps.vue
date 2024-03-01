@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -47,7 +47,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
 import FormPagination from '@/components/MkPagination.vue';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import MkKeyValue from '@/components/MkKeyValue.vue';
@@ -66,7 +66,7 @@ const pagination = {
 };
 
 function revoke(token) {
-	misskeyApi('i/revoke-token', { tokenId: token.id }).then(() => {
+	rizzkeyApi('i/revoke-token', { tokenId: token.id }).then(() => {
 		list.value.reload();
 	});
 }

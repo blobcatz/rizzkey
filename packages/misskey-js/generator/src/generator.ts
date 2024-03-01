@@ -57,7 +57,7 @@ async function generateEndpoints(
 ) {
 	const endpoints: Endpoint[] = [];
 
-	// misskey-jsはPOST固定で送っているので、こちらも決め打ちする。別メソッドに対応することがあればこちらも直す必要あり
+	// rizzkey-jsはPOST固定で送っているので、こちらも決め打ちする。別メソッドに対応することがあればこちらも直す必要あり
 	const paths = openApiDocs.paths ?? {};
 	const postPathItems = Object.keys(paths)
 		.map(it => paths[it]?.post)
@@ -140,7 +140,7 @@ async function generateApiClientJSDoc(
 ) {
 	const endpoints: { operationId: string; description: string; }[] = [];
 
-	// misskey-jsはPOST固定で送っているので、こちらも決め打ちする。別メソッドに対応することがあればこちらも直す必要あり
+	// rizzkey-jsはPOST固定で送っているので、こちらも決め打ちする。別メソッドに対応することがあればこちらも直す必要あり
 	const paths = openApiDocs.paths ?? {};
 	const postPathItems = Object.keys(paths)
 		.map(it => paths[it]?.post)

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -56,11 +56,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkFollowButton from '@/components/MkFollowButton.vue';
 import { userPage } from '@/filters/user.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { getUserMenu } from '@/scripts/get-user-menu.js';
 import number from '@/filters/number.js';
 import { i18n } from '@/i18n.js';
@@ -81,7 +81,7 @@ const emit = defineEmits<{
 }>();
 
 const zIndex = os.claimZIndex('middle');
-const user = ref<Misskey.entities.UserDetailed | null>(null);
+const user = ref<rizzkey.entities.UserDetailed | null>(null);
 const top = ref(0);
 const left = ref(0);
 
@@ -96,10 +96,10 @@ onMounted(() => {
 		user.value = props.q;
 	} else {
 		const query = props.q.startsWith('@') ?
-			Misskey.acct.parse(props.q.substring(1)) :
+			rizzkey.acct.parse(props.q.substring(1)) :
 			{ userId: props.q };
 
-		misskeyApi('users/show', query).then(res => {
+		rizzkeyApi('users/show', query).then(res => {
 			if (!props.showing) return;
 			user.value = res;
 		});

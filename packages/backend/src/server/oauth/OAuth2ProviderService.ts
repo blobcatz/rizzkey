@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
@@ -18,7 +18,7 @@ import bodyParser from 'body-parser';
 import fastifyExpress from '@fastify/express';
 import { verifyChallenge } from 'pkce-challenge';
 import { mf2 } from 'microformats-parser';
-import { permissions as kinds } from 'misskey-js';
+import { permissions as kinds } from 'rizzkey-js';
 import { secureRndstr } from '@/misc/secure-rndstr.js';
 import { HttpRequestService } from '@/core/HttpRequestService.js';
 import type { Config } from '@/config.js';
@@ -409,7 +409,7 @@ export class OAuth2ProviderService {
 				// "the server may want to resolve the domain name first and avoid fetching the document
 				// if the IP address is within the loopback range defined by [RFC5735]
 				// or any other implementation-specific internal IP address."
-				if (process.env.NODE_ENV !== 'test' || process.env.MISSKEY_TEST_CHECK_IP_RANGE === '1') {
+				if (process.env.NODE_ENV !== 'test' || process.env.rizzkey_TEST_CHECK_IP_RANGE === '1') {
 					const lookup = await dns.lookup(clientUrl.hostname);
 					if (ipaddr.parse(lookup.address).range() !== 'unicast') {
 						throw new AuthorizationError('client_id resolves to disallowed IP range.', 'invalid_request');

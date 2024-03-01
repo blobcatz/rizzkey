@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -150,7 +150,7 @@ import MkInput from '@/components/MkInput.vue';
 import MkButton from '@/components/MkButton.vue';
 import MkTextarea from '@/components/MkTextarea.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { fetchInstance } from '@/instance.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
@@ -174,7 +174,7 @@ const truemailAuthKey = ref<string | null>(null);
 const bannedEmailDomains = ref<string>('');
 
 async function init() {
-	const meta = await misskeyApi('admin/meta');
+	const meta = await rizzkeyApi('admin/meta');
 	summalyProxy.value = meta.summalyProxy;
 	enableHcaptcha.value = meta.enableHcaptcha;
 	enableMcaptcha.value = meta.enableMcaptcha;

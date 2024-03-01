@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -25,15 +25,15 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XHeader from './_header_.vue';
 import MkButton from '@/components/MkButton.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 
-const relays = ref<Misskey.entities.AdminRelaysListResponse>([]);
+const relays = ref<rizzkey.entities.AdminRelaysListResponse>([]);
 
 async function addRelay() {
 	const { canceled, result: inbox } = await os.inputText({
@@ -42,7 +42,7 @@ async function addRelay() {
 		placeholder: i18n.ts.inboxUrl,
 	});
 	if (canceled) return;
-	misskeyApi('admin/relays/add', {
+	rizzkeyApi('admin/relays/add', {
 		inbox,
 	}).then((relay: any) => {
 		refresh();
@@ -55,7 +55,7 @@ async function addRelay() {
 }
 
 function remove(inbox: string) {
-	misskeyApi('admin/relays/remove', {
+	rizzkeyApi('admin/relays/remove', {
 		inbox,
 	}).then(() => {
 		refresh();
@@ -68,7 +68,7 @@ function remove(inbox: string) {
 }
 
 function refresh() {
-	misskeyApi('admin/relays/list').then(relayList => {
+	rizzkeyApi('admin/relays/list').then(relayList => {
 		relays.value = relayList;
 	});
 }

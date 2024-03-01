@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -48,7 +48,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { shallowRef, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkInput from './MkInput.vue';
 import MkSwitch from './MkSwitch.vue';
 import MkButton from './MkButton.vue';
@@ -61,7 +61,7 @@ const props = withDefaults(defineProps<{
 	title?: string | null;
 	information?: string | null;
 	initialName?: string | null;
-	initialPermissions?: (typeof Misskey.permissions)[number][] | null;
+	initialPermissions?: (typeof rizzkey.permissions)[number][] | null;
 }>(), {
 	title: null,
 	information: null,
@@ -74,13 +74,13 @@ const emit = defineEmits<{
 	(ev: 'done', result: { name: string | null, permissions: string[] }): void;
 }>();
 
-const defaultPermissions = Misskey.permissions.filter(p => !p.startsWith('read:admin') && !p.startsWith('write:admin'));
-const adminPermissions = Misskey.permissions.filter(p => p.startsWith('read:admin') || p.startsWith('write:admin'));
+const defaultPermissions = rizzkey.permissions.filter(p => !p.startsWith('read:admin') && !p.startsWith('write:admin'));
+const adminPermissions = rizzkey.permissions.filter(p => p.startsWith('read:admin') || p.startsWith('write:admin'));
 
 const dialog = shallowRef<InstanceType<typeof MkModalWindow>>();
 const name = ref(props.initialName);
-const permissionSwitches = ref(<Record<(typeof Misskey.permissions)[number], boolean>>{});
-const permissionSwitchesForAdmin = ref(<Record<(typeof Misskey.permissions)[number], boolean>>{});
+const permissionSwitches = ref(<Record<(typeof rizzkey.permissions)[number], boolean>>{});
+const permissionSwitchesForAdmin = ref(<Record<(typeof rizzkey.permissions)[number], boolean>>{});
 
 if (props.initialPermissions) {
 	for (const kind of props.initialPermissions) {

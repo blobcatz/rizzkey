@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -67,7 +67,7 @@ import XHeader from './_header_.vue';
 import XEditor from './roles.editor.vue';
 import MkFolder from '@/components/MkFolder.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import MkButton from '@/components/MkButton.vue';
@@ -93,7 +93,7 @@ const usersPagination = {
 
 const expandedItems = ref([]);
 
-const role = reactive(await misskeyApi('admin/roles/show', {
+const role = reactive(await rizzkeyApi('admin/roles/show', {
 	roleId: props.id,
 }));
 

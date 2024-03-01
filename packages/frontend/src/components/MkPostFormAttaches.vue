@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -21,10 +21,10 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { defineAsyncComponent, inject } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkDriveFileThumbnail from '@/components/MkDriveFileThumbnail.vue';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { i18n } from '@/i18n.js';
 
 const Sortable = defineAsyncComponent(() => import('vuedraggable').then(x => x.default));
@@ -39,9 +39,9 @@ const mock = inject<boolean>('mock', false);
 const emit = defineEmits<{
 	(ev: 'update:modelValue', value: any[]): void;
 	(ev: 'detach', id: string): void;
-	(ev: 'changeSensitive', file: Misskey.entities.DriveFile, isSensitive: boolean): void;
-	(ev: 'changeName', file: Misskey.entities.DriveFile, newName: string): void;
-	(ev: 'replaceFile', file: Misskey.entities.DriveFile, newFile: Misskey.entities.DriveFile): void;
+	(ev: 'changeSensitive', file: rizzkey.entities.DriveFile, isSensitive: boolean): void;
+	(ev: 'changeName', file: rizzkey.entities.DriveFile, newName: string): void;
+	(ev: 'replaceFile', file: rizzkey.entities.DriveFile, newFile: rizzkey.entities.DriveFile): void;
 }>();
 
 let menuShowing = false;
@@ -56,7 +56,7 @@ function detachMedia(id: string) {
 	}
 }
 
-async function detachAndDeleteMedia(file: Misskey.entities.DriveFile) {
+async function detachAndDeleteMedia(file: rizzkey.entities.DriveFile) {
 	if (mock) return;
 
 	detachMedia(file.id);
@@ -79,7 +79,7 @@ function toggleSensitive(file) {
 		return;
 	}
 
-	misskeyApi('drive/files/update', {
+	rizzkeyApi('drive/files/update', {
 		fileId: file.id,
 		isSensitive: !file.isSensitive,
 	}).then(() => {
@@ -96,7 +96,7 @@ async function rename(file) {
 		minLength: 1,
 	});
 	if (canceled) return;
-	misskeyApi('drive/files/update', {
+	rizzkeyApi('drive/files/update', {
 		fileId: file.id,
 		name: result,
 	}).then(() => {
@@ -114,7 +114,7 @@ async function describe(file) {
 	}, {
 		done: caption => {
 			let comment = caption.length === 0 ? null : caption;
-			misskeyApi('drive/files/update', {
+			rizzkeyApi('drive/files/update', {
 				fileId: file.id,
 				comment: comment,
 			}).then(() => {
@@ -124,14 +124,14 @@ async function describe(file) {
 	}, 'closed');
 }
 
-async function crop(file: Misskey.entities.DriveFile): Promise<void> {
+async function crop(file: rizzkey.entities.DriveFile): Promise<void> {
 	if (mock) return;
 
 	const newFile = await os.cropImage(file, { aspectRatio: NaN });
 	emit('replaceFile', file, newFile);
 }
 
-function showFileMenu(file: Misskey.entities.DriveFile, ev: MouseEvent): void {
+function showFileMenu(file: rizzkey.entities.DriveFile, ev: MouseEvent): void {
 	if (menuShowing) return;
 
 	const isImage = file.type.startsWith('image/');

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -29,7 +29,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, onMounted, onUnmounted, shallowRef } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import PhotoSwipe from 'photoswipe';
 import 'photoswipe/style.css';
@@ -41,7 +41,7 @@ import { FILE_TYPE_BROWSERSAFE } from '@/const.js';
 import { defaultStore } from '@/store.js';
 
 const props = defineProps<{
-	mediaList: Misskey.entities.DriveFile[];
+	mediaList: rizzkey.entities.DriveFile[];
 	raw?: boolean;
 }>();
 
@@ -194,7 +194,7 @@ onUnmounted(() => {
 	lightbox = null;
 });
 
-const previewable = (file: Misskey.entities.DriveFile): boolean => {
+const previewable = (file: rizzkey.entities.DriveFile): boolean => {
 	if (file.type === 'image/svg+xml') return true; // svgのwebpublic/thumbnailはpngなのでtrue
 	// FILE_TYPE_BROWSERSAFEに適合しないものはブラウザで表示するのに不適切
 	return (file.type.startsWith('video') || file.type.startsWith('image')) && FILE_TYPE_BROWSERSAFE.includes(file.type);

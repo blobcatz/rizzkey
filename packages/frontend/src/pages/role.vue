@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -37,8 +37,8 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, watch, ref } from 'vue';
-import * as Misskey from 'misskey-js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import * as rizzkey from 'rizzkey-js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import MkUserList from '@/components/MkUserList.vue';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { i18n } from '@/i18n.js';
@@ -54,12 +54,12 @@ const props = withDefaults(defineProps<{
 });
 
 const tab = ref(props.initialTab);
-const role = ref<Misskey.entities.Role>();
+const role = ref<rizzkey.entities.Role>();
 const error = ref();
 const visible = ref(false);
 
 watch(() => props.role, () => {
-	misskeyApi('roles/show', {
+	rizzkeyApi('roles/show', {
 		roleId: props.role,
 	}).then(res => {
 		role.value = res;

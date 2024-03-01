@@ -1,8 +1,8 @@
 {
 	"type": "module",
-	"name": "misskey-js",
+	"name": "rizzkey-js",
 	"version": "2024.3.0",
-	"description": "Misskey SDK for JavaScript",
+	"description": "rizzkey SDK for JavaScript",
 	"types": "./built/dts/index.d.ts",
 	"exports": {
 		".": {
@@ -28,7 +28,7 @@
 		"lint": "pnpm typecheck && pnpm eslint",
 		"jest": "jest --coverage --detectOpenHandles",
 		"test": "pnpm jest && pnpm tsd",
-		"update-autogen-code": "pnpm --filter misskey-js-type-generator generate && ncp generator/built/autogen src/autogen"
+		"update-autogen-code": "pnpm --filter rizzkey-js-type-generator generate && ncp generator/built/autogen src/autogen"
 	},
 	"repository": {
 		"type": "git",

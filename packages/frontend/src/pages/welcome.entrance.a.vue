@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -9,7 +9,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 	<XTimeline class="tl"/>
 	<div class="shape1"></div>
 	<div class="shape2"></div>
-	<img :src="misskeysvg" class="misskey"/>
+	<img :src="rizzkeysvg" class="rizzkey"/>
 	<div class="emojis">
 		<MkEmoji :normal="true" :noStyle="true" emoji="👍"/>
 		<MkEmoji :normal="true" :noStyle="true" emoji="❤"/>
@@ -34,30 +34,30 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XTimeline from './welcome.timeline.vue';
 import MarqueeText from '@/components/MkMarquee.vue';
 import MkFeaturedPhotos from '@/components/MkFeaturedPhotos.vue';
-import misskeysvg from '/client-assets/misskey.svg';
-import { misskeyApi, misskeyApiGet } from '@/scripts/misskey-api.js';
+import rizzkeysvg from '/client-assets/rizzkey.svg';
+import { rizzkeyApi, rizzkeyApiGet } from '@/scripts/rizzkey-api.js';
 import MkVisitorDashboard from '@/components/MkVisitorDashboard.vue';
 import { getProxiedImageUrl } from '@/scripts/media-proxy.js';
 
-const meta = ref<Misskey.entities.MetaResponse>();
-const instances = ref<Misskey.entities.FederationInstance[]>();
+const meta = ref<rizzkey.entities.MetaResponse>();
+const instances = ref<rizzkey.entities.FederationInstance[]>();
 
-function getInstanceIcon(instance: Misskey.entities.FederationInstance): string {
+function getInstanceIcon(instance: rizzkey.entities.FederationInstance): string {
 	if (!instance.iconUrl) {
 		return '';
 	}
 	return getProxiedImageUrl(instance.iconUrl, 'preview');
 }
 
-misskeyApi('meta', { detail: true }).then(_meta => {
+rizzkeyApi('meta', { detail: true }).then(_meta => {
 	meta.value = _meta;
 });
 
-misskeyApiGet('federation/instances', {
+rizzkeyApiGet('federation/instances', {
 	sort: '+pubSub',
 	limit: 20,
 }).then(_instances => {
@@ -113,7 +113,7 @@ misskeyApiGet('federation/instances', {
 		opacity: 0.5;
 	}
 
-	> .misskey {
+	> .rizzkey {
 		position: fixed;
 		top: 42px;
 		left: 42px;

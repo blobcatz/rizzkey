@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -18,7 +18,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, watch, onUnmounted, provide, ref, shallowRef } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkNotes from '@/components/MkNotes.vue';
 import MkPullToRefresh from '@/components/MkPullToRefresh.vue';
 import { useStream } from '@/stream.js';
@@ -82,12 +82,12 @@ function prepend(note) {
 	emit('note');
 
 	if (props.sound) {
-		sound.playMisskeySfx($i && (note.userId === $i.id) ? 'noteMy' : 'note');
+		sound.playrizzkeySfx($i && (note.userId === $i.id) ? 'noteMy' : 'note');
 	}
 }
 
-let connection: Misskey.ChannelConnection | null = null;
-let connection2: Misskey.ChannelConnection | null = null;
+let connection: rizzkey.ChannelConnection | null = null;
+let connection2: rizzkey.ChannelConnection | null = null;
 let paginationQuery: Paging | null = null;
 
 const stream = useStream();
@@ -159,7 +159,7 @@ function disconnectChannel() {
 }
 
 function updatePaginationQuery() {
-	let endpoint: keyof Misskey.Endpoints | null;
+	let endpoint: keyof rizzkey.Endpoints | null;
 	let query: TimelineQueryType | null;
 
 	if (props.src === 'antenna') {

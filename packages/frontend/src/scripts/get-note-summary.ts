@@ -1,16 +1,16 @@
 /*
- * SPDX-FileCopyrightText: syuilo and misskey-project
+ * SPDX-FileCopyrightText: syuilo and rizzkey-project
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import { i18n } from '@/i18n.js';
 
 /**
  * 投稿を表す文字列を取得します。
  * @param {*} note (packされた)投稿
  */
-export const getNoteSummary = (note?: Misskey.entities.Note | null): string => {
+export const getNoteSummary = (note?: rizzkey.entities.Note | null): string => {
 	if (note == null) {
 		return '';
 	}

@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -25,7 +25,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref, shallowRef } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import XDrive from '@/components/MkDrive.vue';
 import MkModalWindow from '@/components/MkModalWindow.vue';
 import number from '@/filters/number.js';
@@ -39,13 +39,13 @@ withDefaults(defineProps<{
 });
 
 const emit = defineEmits<{
-	(ev: 'done', r?: Misskey.entities.DriveFile[] | Misskey.entities.DriveFolder[]): void;
+	(ev: 'done', r?: rizzkey.entities.DriveFile[] | rizzkey.entities.DriveFolder[]): void;
 	(ev: 'closed'): void;
 }>();
 
 const dialog = shallowRef<InstanceType<typeof MkModalWindow>>();
 
-const selected = ref<Misskey.entities.DriveFile[] | Misskey.entities.DriveFolder[]>([]);
+const selected = ref<rizzkey.entities.DriveFile[] | rizzkey.entities.DriveFolder[]>([]);
 
 function ok() {
 	emit('done', selected.value);
@@ -57,7 +57,7 @@ function cancel() {
 	dialog.value?.close();
 }
 
-function onChangeSelection(v: Misskey.entities.DriveFile[] | Misskey.entities.DriveFolder[]) {
+function onChangeSelection(v: rizzkey.entities.DriveFile[] | rizzkey.entities.DriveFolder[]) {
 	selected.value = v;
 }
 </script>

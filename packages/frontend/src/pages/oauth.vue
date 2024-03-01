@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -39,13 +39,13 @@ import { $i, login } from '@/account.js';
 import { i18n } from '@/i18n.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 
-const transactionIdMeta = document.querySelector<HTMLMetaElement>('meta[name="misskey:oauth:transaction-id"]');
+const transactionIdMeta = document.querySelector<HTMLMetaElement>('meta[name="rizzkey:oauth:transaction-id"]');
 if (transactionIdMeta) {
 	transactionIdMeta.remove();
 }
 
-const name = document.querySelector<HTMLMetaElement>('meta[name="misskey:oauth:client-name"]')?.content;
-const permissions = document.querySelector<HTMLMetaElement>('meta[name="misskey:oauth:scope"]')?.content.split(' ') ?? [];
+const name = document.querySelector<HTMLMetaElement>('meta[name="rizzkey:oauth:client-name"]')?.content;
+const permissions = document.querySelector<HTMLMetaElement>('meta[name="rizzkey:oauth:scope"]')?.content.split(' ') ?? [];
 
 function onLogin(res): void {
 	login(res.i);

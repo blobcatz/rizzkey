@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -195,7 +195,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts" setup>
 import { computed, inject, onMounted, provide, ref, shallowRef } from 'vue';
 import * as mfm from 'mfm-js';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkNoteSub from '@/components/MkNoteSub.vue';
 import MkNoteSimple from '@/components/MkNoteSimple.vue';
 import MkReactionsViewer from '@/components/MkReactionsViewer.vue';
@@ -210,7 +210,7 @@ import { checkWordMute } from '@/scripts/check-word-mute.js';
 import { userPage } from '@/filters/user.js';
 import { notePage } from '@/filters/note.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import * as sound from '@/scripts/sound.js';
 import { defaultStore, noteViewInterruptors } from '@/store.js';
 import { reactionPicker } from '@/scripts/reaction-picker.js';
@@ -230,7 +230,7 @@ import MkReactionIcon from '@/components/MkReactionIcon.vue';
 import MkButton from '@/components/MkButton.vue';
 
 const props = defineProps<{
-	note: Misskey.entities.Note;
+	note: rizzkey.entities.Note;
 }>();
 
 const inChannel = inject('inChannel', null);
@@ -240,10 +240,10 @@ const note = ref(deepClone(props.note));
 // plugin
 if (noteViewInterruptors.length > 0) {
 	onMounted(async () => {
-		let result: Misskey.entities.Note | null = deepClone(note.value);
+		let result: rizzkey.entities.Note | null = deepClone(note.value);
 		for (const interruptor of noteViewInterruptors) {
 			try {
-				result = await interruptor.handler(result!) as Misskey.entities.Note | null;
+				result = await interruptor.handler(result!) as rizzkey.entities.Note | null;
 				if (result === null) {
 					isDeleted.value = true;
 					return;
@@ -252,7 +252,7 @@ if (noteViewInterruptors.length > 0) {
 				console.error(err);
 			}
 		}
-		note.value = result as Misskey.entities.Note;
+		note.value = result as rizzkey.entities.Note;
 	});
 }
 
@@ -269,18 +269,18 @@ const renoteButton = shallowRef<HTMLElement>();
 const renoteTime = shallowRef<HTMLElement>();
 const reactButton = shallowRef<HTMLElement>();
 const clipButton = shallowRef<HTMLElement>();
-const appearNote = computed(() => isRenote ? note.value.renote as Misskey.entities.Note : note.value);
+const appearNote = computed(() => isRenote ? note.value.renote as rizzkey.entities.Note : note.value);
 const isMyRenote = $i && ($i.id === note.value.userId);
 const showContent = ref(false);
 const isDeleted = ref(false);
 const muted = ref($i ? checkWordMute(appearNote.value, $i, $i.mutedWords) : false);
-const translation = ref<Misskey.entities.NotesTranslateResponse | null>(null);
+const translation = ref<rizzkey.entities.NotesTranslateResponse | null>(null);
 const translating = ref(false);
 const parsed = appearNote.value.text ? mfm.parse(appearNote.value.text) : null;
 const urls = parsed ? extractUrlFromMfm(parsed).filter((url) => appearNote.value.renote?.url !== url && appearNote.value.renote?.uri !== url) : null;
 const showTicker = (defaultStore.state.instanceTicker === 'always') || (defaultStore.state.instanceTicker === 'remote' && appearNote.value.user.instance);
-const conversation = ref<Misskey.entities.Note[]>([]);
-const replies = ref<Misskey.entities.Note[]>([]);
+const conversation = ref<rizzkey.entities.Note[]>([]);
+const replies = ref<rizzkey.entities.Note[]>([]);
 const canRenote = computed(() => ['public', 'home'].includes(appearNote.value.visibility) || appearNote.value.userId === $i?.id);
 
 const keymap = {
@@ -293,7 +293,7 @@ const keymap = {
 };
 
 provide('react', (reaction: string) => {
-	misskeyApi('notes/reactions/create', {
+	rizzkeyApi('notes/reactions/create', {
 		noteId: appearNote.value.id,
 		reaction: reaction,
 	});
@@ -327,7 +327,7 @@ useNoteCapture({
 });
 
 useTooltip(renoteButton, async (showing) => {
-	const renotes = await misskeyApi('notes/renotes', {
+	const renotes = await rizzkeyApi('notes/renotes', {
 		noteId: appearNote.value.id,
 		limit: 11,
 	});
@@ -370,9 +370,9 @@ function react(viaKeyboard = false): void {
 	pleaseLogin();
 	showMovedDialog();
 	if (appearNote.value.reactionAcceptance === 'likeOnly') {
-		sound.playMisskeySfx('reaction');
+		sound.playrizzkeySfx('reaction');
 
-		misskeyApi('notes/reactions/create', {
+		rizzkeyApi('notes/reactions/create', {
 			noteId: appearNote.value.id,
 			reaction: '❤️',
 		});
@@ -386,9 +386,9 @@ function react(viaKeyboard = false): void {
 	} else {
 		blur();
 		reactionPicker.show(reactButton.value ?? null, note.value, reaction => {
-			sound.playMisskeySfx('reaction');
+			sound.playrizzkeySfx('reaction');
 
-			misskeyApi('notes/reactions/create', {
+			rizzkeyApi('notes/reactions/create', {
 				noteId: appearNote.value.id,
 				reaction: reaction,
 			});
@@ -404,7 +404,7 @@ function react(viaKeyboard = false): void {
 function undoReact(note): void {
 	const oldReaction = note.myReaction;
 	if (!oldReaction) return;
-	misskeyApi('notes/reactions/delete', {
+	rizzkeyApi('notes/reactions/delete', {
 		noteId: note.id,
 	});
 }
@@ -449,7 +449,7 @@ function showRenoteMenu(viaKeyboard = false): void {
 		icon: 'ti ti-trash',
 		danger: true,
 		action: () => {
-			misskeyApi('notes/delete', {
+			rizzkeyApi('notes/delete', {
 				noteId: note.value.id,
 			});
 			isDeleted.value = true;
@@ -471,7 +471,7 @@ const repliesLoaded = ref(false);
 
 function loadReplies() {
 	repliesLoaded.value = true;
-	misskeyApi('notes/children', {
+	rizzkeyApi('notes/children', {
 		noteId: appearNote.value.id,
 		limit: 30,
 	}).then(res => {
@@ -484,7 +484,7 @@ const conversationLoaded = ref(false);
 function loadConversation() {
 	conversationLoaded.value = true;
 	if (appearNote.value.replyId == null) return;
-	misskeyApi('notes/conversation', {
+	rizzkeyApi('notes/conversation', {
 		noteId: appearNote.value.replyId,
 	}).then(res => {
 		conversation.value = res.reverse();

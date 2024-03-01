@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -39,7 +39,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed, watch, ref } from 'vue';
-import * as Misskey from 'misskey-js';
+import * as rizzkey from 'rizzkey-js';
 import MkButton from '@/components/MkButton.vue';
 import MkInput from '@/components/MkInput.vue';
 import MkTextarea from '@/components/MkTextarea.vue';
@@ -47,7 +47,7 @@ import MkSwitch from '@/components/MkSwitch.vue';
 import FormSuspense from '@/components/form/suspense.vue';
 import { selectFiles } from '@/scripts/select-file.js';
 import * as os from '@/os.js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 import { definePageMetadata } from '@/scripts/page-metadata.js';
 import { i18n } from '@/i18n.js';
 import { useRouter } from '@/router/supplier.js';
@@ -59,7 +59,7 @@ const props = defineProps<{
 }>();
 
 const init = ref<(() => Promise<any>) | null>(null);
-const files = ref<Misskey.entities.DriveFile[]>([]);
+const files = ref<rizzkey.entities.DriveFile[]>([]);
 const description = ref<string | null>(null);
 const title = ref<string | null>(null);
 const isSensitive = ref(false);
@@ -108,7 +108,7 @@ async function del() {
 }
 
 watch(() => props.postId, () => {
-	init.value = () => props.postId ? misskeyApi('gallery/posts/show', {
+	init.value = () => props.postId ? rizzkeyApi('gallery/posts/show', {
 		postId: props.postId,
 	}).then(post => {
 		files.value = post.files ?? [];

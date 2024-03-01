@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: syuilo and misskey-project
+SPDX-FileCopyrightText: syuilo and rizzkey-project
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
@@ -14,8 +14,8 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import * as Misskey from 'misskey-js';
-import { misskeyApi } from '@/scripts/misskey-api.js';
+import * as rizzkey from 'rizzkey-js';
+import { rizzkeyApi } from '@/scripts/rizzkey-api.js';
 
 const props = withDefaults(defineProps<{
 	userIds: string[];
@@ -24,11 +24,11 @@ const props = withDefaults(defineProps<{
 	limit: Infinity,
 });
 
-const users = ref<Misskey.entities.UserLite[]>([]);
+const users = ref<rizzkey.entities.UserLite[]>([]);
 
 onMounted(async () => {
-	users.value = await misskeyApi('users/show', {
+	users.value = await rizzkeyApi('users/show', {
 		userIds: props.userIds,
-	}) as unknown as Misskey.entities.UserLite[];
+	}) as unknown as rizzkey.entities.UserLite[];
 });
 </script>
