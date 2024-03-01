@@ -3,7 +3,7 @@
 	<img src="./assets/title_float.svg" alt="rizzkey logo" style="border-radius:50%" width="400"/>
 </a>
 
-**🌎 **[rizzkey](https://misskey-hub.net/)** is an open source, decentralized social media platform that's free forever! 🚀**
+**🌎 **[Rizzkey](https://misskey-hub.net/)** is an open source, decentralized social media platform that's free forever! 🚀**
 
 ---
 
@@ -48,13 +48,7 @@ With Rizzkey's built in drive, you get cloud storage right in your social media,
 
 ## Documentation
 
-Rizzkey Documentation can be found at [rizzkey Hub](https://misskey-hub.net/docs/), some of the links and graphics above also lead to specific portions of it.
-
-## Sponsors
-
-<div align="center">
-	<a class="rss3" title="RSS3" href="https://rss3.io/" target="_blank"><img src="https://rss3.mypinata.cloud/ipfs/QmUG6H3Z7D5P511shn7sB4CPmpjH5uZWu4m5mWX7U3Gqbu" alt="RSS3" height="60"></a>
-</div>
+Rizzkey Documentation can be found at [Rizzkey Hub](https://misskey-hub.net/docs/), some of the links and graphics above also lead to specific portions of it.
 
 ## Thanks
 
